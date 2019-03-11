@@ -1,18 +1,30 @@
 <template>
   <div>
-    <Navbar/> 
-    <router-view></router-view>
+    <Navbar class="fixed-top"></Navbar>
+    <router-view class="content"></router-view>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'home',
   components: {
     Navbar,
+    Footer,
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../assets/all";
+
+.content {
+  margin-top: 76px;
+  min-height: calc(100vh - ( 68px ));
+}
+</style>

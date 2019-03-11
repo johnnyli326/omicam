@@ -11,15 +11,30 @@ export default new Router({
       path: '',
       name: 'Home',
       component: () => import('./views/Home.vue'),
+    }, {
+      path: 'omicam',
+      name: 'Omicam',
+      component: () => import('./views/Omicam.vue'),
+    }, {
+      path: 'omi-studio',
+      name: 'OmiStudio',
+      component: () => import('./views/OmiStudio.vue'),
+    }, {
+      path: 'news',
+      name: 'News',
+      component: () => import('./views/News.vue'),
+    }, {
+      path: 'omistory',
+      name: 'OmiStory',
+      component: () => import('./views/OmiStory.vue'),
+    }, {
+      path: 'support',
+      name: 'Support',
+      component: () => import('./views/Support.vue'),
+    }, {
+      path: 'contact',
+      name: 'Contact',
+      component: () => import('./views/Contact.vue'),
     }],
-  },
-    // {
-    //   path: '/about',
-    //   name: 'Home',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('./views/Home.vue'),
-    // },
-  ],
+  }],
 });

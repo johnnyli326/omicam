@@ -1,0 +1,12 @@
+// variable 載入函式
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "./mixin";
+* {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
