@@ -122,15 +122,13 @@
     <!-- Modal -->
     <div class="modal fade" id="commercialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-transparent">
+        <div class="modal-content bg-transparent border-0">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="modal-body">
-            <iframe
-            width="100%"
-            height="500"
-            src="https://www.youtube.com/embed/WjY1JsxDrCA"
+          <div class="modal-body text-center p-0" id="yt-player">
+            <iframe class="brand-film"
+            src="https://www.youtube.com/embed/WjY1JsxDrCA?enablejsapi=1"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
@@ -143,11 +141,98 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   name: 'Home',
   data() { return {}; },
   created() {
     window.scrollTo(0, 0);
+  },
+  mounted() {
+    $(document).ready(function() {
+      $('#commercialModal').on('hidden.bs.modal', function () {
+        callPlayer('yt-player', 'stopVideo');
+      })
+    });
+    function callPlayer(frame_id, func, args) {
+      if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
+      let iframe = document.getElementById(frame_id);
+      if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
+          iframe = iframe.getElementsByTagName('iframe')[0];
+      }
+  
+      // When the player is not ready yet, add the event to a queue
+      // Each frame_id is associated with an own queue.
+      // Each queue has three possible states:
+      //  undefined = uninitialised / array = queue / 0 = ready
+      if (!callPlayer.queue) callPlayer.queue = {};
+      let queue = callPlayer.queue[frame_id],
+          domReady = document.readyState == 'complete';
+  
+      if (domReady && !iframe) {
+          // DOM is ready and iframe does not exist. Log a message
+          window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
+          if (queue) clearInterval(queue.poller);
+      } else if (func === 'listening') {
+          // Sending the "listener" message to the frame, to request status updates
+          if (iframe && iframe.contentWindow) {
+              func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
+              iframe.contentWindow.postMessage(func, '*');
+          }
+      } else if (!domReady ||
+                 iframe && (!iframe.contentWindow || queue && !queue.ready) ||
+                 (!queue || !queue.ready) && typeof func === 'function') {
+          if (!queue) queue = callPlayer.queue[frame_id] = [];
+          queue.push([func, args]);
+          if (!('poller' in queue)) {
+              // keep polling until the document and frame is ready
+              queue.poller = setInterval(function() {
+                  callPlayer(frame_id, 'listening');
+              }, 250);
+              // Add a global "message" event listener, to catch status updates:
+              messageEvent(1, function runOnceReady(e) {
+                  if (!iframe) {
+                      iframe = document.getElementById(frame_id);
+                      if (!iframe) return;
+                      if (iframe.tagName.toUpperCase() != 'IFRAME') {
+                          iframe = iframe.getElementsByTagName('iframe')[0];
+                          if (!iframe) return;
+                      }
+                  }
+                  if (e.source === iframe.contentWindow) {
+                      // Assume that the player is ready if we receive a
+                      // message from the iframe
+                      clearInterval(queue.poller);
+                      queue.ready = true;
+                      messageEvent(0, runOnceReady);
+                      // .. and release the queue:
+                      while (tmp = queue.shift()) {
+                          callPlayer(frame_id, tmp[0], tmp[1]);
+                      }
+                  }
+              }, false);
+          }
+      } else if (iframe && iframe.contentWindow) {
+          // When a function is supplied, just call it (like "onYouTubePlayerReady")
+          if (func.call) return func();
+          // Frame exists, send message
+          iframe.contentWindow.postMessage(JSON.stringify({
+              "event": "command",
+              "func": func,
+              "args": args || [],
+              "id": frame_id
+          }), "*");
+      }
+    /* IE8 does not support addEventListener... */
+      function messageEvent(add, listener) {
+          let w3 = add ? window.addEventListener : window.removeEventListener;
+          w3 ?
+              w3('message', listener, !1)
+          :
+              (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
+      }
+    }
   },
 };
 </script>
@@ -194,10 +279,12 @@ a{
   }
 }
 .img-move {
+  height: 600px;
   margin-bottom: 10px;
   background-image: url('../assets/images/dynamic_img.jpg');
   background-position: center center;
-  height: 87vh;
+  background-size: 110% 110%;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,7 +292,11 @@ a{
   margin-bottom: $gutter;
   -webkit-animation: mover 2s infinite alternate linear;
   animation: mover 2s infinite alternate linear;
-  @include ipad {
+  @include BelowImgSize { // when screen size < img-size ( 1600px )
+    background-size: auto;
+    animation-duration: 5s;
+  }
+  @include ipad { // < = ipad size()
     animation-duration: 10s;
   }
   .slogan {
@@ -276,17 +367,32 @@ a{
   cursor: pointer;
 }
 // Modal
+.modal-dialog {
+  max-width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  @include ipad() {
+    max-width: 80%;
+  }
+}
+.brand-film {
+  width: 100%;
+  min-height: 350px;
+}
 .close {
   width: 20px;
   height: 20px;
-  position: fixed;
-  right: 30px;
-  top: 10px;
+  position: absolute;
+  right: -30px;
+  top: -20px;
   color: white;
   opacity: 1;
   &:hover {
     color: #ffcd05;
     opacity: 1 !important;
+  }
+  &:focus {
+    outline: 0;
   }
 }
 </style>

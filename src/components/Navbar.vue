@@ -51,7 +51,7 @@ export default {
       $('.hamburger-btn').click(function(){
         $(this).toggleClass('active'); // 漢堡收合
         if($('.top-menu').hasClass('show')) { // top-menu 收合
-          $('.top-menu').removeClass('show').addClass('hide'); 
+          $('.top-menu').removeClass('show').addClass('hide');
         } else {
           $('.top-menu').removeClass('hide').addClass('show');
         };
