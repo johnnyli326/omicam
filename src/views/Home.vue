@@ -41,11 +41,9 @@
           Recording everything even something you are not aware in your sight
         </p>
         <div>
-          <button class="btn btn-outline-warning p-0 m-0">
-            <router-link class="d-block" to="/omicam">
-              MORE
-            </router-link>
-          </button>
+          <router-link class="btn btn-outline-warning" to="/omicam">
+            MORE
+          </router-link>
         </div>
       </div>
     </section>
@@ -57,37 +55,48 @@
           <br>
           Capture the moments that matter most in your life
         </p>
-        <button class="btn btn-outline-warning btn-lg">
-          <router-link class="d-block" to="/omicam">
-            SEE HOW
-          </router-link>
-        </button>
+        <router-link class="btn btn-outline-warning" to="/omicam">
+          SEE HOW
+        </router-link>
       </div>
     </section>
     <section class="no-shaky-video">
       <div class="row mr-0 ml-0">
-        <div class="col-md-6 intro-img-1"></div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-          <div class="text-center m-3">
-            <h2 class="slogan">NO SHAKY VIDEO</h2>
-            <p>No matter how bumpy, OmiCam always gives you no dizzy video!</p>
+        <div class="col-md-6">
+          <div class="intro-img-1"></div>
+        </div>
+        <div class="col-md-6" style="height:400px;">
+          <div class="d-flex justify-content-center align-items-center"
+          style="background:#fafafa; width:100%;height:100%">
+            <div class="text-center m-3">
+              <h2 class="slogan">NO SHAKY VIDEO</h2>
+              <p>No matter how bumpy, OmiCam always gives you no dizzy video!</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
     <section class="just-clip-it">
       <div class="row mr-0 ml-0">
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-          <div class="text-center m-3">
-            <h2>JUST CLIP IT</h2>
-            <p>When you wear OmiCam, you are freeing both your hands</p>
-            <div class="btn btn-outline-primary">MORE</div>
+        <div class="col-md-6"
+        style="height:400px;">
+          <div class="d-flex justify-content-center align-items-center"
+            style="background:#fafafa; width:100%;height:100%">
+            <div class="text-center m-3">
+              <h2 class="slogan">JUST CLIP IT</h2>
+              <p>When you wear OmiCam, you are freeing both your hands</p>
+              <router-link class="btn btn-outline-warning" to="/omicam">
+                MORE
+              </router-link>
+            </div>
           </div>
         </div>
-        <div class="col-md-6 intro-img-2"></div>
+        <div class="col-md-6">
+          <div class="intro-img-2"></div>
+        </div>
       </div>
     </section>
-    <section>
+    <section style="background:#fafafa;">
       <div class="row mr-0 ml-0">
         <div class="col-md-7">
           <img src="../assets/images/img-7.png" alt="Support-device">
@@ -96,7 +105,9 @@
           <div class="text-center m-3">
             <h2 class="slogan">OMI STUDIO</h2>
             <p class="intro-text">The easiest way to create immersive experience</p>
-            <button class="btn btn-outline-warning">SEE HOW</button>
+            <router-link class="btn btn-outline-warning" to="/omicam">
+              SEE HOW
+            </router-link>
           </div>
         </div>
       </div>
@@ -104,6 +115,18 @@
     <section class="omi-story">
       <h2 class="slogan text-center">OMI STORY</h2>
       <!-- <Slide></Slide> -->
+      <div id="owl-demo" class="owl-carousel owl-theme">
+        <div class="item" v-for="(story, index) in stories" :key="index"
+        :style="{ backgroundImage: 'url(' + story.imgSrc + ')' }">
+          <div class="slide-up">
+            <span>{{ story.name }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="customNavigation">
+        <a class="btn prev" aria-label="Previous"><i class="fas fa-angle-left fa-2x"></i></a>
+        <a class="btn next" aria-label="Next"><i class="fas fa-angle-right fa-2x"></i></a>
+      </div>
     </section>
     <section class="simple container">
       <div class="row">
@@ -114,7 +137,9 @@
           <div class="text-center m-3">
             <h2>It's that simple</h2>
             <p>Let OmiCam use your way to remember your life story</p>
-            <button class="btn btn-outline-warning">BUY NOW</button>
+              <router-link class="btn btn-link btn-outline-primary" to="/">
+                BUY NOW
+              </router-link>
           </div>
         </div>
       </div>
@@ -142,19 +167,62 @@
 
 <script>
 import $ from 'jquery';
+import 'owl.carousel';
 
 export default {
   name: 'Home',
-  data() { return {}; },
+  data() { 
+    return {
+      stories: [{
+        name: 'Teacher Vane – Travelholic',
+        imgSrc: require('../assets/images/teacher.png'),
+      }, {
+        name: 'MoLong – Wargamer',
+        imgSrc: require('../assets/images/MoLong.jpg'),
+      }, {
+        name: 'Eva — Divingholic',
+        imgSrc: require('../assets/images/eva.png'),
+      }],
+    }; 
+  },
   created() {
     window.scrollTo(0, 0);
   },
   mounted() {
     $(document).ready(function() {
+      // 開啟Modal，youtube開始播放
+      $('#commercialModal').on('show.bs.modal', function () {
+        let videoSrc = $("#commercialModal iframe").attr("src");
+        $("#commercialModal iframe").attr("src", videoSrc+"&amp;autoplay=1");
+      });
+      // 關閉Modal，youtube停止播放
       $('#commercialModal').on('hidden.bs.modal', function () {
         callPlayer('yt-player', 'stopVideo');
-      })
+      });
+      let owl = $("#owl-demo");
+      owl.owlCarousel({
+          responsive:{
+            0:{ // 螢幕寬度0px以上
+              items:1,
+            },
+            600:{ // 螢幕寬度600px以上
+              items:2,
+            },
+            1000:{ // 螢幕寬度1000px以上
+              items:3,
+            }
+          },
+          loop: true,
+      });
+      // Custom Navigation Events
+      $(".next").click(function(){
+        owl.trigger('next.owl.carousel');
+      });
+      $(".prev").click(function(){
+        owl.trigger('prev.owl.carousel');
+      });
     });
+    // youtube API
     function callPlayer(frame_id, func, args) {
       if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
       let iframe = document.getElementById(frame_id);
@@ -237,16 +305,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/mixin";
+@import "~owl.carousel/dist/assets/owl.carousel.css";
 
 $gutter: 6px;
 $slogan-size: 52px;
 
-a{
+a.btn {
   text-decoration: none;
   display: inline-block;
-  padding: 10px;
+  padding: 10px 20px;
+  &:hover {
+    color: black;
+  }
 }
 .header {
   max-width: 100%;
@@ -292,12 +364,12 @@ a{
   margin-bottom: $gutter;
   -webkit-animation: mover 2s infinite alternate linear;
   animation: mover 2s infinite alternate linear;
-  @include BelowImgSize { // when screen size < img-size ( 1600px )
+  @include BelowImgSize { // when screen size < img-size ( 1600px小於一點點 1550 )
     background-size: auto;
-    animation-duration: 5s;
+    animation-duration: 8s;
   }
   @include ipad { // < = ipad size()
-    animation-duration: 10s;
+    animation-duration: 12s;
   }
   .slogan {
     font-size: $slogan-size;
@@ -307,13 +379,13 @@ a{
   }
 }
 @keyframes mover {
-    0% { background-position-x: right }
-    100% { background-position-x: left }
-  }
+  0% { background-position-x: right }
+  100% { background-position-x: left }
+}
 .last-longer {
-  height: 760px;
+  height: 600px;
   background-image: url('../assets/images/img-4.jpg');
-  background-position: center center;
+  background-position: top center;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -327,24 +399,29 @@ a{
     font-size: 20px;
   }
 }
+.col-md-6 {
+  padding: 0 $gutter;
+}
 .no-shaky-video {
-  margin-bottom: $gutter;
+  margin-bottom: #{2*$gutter};
   .intro-img-1 {
     background-image: url('../assets/images/climb.jpg');
     background-position: center center;
     background-size: cover;
     width: 100%;
-    height: 550px;
+    height: 400px;
+    box-shadow: 1px 1px 5px grey;
   }
 }
 .just-clip-it {
-  margin-bottom: $gutter;
+  margin-bottom: #{2*$gutter};
   .intro-img-2 {
     background-image: url('../assets/images/img-6.jpg');
     background-position: center center;
     background-size: cover;
     width: 100%;
-    height: 550px;
+    height: 400px;
+    box-shadow: 1px 1px 5px grey;
   }
 }
 .omi-story {
@@ -393,6 +470,56 @@ a{
   }
   &:focus {
     outline: 0;
+  }
+}
+#owl-demo .item{
+  height: 220px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 30px 0px;
+  margin: 10px;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  &:hover {
+    .slide-up {
+      transform: translateY(0);
+    }
+  }
+  .slide-up {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,148,0,0.37);
+    transform: translateY(120%);
+    transition: ease .3s;
+  }
+}
+.customNavigation{
+  text-align: center;
+}
+.customNavigation a{
+  display: inline-block;
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: gray !important;
+  &:hover {
+    color: #ffcd05 !important;
   }
 }
 </style>

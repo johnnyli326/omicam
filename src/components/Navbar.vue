@@ -49,22 +49,28 @@ export default {
     $(document).ready(function() {
       // 點擊漢堡
       $('.hamburger-btn').click(function(){
-        $(this).toggleClass('active'); // 漢堡收合
+        $(this).toggleClass('active'); // 漢堡toggle
         if($('.top-menu').hasClass('show')) { // top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
+          $('body').css('overflow', 'auto');
+          $('.top-menu').css('overflow', 'hidden');
         } else {
           $('.top-menu').removeClass('hide').addClass('show');
+          $('body').css('overflow', 'hidden');
+          $('.top-menu').css('overflow', 'scroll');
         };
       });
       // 點擊li
       $('.menu-item').click(function(){
         $('.hamburger-btn').toggleClass('active');
         $('.top-menu').toggleClass('show');
+        $('body').css('overflow', 'auto');
       });
       // 點擊 logo
       $('.logo').click(function(){
         $('.hamburger-btn').removeClass('active');
         $('.top-menu').removeClass('show');
+        $('body').css('overflow', 'auto');
       });
       // resize 收合top-menu
       $(window).resize(function() {
@@ -134,7 +140,7 @@ export default {
     display: inline-block;
     margin: 0;
     z-index: 100;
-    overflow: hidden;
+    overflow:hidden;
     @media(max-width: 1000px) {
       height: 0;
       width: 100%;
@@ -148,6 +154,7 @@ export default {
     }
     .menu-item {
       display: inline-block;
+      overflow: auto;
         @media(max-width: 1000px) {
           display: block;
         }
@@ -157,6 +164,7 @@ export default {
         padding: 0 20px;
         text-decoration: none;
         width: 100%;
+        transition: all .3s ease;
         &:hover {
           color: white;
         }

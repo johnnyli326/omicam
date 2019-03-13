@@ -6,21 +6,20 @@
       </div>
     </div>
     <div class="container my-5">
-			<div v-for="(item, index) in news" :key="index">
-        <div class="row mb-3">
-  				<div class="col-md-3 news-img text-center">
-						<router-link to="/">
-  					  <img :src="item.imgSrc" :alt="item.name">
-						</router-link>
+			<div v-for="(story, index) in stories" :key="index">
+        <div class="row mb-5">
+  				<div class="col-md-3 news-img text-center"
+					:style="{ backgroundImage: 'url(' + story.imgSrc + ')' }">
+			  		<router-link to="/"></router-link>
   				</div>
   				<div class="col-md-9">
   					<small class="text-primary">NEWS</small>
-            <h3>Omi News {{ index+1 }}</h3>
-  					<p class="text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  						Possimus, nihil delectus nobis voluptates blanditiis nemo
-  						aperiam debitis consectetur. Laborum, vel vitae modi nam totam
-  						mollitia ab accusamus eligendi soluta provident!
-  					</p>
+						<main class="ml-4 mt-3">
+              <h3>Omi News {{ index+1 }}</h3>
+    					<p class="text-truncate">
+								{{ story.content }}
+    					</p>
+						</main>
   				</div>
   			</div>
 				<hr>
@@ -33,13 +32,26 @@
 export default {
   data() {
     return {
-      news: [{
-				name: '標題一',
-				imgSrc: require('../assets/images/news.jpg'),
-			}, {
-				name: '標題二',
-				imgSrc: require('../assets/images/news-2.jpg'),
-			}],
+      stories: [{
+        name: 'Teacher Vane – Travelholic',
+				imgSrc: require('../assets/images/teacher.png'),
+				content: `"When I thought back my travel experience,
+				OmiCam always surprised me again and again. He captured
+				all wonderful time in my travels."`,
+      }, {
+        name: 'MoLong – Wargamer',
+				imgSrc: require('../assets/images/MoLong.jpg'),
+				content: `“At first, when playing wargame, I wear
+				OmiCam to make my appearance unique like a unicorn
+				beetle. Then I fell in love with 240° VR video.”`
+      }, {
+        name: 'Eva — Divingholic',
+				imgSrc: require('../assets/images/eva.png'),
+				content: `"While using OmiCam, no need to find the
+				best angle so I could enjoy the present. Getting home
+				and played the videos, the screen recalled best diving
+				memory."`
+      }],
     };
   },
   created() {
@@ -56,6 +68,13 @@ export default {
   border: 1px solid #e9e9e9;
 }
 .news-img {
-	box-shadow: 1px 1px 1px 2px gray
+	box-shadow: 1px 1px 1px 2px gray;
+  height: 200px;
+  background-position: center center;
+	background-size: cover;
+	a {
+    display: block;
+		height: 100%;
+	}
 }
 </style>

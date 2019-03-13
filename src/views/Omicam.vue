@@ -112,7 +112,7 @@
       <section class="proof-section my-3  text-center">
         <h3 class="text-center proof-title">Splash- Proof & Dust- Proof</h3>
         <p class="text-center text-white">Get outside. Enjoy nature</p>
-        <div class="mx-5">
+        <div class="">
           <p class="text-left text-white">
             OMICAM is splash proof rated IP65 and dust- proof to endure
             most outdoor activity without the need of waterproof housing
@@ -126,22 +126,30 @@
         <div class="scenery-img" v-for="(item, index) in scenery" :key="index">
           <img :src="item.imgSrc" :alt="item.name">
         </div>
-        <button class="btn btn-outline-primary mt-5">
-          <router-link to="/">
-            BUY NOW
-          </router-link>
-        </button>
+        <div class="text-center">
+          <button class="btn btn-outline-primary mt-5">
+            <router-link to="/">
+              BUY NOW
+            </router-link>
+          </button>
+        </div>
       </section>
       <section class="text-center my-3">
         <h3>Create your 360 video with OMI Studio</h3>
         <img src="../assets/images/img-7.png" alt="support-device">
-        <button class="btn btn-outline-primary mt-5">
-          <router-link to="/">
-            SEE HOW
-          </router-link>
-        </button>
+        <div>
+          <button class="btn btn-outline-primary mt-5">
+            <router-link to="/">
+              SEE HOW
+            </router-link>
+          </button>
+        </div>
+      </section>
+      <section class="text-center">
         <h3>What is in our package?</h3>
         <img src="../assets/images/accessories.jpg" alt="accessories">
+      </section>
+      <section class="mt-3 text-center">
         <h3>Specs</h3>
         <div class="table-responsive">
           <table class="table table-striped table-bordered">
@@ -312,9 +320,10 @@ p {
   display: inline-block;
   width: 33.333%;
   text-align: center;
+  vertical-align: top;
 }
 .proof-section {
-  padding: 50px;
+  padding: 20px;
   background-color: rgba(122,122,122,0.59);
   .proof-title {
     color: #ffa011;
@@ -323,8 +332,18 @@ p {
   }
   .scenery-img {
     width: 18%;
-    margin: 0 10px;
+    margin: 10px 10px;
     display: inline-block;
+  }
+}
+.btn {
+  padding: 0;
+  a {
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
   }
 }
 </style>

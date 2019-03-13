@@ -48,7 +48,7 @@
     				:src="item.imgSrc" 
     				:alt="item.name">
     				<h5>{{ item.name }}</h5>
-						<a :href="item.URL"  style="word-wrap: break-word;">{{ item.URL }}</a>
+						<a :href="item.URL" class="channel-link">{{ item.URL }}</a>
     			</div>
   			</main>
       </section>
@@ -111,5 +111,8 @@ export default {
 .channel-img {
 	width: 250px;
 	height: 50px;
+}
+.channel-link {
+  word-wrap: break-word;
 }
 </style>
