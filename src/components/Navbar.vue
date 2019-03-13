@@ -77,6 +77,7 @@ export default {
         if($(window).width() >= 1000){
           $('.top-menu').removeClass('show').removeClass('hide');
           $('.hamburger-btn').removeClass('active');
+          $('body').css('overflow', 'auto');
         };
       });
     })
