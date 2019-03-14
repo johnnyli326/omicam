@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar class="fixed-top"></Navbar>
+    <Navbar></Navbar>
     <router-view class="content"></router-view>
     <Footer></Footer>
   </div>
@@ -24,7 +24,7 @@ export default {
 @import "../assets/all";
 
 .content {
-  margin-top: 76px;
+  margin-top: 60px;
   min-height: calc(100vh - ( 68px ));
 }
 </style>

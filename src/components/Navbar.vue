@@ -1,16 +1,25 @@
 <template>
-  <div>
+  <div class="nav-wrap fixed-top">
     <nav class="navbar">
-      <div class="ml-5">
-        <router-link class="navbar-brand d-block" to="/">
+      <div>
+        <router-link class="navbar-brand d-block p-0" to="/">
           <h1 class="logo">OmiCam</h1>
         </router-link>
       </div>
-      <button class="hamburger-btn">
-        <span class="icon-bar top-bar bg-primary"></span>
-        <span class="icon-bar middle-bar bg-primary"></span>
-        <span class="icon-bar bottom-bar bg-primary"></span>
-      </button>
+      <ul class="list-unstyled mobile-icon ml-auto">
+        <li>
+          <router-link class="cart mr-3" to="/">
+            <i class="fas fa-shopping-cart"></i>
+          </router-link>
+        </li>
+        <li>
+          <button class="hamburger-btn">
+            <span class="icon-bar top-bar bg-primary"></span>
+            <span class="icon-bar middle-bar bg-primary"></span>
+            <span class="icon-bar bottom-bar bg-primary"></span>
+          </button>
+        </li>
+      </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
           <router-link to="/omicam">OmiCam</router-link>
@@ -30,11 +39,6 @@
         <li class="menu-item">
           <router-link to="/contact">Contact</router-link>
         </li>
-        <li class="menu-item">
-          <router-link to="">
-            <i class="fas fa-shopping-cart"></i>
-          </router-link>
-        </li>
       </ul>
     </nav>
   </div>
@@ -53,11 +57,14 @@ export default {
         if($('.top-menu').hasClass('show')) { // top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
           $('body').css('overflow', 'auto');
-          $('.top-menu').css('overflow', 'hidden');
+          $('.navbar').css('background-color', 'rgba(0, 0, 0)');
+          $('.nav-wrap').css('height', 'auto');
         } else {
+          $('body').css('overflow', 'hidden'); // body不會scroll
           $('.top-menu').removeClass('hide').addClass('show');
-          $('body').css('overflow', 'hidden');
-          $('.top-menu').css('overflow', 'scroll');
+          $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.9)');
+          $('.navbar').css('position', 'absolute');
+          $('.nav-wrap').css('height', '420px;');
         };
       });
       // 點擊li
@@ -65,12 +72,16 @@ export default {
         $('.hamburger-btn').toggleClass('active');
         $('.top-menu').toggleClass('show');
         $('body').css('overflow', 'auto');
+        $('.navbar').css('background-color', 'rgba(0, 0, 0)');
+        $('.nav-wrap').css('height', 'auto');
       });
       // 點擊 logo
       $('.logo').click(function(){
         $('.hamburger-btn').removeClass('active');
         $('.top-menu').removeClass('show');
         $('body').css('overflow', 'auto');
+        $('.navbar').css('background-color', 'rgba(0, 0, 0)');
+        $('.nav-wrap').css('height', 'auto');
       });
       // resize 收合top-menu
       $(window).resize(function() {
@@ -78,6 +89,8 @@ export default {
           $('.top-menu').removeClass('show').removeClass('hide');
           $('.hamburger-btn').removeClass('active');
           $('body').css('overflow', 'auto');
+          $('.navbar').css('background-color', 'rgba(0, 0, 0)');
+          $('.nav-wrap').css('height', 'auto');
         };
       });
     })
@@ -89,52 +102,67 @@ export default {
 <style scoped lang="scss" scoped>
 .navbar {
   padding: 0;
-  &:after {
-    content: '';
-    width: 100vw;
-    height: 76px;
-    background-color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  .logo {
+  width: 100vw;
+  background-color: black;
+  z-index: 100;
+  h1.logo {
     background-image: url('../assets/images/logo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
     text-indent: 101%;
     overflow:  hidden;
     width: 180px;
     height: 58px;
+    margin-left: 10px;
   }
-  .hamburger-btn {
-    background: transparent;
-    border: 0;
-    display: none;
-    .icon-bar {
-      display: block;
-      width: 22px;
-      height: 2px;
-      right: 0;
-      border-radius: 1px;
-      margin-bottom: 2px;
-      transition: all .2s ease;
-    }
-    &.active {
-      .top-bar {
-        transform: rotate(45deg) translate(3px, 2.5px);
-      }
-      .middle-bar {
-        opacity: 0;
-      }
-      .bottom-bar {
-        transform: rotate(-45deg) translate(3px, -2.5px);
-      }
-    }
-    &:focus {
-      outline: 0;
-    }
-    @media(max-width: 1000px) {
+  ul.mobile-icon {
+    font-size: 0;
+    display: inline-block;
+    margin: 0;
+    li {
       display: inline-block;
+      vertical-align: top;
+    }
+    .cart {
+      display: inline-block;
+      height: 60px;
+      font-size: 16px;
+      padding: 0 10px;
+      line-height: 60px;
+    }
+    .hamburger-btn {
+      background: transparent;
+      border: 0;
+      display: none;
+      height: 60px;
+      vertical-align: top;
+      line-height: 60px;
+      .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        right: 0;
+        border-radius: 1px;
+        margin-bottom: 2px;
+        transition: all .2s ease;
+      }
+      &.active {
+        .top-bar {
+          transform: rotate(45deg) translate(3px, 2.5px);
+        }
+        .middle-bar {
+          opacity: 0;
+        }
+        .bottom-bar {
+          transform: rotate(-45deg) translate(3px, -2.5px);
+        }
+      }
+      &:focus {
+        outline: 0;
+      }
+      @media(max-width: 1000px) {
+        display: inline-block;
+      }
     }
   }
   .top-menu {
@@ -142,26 +170,32 @@ export default {
     margin: 0;
     z-index: 100;
     overflow:hidden;
+    font-size: 0;
+    transition: all .6s;
     @media(max-width: 1000px) {
       height: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.5);
       &.show {
-        height: 100%;
+        height: 100vh;
+        overflow-y: scroll;
       }
       &.hide {
         height: 0;
+        overflow-y: hidden;
       }
     }
     .menu-item {
       display: inline-block;
       overflow: auto;
+      font-size: 16px;
         @media(max-width: 1000px) {
           display: block;
         }
       a {
         display: inline-block;
-        line-height: 76px;
+        height: 60px;
+        line-height: 60px;
         padding: 0 20px;
         text-decoration: none;
         width: 100%;
