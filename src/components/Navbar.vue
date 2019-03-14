@@ -129,6 +129,10 @@ export default {
       font-size: 16px;
       padding: 0 10px;
       line-height: 60px;
+      &:hover {
+        color: white;
+        transition: all .3s ease;
+      }
     }
     .hamburger-btn {
       background: transparent;

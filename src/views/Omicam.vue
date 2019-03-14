@@ -21,7 +21,8 @@
         </div>
       </section>
       <section class="icon">
-        <div class="d-inline-block text-center w-25" v-for="(icon, index) in icons" :key="index">
+        <div class="d-inline-block text-center" v-for="(icon, index) in icons" :key="index"
+        style="width:20%;">
           <img :src="icon.imgSrc" :alt="icon.name" v-if="icon">
         </div>
       </section>
@@ -66,7 +67,7 @@
           <h3 class="my-3 text-center">
             Always Keep Horizontal
           </h3>
-          <p class="mb-3">
+          <p class="mb-3 text-center">
             Wear it any way you like
           </p>
           <p>
@@ -237,6 +238,9 @@ export default {
       }, {
         name: 'battery',
         imgSrc: require('../assets/images/battery-icon.png'),
+      }, {
+        name: 'waterproof',
+        imgSrc: require('../assets/images/icon-waterproof.png'),
       }],
       btns: [{
         name: 'Power On-Off',
