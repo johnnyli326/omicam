@@ -96,7 +96,7 @@
         </div>
       </div>
     </section>
-    <section style="background:#fafafa;">
+    <section class="omi-studio" style="background:#fafafa;">
       <div class="row mr-0 ml-0">
         <div class="col-md-7">
           <img src="../assets/images/img-7.png" alt="Support-device">
@@ -423,6 +423,9 @@ a.btn {
     height: 400px;
     box-shadow: 1px 1px 5px grey;
   }
+}
+.omi-studio {
+  margin-bottom: $gutter;
 }
 .omi-story {
   padding: 100px 50px;

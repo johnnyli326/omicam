@@ -35,6 +35,10 @@ export default new Router({
       path: 'contact',
       name: 'Contact',
       component: () => import('./views/Contact.vue'),
+    }, {
+      path: 'product/omicam-wearable-vr-camera',
+      name: 'Product',
+      component: () => import('./views/Product.vue'),
     }],
   }],
 });

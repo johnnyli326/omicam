@@ -13,22 +13,22 @@
       </button>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
-          <router-link to="omicam">OmiCam</router-link>
+          <router-link to="/omicam">OmiCam</router-link>
         </li>
         <li class="menu-item">
-          <router-link to="omi-studio">Omi Studio</router-link>
+          <router-link to="/omi-studio">Omi Studio</router-link>
         </li>
         <li class="menu-item">
-          <router-link to="news">News</router-link>
+          <router-link to="/news">News</router-link>
         </li>
         <li class="menu-item">
-          <router-link to="omistory">Omi Story</router-link>
+          <router-link to="/omistory">Omi Story</router-link>
         </li>
         <li class="menu-item">
-          <router-link to="support">Support</router-link>
+          <router-link to="/support">Support</router-link>
         </li>
         <li class="menu-item">
-          <router-link to="contact">Contact</router-link>
+          <router-link to="/contact">Contact</router-link>
         </li>
         <li class="menu-item">
           <router-link to="">
