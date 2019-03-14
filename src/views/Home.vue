@@ -137,7 +137,8 @@
           <div class="text-center m-3">
             <h2>It's that simple</h2>
             <p>Let OmiCam use your way to remember your life story</p>
-              <router-link class="btn btn-link btn-outline-primary" to="/">
+              <router-link class="btn btn-link btn-outline-primary"
+              to="/product/omicam-wearable-vr-camera">
                 BUY NOW
               </router-link>
           </div>

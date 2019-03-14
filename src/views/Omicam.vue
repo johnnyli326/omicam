@@ -128,7 +128,7 @@
         </div>
         <div class="text-center">
           <button class="btn btn-outline-primary mt-5">
-            <router-link to="product/omicam-wearable-vr-camera">
+            <router-link to="/product/omicam-wearable-vr-camera">
               BUY NOW
             </router-link>
           </button>
