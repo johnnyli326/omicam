@@ -5,9 +5,9 @@
         <h2>Contact</h2>
       </div>
     </div>
-		<div class="container my-5">
-      <section>
-  			<header>
+		<div class="container my-5 text-center">
+      <section class="mt-4">
+  			<header class="my-3">
   				<h3>聯繫方式</h3>
   			</header>
   			<main>
@@ -29,9 +29,9 @@
     			</p>
   			</main>
   		</section>
-  		<section>
-  			<header>
-  				<h3>各大通路</h3>
+  		<section class="mt-5">
+  			<header class="my-3">
+  				<h3 class="text-center">各大通路</h3>
   			</header>
   			<main>
     			<h4>實體通路</h4>

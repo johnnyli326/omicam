@@ -37,9 +37,9 @@
 						<li>OMI Studio available for download on the app store</li>
 					</ul>
           <div class="input-group">
-            <input type="number" id="tentacles" name="tentacles" min="1" max="20"
+            <input type="number" id="tentacles" name="tentacles" min="1" max="100"
 						value="1" class="text-center mr-1"
-						style="background-color:#f2f2f2;">
+						style="background-color: #f2f2f2; width:50px">
             <button class="btn cart-btn" type="button">
               ADD TO CART
             </button>
@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn {
+  cursor: pointer;
+}
 .page-title {
   width: 100%;
   padding: 30px;
