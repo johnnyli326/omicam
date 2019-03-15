@@ -109,11 +109,14 @@ export default {
     background-image: url('../assets/images/logo.png');
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: contain;
     text-indent: 101%;
     overflow:  hidden;
-    width: 180px;
-    height: 58px;
+    width: calc(180px*0.6);
+    height: calc(58px*0.6);
     margin-left: 10px;
+    height: 60px;
+    margin-bottom: 0;
   }
   ul.mobile-icon {
     font-size: 0;
