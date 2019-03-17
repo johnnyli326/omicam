@@ -3,6 +3,7 @@
 // const path = require('path');
 // const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 const webpack = require('webpack');
+
 module.exports = {
   publicPath: './',
   configureWebpack: {
@@ -13,5 +14,10 @@ module.exports = {
         'window.jQuery': 'jquery',
       }),
     ],
+    watch: true,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+    },
   },
 };
