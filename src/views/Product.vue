@@ -37,9 +37,18 @@
             <li>OMI Studio available for download on the app store</li>
           </ul>
           <div class="input-group">
-            <input type="number" id="tentacles" name="tentacles" min="1" max="100"
-            value="1" class="text-center mr-1"
-            style="background-color: #f2f2f2; width:50px">
+            <select name="num" class="mr-3">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="4">5</option>
+              <option value="4">6</option>
+              <option value="4">7</option>
+              <option value="4">8</option>
+              <option value="4">9</option>
+              <option value="4">10</option>
+            </select>
             <button class="btn cart-btn" type="button">
               ADD TO CART
             </button>
@@ -57,27 +66,84 @@
           <li id="Pac-btn" class="btn">Packaging</li>
           <li id="Acc-btn" class="btn">Accessory</li>
           <li id="Rev-btn" class="btn">Reviews</li>
+          <hr>
         </ul>
+        <!-- Description section -->
         <section id="Description" class="detail-content active">
           <h2>DESCRIPTION</h2>
-          <ul class="list-unstyled">
-            <li>3 BUTTONS WORKOUTS <br> Easy to use in every moment</li>
-            <li>WIFI <br> Connect OmiCam to Wifi</li>
-            <li>10+ HR BATTER LIFE <br> With a lifelog mode, Omicam support your long hour recording</li>
-            <li>SPLASH-PROOF & DUST-PROOF <br> OmiCam is IP65 so it can resist water splash and dust. If you want to use while diving or underwater, please use with the waterproof case.</li>
-            <li>240 LENS <br> Capture as much than what you’re seeing </li>
-            <li>LIGHTWEIGHT DESIGN <br> Feel free while wear it</li>
-            <li>ACCESSORY BANDS <br> The more entertainment you can take OmiCam with you</li>
-            <li>360 VIDEO EDITOR <br> Omi Studio gives a whole new way to create your 360 life video</li>
-            <li>IMMERSIVE EXPERIENCE <br> Your recorded files can easily transfer to VR videos and photos so that you can enjoy immersive experience by wearing VR goggle (not included in this package).</li>
+          <ul>
+            <li>
+              <span class="dec-title">3 BUTTONS WORKOUTS</span>
+              <br>
+              <span class="dec-content">Easy to use in every moment</span>
+            </li>
+            <li>
+              <span class="dec-title">WIFI</span>
+              <br>
+              <span class="dec-content">Connect OmiCam to Wifi</span>
+            </li>
+            <li>
+              <span class="dec-title">10+ HR BATTER LIFE</span>
+              <br>
+              <span class="dec-content">
+                With a lifelog mode, Omicam support your long hour recording
+              </span>
+            </li>
+            <li>
+              <span class="dec-title">SPLASH-PROOF & DUST-PROOF</span>
+              <br>
+              <span class="dec-content">
+                OmiCam is IP65 so it can resist water splash and dust.
+                If you want to use while diving or underwater, please
+                use with the waterproof case.
+              </span>
+            </li>
+            <li>
+              <span class="dec-title">240 LENS</span>
+              <br>
+              <span class="dec-content">
+                Capture as much than what you’re seeing
+              </span>
+            </li>
+            <li>
+              <span class="dec-title">LIGHTWEIGHT DESIGN</span>
+              <br>
+              <span class="dec-content">
+                Feel free while wear it
+              </span>
+            </li>
+            <li>
+              <span class="dec-title">ACCESSORY BANDS</span>
+              <br>
+              <span class="dec-content">
+                The more entertainment you can take OmiCam with you
+              </span>
+            </li>
+            <li>
+              <span class="dec-title">360 VIDEO EDITOR</span>
+              <br>
+              <span class="dec-content">
+                Omi Studio gives a whole new way to create your 360 life video.
+              </span>
+            </li>
+            <li>
+              <span class="dec-title">IMMERSIVE EXPERIENCE</span>
+              <br>
+              <span class="dec-content">
+                Your recorded files can easily transfer to VR videos and photos so that
+                you can enjoy immersive experience by wearing VR goggle (not included in this
+                package).
+              </span>
+            </li>
           </ul>
         </section>
+        <!-- Additional -->
         <section id="Additional-Information" class="detail-content">
           <h2>Additional Information</h2>
           <table class="table">
             <tbody>
               <tr>
-                <td>WEIGHT</td>
+                <td width="20%">WEIGHT</td>
                 <td>0.5 kg</td>
               </tr>
               <tr>
@@ -87,24 +153,26 @@
             </tbody>
           </table>
         </section>
+        <!-- Spec -->
         <section id="Specs" class="detail-content">
           <h2>Specs</h2>
-          <p>Renders VR footage up to 4K 30fps, Field of View 240 Degree
+          <p>
+            Renders VR footage up to 4K 30fps, Field of View 240 Degree
             Splash-proof, dust-proof, Wearable, mountable and lightweight(3oz)
             Extended battery life (Up to 15hrs in Lifelog mode), also supports 
             power bank Smart Edit APP (One click away from producing VR highlight
             videos) Patented Horizon Correction, E-Gimbal Stabilization, Looping,
             Time-lapse & Lifelog recording modes 
           </p>
-          <table class="table Dimensions">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th colspan="2">Dimensions</th>
+                <th colspan="2" class="table-title">Dimensions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Weight</th>
+                <th scope="row" width="20%">Weight</th>
                 <td>Approx. 3.50 oz / 99.2 grams</td>
               </tr>
               <tr>
@@ -157,15 +225,15 @@
               </tr>
             </tbody>
           </table>
-          <table class="table Video">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th colspan="2">Video</th>
+                <th colspan="2" class="table-title">Video</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Resolution (Panorama Video)</th>
+                <th scope="row" width="20%">Resolution (Panorama Video)</th>
                 <td>
                   4K / 30fps (3840 x 2160)
                   2.5K / 30fps (2560 x 1440)
@@ -214,15 +282,15 @@
               </tr>
             </tbody>
           </table>
-          <table class="table Photo">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th colspan="2">Photo</th>
+                <th colspan="2" class="table-title">Photo</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Resolution (Panorama Photo)</th>
+                <th scope="row" width="20%">Resolution (Panorama Photo)</th>
                 <td>Up to 12 Megapixel</td>
               </tr>
               <tr>
@@ -247,15 +315,15 @@
               </tr>
             </tbody>
           </table>
-          <table class="table Photo">
+          <table class="table table-striped">
             <thead>
               <tr>
-                <th colspan="2">Connectivity</th>
+                <th colspan="2" class="table-title">Connectivity</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Wireless</th>
+                <th scope="row" width="20%">Wireless</th>
                 <td>Wifi</td>
               </tr>
               <tr>
@@ -302,14 +370,14 @@
               </tr>
             </tbody>
           </table>
-          <table class="table Photo">
+          <table class="table table-striped">
             <tbody>
               <tr>
                 <th scope="row">Sensor</th>
                 <td>12M pixel</td>
               </tr>
               <tr>
-                <th scope="row">Lens</th>
+                <th scope="row" width="20%">Lens</th>
                 <td>240deg fisheye/ 45deg forward capture</td>
               </tr>
               <tr>
@@ -376,6 +444,9 @@
         <section id="Packaging" class="detail-content">
           <h2>Packaging</h2>
           <div class="row">
+            <div class="col-md-6">
+              <img src="../assets/images/package.jpg" alt="package">
+            </div>
             <div class="col-md-6 d-flex justify-content-center align-items-center">
               <ul>
                 <li>OMI Camera*1</li>
@@ -386,9 +457,6 @@
                 <li>Mounting Kit*1</li>
                 <li>Plug Mount公座*2</li>
               </ul>
-            </div>
-            <div class="col-md-6">
-              <img src="../assets/images/package.jpg" alt="package">
             </div>
           </div>
         </section>
@@ -401,7 +469,6 @@
         </section>
         <section id="Reviews" class="detail-content">
           <h2>Reviews</h2>
-          
         </section>
       </section>
     </div>
@@ -450,6 +517,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/mixin";
+
+table thead{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table, th, td {
+  border: 1px solid #e9e9e9 !important;
+}
 .btn {
   cursor: pointer;
 }
@@ -489,18 +565,53 @@ export default {
   margin: 50px 0;
   ul.Detail-btns {
     list-style: none;
+    padding: 0;
+    position: relative;
     .btn {
       display: inline-block;
       background: #ebe9eb;
-      &.active {
+      border-radius: 5px 5px 0 0;
+      border: 0.5px solid rgba(128, 128, 128, 0.783);
+      border-collapse: collapse;
+      border-spacing: 0;
+      &.active,
+      &:hover {
         background: white;
       }
-    }  
+      @include ipad() {
+        display: block;
+      }
+    }
+    hr {
+      position: absolute;
+      top: 37px;
+      width: 100%;
+      margin: 0;
+      @include ipad() {
+        display: none;
+      }
+    } 
   }
   .detail-content {
     display: none;
+    font-size: 14px;
+    line-height: 2.5;
+    margin-top: 50px;
     &.active{
       display: block;
+    }
+    .table-title {
+      font-size: 24px;
+    }
+  }
+  #Description {
+    .dec-title {
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .dec-content {
+      display: block;
+      text-indent: 30px;
     }
   }
 }

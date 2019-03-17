@@ -250,8 +250,8 @@ export default {
               iframe.contentWindow.postMessage(func, '*');
           }
       } else if (!domReady ||
-                 iframe && (!iframe.contentWindow || queue && !queue.ready) ||
-                 (!queue || !queue.ready) && typeof func === 'function') {
+            iframe && (!iframe.contentWindow || queue && !queue.ready) ||
+            (!queue || !queue.ready) && typeof func === 'function') {
           if (!queue) queue = callPlayer.queue[frame_id] = [];
           queue.push([func, args]);
           if (!('poller' in queue)) {
