@@ -28,7 +28,7 @@
           <router-link to="/omi-studio">Omi Studio</router-link>
         </li>
         <li class="menu-item">
-          <router-link to="/news">News1234</router-link>
+          <router-link to="/news">News</router-link>
         </li>
         <li class="menu-item">
           <router-link to="/omistory">Omi Story</router-link>
