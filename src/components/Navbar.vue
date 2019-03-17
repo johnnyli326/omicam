@@ -50,11 +50,11 @@ import $ from 'jquery';
 export default {
   name: 'Navbar',
   mounted() {
-    $(document).ready(function() {
+    $(document).ready(() => {
       // 點擊漢堡
-      $('.hamburger-btn').click(function(){
+      $('.hamburger-btn').click(() => {
         $(this).toggleClass('active'); // 漢堡toggle
-        if($('.top-menu').hasClass('show')) { // top-menu 收合
+        if ($('.top-menu').hasClass('show')) { // top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
           $('body').css('overflow', 'auto');
           $('.navbar').css('background-color', 'rgba(0, 0, 0)');
@@ -65,10 +65,10 @@ export default {
           $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.9)');
           $('.navbar').css('position', 'absolute');
           $('.nav-wrap').css('height', '420px;');
-        };
+        }
       });
       // 點擊li
-      $('.menu-item').click(function(){
+      $('.menu-item').click(() => {
         $('.hamburger-btn').toggleClass('active');
         $('.top-menu').toggleClass('show');
         $('body').css('overflow', 'auto');
@@ -76,7 +76,7 @@ export default {
         $('.nav-wrap').css('height', 'auto');
       });
       // 點擊 logo
-      $('.logo').click(function(){
+      $('.logo').click(() => {
         $('.hamburger-btn').removeClass('active');
         $('.top-menu').removeClass('show');
         $('body').css('overflow', 'auto');
@@ -84,22 +84,22 @@ export default {
         $('.nav-wrap').css('height', 'auto');
       });
       // resize 收合top-menu
-      $(window).resize(function() {
-        if($(window).width() >= 1000){
+      $(window).resize(() => {
+        if ($(window).width() >= 1000) {
           $('.top-menu').removeClass('show').removeClass('hide');
           $('.hamburger-btn').removeClass('active');
           $('body').css('overflow', 'auto');
           $('.navbar').css('background-color', 'rgba(0, 0, 0)');
           $('.nav-wrap').css('height', 'auto');
-        };
+        }
       });
-    })
-  }
+    });
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss" scoped>
+<style lang="scss" scoped>
 .navbar {
   padding: 0;
   width: 100vw;

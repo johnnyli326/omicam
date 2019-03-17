@@ -6,21 +6,19 @@
       </div>
     </div>
     <div class="container my-5">
-			<h3>OmiCam Support Site</h3>
-			<p>
-				You can read FAQ, find updates of application
-				and submit a ticket here.
-			</p>
-			<a href="https://support.omicam.com/portal/home" target="_blank">
-			  https://support.omicam.com/portal/home
-			</a>
+      <h3>OmiCam Support Site</h3>
+      <p>
+        You can read FAQ, find updates of application
+        and submit a ticket here.
+      </p>
+      <a href="https://support.omicam.com/portal/home" target="_blank">
+        https://support.omicam.com/portal/home
+      </a>
     </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery';
-
 export default {
   data() {
     return {
