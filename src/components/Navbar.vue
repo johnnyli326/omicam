@@ -233,10 +233,10 @@ export default {
         }
         @media(max-width: 1000px) {
           display: block;
-          color: white;
+          color: #ffcd05;
           text-align: center;
           &:hover {
-            color: #ffcd05;
+            color: white;
             background-color: rgba(0, 0, 0, 0.3);
           }
         }
