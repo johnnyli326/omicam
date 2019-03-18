@@ -289,7 +289,7 @@ export default {
       if (target.length) {
         e.preventDefault();
         $('html, body').stop().animate({
-          scrollTop: target.offset().top - 50
+          scrollTop: target.offset().top - 60
         }, 1000);
       }
     })
