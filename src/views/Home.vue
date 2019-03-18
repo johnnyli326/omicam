@@ -8,13 +8,11 @@
         <br>
         <span><strong>OmiCam</strong> | <I>Life Worth Remembering</I></span>
       </p>
-      <div class="btn" data-toggle="modal" data-target="#commercialModal">
-        <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
-        <map name="btnmap">
-          <area shape="circle" coords="40, 40, 33" alt="" class="map-area">
-        </map>
-      </div>
-      <!-- </div> -->
+      <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
+      <map name="btnmap">
+        <area shape="circle" coords="40, 40, 33" alt="" class="map-area"
+        data-toggle="modal" data-target="#commercialModal">
+      </map>
     </div>
     <section class="omicam-1 m-3">
       <div class="row mr-0 ml-0">
@@ -153,7 +151,7 @@
           </button>
           <div class="modal-body text-center p-0" id="yt-player">
             <iframe class="brand-film"
-            src="https://www.youtube.com/embed/WjY1JsxDrCA?enablejsapi=1"
+            src="https://www.youtube.com/embed/ETda2w2_81o?enablejsapi=1"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
