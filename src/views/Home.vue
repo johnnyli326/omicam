@@ -8,7 +8,6 @@
         <br>
         <span><strong>OmiCam</strong> | <I>Life Worth Remembering</I></span>
       </p>
-      <!-- <div class="btn"> -->
       <div class="btn" data-toggle="modal" data-target="#commercialModal">
         <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
         <map name="btnmap">

@@ -7,7 +7,7 @@
     </div>
     <div class="container">
       <section class="omicam">
-        <div class="banner w-100">
+        <div class="banner">
           <div class="banner-title">
             <h3><span class="underline">OmiCam</span></h3>
             <span>Life Moment Recorder</span>
@@ -277,6 +277,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/mixin";
+
 .page-title {
   width: 100%;
   padding: 30px;
@@ -291,22 +293,34 @@ export default {
 }
 p {
   color: #777777;
+  text-indent: 14px;
 }
 .omicam {
   padding: 20px;
   background-image: url('../assets/images/omicam-bg.jpg');
   background-size: cover;
   background-position: center center;
+  background-repeat: no-repeat;
   margin: 50px 0;
+  height: 600px;
+  @include ipad() {
+    background-position: bottom left;
+  }
   .banner {
     color: white;
-    width: 45%;
+    width: 55%;
     margin-left: auto;
     padding: 20px;
     background-color: rgba(216,216,216,0.43);
     text-align: center;
+    height: 100%;
+    @include ipad() {
+      width: 100%;
+      height: auto;
+    }
     .banner-title {
       margin-bottom: 50px;
+      margin-bottom: 0;
       .underline {
         border-bottom: 2px solid white;
         font-size: 60px;
@@ -314,9 +328,15 @@ p {
       }
     }
     p {
+      padding-top: 10px;
       color: white;
       text-align: left;
-      font-size: 23px;
+      font-size: 20px;
+      text-indent: 17px;
+      text-align:justify;
+      @include ipad() {
+        font-size: 14px;
+      }
     }
   }
 }
@@ -330,7 +350,7 @@ p {
   padding: 20px;
   background-color: rgba(122,122,122,0.59);
   .proof-title {
-    color: #ffa011;
+    color: #ffcd05;
     text-shadow: 0px 0px 2px rgba(0,0,0,0.3);
     font-size: 31px;
   }
