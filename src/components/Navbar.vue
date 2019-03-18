@@ -30,31 +30,31 @@
         <li class="menu-item">
           <router-link to="/omi-studio"
           :class="{ 'active': $route.name == 'OmiStudio' }">
-          OMI Studio
+          OMI STUDIO
           </router-link>
         </li>
         <li class="menu-item">
           <router-link to="/news"
           :class="{ 'active': $route.name == 'News' }">
-          News
+          NEWS
           </router-link>
         </li>
         <li class="menu-item">
           <router-link to="/omistory"
           :class="{ 'active': $route.name == 'OmiStory' }">
-          OMI Story
+          OMI STORY
           </router-link>
         </li>
         <li class="menu-item">
           <a href="https://support.omicam.com/portal/home"
           target="_blank">
-            Support
+            SUPPORT
           </a>
         </li>
         <li class="menu-item">
           <router-link to="/contact"
           :class="{ 'active': $route.name == 'Contact' }">
-          Contact
+          CONTACT
           </router-link>
         </li>
       </ul>
