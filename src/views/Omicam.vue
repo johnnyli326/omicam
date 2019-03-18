@@ -23,10 +23,12 @@
       <section class="icon">
         <div class="d-inline-block text-center" v-for="(icon, index) in icons" :key="index"
         style="width:20%;">
-          <img :src="icon.imgSrc" :alt="icon.name" v-if="icon">
+          <a :href="icon.section">
+            <img :src="icon.imgSrc" :alt="icon.name" v-if="icon">
+          </a>
         </div>
       </section>
-      <section class="row align-items-center">
+      <section class="row align-items-center" id="240">
         <div class="col-md-4 py-3">
           <img src="../assets/images/omicam-白底.jpg" alt="omicam">
         </div>
@@ -42,7 +44,7 @@
           </p>
         </div>
       </section>
-      <section class="row align-items-center">
+      <section class="row align-items-center" id="Lifelog">
         <div class="col-md-6">
           <h3 class="my-3 text-center">
             LifeLog Mode
@@ -62,7 +64,7 @@
           <img src="../assets/images/fishing.jpg" alt="fishing">
         </div>
       </section>
-      <section class="row align-items-center">
+      <section class="row align-items-center" id="Horizontal">
         <div class="col-md-6">
           <h3 class="my-3 text-center">
             Always Keep Horizontal
@@ -83,7 +85,8 @@
         <iframe width="100%" height="500px"
         src="https://www.youtube.com/embed/TCHRYRUXtqk"
         frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; encrypted-media;
+        gyroscope; picture-in-picture"
         allowfullscreen>
         </iframe>
       </section>
@@ -102,7 +105,7 @@
           </p>
         </div>
       </section>
-      <section class="text-center my-3">
+      <section class="text-center my-3" id="ease">
         <h3 class="mb-4">Ease of Use. Create. and Share </h3>
         <p>3 Buttons workouts</p>
         <div class="btn-img" v-for="( btn, index) in btns" :key="index">
@@ -110,7 +113,7 @@
           <small>{{ index+1 }}. {{ btn.name }}</small>
         </div>
       </section>
-      <section class="proof-section my-3  text-center">
+      <section class="proof-section my-3  text-center" id="splash">
         <h3 class="text-center proof-title">Splash- Proof & Dust- Proof</h3>
         <p class="text-center text-white">Get outside. Enjoy nature</p>
         <div class="">
@@ -223,24 +226,31 @@ Up to 15 hours (in Lifelog™ Video mode)</td>
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
     return {
       icons: [{
-        name: 'sd-card',
-        imgSrc: require('../assets/images/SD-card.png'),
-      }, {
-        name: 'camera',
-        imgSrc: require('../assets/images/camera-icon.png'),
-      }, {
         name: '240',
         imgSrc: require('../assets/images/240icon.png'),
+        section: '#240',
+      }, {
+        name: 'sd-card',
+        imgSrc: require('../assets/images/SD-card.png'),
+        section: '#Lifelog'
       }, {
         name: 'battery',
         imgSrc: require('../assets/images/battery-icon.png'),
+        section: '#Horizontal'
+      }, {
+        name: 'camera',
+        imgSrc: require('../assets/images/camera-icon.png'),
+        section: '#ease',
       }, {
         name: 'waterproof',
         imgSrc: require('../assets/images/icon-waterproof.png'),
+        section: '#splash',
       }],
       btns: [{
         name: 'Power On-Off',
@@ -273,6 +283,17 @@ export default {
   created() {
     window.scrollTo(0, 0);
   },
+  mounted() {
+    $('a[href^="#"]').on('click', function(e) {
+      let target = $(this.getAttribute('href'));
+      if (target.length) {
+        e.preventDefault();
+        $('html, body').stop().animate({
+          scrollTop: target.offset().top - 50
+        }, 1000);
+      }
+    })
+  }
 };
 </script>
 
