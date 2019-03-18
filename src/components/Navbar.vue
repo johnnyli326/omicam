@@ -22,22 +22,40 @@
       </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
-          <router-link to="/omicam">OmiCam</router-link>
+          <router-link to="/omicam" 
+          :class="{ 'active': $route.name == 'Omicam' }">
+          OMICAM
+          </router-link>
         </li>
         <li class="menu-item">
-          <router-link to="/omi-studio">Omi Studio</router-link>
+          <router-link to="/omi-studio"
+          :class="{ 'active': $route.name == 'OmiStudio' }">
+          OMI Studio
+          </router-link>
         </li>
         <li class="menu-item">
-          <router-link to="/news">News</router-link>
+          <router-link to="/news"
+          :class="{ 'active': $route.name == 'News' }">
+          News
+          </router-link>
         </li>
         <li class="menu-item">
-          <router-link to="/omistory">Omi Story</router-link>
+          <router-link to="/omistory"
+          :class="{ 'active': $route.name == 'OmiStory' }">
+          OMI Story
+          </router-link>
         </li>
         <li class="menu-item">
-          <router-link to="/support">Support</router-link>
+          <a href="https://support.omicam.com/portal/home"
+          target="_blank">
+            Support
+          </a>
         </li>
         <li class="menu-item">
-          <router-link to="/contact">Contact</router-link>
+          <router-link to="/contact"
+          :class="{ 'active': $route.name == 'Contact' }">
+          Contact
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -208,6 +226,9 @@ export default {
         width: 100%;
         transition: all .3s ease;
         &:hover {
+          color: white;
+        }
+        &.active {
           color: white;
         }
         @media(max-width: 1000px) {
