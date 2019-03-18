@@ -70,7 +70,7 @@ export default {
   mounted() {
     $(document).ready(() => {
       // 點擊漢堡
-      $('.hamburger-btn').click(() => {
+      $('.hamburger-btn').click(function() {
         $(this).toggleClass('active'); // 漢堡toggle
         if ($('.top-menu').hasClass('show')) { // top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
@@ -87,7 +87,7 @@ export default {
       });
       // 點擊li
       $('.menu-item').click(() => {
-        $('.hamburger-btn').toggleClass('active');
+        $('.hamburger-btn').removeClass('active');
         $('.top-menu').toggleClass('show');
         $('body').css('overflow', 'auto');
         $('.navbar').css('background-color', 'rgba(0, 0, 0)');
