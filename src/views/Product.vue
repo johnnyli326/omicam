@@ -506,7 +506,7 @@ export default {
         } else if (btnId == 'Acc-btn'){
           $('.detail-content').removeClass('active');
           $('#Accessory').addClass('active');
-        } else {
+        } else if(btnId == 'Rev-btn'){
           $('.detail-content').removeClass('active');
           $('#Reviews').addClass('active');
         }

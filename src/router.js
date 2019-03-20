@@ -28,10 +28,6 @@ export default new Router({
       name: 'OmiStory',
       component: () => import('./views/OmiStory.vue'),
     }, {
-      path: 'support',
-      name: 'Support',
-      component: () => import('./views/Support.vue'),
-    }, {
       path: 'contact',
       name: 'Contact',
       component: () => import('./views/Contact.vue'),
@@ -39,6 +35,18 @@ export default new Router({
       path: 'product/omicam-wearable-vr-camera',
       name: 'Product',
       component: () => import('./views/Product.vue'),
+    }, {
+      path: 'about',
+      name: 'About',
+      component: () => import('./views/About.vue'),
+    }, {
+      path: 'privacy-policy',
+      name: 'Privacy',
+      component: () => import('./views/Privacy.vue'),
+    }, {
+      path: 'terms-of-service',
+      name: 'Service',
+      component: () => import('./views/Service.vue'),
     }, {
       path: '*',
       redirect: '/',

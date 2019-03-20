@@ -1,29 +1,30 @@
 <template>
   <div>
-    <div class="header text-center">
-      <p class="header-text display-5">
-        <strong>WEARABLE LIFE MOMENT</strong>
+    <section class="header text-center">
+      <p class="header-text display-5 header-title">
+        CAPTURE. SHARE. THE WORLD YOU SEE
         <br>
-        <strong>OMICAM</strong>
-        <br>
-        <span><strong>OmiCam</strong> | <I>Life Worth Remembering</I></span>
+        OmiCam | Wearable VR Camera
       </p>
       <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
       <map name="btnmap">
         <area shape="circle" coords="40, 40, 33" alt="" class="map-area"
         data-toggle="modal" data-target="#commercialModal">
       </map>
-    </div>
-    <section class="omicam-1 m-3">
+    </section>
+    <section class="section2">
       <div class="row mr-0 ml-0">
         <div class="col-md-7 d-flex justify-content-center align-items-center">
-          <div>
-            <h2 class="slogan text-center">
-              <strong>OMICAM｜WEARABLE VR LIFE RECORDER</strong>
+          <div class="text-center">
+            <h2 class="section-title-text">
+              OMICAM
             </h2>
-            <p class="text-center intro-text">
-              Find the immersive ways to recording your life moment
+            <p class="text-center section-content-text">
+              The easiest way to immersively record your life.
             </p>
+            <router-link class="btn btn-outline-warning" to="/omicam">
+              LEARN MORE
+            </router-link>
           </div>
         </div>
         <div class="col-md-5 text-center">
@@ -31,10 +32,23 @@
         </div>
       </div>
     </section>
-    <section class="img-move">
+    <section class="section3">
+      <div class="d-flex align-items-center justify-content-center m-3 w-50">
+        <div class="text-center">
+          <h2 class="section-title-text">DESIGN TO BE WORN</h2>
+          <p class="section-content-text">
+          Free your hand to enjoy the life while recording.
+          </p>
+          <router-link class="btn btn-outline-warning" to="/omicam">
+            MORE
+          </router-link>
+        </div>  
+      </div>
+    </section>
+    <section class="section4">
       <div class="text-center">
-        <h2 class="slogan">LOOK WIDER</h2>
-        <p class="intro-text">
+        <h2 class="section-title-text">LOOK WIDER</h2>
+        <p class="section-content-text">
           Recording everything even something you are not aware in your sight
         </p>
         <div>
@@ -44,73 +58,75 @@
         </div>
       </div>
     </section>
-    <section class="last-longer">
-      <div class="text-center">
-        <h2 class="slogan">LAST LONGER</h2>
-        <p class="intro-text">
-          LifeLog keeps battery alive for longer
-          <br>
-          Capture the moments that matter most in your life
-        </p>
-        <router-link class="btn btn-outline-warning" to="/omicam">
-          SEE HOW
-        </router-link>
-      </div>
-    </section>
-    <section class="no-shaky-video">
-      <div class="row mr-0 ml-0">
-        <div class="col-md-6">
-          <div class="intro-img-1"></div>
-        </div>
-        <div class="col-md-6" style="height:400px;">
-          <div class="d-flex justify-content-center align-items-center"
-          style="background:#fafafa; width:100%;height:100%">
-            <div class="text-center m-3">
-              <h2 class="slogan">NO SHAKY VIDEO</h2>
-              <p>No matter how bumpy, OmiCam always gives you no dizzy video!</p>
-            </div>
+    <section class="section5">
+      <div class="row h-100">
+        <div class="col-md-6 d-flex justify-content-center
+        align-items-center">
+          <div class="text-center">
+            <h2 class="section-title-text">SUPPORT WHOLE DAY</h2>
+            <p class="section-contnet-text">
+              Up to 15hours operating without worrying about the battery.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="just-clip-it">
-      <div class="row mr-0 ml-0">
-        <div class="col-md-6"
-        style="height:400px;">
-          <div class="d-flex justify-content-center align-items-center"
-            style="background:#fafafa; width:100%;height:100%">
-            <div class="text-center m-3">
-              <h2 class="slogan">JUST CLIP IT</h2>
-              <p>When you wear OmiCam, you are freeing both your hands</p>
-              <router-link class="btn btn-outline-warning" to="/omicam">
-                MORE
-              </router-link>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="intro-img-2"></div>
+        <div class="col-md-6 d-flex justify-content-center
+        align-items-center">
+          <video width="80%" controls>
+            <source src="../assets/images/Allday.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </section>
-    <section class="omi-studio" style="background:#fafafa;">
-      <div class="row mr-0 ml-0">
-        <div class="col-md-7">
-          <img src="../assets/images/img-7.png" alt="Support-device">
+    <section class="section6">
+      <div class="d-flex align-items-center justify-content-end m-3 h-100">
+        <div class="text-center w-50">
+          <h2 class="section-title-text text-white">NO SHAKING VIDEO</h2>
+          <p class="text-white section-content-text">
+            Always manitain image steady & stable in any activities.
+          </p>
+        </div>  
+      </div>
+    </section>
+    <section class="section7" style="background:#fafafa;">
+      <div class="row mr-0 ml-0 h-100">
+        <div class="col-md-6 text-center">
+          <img src="../assets/images/img-7.png" width="90%" alt="">
         </div>
-        <div class="col-md-5 d-flex justify-content-center align-items-center">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
           <div class="text-center m-3">
-            <h2 class="slogan">OMI STUDIO</h2>
-            <p class="intro-text">The easiest way to create immersive experience</p>
-            <router-link class="btn btn-outline-warning" to="/omicam">
-              SEE HOW
+            <h2 class="section-title-text">WATCH & SHARE ANY TIME</h2>
+            <p class="section-content-text">
+            Watch and share your VR experience
+            thru OMI Studio on different platforms.
+            </p>
+            <router-link class="btn btn-outline-warning" to="/omi-studio">
+            SEE MORE
             </router-link>
           </div>
         </div>
       </div>
     </section>
-    <section class="omi-story">
-      <h2 class="slogan text-center">OMI STORY</h2>
+    <section class="section8 container">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="../assets/images/img-8.jpg" alt="products-img">
+        </div>
+        <div class="col-md-8 d-flex justify-content-center align-items-center">
+          <div class="text-center m-3">
+            <h2 class="section-title-text">OmiCam</h2>
+            <p class="section-content-text">
+              Simply Create Your Immersive Life Moemory.
+            </p>
+              <router-link class="btn btn-link btn-outline-primary"
+              to="/product/omicam-wearable-vr-camera">
+                BUY NOW
+              </router-link>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section9">
+      <h2 class="section-title-text text-center">OMI STORY</h2>
       <!-- <Slide></Slide> -->
       <div id="owl-demo" class="owl-carousel owl-theme">
         <div class="item" v-for="(story, index) in stories" :key="index"
@@ -123,23 +139,6 @@
       <div class="customNavigation">
         <a class="btn prev" aria-label="Previous"><i class="fas fa-angle-left fa-2x"></i></a>
         <a class="btn next" aria-label="Next"><i class="fas fa-angle-right fa-2x"></i></a>
-      </div>
-    </section>
-    <section class="simple container">
-      <div class="row">
-        <div class="col-md-4">
-          <img src="../assets/images/img-8.jpg" alt="products-img">
-        </div>
-        <div class="col-md-8 d-flex justify-content-center align-items-center">
-          <div class="text-center m-3">
-            <h2>It's that simple</h2>
-            <p>Let OmiCam use your way to remember your life story</p>
-              <router-link class="btn btn-link btn-outline-primary"
-              to="/product/omicam-wearable-vr-camera">
-                BUY NOW
-              </router-link>
-          </div>
-        </div>
       </div>
     </section>
     <!-- Modal -->
@@ -308,7 +307,8 @@ export default {
 @import "~owl.carousel/dist/assets/owl.carousel.css";
 
 $gutter: 6px;
-$slogan-size: 52px;
+$section-title: 40px;
+$section-text: 17px;
 
 a.btn {
   text-decoration: none;
@@ -324,13 +324,11 @@ a.btn {
   background-image: url('../assets/images/img-1.jpg');
   background-size: cover;
   background-position: center center;
-  padding: 120px 0;
-  .header-text {
+  padding-top: 170px;
+  .header-title {
+    font-weight: 800;
     font-size: 50px;
-    color: white;
-    .font {
-      font-family: "Open Sans", Sans-serif;
-    }
+    color: #FFF;
   }
   #mapbtn {
     width: 80px;
@@ -340,15 +338,26 @@ a.btn {
     outline: 0;
   }
 }
-.omicam-1 {
-  .slogan {
-    font-size: $slogan-size;
-  }
-  .intro-text {
-    font-size: 20px;
-  }
+.section-title-text {
+  font-size: $section-title;
 }
-.img-move {
+.section-content-text {
+  font-size: $section-text;
+}
+.section2 {
+  margin: #{$gutter} 0;
+}
+.section3 {
+  margin-bottom: #{$gutter};
+  background-image: url('../assets/images/DESIGN.jpg');
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: flex-end;
+}
+.section4 {
   height: 600px;
   margin-bottom: 10px;
   background-image: url('../assets/images/dynamic_img.jpg');
@@ -369,63 +378,30 @@ a.btn {
   @include ipad { // < = ipad size()
     animation-duration: 12s;
   }
-  .slogan {
-    font-size: $slogan-size;
-  }
-  .intro-text {
-    font-size: 20px;
-  }
 }
 @keyframes mover {
   0% { background-position-x: right }
   100% { background-position-x: left }
 }
-.last-longer {
+.section5 {
   height: 600px;
-  background-image: url('../assets/images/img-4.jpg');
-  background-position: top center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
   margin-bottom: $gutter;
-  .slogan {
-    font-size: 52px;
-  }
-  .intro-text {
-    font-size: 20px;
-  }
 }
 .col-md-6 {
   padding: 0 $gutter;
 }
-.no-shaky-video {
-  margin-bottom: #{2*$gutter};
-  .intro-img-1 {
-    background-image: url('../assets/images/climb.jpg');
-    background-position: center center;
-    background-size: cover;
-    width: 100%;
-    height: 400px;
-    box-shadow: 1px 1px 5px grey;
-  }
+.section6 {
+  margin-bottom: #{$gutter};
+  background-image: url('../assets/images/NO_SHAKING.jpg');
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
 }
-.just-clip-it {
-  margin-bottom: #{2*$gutter};
-  .intro-img-2 {
-    background-image: url('../assets/images/img-6.jpg');
-    background-position: center center;
-    background-size: cover;
-    width: 100%;
-    height: 400px;
-    box-shadow: 1px 1px 5px grey;
-  }
-}
-.omi-studio {
+.section7 {
   margin-bottom: $gutter;
 }
-.omi-story {
+.section9 {
   padding: 100px 50px;
   background-image: url('../assets/images/map.png');
   background-attachment: fixed;
