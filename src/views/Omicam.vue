@@ -12,7 +12,8 @@
             <h3><span class="underline">OmiCam</span></h3>
             <span>Life Moment Recorder</span>
           </div>
-          <p>OMICAM provides a new way to capture 4K film and Virtual Reality Content.
+          <p>
+            OMICAM provides a new way to capture 4K film and Virtual Reality Content.
             It is our first consumer grade “Wearable VR Life Recorder” 
             with our proprietary OMI™ (Optical Motion Intelligence) technology.
             OMI takes care of complex video calibration and stabilization processes necessary
@@ -20,31 +21,41 @@
           </p>
         </div>
       </section>
-      <section class="icon">
+      <section>
         <div class="d-inline-block text-center" v-for="(icon, index) in icons" :key="index"
         style="width:20%;">
           <a :href="icon.section">
-            <img :src="icon.imgSrc" :alt="icon.name" v-if="icon">
+            <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
           </a>
         </div>
+        <!-- 構造圖 -->
+        <div style="background:red;height:300px;color:white;font-size:30px;"
+        class="d-flex justify-content-center align-items-center">構造圖</div>
       </section>
       <section class="row align-items-center" id="240">
+        <div class="col-md-8">
+          <h3 class="my-3">Extremely Wide View</h3>
+          <p>
+            <ul>
+              <li>
+                240° Fisheye Lens with 4K VR resolution output captures more
+                than what you see.
+              </li>
+              <li>
+                The unique 45 degree forward design prefectly simulated human
+                eyes and captured the most immersive experience.
+              </li>
+            </ul>
+          </p>
+        </div>
         <div class="col-md-4 py-3">
           <img src="../assets/images/omicam-白底.jpg" alt="omicam">
         </div>
-        <div class="col-md-8">
-          <h3 class="my-3">Embracing 240° wide lens</h3>
-          <p>
-            OmiCam has 240° view angle to capture more field than what you see. Meantime,
-            the lens unique designed as 45 degree forward to simulate human viewing experience.
-          </p>
-          <h3 class="my-3">Enhancing immersive experience</h3>
-          <p>
-            4K resolution (VR) at 3840*2160 @ 30 fps filming keeps your life memories relive.
-          </p>
-        </div>
       </section>
       <section class="row align-items-center" id="Lifelog">
+        <div class="col-md-6 py-3">
+          <img src="../assets/images/fishing.jpg" alt="fishing">
+        </div>
         <div class="col-md-6">
           <h3 class="my-3 text-center">
             LifeLog Mode
@@ -59,9 +70,6 @@
             It’s the only product in the market that addresses the need for capturing
             the moments of all extended activities.
           </p>
-        </div>
-        <div class="col-md-6 py-3">
-          <img src="../assets/images/fishing.jpg" alt="fishing">
         </div>
       </section>
       <section class="row align-items-center" id="Horizontal">
@@ -359,6 +367,12 @@ p {
         font-size: 14px;
       }
     }
+  }
+}
+.icons {
+  transition: all .5s;
+  &:hover {
+    transform: scale(1.3);
   }
 }
 .btn-img {

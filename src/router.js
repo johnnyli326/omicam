@@ -4,11 +4,11 @@ import Router from 'vue-router';
 Vue.use(Router);
 export default new Router({
   routes: [{
-    path: '/',
+    path: '',
     name: 'Dashboard',
     component: () => import('./components/Dashboard.vue'),
     children: [{
-      path: '',
+      path: '/',
       name: 'Home',
       component: () => import('./views/Home.vue'),
     }, {
@@ -39,6 +39,9 @@ export default new Router({
       path: 'product/omicam-wearable-vr-camera',
       name: 'Product',
       component: () => import('./views/Product.vue'),
+    }, {
+      path: '*',
+      redirect: '/',
     }],
   }],
 });
