@@ -42,4 +42,8 @@ export default {
   background-color: #f8f9f9;
   border: 1px solid #e9e9e9;
 }
+main {
+  color: #999;
+  text-align: justify;
+}
 </style>

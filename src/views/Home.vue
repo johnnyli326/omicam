@@ -23,7 +23,7 @@
               The easiest way to immersively record your life.
             </p>
             <router-link class="btn btn-outline-warning" to="/omicam">
-              LEARN MORE
+              BUY NOW
             </router-link>
           </div>
         </div>
@@ -46,32 +46,33 @@
       </div>
     </section>
     <section class="section4">
-      <div class="text-center">
+      <div class="text-center slogan">
         <h2 class="section-title-text">LOOK WIDER</h2>
         <p class="section-content-text">
           Recording everything even something you are not aware in your sight
         </p>
         <div>
-          <router-link class="btn btn-outline-warning" to="/omicam">
+          <a class="btn btn-outline-warning"
+          href="#" @click.prevent="moveTo">
             MORE
-          </router-link>
+          </a>
         </div>
       </div>
     </section>
     <section class="section5">
-      <div class="row h-100">
+      <div class="row h-100 m-0">
         <div class="col-md-6 d-flex justify-content-center
         align-items-center">
           <div class="text-center">
             <h2 class="section-title-text">SUPPORT WHOLE DAY</h2>
-            <p class="section-contnet-text">
+            <p class="section-content-text">
               Up to 15hours operating without worrying about the battery.
             </p>
           </div>
         </div>
         <div class="col-md-6 d-flex justify-content-center
         align-items-center">
-          <video width="80%" controls>
+          <video width="80%" autoplay loop muted>
             <source src="../assets/images/Allday.mp4" type="video/mp4">
           </video>
         </div>
@@ -181,6 +182,17 @@ export default {
         imgSrc: require('../assets/images/eva.png'),
       }],
     }; 
+  },
+  methods: {
+    moveTo() {
+      console.log('move');
+      let vm = this;
+      vm.$router.push('/omicam');
+      setTimeout(function(){
+        let target = $("section[id='240']");
+        $('html, body').stop().animate({scrollTop: target.offset().top}, 1000);
+      },300);
+    }
   },
   created() {
     window.scrollTo(0, 0);
@@ -308,7 +320,7 @@ export default {
 
 $gutter: 6px;
 $section-title: 40px;
-$section-text: 17px;
+$section-text: 24px;
 
 a.btn {
   text-decoration: none;
@@ -378,14 +390,20 @@ a.btn {
   @include ipad { // < = ipad size()
     animation-duration: 12s;
   }
+  .slogan {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 30px;
+  }
 }
 @keyframes mover {
   0% { background-position-x: right }
   100% { background-position-x: left }
 }
 .section5 {
-  height: 600px;
+  height: 400px;
   margin-bottom: $gutter;
+  background-color: rgb(249, 249, 249);
 }
 .col-md-6 {
   padding: 0 $gutter;

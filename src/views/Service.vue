@@ -429,7 +429,10 @@ export default {
 p, li {
   font-size: 17px;
   font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-	color: #333;
+}
+main {
+  color: #999 !important;
+	text-align: justify;
 }
 .page-title {
   width: 100%;

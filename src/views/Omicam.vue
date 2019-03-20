@@ -22,15 +22,17 @@
         </div>
       </section>
       <section>
-        <div class="d-inline-block text-center" v-for="(icon, index) in icons" :key="index"
-        style="width:20%;">
+        <div class="d-inline-block text-center mb-4" v-for="(icon, index) in icons" :key="index"
+        style="width:25%;">
           <a :href="icon.section">
             <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
           </a>
         </div>
         <!-- 構造圖 -->
-        <div style="background:red;height:300px;color:white;font-size:30px;"
-        class="d-flex justify-content-center align-items-center">構造圖</div>
+        <div class="d-flex justify-content-center align-items-center my-3">
+          <img src="../assets/images/instruction.jpg" alt="instruction"
+          style="width:90%">
+        </div>
       </section>
       <section class="row align-items-center" id="240">
         <div class="col-md-8">
@@ -148,10 +150,12 @@
       </section>
       <section class="text-center my-3">
         <h3>Create your 360 video with OMI Studio</h3>
-        <img src="../assets/images/img-7.png" alt="support-device">
+        <img src="../assets/images/img-7.png"
+        alt="support-device"
+        style="width:70%">
         <div>
-          <button class="btn btn-outline-primary mt-5">
-            <router-link to="/">
+          <button class="btn btn-outline-primary mb-4">
+            <router-link to="/omi-studio">
               SEE HOW
             </router-link>
           </button>
@@ -244,17 +248,13 @@ export default {
         imgSrc: require('../assets/images/240icon.png'),
         section: '#240',
       }, {
-        name: 'sd-card',
-        imgSrc: require('../assets/images/SD-card.png'),
-        section: '#Lifelog'
-      }, {
         name: 'battery',
         imgSrc: require('../assets/images/battery-icon.png'),
-        section: '#Horizontal'
+        section: '#Lifelog'
       }, {
         name: 'camera',
         imgSrc: require('../assets/images/camera-icon.png'),
-        section: '#ease',
+        section: '#Horizontal',
       }, {
         name: 'waterproof',
         imgSrc: require('../assets/images/icon-waterproof.png'),
