@@ -329,7 +329,7 @@ main {
   color: #999;
   text-align: justify;
   p {
-    text-indent: 1rem;
+    text-indent: 17px;
 	}
 }
 </style>

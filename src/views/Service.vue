@@ -15,9 +15,11 @@
 				made available by OmiCam (together, the “Service”), however accessed,
 				you agree to be bound by these terms of use (“Terms of Use”).
 				The Service is owned or controlled by Sightour Inc. (“Sightour”).
-				These Terms of Use affect your legal rights and obligations.
-				If you do not agree to be bound by all of these Terms of Use,
-				do not access or use the Service. Basic Terms:
+				<strong>
+          These Terms of Use affect your legal rights and obligations.
+          If you do not agree to be bound by all of these Terms of Use,
+          do not access or use the Service. Basic Terms:
+        </strong>
         </p>
 				<ul>
 					<li>
@@ -289,7 +291,7 @@
 					</li>
 				</ul>
 				<p>
-					Disclaimer of Warranties THE SERVICE, INCLUDING, WITHOUT LIMITATION, OmiCam CONTENT,
+					<strong>Disclaimer of Warranties</strong> THE SERVICE, INCLUDING, WITHOUT LIMITATION, OmiCam CONTENT,
 					IS PROVIDED ON AN “AS IS”, “AS AVAILABLE” AND “WITH ALL FAULTS” BASIS. TO THE FULLEST
 					EXTENT PERMISSIBLE BY LAW, NEITHER Sightour NOR ITS PARENT COMPANY NOR ANY OF THEIR EMPLOYEES,
 					MANAGERS, OFFICERS OR AGENTS (COLLECTIVELY, THE “Sightour PARTIES”) MAKE ANY REPRESENTATIONS
@@ -385,7 +387,7 @@
 					</li>
 				</ul>
 				<p>
-					<strong>Entire Agreement</strong>If you are using the Service on behalf of a legal entity, you represent that
+					<strong>Entire Agreement</strong> If you are using the Service on behalf of a legal entity, you represent that
 					you are authorized to enter into an agreement on behalf of that legal entity. These Terms of
 					Service constitute the entire agreement between you and Sightour and governs your use of the
 					Service, superseding any prior agreements between you and Sightour. You will not assign the
@@ -424,6 +426,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+p, li {
+  font-size: 17px;
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+	color: #333;
+}
 .page-title {
   width: 100%;
   padding: 30px;
