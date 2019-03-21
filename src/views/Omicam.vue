@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="container">
-      <section class="omicam">
+      <section class="section1">
         <div class="banner">
           <div class="banner-title">
             <h3><span class="underline">OmiCam</span></h3>
@@ -21,22 +21,35 @@
           </p>
         </div>
       </section>
-      <section>
+      <section class="section2 text-center">
+        <h3>OmiCam | At a Glance</h3>
         <div class="d-inline-block text-center mb-4" v-for="(icon, index) in icons" :key="index"
         style="width:25%;">
           <a :href="icon.section">
             <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
           </a>
+          <br>
+          <small class="icon-name">{{ icon.name }}</small>
         </div>
         <!-- 構造圖 -->
-        <div class="d-flex justify-content-center align-items-center my-3">
+        <div class="d-flex justify-content-center align-items-center my-5">
           <img src="../assets/images/instruction.jpg" alt="instruction"
           style="width:90%">
         </div>
+        <router-link class="btn btn-link btn-primary"
+        to="/product/omicam-wearable-vr-camera">
+          BUY NOW
+        </router-link>
       </section>
-      <section class="row align-items-center" id="240">
-        <div class="col-md-8">
-          <h3 class="my-3">Extremely Wide View</h3>
+      <section class="row align-items-center p-4 section3" id="240">
+        <div class="col-md-3 py-3">
+          <img src="../assets/images/omicam-白底.jpg" alt="omicam">
+        </div>
+        <div class="col-md-3 py-3">
+          <img src="../assets/images/ViewAngle.png" alt="viewAngle">
+        </div>
+        <div class="col-md-6">
+          <h3 class="my-3 text-center">Extremely Wide View</h3>
           <p>
             <ul>
               <li>
@@ -50,122 +63,115 @@
             </ul>
           </p>
         </div>
-        <div class="col-md-4 py-3">
-          <img src="../assets/images/omicam-白底.jpg" alt="omicam">
+      </section>
+      <section class="row align-items-center p-4 section4" id="wear">
+        <div class="col-md-6">
+          <h3 class="my-3 text-center">Just Clip and Capture</h3>
+          <ul>
+            <li>
+              Simply mount on your body with 360° clip;
+              free your hands and focus on your adventure.
+            </li>
+            <li>
+              Power-On, Record, Lifelog, just 3 buttons works out.
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 py-3">
+          <div style="background:green;color:wheat">GIF</div>
         </div>
       </section>
-      <section class="row align-items-center" id="Lifelog">
+      <section class="row align-items-center section5" id="Long">
         <div class="col-md-6 py-3">
-          <img src="../assets/images/fishing.jpg" alt="fishing">
+          <img src="../assets/images/LongHour.png" alt="Lifelog">
         </div>
         <div class="col-md-6">
           <h3 class="my-3 text-center">
-            LifeLog Mode
-            <br>
-            Keep battery longer
+            Operating Whole Day
           </h3>
-          <p class="mb-3">
-            Record up to 15 hours of film in one charge through our LifeLog™
-            Mode which uses OmiCam smart algorithm to record your most exciting moments.
-          </p>
-          <p>
-            It’s the only product in the market that addresses the need for capturing
-            the moments of all extended activities.
-          </p>
+          <ul>
+            <li>
+              The unique LIFELOG function automatically record a
+              short clip every 1/3/5 mins and can keep working for
+              more than 15 hours.
+            </li>
+            <li>
+              Companion with OMI Studio, all clips can be integrated
+              as a daily video collection.
+            </li>
+          </ul>
         </div>
       </section>
-      <section class="row align-items-center" id="Horizontal">
+      <section class="row align-items-center p-4 section6" id="Horizontal">
         <div class="col-md-6">
-          <h3 class="my-3 text-center">
-            Always Keep Horizontal
-          </h3>
-          <p class="mb-3 text-center">
-            Wear it any way you like
-          </p>
-          <p>
-            Even you move or turn your body horizontally or vertically,
-            the recorded video still keeps everything with stable horizontal line.
-          </p>
+          <h3 class="my-3 text-center">Always Keep Horizontal & Stable</h3>
+          <ul>
+            <li>
+              The proprietary OMI (Optical Motion Intelligence)
+              algorithm keeps OmiCam stablized when recording under
+              any conditions.
+            </li>
+            <li>
+              The proprietary OMI (Optical Motion Intelligence) algorithm
+              keeps OmiCam stablized when recording under any conditions.
+            </li>
+          </ul>
         </div>
         <div class="col-md-6 py-3">
-          <img src="../assets/images/view-angle.jpg" alt="view_angle">
+          <iframe width="100%" height="500px"
+            src="https://www.youtube.com/embed/TCHRYRUXtqk"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media;
+            gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
       </section>
-      <section class="text-center my-3">
-        <iframe width="100%" height="500px"
-        src="https://www.youtube.com/embed/TCHRYRUXtqk"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media;
-        gyroscope; picture-in-picture"
-        allowfullscreen>
-        </iframe>
-      </section>
-      <section class="row align-items-center" id="wear">
-        <div class="col-md-6 py-3">
-          <img src="../assets/images/bag.jpg" alt="mounted-on-bag">
-        </div>
-        <div class="col-md-6 text-center">
-          <h3 class="my-3">Clip, Wear and Capture</h3>
-          <p>
-            Free your hands. Enjoy the moment
-          </p>
-          <p>
-            Wearable design let you focus on your adventure as you take OMICAM underwater,
-            hikes, bike rides, and more. Immerse yourself first then re-experience amazing.
-          </p>
-        </div>
-      </section>
-      <section class="text-center my-3" id="ease">
+      <!-- <section class="text-center my-3" id="ease">
         <h3 class="mb-4">Ease of Use. Create. and Share </h3>
         <p>3 Buttons workouts</p>
         <div class="btn-img" v-for="( btn, index) in btns" :key="index">
           <img :src="btn.imgSrc" :alt="btn.name">
           <small>{{ index+1 }}. {{ btn.name }}</small>
         </div>
-      </section>
+      </section> -->
       <section class="proof-section my-3  text-center" id="splash">
         <h3 class="text-center proof-title">Splash- Proof & Dust- Proof</h3>
         <p class="text-center text-white">Get outside. Enjoy nature</p>
-        <div class="">
-          <p class="text-left text-white">
-            OMICAM is splash proof rated IP65 and dust- proof to endure
-            most outdoor activity without the need of waterproof housing
-            or any other case or accessories. 
-          </p>
-          <p class="text-left text-white">
-            We offer a complete accessory pack which includes waterproof
-            case to capture stunning underwater activities.
-          </p>
-        </div>
+        <ul class="text-left" style="color:black;">
+          <li>
+            OmiCamis is splash&dust proof with IP65 rated which endure most
+            outdoor environment without any other case or accessories. 
+          </li>
+          <li>
+            The optional accessory of waterproof case help OmiCam to operate
+            underwater and capture the stunning images.
+          </li>
+        </ul>
         <div class="scenery-img" v-for="(item, index) in scenery" :key="index">
           <img :src="item.imgSrc" :alt="item.name">
         </div>
         <div class="text-center">
-          <button class="btn btn-outline-primary mt-5">
-            <router-link to="/product/omicam-wearable-vr-camera">
+          <button class="btn btn-primary mt-5">
+            <router-link to="/product/omicam-wearable-vr-camera"
+            style="color:black;">
               BUY NOW
             </router-link>
           </button>
         </div>
       </section>
-      <section class="text-center my-3">
-        <h3>Create your 360 video with OMI Studio</h3>
-        <img src="../assets/images/img-7.png"
-        alt="support-device"
-        style="width:70%">
-        <div>
-          <button class="btn btn-outline-primary mb-4">
-            <router-link to="/omi-studio">
-              SEE HOW
-            </router-link>
-          </button>
+      <section class="text-center">
+        <h3 class="my-5">What is in our package?</h3>
+        <div class="row">
+          <div class="col-6">
+            <img src="../assets/images/accessories.jpg" alt="accessories">
+          </div>
+          <div class="col-6" style="background:green;color: wheat;">
+            解釋
+          </div>
         </div>
       </section>
-      <section class="text-center">
-        <h3>What is in our package?</h3>
-        <img src="../assets/images/accessories.jpg" alt="accessories">
-      </section>
-      <section class="mt-3 text-center">
+      <section class="my-5 text-center">
         <h3>Specs</h3>
         <div class="table-responsive">
           <table class="table table-striped table-bordered">
@@ -244,19 +250,20 @@ export default {
   data() {
     return {
       icons: [{
-        name: '240',
+        name: '240Deg View',
         imgSrc: require('../assets/images/240icon.png'),
         section: '#240',
+        
       }, {
-        name: 'battery',
+        name: 'Long Hour Operation',
         imgSrc: require('../assets/images/battery-icon.png'),
         section: '#Lifelog'
       }, {
-        name: 'camera',
+        name: 'Horizontal & Stable',
         imgSrc: require('../assets/images/camera-icon.png'),
         section: '#Horizontal',
       }, {
-        name: 'waterproof',
+        name: 'Splash & Dust Proof',
         imgSrc: require('../assets/images/icon-waterproof.png'),
         section: '#splash',
       }],
@@ -307,7 +314,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/mixin";
-
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
 .page-title {
   width: 100%;
   padding: 30px;
@@ -324,7 +339,7 @@ p {
   color: #777777;
   text-indent: 14px;
 }
-.omicam {
+.section1 {
   padding: 20px;
   background-image: url('../assets/images/omicam-bg.jpg');
   background-size: cover;
@@ -374,6 +389,10 @@ p {
   &:hover {
     transform: scale(1.3);
   }
+.icon-name {
+  color: black;
+  text-decoration: none;
+}
 }
 .btn-img {
   display: inline-block;

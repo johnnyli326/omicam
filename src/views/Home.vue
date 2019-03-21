@@ -1,20 +1,24 @@
 <template>
   <div>
     <section class="header text-center">
-      <p class="header-text display-5 header-title">
-        CAPTURE. SHARE. THE WORLD YOU SEE
-        <br>
-        OmiCam | Wearable VR Camera
-      </p>
-      <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
-      <map name="btnmap">
-        <area shape="circle" coords="40, 40, 33" alt="" class="map-area"
-        data-toggle="modal" data-target="#commercialModal">
-      </map>
+      <div class="banner"></div>
+      <div class="text-box">
+        <h2 class="header-title">
+          CAPTURE.<br class="small"> SHARE.<br class="small"> THE WORLD YOU SEE.
+          <br>
+          OmiCam | Wearable VR Camera
+        </h2>
+        <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
+        <map name="btnmap">
+          <area shape="circle" coords="40, 40, 33" alt="" class="map-area"
+          data-toggle="modal" data-target="#commercialModal">
+        </map>
+      </div>
     </section>
     <section class="section2">
-      <div class="row mr-0 ml-0">
-        <div class="col-md-7 d-flex justify-content-center align-items-center">
+      <div class="row mr-0 ml-0 h-100">
+        <div class="col-md-6 d-flex justify-content-center align-items-center
+        section2-text">
           <div class="text-center">
             <h2 class="section-title-text">
               OMICAM
@@ -27,30 +31,35 @@
             </router-link>
           </div>
         </div>
-        <div class="col-md-5 text-center">
-          <img src="../assets/images/img-2.jpg" alt="">
+        <div class="col-md-6 d-flex justify-content-center align-items-center
+        section2-img">
+          <img src="../assets/images/omicam-1.png" alt="omicam">
         </div>
       </div>
     </section>
     <section class="section3">
-      <div class="d-flex align-items-center justify-content-center m-3 w-50">
-        <div class="text-center">
-          <h2 class="section-title-text">DESIGN TO BE WORN</h2>
-          <p class="section-content-text">
-          Free your hand to enjoy the life while recording.
-          </p>
-          <a class="btn btn-outline-warning" href="#"
-          @click.prevent="moveTo('wear')">
-            MORE
-          </a>
-        </div>  
+      <div class="row h-100 m-0">
+        <div class="col-md-5 mount"></div>
+        <div class="col-md-7 d-flex justify-content-center
+        align-items-center mount-text">
+          <div class="text-center">
+            <h2 class="section-title-text">DESIGN TO BE WORN</h2>
+            <p class="section-content-text">
+            Free your hand to enjoy the life while recording.
+            </p>
+            <a class="btn btn-outline-warning" href="#"
+            @click.prevent="moveTo('wear')">
+              MORE
+            </a>
+          </div>
+        </div>
       </div>
     </section>
     <section class="section4">
       <div class="text-center slogan">
-        <h2 class="section-title-text">LOOK WIDER</h2>
+        <h2 class="section-title-text">WIDER VIEW THAN EVER</h2>
         <p class="section-content-text">
-          Recording everything even something you are not aware in your sight
+          Extended your first person point of view by 240 Degree FoV
         </p>
         <div>
           <a class="btn btn-outline-warning"
@@ -62,8 +71,8 @@
     </section>
     <section class="section5">
       <div class="row h-100 m-0">
-        <div class="col-md-6 d-flex justify-content-center
-        align-items-center">
+        <div class="col-md-5 d-flex justify-content-center
+        align-items-center color-gradient">
           <div class="text-center">
             <h2 class="section-title-text">SUPPORT WHOLE DAY</h2>
             <p class="section-content-text">
@@ -71,30 +80,36 @@
             </p>
           </div>
         </div>
-        <div class="col-md-6 d-flex justify-content-center
-        align-items-center">
-          <video width="80%" autoplay loop muted>
-            <source src="../assets/images/Allday.mp4" type="video/mp4">
-          </video>
+        <div class="col-md-7 d-flex justify-content-center
+        align-items-center video-box">
+          <div class="video-container">
+            <div class="video-banner"></div>
+            <video width="80%" autoplay loop muted>
+              <source src="../assets/images/Allday.mp4"
+              type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
     </section>
     <section class="section6">
-      <div class="d-flex align-items-center justify-content-end m-3 h-100">
-        <div class="text-center w-50">
-          <h2 class="section-title-text text-white">NO SHAKING VIDEO</h2>
-          <p class="text-white section-content-text">
+      <div class="row h-100 m-0">
+        <div class="col-md-5 shaking"></div>
+        <div class="col-md-7 d-flex justify-content-center
+        align-items-center shaking-text">
+          <div class="text-center">
+            <h2 class="section-title-text">NO SHAKING VIDEO</h2>
+            <p class="section-content-text">
             Always manitain image steady & stable in any activities.
-          </p>
-        </div>  
+            </p>
+          </div>
+        </div>
       </div>
     </section>
     <section class="section7" style="background:#fafafa;">
       <div class="row mr-0 ml-0 h-100">
-        <div class="col-md-6 text-center">
-          <img src="../assets/images/img-7.png" width="90%" alt="">
-        </div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div class="col-md-6 d-flex justify-content-center align-items-center
+        section7-text section7-text">
           <div class="text-center m-3">
             <h2 class="section-title-text">WATCH & SHARE ANY TIME</h2>
             <p class="section-content-text">
@@ -106,26 +121,26 @@
             </router-link>
           </div>
         </div>
+        <div class="col-md-6 section7-img
+        d-flex justify-content-center align-items-center
+        section7-img">
+          <img src="../assets/images/img-7.png" alt="device">
+        </div>
       </div>
     </section>
-    <section class="section8 container">
-      <div class="row">
-        <div class="col-md-4">
-          <img src="../assets/images/img-8.jpg" alt="products-img">
-        </div>
-        <div class="col-md-8 d-flex justify-content-center align-items-center">
-          <div class="text-center m-3">
-            <h2 class="section-title-text">OmiCam</h2>
-            <p class="section-content-text">
-              Simply Create Your Immersive Life Moemory.
-            </p>
-              <router-link class="btn btn-link btn-outline-primary"
-              to="/product/omicam-wearable-vr-camera">
-                BUY NOW
-              </router-link>
-          </div>
-        </div>
+    <section class="section8 d-flex justify-content-center
+    align-items-center">
+      <div class="text-center">
+        <h2 class="section-title-text">OmiCam</h2>
+        <p class="section-content-text">
+          Simply Create Your Immersive Life Moemory.
+        </p>
+        <router-link class="btn btn-link btn-outline-primary"
+        to="/product/omicam-wearable-vr-camera">
+          BUY NOW
+        </router-link>
       </div>
+      <div class="side-omicam"></div>
     </section>
     <section class="section9">
       <h2 class="section-title-text text-center">OMI STORY</h2>
@@ -144,7 +159,8 @@
       </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="commercialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="commercialModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-transparent border-0">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -230,6 +246,29 @@ export default {
       });
       $(".prev").click(function(){
         owl.trigger('prev.owl.carousel');
+      });
+      // change div order at section2
+      $(window).resize(function(){
+        if($(window).width() <= 768) { // below ipad width
+          $('.section2-text').remove().insertAfter($('.section2-img'));
+        } else {
+          $('.section2-text').remove().insertBefore($('.section2-img'));
+        }
+        if($(window).width() <= 768) { // below ipad width
+          $('.section8-text').remove().insertAfter($('.section8-img'));
+        } else {
+          $('.section8-text').remove().insertBefore($('.section8-img'));
+        }
+        if($(window).width() <= 768) { // below ipad width
+          $('.section7-text').remove().insertAfter($('.section7-img'));
+        } else {
+          $('.section7-text').remove().insertBefore($('.section7-img'));
+        }
+        if($(window).width() <= 768) { // below ipad width
+          $('.shaking').remove().insertAfter($('.shaking-text'));
+        } else {
+          $('.shaking').remove().insertBefore($('.shaking-text'));
+        }
       });
     });
     // youtube API
@@ -319,9 +358,11 @@ export default {
 @import "../assets/mixin";
 @import "~owl.carousel/dist/assets/owl.carousel.css";
 
+// variable
 $gutter: 6px;
 $section-title: 40px;
 $section-text: 24px;
+$bg-color: #f9f9f9;
 
 a.btn {
   text-decoration: none;
@@ -337,18 +378,51 @@ a.btn {
   background-image: url('../assets/images/img-1.jpg');
   background-size: cover;
   background-position: center center;
-  padding-top: 170px;
-  .header-title {
-    font-weight: 800;
-    font-size: 50px;
-    color: #FFF;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
   }
-  #mapbtn {
-    width: 80px;
-    height: 80px;
-  }
-  .map-area:focus {
-    outline: 0;
+  .text-box {
+    z-index: 10;
+    @media(max-width: 600px) {
+      padding-bottom: 150px;
+    }
+    .header-title {
+      font-weight: 600;
+      color: #f9f9f9;
+      font-size: 48px;
+      z-index: 100;
+      @media(max-width: 1000px) {
+        font-size: 40px;
+      }
+      @media(max-width: 600px) {
+        font-size: 32px;
+      }
+      @media(max-width: 520px) {
+        font-size: 24px;
+      }
+      .small {
+        display: none;
+        @media(max-width:850px) {
+          display: block;
+          }
+        }
+      }
+    #mapbtn {
+      width: 80px;
+      height: 80px;
+    }
+    .map-area:focus {
+      outline: 0;
+    }
   }
 }
 .section-title-text {
@@ -359,17 +433,42 @@ a.btn {
 }
 .section2 {
   margin: #{$gutter} 0;
+  background-color: $bg-color;
   height: calc(100vh - 60px + #{2*$gutter});
+  .section2-text {
+    @include ipad() {
+      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+  }
+  .section2-img {
+    height: calc(( 100vh - 60px + #{2*$gutter}));
+    @include ipad() {
+      height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
 }
 .section3 {
   margin-bottom: #{$gutter};
-  background-image: url('../assets/images/DESIGN.jpg');
-  background-position: center center;
-  background-size: cover;
   width: 100%;
   height: calc(100vh - 60px + #{2*$gutter});
-  display: flex;
-  justify-content: flex-end;
+  .mount {
+    background-image: url('../assets/images/DESIGN.png');
+    background-position: center center;
+    background-size: cover;
+    @include ipad() {
+      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+  }
+  .mount-text {
+    background-color: #f9f9f9;
+    @include ipad() {
+      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+  }
 }
 .section4 {
   height: calc(100vh - 60px + #{2*$gutter});
@@ -405,21 +504,101 @@ a.btn {
 .section5 {
   height: calc(100vh - 60px + #{2*$gutter});
   margin-bottom: $gutter;
-  background-color: rgb(249, 249, 249);
+  .color-gradient {
+    background: linear-gradient(to right, white , #f9f9f9);
+    @include ipad() {
+      height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+  }
+  .video-box {
+    @include ipad() {
+      height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+    .video-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      .video-banner {
+        position: absolute;
+        background-image: url('../assets/images/Allday_background.png');
+        background-size: cover;
+        background-position: left bottom;
+        min-height: 100%;
+        min-width: 100%;
+        z-index: 1;
+        @include ipad() {
+          display: none;
+        }
+      }
+      video {
+        min-height: 120%;
+        min-width: 120%;
+        position: absolute;
+        width: auto;
+        height: auto;
+        top: -120px;
+      }
+    }
+  }
 }
 .col-md-6 {
   padding: 0 $gutter;
 }
 .section6 {
   margin-bottom: #{$gutter};
-  background-image: url('../assets/images/NO_SHAKING.jpg');
-  background-position: center center;
-  background-size: cover;
-  width: 100%;
   height: calc(100vh - 60px + #{2*$gutter});
+  .shaking {
+    background-image: url('../assets/images/NO_SHAKING.png');
+    background-position: center center;
+    background-size: cover;
+    @include ipad() {
+      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+  }
+  .shaking-text {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.98) , rgba(0, 0, 0, 1));
+    color: white;
+    @include ipad() {
+      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    }
+  }
 }
 .section7 {
   margin-bottom: $gutter;
+  background-color: $bg-color;
+  @include ipad() {
+    min-height: calc(( 100vh - 60px + #{2*$gutter}));
+  }
+  .section7-text {
+    min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
+  }
+  .section7-img{
+    height: calc(( 100vh - 60px + #{2*$gutter})/2);
+    img {
+      max-height: 90%;
+      width: auto;
+    }
+  }
+}
+.section8 {
+  background-color: $bg-color;
+  margin-bottom: $gutter;
+  height: calc(( 100vh - 60px + #{2*$gutter})/2);
+  position: relative;
+  .side-omicam {
+    width: 40px;
+    height: 100px;
+    background-image: url('../assets/images/omicam-1.png');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 50px;
+    bottom: 10px;
+  }
 }
 .section9 {
   padding: 100px 50px;
@@ -442,7 +621,7 @@ a.btn {
 }
 // Modal
 .modal-dialog {
-  max-width: 50%;
+  max-width: 80%;
   height: 100%;
   margin: 0 auto;
   @include ipad() {
@@ -451,7 +630,7 @@ a.btn {
 }
 .brand-film {
   width: 100%;
-  min-height: 350px;
+  min-height: 450px;
 }
 .close {
   width: 20px;
