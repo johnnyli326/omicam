@@ -100,7 +100,7 @@
         allowfullscreen>
         </iframe>
       </section>
-      <section class="row align-items-center">
+      <section class="row align-items-center" id="wear">
         <div class="col-md-6 py-3">
           <img src="../assets/images/bag.jpg" alt="mounted-on-bag">
         </div>

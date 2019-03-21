@@ -39,9 +39,10 @@
           <p class="section-content-text">
           Free your hand to enjoy the life while recording.
           </p>
-          <router-link class="btn btn-outline-warning" to="/omicam">
+          <a class="btn btn-outline-warning" href="#"
+          @click.prevent="moveTo('wear')">
             MORE
-          </router-link>
+          </a>
         </div>  
       </div>
     </section>
@@ -53,7 +54,7 @@
         </p>
         <div>
           <a class="btn btn-outline-warning"
-          href="#" @click.prevent="moveTo">
+          href="#" @click.prevent="moveTo('240')">
             MORE
           </a>
         </div>
@@ -184,13 +185,13 @@ export default {
     }; 
   },
   methods: {
-    moveTo() {
-      console.log('move');
+    moveTo(id) {
+      console.log(id);
       let vm = this;
-      vm.$router.push('/omicam');
+      this.$router.push('/omicam');
       setTimeout(function(){
-        let target = $("section[id='240']");
-        $('html, body').stop().animate({scrollTop: target.offset().top}, 1000);
+        let target = $("section[id='"+ id +"']");
+        $('html, body').stop().animate({scrollTop: target.offset().top - 50}, 1000);
       },300);
     }
   },
@@ -332,7 +333,7 @@ a.btn {
 }
 .header {
   max-width: 100%;
-  height: 760px;
+  height: calc(100vh - 60px);
   background-image: url('../assets/images/img-1.jpg');
   background-size: cover;
   background-position: center center;
@@ -358,6 +359,7 @@ a.btn {
 }
 .section2 {
   margin: #{$gutter} 0;
+  height: calc(100vh - 60px + #{2*$gutter});
 }
 .section3 {
   margin-bottom: #{$gutter};
@@ -365,12 +367,12 @@ a.btn {
   background-position: center center;
   background-size: cover;
   width: 100%;
-  height: 400px;
+  height: calc(100vh - 60px + #{2*$gutter});
   display: flex;
   justify-content: flex-end;
 }
 .section4 {
-  height: 600px;
+  height: calc(100vh - 60px + #{2*$gutter});
   margin-bottom: 10px;
   background-image: url('../assets/images/dynamic_img.jpg');
   background-position: center center;
@@ -401,7 +403,7 @@ a.btn {
   100% { background-position-x: left }
 }
 .section5 {
-  height: 400px;
+  height: calc(100vh - 60px + #{2*$gutter});
   margin-bottom: $gutter;
   background-color: rgb(249, 249, 249);
 }
@@ -414,7 +416,7 @@ a.btn {
   background-position: center center;
   background-size: cover;
   width: 100%;
-  height: 400px;
+  height: calc(100vh - 60px + #{2*$gutter});
 }
 .section7 {
   margin-bottom: $gutter;
