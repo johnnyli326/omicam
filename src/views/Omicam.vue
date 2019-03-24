@@ -23,9 +23,8 @@
       </section>
       <section class="section2 text-center">
         <h3>OmiCam | At a Glance</h3>
-        <div class="d-inline-block text-center mb-4" v-for="(icon, index) in icons" :key="index"
-        style="width:25%;">
-          <a :href="icon.section">
+        <div class="text-center mb-4 icon-box" v-for="(icon, index) in icons" :key="index">
+          <a :href="icon.section" class="d-inline-block">
             <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
           </a>
           <br>
@@ -163,10 +162,10 @@
       <section class="text-center">
         <h3 class="my-5">What is in our package?</h3>
         <div class="row">
-          <div class="col-6">
+          <div class="col-md-6">
             <img src="../assets/images/accessories.jpg" alt="accessories">
           </div>
-          <div class="col-6" style="background:green;color: wheat;">
+          <div class="col-md-6" style="background:green;color: wheat;">
             解釋
           </div>
         </div>
@@ -253,7 +252,10 @@ export default {
         name: '240Deg View',
         imgSrc: require('../assets/images/240icon.png'),
         section: '#240',
-        
+      }, {
+        name: '插圖',
+        // imgSrc: require('../assets/images/240icon.png'),
+        section: '#240',
       }, {
         name: 'Long Hour Operation',
         imgSrc: require('../assets/images/battery-icon.png'),
@@ -314,6 +316,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/mixin";
+
+@media(max-width: 1000px) {
+  h3 {
+    font-size: 24px !important;
+  }
+  li {
+    font-size: 16px !important;
+  }
+}
 a.btn {
   text-decoration: none;
   display: inline-block;
@@ -384,17 +395,25 @@ p {
     }
   }
 }
-.icons {
-  transition: all .5s;
-  @media(min-width: 768px){
-    &:hover {
-      transform: scale(1.3);
+.section2 {
+  .icon-box {
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+    .icons {
+      transition: all .5s;
+      vertical-align: top;
+      @media(min-width: 768px){
+        &:hover {
+          transform: scale(1.3);
+        }
+      }
+      .icon-name {
+        color: black;
+        text-decoration: none;
+      }
     }
   }
-.icon-name {
-  color: black;
-  text-decoration: none;
-}
 }
 .btn-img {
   display: inline-block;
