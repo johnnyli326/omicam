@@ -386,8 +386,10 @@ p {
 }
 .icons {
   transition: all .5s;
-  &:hover {
-    transform: scale(1.3);
+  @media(min-width: 768px){
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 .icon-name {
   color: black;

@@ -26,7 +26,7 @@
             <p class="text-center section-content-text">
               The easiest way to immersively record your life.
             </p>
-            <router-link class="btn btn-outline-warning" to="/omicam">
+            <router-link class="btn btn-outline-warning" to="/omicam-wearable-vr-camera">
               BUY NOW
             </router-link>
           </div>
@@ -183,6 +183,7 @@
 <script>
 import $ from 'jquery';
 import 'owl.carousel';
+import 'is-in-viewport';
 
 export default {
   name: 'Home',
@@ -270,6 +271,16 @@ export default {
           $('.shaking').remove().insertBefore($('.shaking-text'));
         }
       });
+      // 螢幕滑到影片才播放
+      $(window).scroll(function() {
+        $('video').each(function(){
+          if ($(this).is(':in-viewport')) {
+            $(this)[0].play();
+          } else {
+            $(this)[0].pause();
+          }
+        })
+      })
     });
     // youtube API
     function callPlayer(frame_id, func, args) {
@@ -364,6 +375,15 @@ $section-title: 40px;
 $section-text: 24px;
 $bg-color: #f9f9f9;
 
+// section font-size
+@media(max-width: 1000px) {
+  h2 {
+    font-size: 24px !important;
+  }
+  p {
+    font-size: 16px !important;
+  }
+}
 a.btn {
   text-decoration: none;
   display: inline-block;

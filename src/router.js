@@ -48,6 +48,10 @@ export default new Router({
       name: 'Service',
       component: () => import('./views/Service.vue'),
     }, {
+      path: 'omi-product',
+      name: 'OMI-product',
+      component: () => import('./views/ProductList.vue'),
+    }, {
       path: '*',
       redirect: '/',
     }],
