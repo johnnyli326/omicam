@@ -5,7 +5,11 @@ import store from './store';
 import 'bootstrap';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
+import currencyFilter from './filters/currency';
+import timestampFormat from './filters/timestampFormat';
 
+Vue.filter('currency', currencyFilter);
+Vue.filter('timeFormat', timestampFormat);
 Vue.config.productionTip = false;
 new Vue({
   router,

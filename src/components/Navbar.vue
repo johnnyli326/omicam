@@ -8,7 +8,7 @@
       </div>
       <ul class="list-unstyled mobile-icon ml-auto">
         <li>
-          <router-link class="cart mr-3" to="/">
+          <router-link class="cart mr-3" to="/cart">
             <i class="fas fa-shopping-cart"></i>
           </router-link>
         </li>

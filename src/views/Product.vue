@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h3 class="mb-3">OmiCam – Wearable VR Life Camera</h3>
+          <h2 class="mb-3">OmiCam<span class="sub-title">－Wearable VR Life Camera</span></h2>
           <div class="mb-3">
             <del class="original-price">$269</del>
             <span class="price">$249</span>
@@ -156,7 +156,7 @@
         <!-- Spec -->
         <section id="Specs" class="detail-content">
           <h2>Specs</h2>
-          <p>
+          <p style="text-align: justify">
             Renders VR footage up to 4K 30fps, Field of View 240 Degree
             Splash-proof, dust-proof, Wearable, mountable and lightweight(3oz)
             Extended battery life (Up to 15hrs in Lifelog mode), also supports 
@@ -519,6 +519,12 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
+h2 {
+  font-size: 40px;
+  @media(max-width: 1000px) {
+    font-size: 32px;
+  }
+}
 table thead{
   border-collapse: collapse;
   border-spacing: 0;
@@ -535,13 +541,11 @@ table, th, td {
   background-color: #f8f9f9;
   border: 1px solid #e9e9e9;
 }
-.sticky {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 4rem;
-}
 .intro-content {
   line-height: 2;
+}
+.sub-title {
+  font-size: 24px;
 }
 .cart-btn {
   background-color: #e59e34;

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
+  mode: 'history',
   routes: [{
     path: '',
     name: 'Dashboard',
@@ -51,6 +52,10 @@ export default new Router({
       path: 'omi-product',
       name: 'OMI-product',
       component: () => import('./views/ProductList.vue'),
+    }, {
+      path: 'cart',
+      name: 'Cart',
+      component: () => import('./views/cart.vue'),
     }, {
       path: '*',
       redirect: '/',
