@@ -3,8 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
-  base: '',
-  mode: 'history',
+  // mode: 'history',
   routes: [{
     path: '',
     name: 'Dashboard',
@@ -14,47 +13,47 @@ export default new Router({
       name: 'Home',
       component: () => import('./views/Home.vue'),
     }, {
-      path: '/omicam',
+      path: 'omicam',
       name: 'Omicam',
       component: () => import('./views/Omicam.vue'),
     }, {
-      path: '/omi-studio',
+      path: 'omi-studio',
       name: 'OmiStudio',
       component: () => import('./views/OmiStudio.vue'),
     }, {
-      path: '/news',
+      path: 'news',
       name: 'News',
       component: () => import('./views/News.vue'),
     }, {
-      path: '/omistory',
+      path: 'omistory',
       name: 'OmiStory',
       component: () => import('./views/OmiStory.vue'),
     }, {
-      path: '/contact',
+      path: 'contact',
       name: 'Contact',
       component: () => import('./views/Contact.vue'),
     }, {
-      path: '/product/omicam-wearable-vr-camera',
+      path: 'product/omicam-wearable-vr-camera',
       name: 'Product',
       component: () => import('./views/Product.vue'),
     }, {
-      path: '/about',
+      path: 'about',
       name: 'About',
       component: () => import('./views/About.vue'),
     }, {
-      path: '/privacy-policy',
+      path: 'privacy-policy',
       name: 'Privacy',
       component: () => import('./views/Privacy.vue'),
     }, {
-      path: '/terms-of-service',
+      path: 'terms-of-service',
       name: 'Service',
       component: () => import('./views/Service.vue'),
     }, {
-      path: '/omi-product',
+      path: 'omi-product',
       name: 'OMI-product',
       component: () => import('./views/ProductList.vue'),
     }, {
-      path: '/cart',
+      path: 'cart',
       name: 'Cart',
       component: () => import('./views/cart.vue'),
     }, {

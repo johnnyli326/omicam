@@ -482,6 +482,7 @@ export default {
   data() {
     return {}
   },
+  props: {},
   created() {
     window.scrollTo(0, 0);
   },
@@ -490,7 +491,6 @@ export default {
       $('.btn').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
         let btnId = $(this).attr('id');
-        console.log(btnId);
         if (btnId == 'Des-btn'){
           $('.detail-content').removeClass('active');
           $('#Description').addClass('active');
