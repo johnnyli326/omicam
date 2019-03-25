@@ -135,10 +135,14 @@
         <p class="section-content-text">
           Simply Create Your Immersive Life Moemory.
         </p>
-        <router-link class="btn btn-link btn-outline-primary"
+        <!-- <router-link class="btn btn-link btn-outline-primary"
         to="/product/omicam-wearable-vr-camera">
           BUY NOW
-        </router-link>
+        </router-link> -->
+        <a class="btn btn-link btn-outline-primary"
+        href="http://www.omicam.com/shop/">
+          BUY NOW
+        </a>
       </div>
       <div class="side-omicam"></div>
     </section>

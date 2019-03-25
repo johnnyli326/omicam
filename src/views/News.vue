@@ -2,25 +2,25 @@
   <div>
     <div class="page-title">
       <div class="container">
-        <h2>NEWS</h2>
+        <h2>OMI NEWS</h2>
       </div>
     </div>
     <div class="container my-5">
 			<div v-for="(item, index) in news" :key="index">
         <div class="row mb-4">
-  				<div class="col-md-3 news-img text-center">
+          <div class="col-md-3 news-img text-center">
 						<router-link to="/">
-  					  <img :src="item.imgSrc" :alt="item.name">
+              <img :src="item.imgSrc" :alt="item.name">
 						</router-link>
-  				</div>
-  				<div class="col-md-9">
-  					<small class="text-primary mt-3">NEWS</small>
+          </div>
+          <div class="col-md-9">
+            <small class="text-primary mt-3">NEWS</small>
             <h3>Omi News {{ index+1 }}</h3>
-  					<p class="text-truncate">
+            <p class="text-truncate">
 							{{ item.content }}
-  					</p>
-  				</div>
-  			</div>
+            </p>
+          </div>
+        </div>
 				<hr>
 			</div>
     </div>
@@ -35,16 +35,16 @@ export default {
 				name: '標題一',
 				imgSrc: require('../assets/images/news.jpg'),
 				content: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  						Possimus, nihil delectus nobis voluptates blanditiis nemo
-  						aperiam debitis consectetur. Laborum, vel vitae modi nam totam
-  						mollitia ab accusamus eligendi soluta provident!`
+                  Possimus, nihil delectus nobis voluptates blanditiis nemo
+                  aperiam debitis consectetur. Laborum, vel vitae modi nam totam
+                  mollitia ab accusamus eligendi soluta provident!`
 			}, {
 				name: '標題二',
 				imgSrc: require('../assets/images/news-2.jpg'),
 				content: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  						Possimus, nihil delectus nobis voluptates blanditiis nemo
-  						aperiam debitis consectetur. Laborum, vel vitae modi nam totam
-  						mollitia ab accusamus eligendi soluta provident!`
+                  Possimus, nihil delectus nobis voluptates blanditiis nemo
+                  aperiam debitis consectetur. Laborum, vel vitae modi nam totam
+                  mollitia ab accusamus eligendi soluta provident!`
 			}],
     };
   },

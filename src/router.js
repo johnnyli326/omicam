@@ -3,7 +3,8 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
-  // mode: 'history',
+  base: '/test3/',
+  mode: 'history',
   routes: [{
     path: '',
     name: 'Dashboard',
