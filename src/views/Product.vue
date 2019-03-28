@@ -45,7 +45,7 @@
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-            <div class="btn btn-primary">
+            <div class="cart-btn" @click="addToCart(qty)">
               ADD TO CART
             </div>
           </div>
@@ -491,7 +491,14 @@ export default {
       qty: 1,
     }
   },
-  props: {},
+  methods: {
+    addToCart(qty) {
+      console.log('加入購物車');
+      let vm = this;
+      document.cookie =  vm.product.name + "=" + qty + ";max-age=3600;"; // 一小時後刪除紀錄
+      console.log(document.cookie);
+    }
+  },
   created() {
     window.scrollTo(0, 0);
     let vm = this;
@@ -539,6 +546,17 @@ h2 {
   font-size: 40px;
   @media(max-width: 1000px) {
     font-size: 32px;
+  }
+}
+.cart-btn {
+  width: 150px;
+  padding: 5px;
+  background-color: #ffcd05;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #dfb60f;
   }
 }
 table thead{

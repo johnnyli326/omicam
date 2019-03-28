@@ -8,7 +8,8 @@
       </div>
       <ul class="list-unstyled mobile-icon ml-auto">
         <li>
-          <router-link class="cart mr-3" to="/cart">
+          <router-link class="cart mr-3" to="/cart"
+          :class="{ 'active': $route.name == 'cart' }">
             <i class="fas fa-shopping-cart"></i>
           </router-link>
         </li>
@@ -21,12 +22,6 @@
         </li>
       </ul>
       <ul class="top-menu list-unstyled">
-        <li class="menu-item">
-          <router-link to="/productlist" 
-          :class="{ 'active': $route.name == 'ProductList' }">
-          PRODUCTS
-          </router-link>
-        </li>
         <li class="menu-item">
           <router-link to="/omicam" 
           :class="{ 'active': $route.name == 'Omicam' }">
@@ -159,6 +154,9 @@ export default {
       &:hover {
         color: white;
         transition: all .3s ease;
+      }
+      &.active {
+        color: white;
       }
     }
     .hamburger-btn {

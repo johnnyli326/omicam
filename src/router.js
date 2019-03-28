@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
-  // base: '/test2/',
+  base: '/test2/',
   mode: 'history',
   routes: [{
     path: '',
@@ -34,15 +34,6 @@ export default new Router({
       name: 'Contact',
       component: () => import('./views/Contact.vue'),
     }, {
-      path: 'productlist',
-      name: 'ProductList',
-      component: () => import('./views/ProductList.vue'),
-      props: true,
-    }, {
-      path: '/product/:productId',
-      name: 'Product',
-      component: () => import('./views/Product.vue'),
-    }, {
       path: 'about',
       name: 'About',
       component: () => import('./views/About.vue'),
@@ -54,10 +45,6 @@ export default new Router({
       path: 'terms-of-service',
       name: 'Service',
       component: () => import('./views/Service.vue'),
-    }, {
-      path: 'omi-product',
-      name: 'OMI-product',
-      component: () => import('./views/ProductList.vue'),
     }, {
       path: 'cart',
       name: 'Cart',
