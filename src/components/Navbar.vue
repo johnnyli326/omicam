@@ -22,6 +22,12 @@
       </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
+          <router-link to="/productlist" 
+          :class="{ 'active': $route.name == 'ProductList' }">
+          PRODUCTS
+          </router-link>
+        </li>
+        <li class="menu-item">
           <router-link to="/omicam" 
           :class="{ 'active': $route.name == 'Omicam' }">
           OMICAM

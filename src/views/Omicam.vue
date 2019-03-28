@@ -36,7 +36,7 @@
           style="width:90%">
         </div>
         <router-link class="btn btn-link btn-primary"
-        to="/product/omicam-wearable-vr-camera">
+        to="/product">
           BUY NOW
         </router-link>
       </section>
@@ -152,7 +152,7 @@
         </div>
         <div class="text-center">
           <button class="btn btn-primary mt-5">
-            <router-link to="/product/omicam-wearable-vr-camera"
+            <router-link to="/product"
             style="color:black;">
               BUY NOW
             </router-link>

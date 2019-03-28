@@ -1,22 +1,18 @@
 <template>
   <div>
-    <div class="page-title">
-      <div class="container">
-        <h2>Shop</h2>
-      </div>
-    </div>
     <div class="container my-5">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
           <div>
-            <img src="../assets/images/omicam-白底.jpg" alt="omicam">
+            <img :src="product.imgSrc" :alt="product.name" style="width:150px;height:auto;">
           </div>
         </div>
         <div class="col-md-6">
-          <h2 class="mb-3">OmiCam<span class="sub-title">－Wearable VR Life Camera</span></h2>
+          <h2 class="mb-3">{{ product.name }}
+            <span class="sub-title" v-if="product.name === 'OmiCam'">－Wearable VR Life Camera</span>
+          </h2>
           <div class="mb-3">
-            <del class="original-price">$269</del>
-            <span class="price">$249</span>
+            <span class="price">{{ product.price }}</span>
           </div>
           <ul class="list-unstyled mb-3 intro-content mb-4 text-secondary">
             <li>【4K Video】Renders VR footage up to 4K 30fps</li>
@@ -37,24 +33,21 @@
             <li>OMI Studio available for download on the app store</li>
           </ul>
           <div class="input-group">
-            <select name="num" class="mr-3">
+            <select name="num" class="mr-3 text-center" v-model="qty" style="width:100px;text-indent:45%;">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-              <option value="4">5</option>
-              <option value="4">6</option>
-              <option value="4">7</option>
-              <option value="4">8</option>
-              <option value="4">9</option>
-              <option value="4">10</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
-            <button class="btn cart-btn" type="button">
+            <div class="btn btn-primary">
               ADD TO CART
-            </button>
-          </div>
-          <div class="text-center mt-3">
-            <div class="btn btn-primary w-100">BUY NOW</div>
+            </div>
           </div>
         </div>
       </div>
@@ -480,11 +473,34 @@ import $ from 'jquery';
 
 export default {
   data() {
-    return {}
+    return {
+      products: [{
+				name: 'OmiCam',
+        price: '999',
+        imgSrc: require('../assets/images/omicam-1.png'),
+      }, {
+				name: 'Waterproof Case',
+        price: '888',
+        imgSrc: require('../assets/images/bag.jpg'),
+      }, {
+				name: 'Accessory',
+        price: '222',
+        imgSrc: require('../assets/images/accessories.jpg'),
+      }],
+      product: {},
+      qty: 1,
+    }
   },
   props: {},
   created() {
     window.scrollTo(0, 0);
+    let vm = this;
+    vm.products.forEach(function(e){
+      let NAME = e.name.replace(/\s/g, '').toLowerCase()
+      if (NAME === vm.$route.params.productId) {
+        vm.product = e;
+      }
+    })
   },
   mounted() {
     $(document).ready(function() {

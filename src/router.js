@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
+  // base: '/test2/',
   mode: 'history',
   routes: [{
     path: '',
@@ -33,7 +34,12 @@ export default new Router({
       name: 'Contact',
       component: () => import('./views/Contact.vue'),
     }, {
-      path: 'product/omicam-wearable-vr-camera',
+      path: 'productlist',
+      name: 'ProductList',
+      component: () => import('./views/ProductList.vue'),
+      props: true,
+    }, {
+      path: '/product/:productId',
       name: 'Product',
       component: () => import('./views/Product.vue'),
     }, {

@@ -26,7 +26,7 @@
             <p class="text-center section-content-text">
               The easiest way to immersively record your life.
             </p>
-            <router-link class="btn btn-outline-warning" to="/product/omicam-wearable-vr-camera">
+            <router-link class="btn btn-outline-warning" to="/product/omicam">
               BUY NOW
             </router-link>
           </div>
@@ -139,10 +139,10 @@
         to="/product/omicam-wearable-vr-camera">
           BUY NOW
         </router-link> -->
-        <a class="btn btn-link btn-outline-primary"
-        href="http://www.omicam.com/shop/">
+        <router-link class="btn btn-link btn-outline-primary"
+        to="product/omicam">
           BUY NOW
-        </a>
+        </router-link>
       </div>
       <div class="side-omicam"></div>
     </section>
@@ -181,6 +181,7 @@
         </div>
       </div>
     </div>
+    <img src="/public/images/240icon.png" alt="">
   </div>
 </template>
 
