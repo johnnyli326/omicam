@@ -9,7 +9,7 @@
       <ul class="list-unstyled mobile-icon ml-auto">
         <li>
           <router-link class="cart mr-3" to="/cart"
-          :class="{ 'active': $route.name == 'cart' }">
+          :class="{ 'active': $route.name == 'Cart' }">
             <i class="fas fa-shopping-cart"></i>
           </router-link>
         </li>
