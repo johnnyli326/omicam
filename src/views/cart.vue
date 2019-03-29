@@ -32,12 +32,12 @@
               </td>
               <td class="pt-2">
                 <div class="input-box">
-                  <div class="count minus" @click="item.qty > 1 ? item.qty -=1 : false">-</div>
+                  <div class="count minus" @click="item.qty > 0 ? item.qty -=1 : false">-</div>
                   <input class="number-input"
-                  type="number" autocomplete="off" min="1" step="1" max="100"
+                  type="number" autocomplete="off" min="0" step="1" max="100"
                   v-model="item.qty"
                   onkeyup="value=value.replace(/[^\d]/g,'')" >
-                  <div class="count plus"  @click="item.qty < 2001 ? item.qty +=1 : false">+</div>
+                  <div class="count plus"  @click="item.qty < 100 ? item.qty +=1 : false">+</div>
                 </div>
               </td>
               <td>
@@ -114,17 +114,17 @@ export default {
           name: 'OmiCam',
           imageUrl: require('../assets/images/omicam-1.png'),
           price: 999,
-          qty: 1,
+          qty: 0,
         }, {
           name: 'Waterproof Case',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 222,
-          qty: 1,
+          qty: 0,
         }, {
           name: 'Acc',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 111,
-          qty: 1,
+          qty: 0,
 				}
 			],
       coupon_code: '',
@@ -173,8 +173,8 @@ export default {
           val.forEach(function(e){
             if(e.qty > 100) {
               e.qty = 100;
-            } else if (e.qty == '' || e.qty < 1){
-              e.qty = 1;
+            } else if (e.qty == '' || e.qty < 0){
+              e.qty = 0;
             }
           })
         },
