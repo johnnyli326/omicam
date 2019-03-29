@@ -23,7 +23,7 @@
       </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
-          <router-link to="/omicam" 
+          <router-link to="/omicam"
           :class="{ 'active': $route.name == 'Omicam' }">
           OMICAM
           </router-link>
@@ -71,7 +71,7 @@ export default {
   mounted() {
     $(document).ready(() => {
       // 點擊漢堡
-      $('.hamburger-btn').click(function() {
+      $('.hamburger-btn').click(() => {
         $(this).toggleClass('active'); // 漢堡toggle
         if ($('.top-menu').hasClass('show')) { // top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
