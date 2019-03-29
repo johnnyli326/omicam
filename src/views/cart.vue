@@ -1,6 +1,6 @@
 <template>
 	<div>
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin: 100px auto;">
       <h2 class="text-center my-3">SHOP</h2>
       <div class="table-responsive">
         <table class="table table-sm table-striped">
@@ -58,49 +58,10 @@
           </tbody>
         </table>
       </div>
-      <!-- 套用優惠卷 -->
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="input-group mb-2">
-            <input type="text" class="form-control" placeholder="輸入'coupon'，即可享有50%優惠唷！"  v-model="coupon_code">
-            <div class="input-group-append">
-              <button class="btn btn-outline-dark">
-                套用優惠卷
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <router-link to="order" class="btn btn-block btn-primary my-4 btn-checkout">
-          前往結帳
-        </router-link>
-      </div>
-      <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-        <!-- 購物車明細 -->
-        <input type="hidden" name="cmd" value="_cart" /> 
-        
-        <input type="hidden" name="upload" value="1" />
-        <input type="hidden" name="rm" value="2" />
-        <input type="hidden" name="charset" value="UTF-8" />
-        <!-- PayPal 運行過 IPN 後，再 return 返回指定頁面。 -->
-        <input type="hidden" name="notify_url" value="http://www.mitaccessories.com.tw/index.php?op=paypal_ipn" />
-        <input type="hidden" name="return" value="http://www.mitaccessories.com.tw/index.php?op=paypal2" />
-        <!-- 使用的 PayPal 商店帳號 -->
-        <input type="hidden" name="business" value="andy_1346136069_biz@gmail.com" />
-        <!-- 商品名細 1 -->
-        <input type="hidden" name="item_name_1" value="product.name" />
-        <!-- 價錢 -->
-        <input type="hidden" name="amount_1" value="product.price" />
-        <!-- 購買數量 -->
-        <input type="hidden" name="quantity_1" value="qty" />
-        <!-- 運費 -->
-        <input type="hidden" name="shipping_1" value="0.01" />
-        <!-- 使用的貨幣 -->
-        <input type="hidden" name="currency_code" value="USD" />
-        <!-- PayPal 的結帳按鈕 -->
-        <input type="image" src="http://www.paypal.com/zh_XC/i/btn/x-click-but01.gif" name="submit" alt="请使用PayPal付款！" />
-      </form>
+      <router-link to="/order" class="btn btn-block btn-primary my-4 btn-checkout
+        text-center">
+        CHECKOUT
+      </router-link>
     </div>
 	</div>
 </template>
@@ -131,26 +92,42 @@ export default {
     };
 	},
   methods: {
-    // listCookies() {
-    //   var Arr = document.cookie.split(';');
-    //   console.log(Arr);
-    //   Arr.forEach((e) => {
-    //     if(e.includes('OmiCam')) {
-    //       console.log('Omicam' + e.match(/\d/g).join(""));
-    //       this.qty.omicam = e.match(/\d/g).join("");
-    //     } else if(e.includes('Waterproof Case')) {
-    //       console.log('water' + e.match(/\d/g).join(""));
-    //       this.qty.waterproof = e.match(/\d/g).join("")
-    //     } else if(e.includes('Accessory')) {
-    //       console.log('acc' +e.match(/\d/g).join(""));
-    //       this.qty.acc = e.match(/\d/g).join("");
-    //     }
-    //   })
-    //   console.log(this.qty);
-    // }, 
+    listCookies() {
+      let Arr = document.cookie.split(';');
+      console.log(Arr);
+      Arr.forEach((e) => { // 查詢cookie資料
+        if(e.includes('OmiCam')) {
+          console.log('Omicam：' + e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.carts.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'OmiCam') {
+              e.qty = PreNum;
+            }
+          })
+        } else if(e.includes('Waterproof Case')) {
+          console.log('water：' + e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.carts.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'Waterproof Case') {
+              e.qty = PreNum;
+            }
+          })
+        } else if(e.includes('Acc')) {
+          console.log('acc：' +e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.carts.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'Acc') {
+              e.qty = PreNum;
+              // console.log(typeof(e.qty));
+            }
+          })
+        }
+      })
+    }, 
 	},
 	created() {
     window.scroll(0,0);
+    this.listCookies();
   },
   mounted() {
   },
@@ -165,16 +142,23 @@ export default {
     }
   },
   watch: {
-    carts: [
+    carts: [ // 防止input輸入數量不合格
       'handle1',
       function handle2(val, oldVal) {},
       {
         handler: function handle3(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
           val.forEach(function(e){
             if(e.qty > 100) {
-              e.qty = 100;
+              e.qty = parseInt(100);
             } else if (e.qty == '' || e.qty < 0){
-              e.qty = 0;
+              e.qty = parseInt(0);
+            } else { // 如果數量介於 1 ~ 100的話，寫入cookie
+              console.log('加入購物車');
+              e.qty = parseInt(e.qty); // input輸入均為”字串“，改變成"number"
+              let vm = this;
+              document.cookie =  e.name + "=" + e.qty + ";max-age=3600;"; // 一小時後刪除紀錄
+              console.log(document.cookie);
+              console.log(typeof(e.qty));
             }
           })
         },
@@ -241,5 +225,10 @@ td {
       }
     }
   }
+}
+.btn-checkout {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

@@ -50,6 +50,10 @@ export default new Router({
       name: 'Cart',
       component: () => import('./views/cart.vue'),
     }, {
+      path: 'order',
+      name: 'Order',
+      component: () => import('./views/order.vue'),
+    }, {
       path: '*',
       redirect: '/',
     }],
