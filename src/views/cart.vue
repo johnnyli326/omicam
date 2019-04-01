@@ -67,6 +67,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
 		return {
@@ -94,10 +96,10 @@ export default {
   methods: {
     listCookies() {
       let Arr = document.cookie.split(';');
-      console.log(Arr);
+      // console.log(Arr);
       Arr.forEach((e) => { // 查詢先前購物車資料
         if(e.includes('OmiCam')) {
-          console.log('Omicam：' + e.match(/\d/g).join(""));
+          // console.log('Omicam：' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
             if(e.name === 'OmiCam') {
@@ -105,7 +107,7 @@ export default {
             }
           })
         } else if(e.includes('shoulderStrap')) {
-          console.log('water：' + e.match(/\d/g).join(""));
+          // console.log('water：' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
             if(e.name === 'shoulderStrap') {
@@ -113,21 +115,46 @@ export default {
             }
           })
         } else if(e.includes('waterCase')) {
-          console.log('waterCase：' +e.match(/\d/g).join(""));
+          // console.log('waterCase：' +e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
             if(e.name === 'waterCase') {
               e.qty = PreNum;
-              console.log(typeof(e.qty));
+              // console.log(typeof(e.qty));
             }
           })
         }
       })
     },
+    GetData() {
+      // readyState = 0 , 已經產生一個XMLHttpRequest，但還沒連結。
+      // let xhr = new XMLHttpRequest();
+      // // readyState = 1 ，使用了open()，但還沒把資料傳送過去。
+      // // true ， 非同步
+      // xhr.open('post', 'http://www.omicam.com/_privateApi/OmiSalePrice.php', true);
+      // xhr.send(null);
+      // console.log(xhr);
+      // xhr.onload = () => {
+      //   if (xhr.status == 200) {
+      //     console.log(xhr.responseText);
+      //   } else {
+      //     console.log('錯誤');
+      //   }
+      // }
+      $.ajax({
+          url: 'http://www.omicam.com/_privateApi/OmiSalePrice.php',
+          type: 'POST',
+          data: {class: 'SalePrice',function:'getItems'},
+          success:function(data){
+            console.log(data);
+          }
+      });
+    },
 	},
 	created() {
     window.scroll(0,0);
     this.listCookies();
+    this.GetData(); // 取得商品資料
   },
   mounted() {
   },
@@ -146,7 +173,6 @@ export default {
       function handle2(val, oldVal) {},
       {
         handler: function(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
-          console.log(val);
           val.forEach(function(e){
             if(e.qty > 100) {
               e.qty = 100;
