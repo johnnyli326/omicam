@@ -49,63 +49,9 @@
         </table>
       </div>
       <div class="customer-info-container">
-        <!-- <h2 class="text-left" style="font-size:24px;">Shipping information</h2>
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="country"><span class="star-sign">*</span>Country and Regions</label>
-                <input type="text" class="form-control" id="country" placeholder="First Name"
-                value="United States" disabled>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="firstName"><span class="star-sign">*</span>First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="lastName">
-                  <span class="star-sign">*</span>Last Name
-                </label>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">
-                <span class="star-sign">*</span>Address
-              </label>
-              <input type="text" class="form-control" id="inputAddress"
-              placeholder="Street and number, P.O. box, c/o.">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="inputAddress2"
-              placeholder="Apartment, suite, unit, building, floor, etc.">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">
-                  <span class="star-sign">*</span>City
-                </label>
-                <input type="text" class="form-control" id="inputCity">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState"><span class="star-sign">*</span>State</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip">
-                  <span class="star-sign">*</span>Zip
-                </label>
-                <input type="text" class="form-control" id="inputZip">
-              </div>
-            </div>
-          </form> -->
           <!-- PayPal 的結帳按鈕 -->
           <input class="paypal_btn" type="button"
-          name="submit" alt="Please pay by paypal" />
+          name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
         <div class="notice mt-4">注意事項</div>
       </div>
     </div>
@@ -123,12 +69,12 @@ export default {
           price: 999,
           qty: 0,
         },  {
-          name: 'Waterproof Case',
+          name: 'shoulderStrap',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 222,
           qty: 0,
         }, {
-          name: 'Acc',
+          name: 'waterCase',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 111,
           qty: 0,
@@ -138,8 +84,8 @@ export default {
         omicam: '',
         waterCase: '',
         shoulderStrap: '',
-      }
-		}
+      },
+		};
   },
   methods: {
     listCookies() {
@@ -155,38 +101,52 @@ export default {
             }
           })
           this.items.omicam = PreNum;
-        } else if(e.includes('Waterproof Case')) {
-          console.log('water：' + e.match(/\d/g).join(""));
+        } else if(e.includes('shoulderStrap')) {
+          console.log('shoulderStrap:' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'Waterproof Case') {
-              e.qty = PreNum;
-            }
-          })
-          this.items.waterCase = PreNum;
-        } else if(e.includes('Acc')) {
-          console.log('acc：' +e.match(/\d/g).join(""));
-          let PreNum = parseInt(e.match(/\d/g).join(""));
-          this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'Acc') {
+            if(e.name === 'shoulderStrap') {
               e.qty = PreNum;
             }
           })
           this.items.shoulderStrap = PreNum;
+        } else if(e.includes('waterCase')) {
+          console.log('waterCase：' +e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.carts.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'waterCase') {
+              e.qty = PreNum;
+            }
+          })
+          this.items.waterCase = PreNum;
         }
       })
-      console.log(this.items);
     },
-    AJAXsubmit(oFormElement) {
+    AJAXsubmit() {
       // readyState = 0 , 已經產生一個XMLHttpRequest，但還沒連結。
       let xhr = new XMLHttpRequest();
       // readyState = 1 ，使用了open()，但還沒把資料傳送過去。
       // true ， 非同步
-      xhr.open('post', 'http://www.omicam.com/_privateApi/saleApi.php', true);
-      // 設定傳入格式
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhr.send();
-    }
+      xhr.open('get',
+      'http://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items=omicam:'
+      + this.items.omicam+';waterCase:'
+      + this.items.waterCase +';shoulderStrap:'
+      + this.items.shoulderStrap,
+      true);
+      xhr.send(null);
+      xhr.onload = () => {
+        let paypalUrl = xhr.response;
+        this.delete_cookie(); // 刪除cart紀錄
+        window.location.replace(paypalUrl); // 移動至paypal付款頁面
+      }
+    },
+    delete_cookie() { // 刪除cart紀錄
+      let Arr = this.carts;
+      Arr.forEach(function(e) {
+        document.cookie = e.name + '=' + '; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+      });
+      this.listCookies()
+    },
   },
 	created() {
     window.scrollTo(0,0);
@@ -200,7 +160,7 @@ export default {
         final_total += e.price * e.qty;
       })
       return final_total
-    }
+    },
   },
 };
 </script>

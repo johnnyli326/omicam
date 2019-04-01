@@ -32,12 +32,12 @@
               </td>
               <td class="pt-2">
                 <div class="input-box">
-                  <div class="count minus" @click="item.qty > 0 ? item.qty -=1 : false">-</div>
+                  <div class="count minus" @click="item.qty > 0 ? item.qty-=1 : false">-</div>
                   <input class="number-input"
                   type="number" autocomplete="off" min="0" step="1" max="100"
                   v-model="item.qty"
                   onkeyup="value=value.replace(/[^\d]/g,'')" >
-                  <div class="count plus"  @click="item.qty < 100 ? item.qty +=1 : false">+</div>
+                  <div class="count plus"  @click="item.qty < 100 ? item.qty+=1 : false">+</div>
                 </div>
               </td>
               <td>
@@ -77,12 +77,12 @@ export default {
           price: 999,
           qty: 0,
         }, {
-          name: 'Waterproof Case',
+          name: 'shoulderStrap',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 222,
           qty: 0,
         }, {
-          name: 'Acc',
+          name: 'waterCase',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 111,
           qty: 0,
@@ -95,7 +95,7 @@ export default {
     listCookies() {
       let Arr = document.cookie.split(';');
       console.log(Arr);
-      Arr.forEach((e) => { // 查詢cookie資料
+      Arr.forEach((e) => { // 查詢先前購物車資料
         if(e.includes('OmiCam')) {
           console.log('Omicam：' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
@@ -104,21 +104,21 @@ export default {
               e.qty = PreNum;
             }
           })
-        } else if(e.includes('Waterproof Case')) {
+        } else if(e.includes('shoulderStrap')) {
           console.log('water：' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'Waterproof Case') {
+            if(e.name === 'shoulderStrap') {
               e.qty = PreNum;
             }
           })
-        } else if(e.includes('Acc')) {
-          console.log('acc：' +e.match(/\d/g).join(""));
+        } else if(e.includes('waterCase')) {
+          console.log('waterCase：' +e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'Acc') {
+            if(e.name === 'waterCase') {
               e.qty = PreNum;
-              // console.log(typeof(e.qty));
+              console.log(typeof(e.qty));
             }
           })
         }
@@ -143,22 +143,19 @@ export default {
   },
   watch: {
     carts: [ // 防止input輸入數量不合格
-      'handle1',
       function handle2(val, oldVal) {},
       {
-        handler: function handle3(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
+        handler: function(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
+          console.log(val);
           val.forEach(function(e){
             if(e.qty > 100) {
-              e.qty = parseInt(100);
-            } else if (e.qty == '' || e.qty < 0){
-              e.qty = parseInt(0);
-            } else { // 如果數量介於 1 ~ 100的話，寫入cookie
-              console.log('加入購物車');
+              e.qty = 100;
+            } else if (e.qty >= 0 && e.qty <=100){ // 如果數量介於 0 ~ 100的話，寫入cookie
               e.qty = parseInt(e.qty); // input輸入均為”字串“，改變成"number"
-              let vm = this;
-              document.cookie =  e.name + "=" + e.qty + ";max-age=3600;"; // 一小時後刪除紀錄
-              console.log(document.cookie);
-              console.log(typeof(e.qty));
+              document.cookie = e.name + "=" + e.qty + ";max-age=3600;"; // 一小時後刪除紀錄
+            } else { // 負數或是string
+              console.log('不是正整數');
+              e.qty = 0;
             }
           })
         },
