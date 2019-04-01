@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
-  // base: '/test2/',
+  // base: '/test4/',
   mode: 'history',
   routes: [{
     path: '',
@@ -53,6 +53,14 @@ export default new Router({
       path: 'order',
       name: 'Order',
       component: () => import('./views/order.vue'),
+    }, {
+      path: 'productlist',
+      name: 'ProductList',
+      component: () => import('./views/ProductList.vue'),
+    }, {
+      path: 'product/:productId',
+      name: 'Product',
+      component: () => import('./views/Product.vue'),
     }, {
       path: '*',
       redirect: '/',

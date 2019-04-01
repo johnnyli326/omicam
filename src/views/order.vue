@@ -1,45 +1,108 @@
 <template>
 	<div class="container order-container">
     <h2 class="order-page-title">ORDER SUMMARY</h2>
-    <div class="row">
-      <div class="col-8 customer-info-container">
-        <div class="notice">注意事項</div>
-        <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    <div class="order-section">
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <tbody>
+            <tr class="bg-secondary text-white">
+              <th class="text-center">Product Name</th>
+              <th class="text-center" style="width:20%">Quantity</th>
+              <th class="text-center" style="width:10%">Total</th>
+            </tr>
+            <tr v-for="item in carts" :key="item.id">
+              <td class="text-left product-box">
+                <div class="order-img-box">
+                    <div class="product-img"></div>
+                    <div class="product-info-box">
+                      <div class="product-info">
+                        <span href="#" class="product-name">
+                          {{ item.name }}
+                        </span>
+                        <span class="product-price">USD $ {{ item.price }}</span>
+                      </div>
+                    </div>
+                  <div class="text-success" v-if="item.coupon">
+                    已套用優惠卷
+                  </div>
+                </div>
+              </td>
+              <td class="pt-2 text-center">
+                {{ item.qty }}
+              </td>
+              <td>
+                <div class="pt-2 text-right text-danger">
+                  {{ item.price*item.qty | currency }}
+                </div>
+                <div class="pt-2 text-right text-success" v-if="item.coupon">
+                  {{ item.final_total | currency }}
+                </div>
+              </td>            
+            </tr>
+            <tr>
+              <td colspan="2" class="text-right">合計</td>
+              <td class="text-right">
+                {{ final_Total | currency }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="customer-info-container">
+        <h2 class="text-left" style="font-size:24px;">Shipping information</h2>
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="country"><span class="star-sign">*</span>Country and Regions</label>
+                <input type="text" class="form-control" id="country" placeholder="First Name"
+                value="United States" disabled>
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="firstName"><span class="star-sign">*</span>First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="lastName">
+                  <span class="star-sign">*</span>Last Name
+                </label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-          </div>
-          <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity">
+            <div class="form-group">
+              <label for="inputAddress">
+                <span class="star-sign">*</span>Address
+              </label>
+              <input type="text" class="form-control" id="inputAddress"
+              placeholder="Street and number, P.O. box, c/o.">
             </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputAddress2"
+              placeholder="Apartment, suite, unit, building, floor, etc.">
             </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">
+                  <span class="star-sign">*</span>City
+                </label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState"><span class="star-sign">*</span>State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">
+                  <span class="star-sign">*</span>Zip
+                </label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
             </div>
-          </div>
+          </form>
           <!-- paypal -->
           <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
             <!-- 購物車明細 -->
@@ -64,55 +127,13 @@
             <!-- 使用的貨幣 -->
             <input type="hidden" name="currency_code" value="USD" />
             <!-- PayPal 的結帳按鈕 -->
-            <input type="image" src="http://www.paypal.com/zh_XC/i/btn/x-click-but01.gif" name="submit" alt="请使用PayPal付款！" />
+            <input class="paypal_btn" type="button"
+            name="submit" alt="Please pay by paypal" />
           </form>
-        </form>
-      </div>
-      <div class="col-4 order-list-container">
-        <div class="table-responsive">
-          <table class="table table-sm table-striped">
-            <tbody>
-              <tr class="bg-secondary text-white">
-                <th class="text-center">Product Name</th>
-                <th class="text-center" style="width:20%">Quantity</th>
-                <th class="text-center" style="width:10%">Total</th>
-              </tr>
-              <tr v-for="item in carts" :key="item.id">
-                <td class="text-left product-box">
-                  <div class="order-img-box">
-                    <a href="#" class="btn btn-link p-0">
-                      <div class="order-list-img"></div>
-                      {{ item.name }}
-                    </a>
-                    <div class="text-success" v-if="item.coupon">
-                      已套用優惠卷
-                    </div>
-                  </div>
-                </td>
-                <td class="pt-2">
-                  {{ item.qty }}
-                </td>
-                <td>
-                  <div class="pt-2 text-right text-danger">
-                    {{ item.price*item.qty | currency }}
-                  </div>
-                  <div class="pt-2 text-right text-success" v-if="item.coupon">
-                    {{ item.final_total | currency }}
-                  </div>
-                </td>            
-              </tr>
-              <tr>
-                <td colspan="2" class="text-right">合計</td>
-                <td class="text-right">
-                  {{ final_Total | currency }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="notice mt-4">注意事項</div>
       </div>
     </div>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -175,7 +196,7 @@ export default {
   },
 	created() {
     window.scrollTo(0,0);
-    this.listCookies()
+    this.listCookies();
   },
   computed: {
     final_Total() {
@@ -198,80 +219,92 @@ export default {
     margin: 50px 0;
     text-align: center;
   }
-  .customer-info-container {
-    .notice {
-      widows: 100%;
-      height: 300px;
-      background-color: green;
-      color: white;
+  .order-section {
+    position: relative;
+    .customer-info-container {
+      .star-sign {
+        color: red;
+      }
+      .notice {
+        widows: 100%;
+        height: 300px;
+        background-color: green;
+        color: white;
+      }
+      .paypal_btn {
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+        background-image:  url('../assets/images/paypal.png');
+        background-position: left center;
+        background-size: cover;
+        background-position-x: -40px;
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-color: #ffcd05;
+      }
     }
-  }
-  .order-list-container {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 100px;
-    height: 300px;
-    text-align: center;
     .order-img-box {
-      .order-list-img {
-        display: block;
+      .product-img {
+        display: inline-block;
         width: 50px;
         height: 75px;
         background-image: url('../assets/images/omicam-1.png');
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
-        box-shadow: 1px 1px 4px gray;
+        border: 1px solid #e6e6e6;
         margin: 0 auto;
       }
-    }
-  }
-  .input-box {
-    position: relative;
-    width: 150px;
-    display: inline-block;
-    border: 1px solid gainsboro;
-    cursor: pointer;
-    .number-input {
-      box-sizing: border-box;
-      width: 100%;
-      text-align: center;
-      outline: 0;
-    }
-    .count {
-      width: 40px;
-      height: 30px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      background-color: rgb(215, 214, 214);
-      color: rgb(23, 22, 22);
-      padding: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      .minus {
-        left: 0;
-      }
-      .plus {
-        right: 0;
-      }
-  }
-  .table {
-    .product-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .order-img-box {
+      .product-info-box {
         display: inline-block;
-      }
-      .product-describe-box {
-        display: inline-block;
-        h2 {
-          text-align: center;
+        vertical-align: top;
+        height: 83px;
+        margin-left: 10px;
+        .product-info {
+          vertical-align: middle;
+          .product-name {
+            color: black;
+            display: block;
+          }
+          .product-price {
+            font-size: 14px;
+            color: gray;
+          }
         }
       }
+    }
+    .input-box {
+      position: relative;
+      width: 150px;
+      display: inline-block;
+      border: 1px solid gainsboro;
+      cursor: pointer;
+      .number-input {
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        outline: 0;
+      }
+      .count {
+        width: 40px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: rgb(215, 214, 214);
+        color: rgb(23, 22, 22);
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .minus {
+          left: 0;
+        }
+        .plus {
+          right: 0;
+        }
     }
   }
 }

@@ -43,8 +43,8 @@ export default {
 		productDetail(productId) {
 			let vm = this;
 			productId= productId.replace(/\s/g, '').toLowerCase();
-			vm.$router.push({ name: 'Product', params: { productId } });
-		}
+      vm.$router.push({ name: 'Product', params: { productId } }); // /product/:productId
+    }
 	},
 	created() {
 		window.scrollTo(0, 0);
