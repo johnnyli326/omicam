@@ -48,12 +48,12 @@
           </tbody>
         </table>
       </div>
-      <div class="customer-info-container">
-          <!-- PayPal 的結帳按鈕 -->
-          <input class="paypal_btn" type="button"
-          name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
-        <div class="notice mt-4">注意事項</div>
+      <div class="paypal_btn_section">
+        <!-- PayPal 的結帳按鈕 -->
+        <input class="paypal_btn" type="button"
+        name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
       </div>
+      <div class="notice mt-4">注意事項</div>
     </div>
   </div>
 </template>
@@ -175,16 +175,8 @@ export default {
   }
   .order-section {
     position: relative;
-    .customer-info-container {
-      .star-sign {
-        color: red;
-      }
-      .notice {
-        widows: 100%;
-        height: 300px;
-        background-color: green;
-        color: white;
-      }
+    .paypal_btn_section {
+      text-align: right;
       .paypal_btn {
         width: 200px;
         padding: 10px;
@@ -260,6 +252,12 @@ export default {
           right: 0;
         }
     }
+  }
+  .notice {
+    widows: 100%;
+    height: 300px;
+    background-color: green;
+    color: white;
   }
 }
 </style>
