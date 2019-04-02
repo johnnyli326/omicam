@@ -9,7 +9,7 @@
             <tr class="bg-secondary text-white">
               <th class="text-center">Product Name</th>
               <th class="text-center" style="width:20%">Quantity</th>
-              <th class="text-center" style="width:10%">PRICE</th>
+              <th class="text-center" style="width:10%">Price</th>
             </tr>
             <tr v-for="item in orders" :key="item.id">
               <td class="text-left product-box">

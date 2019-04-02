@@ -8,7 +8,7 @@
             <tr class="bg-secondary text-white">
               <th class="text-center">Product Name</th>
               <th class="text-center" style="width:20%">Quantity</th>
-              <th class="text-center" style="width:10%">Total</th>
+              <th class="text-center" style="width:10%">Price</th>
             </tr>
             <tr v-for="item in carts" :key="item.id" style="height:200px;">
               <td class="text-left product-box">
