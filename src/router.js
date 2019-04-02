@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 export default new Router({
-  // base: '/test4/',
+  base: '/test/',
   mode: 'history',
   routes: [{
     path: '',
