@@ -11,7 +11,7 @@
               <th class="text-center" style="width:20%">Quantity</th>
               <th class="text-center" style="width:10%">PRICE</th>
             </tr>
-            <tr v-for="item in carts" :key="item.id">
+            <tr v-for="item in orders" :key="item.id">
               <td class="text-left product-box">
                 <div class="order-img-box">
                     <div class="product-img"></div>
@@ -172,6 +172,16 @@ export default {
         final_total += e.price * e.qty;
       })
       return final_total
+    },
+    orders() {
+      let vm = this;
+      let orderArr = []
+      vm.carts.forEach(function(e) {
+        if (e.qty > 0) {
+          orderArr.push(e);
+        }
+      })
+      return orderArr;
     },
   },
 };

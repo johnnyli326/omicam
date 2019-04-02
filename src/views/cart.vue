@@ -125,7 +125,6 @@ export default {
           })
         }
       })
-      // readyState = 0 , 已經產生一個XMLHttpRequest，但還沒連結。
     },
 	},
 	created() {
