@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="page-title">
-      <div class="container">
-        <h2>OMICAM</h2>
-      </div>
-    </div>
     <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">OmiCam</li>
+        </ol>
+      </nav>
       <section class="section1">
         <div class="banner">
           <div class="banner-title">
@@ -333,12 +334,6 @@ a.btn {
   &:hover {
     color: black;
   }
-}
-.page-title {
-  width: 100%;
-  padding: 30px;
-  background-color: #f8f9f9;
-  border: 1px solid #e9e9e9;
 }
 .link-color {
   color: #ffcd05;

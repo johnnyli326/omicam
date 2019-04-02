@@ -2,32 +2,32 @@
 	<div>
     <div class="container" style="margin: 100px auto;">
       <h2 class="text-center my-3">SHOP</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">Shop</li>
+        </ol>
+      </nav>
       <div class="table-responsive">
-        <table class="table table-sm table-striped">
+        <table class="table shop-table">
           <tbody>
             <tr class="bg-secondary text-white">
               <th class="text-center">Product Name</th>
               <th class="text-center" style="width:20%">Quantity</th>
               <th class="text-center" style="width:10%">Price</th>
             </tr>
-            <tr v-for="item in carts" :key="item.id" style="height:200px;">
+            <tr v-for="item in carts" :key="item.id"
+            style="background-color: #f9f9f9;">
               <td class="text-left product-box">
                 <div class="product-img-box">
-                  <a href="#" class="btn btn-link p-0">
+                  <router-link :to="'/'+item.link" class="btn btn-link p-0">
                     <img class="small-img" :src="item.imageUrl" :alt="item.name">
                     <div>{{ item.name }}</div>
-                  </a>
-                  <div class="text-success" v-if="item.coupon">
-                    已套用優惠卷
-                  </div>
+                  </router-link>
                 </div>
                 <div class="product-describe-box">
-                  <h2>{{ item.name }}</h2>
-                  <ul>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, non?</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, non?</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, non?</li>
-                  </ul>
+                  <h2 class="text-left">{{ item.name }}</h2>
+                  <span>{{ item.price | currency }}</span>
                 </div>
               </td>
               <td class="pt-2">
@@ -49,9 +49,9 @@
                 </div>
               </td>            
             </tr>
-            <tr>
+            <tr style="background-color: #f9f9f9;">
               <td colspan="2" class="text-right">TOTAL</td>
-              <td class="text-right">
+              <td class="text-right" width="20%">
                 {{ final_Total | currency }}
               </td>
             </tr>
@@ -78,16 +78,19 @@ export default {
           imageUrl: require('../assets/images/omicam-1.png'),
           price: 999,
           qty: 0,
+          link: 'omicam',
         }, {
           name: 'shoulderStrap',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 222,
           qty: 0,
+          link: 'shoulderstrap',
         }, {
           name: 'waterCase',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 111,
           qty: 0,
+          link: 'watercase',
 				}
 			],
       coupon_code: '',
@@ -168,6 +171,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/mixin";
+
 td {
   text-align: center;
   vertical-align: middle;
@@ -175,6 +180,12 @@ td {
 .small-img {
   width: 50px;
 	height: auto;
+}
+.shop-table {
+  box-shadow: 1px 1px 10px gray;
+  @include ipad() {
+    width:700px;
+  }
 }
 .input-box {
   position: relative;
@@ -197,9 +208,6 @@ td {
     background-color: rgb(215, 214, 214);
     color: rgb(23, 22, 22);
     padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     }
     .minus {
       left: 0;
@@ -215,9 +223,18 @@ td {
     align-items: center;
     .product-img-box {
       display: inline-block;
+      width: 30%;
+      height: 100%;
+      text-align: center;
+      padding-top: 10px;
+      a {
+        text-decoration: none;
+      }
     }
     .product-describe-box {
       display: inline-block;
+      width: 70%;
+      height: 100%;
       h2 {
         text-align: center;
       }

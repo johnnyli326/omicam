@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="page-title">
-			<div class="container">
-        <h2>OMI STUDIO</h2>
-			</div>
-		</div>
 		<div class="container">
+			<nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">OMI Studio</li>
+        </ol>
+      </nav>
 			<div class="w-100 text-center">
         <img src="../assets/images/img-7.png" alt="supportDevice">
 			</div>
@@ -46,12 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	.page-title {
-		width: 100%;
-    padding: 30px;
-		background-color: #f8f9f9;
-		border: 1px solid #e9e9e9;
-	}
 	.link-color {
 		color: #ffcd05;
 		&:hover {

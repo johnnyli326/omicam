@@ -6,6 +6,12 @@
       </div>
     </div>
     <div class="container my-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">OMI Story</li>
+        </ol>
+      </nav>
 			<div v-for="(story, index) in stories" :key="index">
         <div class="row mb-5">
           <div class="col-md-3 news-img text-center"

@@ -2,16 +2,22 @@
 	<div class="container order-container">
     <loading :active.sync="isLoading"></loading>
     <h2 class="order-page-title">ORDER SUMMARY</h2>
-    <div class="order-section">
+    <div class="order-empty" v-if="!final_Total">
+      <div class="text-center">
+        <h4>YOUR ORDER LIST IS EMPTY</h4>
+        <router-link class="shopping-btn" to="/shop">GO SHOPPING</router-link>
+      </div>
+    </div>
+    <div class="order-section" v-if="final_Total">
       <div class="table-responsive">
         <table class="table table-sm">
           <tbody>
             <tr class="bg-secondary text-white">
               <th class="text-center">Product Name</th>
-              <th class="text-center" style="width:20%">Quantity</th>
-              <th class="text-center" style="width:10%">Price</th>
+              <th class="text-center" style="width:30%">Quantity</th>
+              <th class="text-center" style="width:20%">Price</th>
             </tr>
-            <tr v-for="item in orders" :key="item.id">
+            <tr v-for="item in orders" :key="item.id" style="">
               <td class="text-left product-box">
                 <div class="order-img-box">
                     <div class="product-img"></div>
@@ -37,23 +43,58 @@
                 </div>
               </td>            
             </tr>
-            <tr>
-              <td colspan="2" class="text-right" style="color:gray;">TOTAL</td>
-              <td class="text-right">
-                {{ final_Total | currency }}
-              </td>
-            </tr>
           </tbody>
         </table>
+        <div class="text-right extra-fare-section">
+          <div class="text-right d-inline-block" style="color:gray;">
+            <span>Items Total:</span>
+          </div>
+          <div class="text-right d-inline-block ml-4">
+            <div>
+              <span class="original-total" style="color:gray;">
+                {{ final_Total | currency }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="text-right  extra-fare-section">
+          <div class="text-right d-inline-block" style="color:gray;">
+            <span>Shipping fare:</span>
+          </div>
+          <div class="text-right d-inline-block ml-4">
+            <span style="color:gray;">
+              {{ ShippingFare | currency }}
+            </span>
+          </div>
+        </div>
+        <div class="text-right extra-fare-section">
+          <div class="text-right d-inline-block" style="color:gray;">
+            <span>Total:</span>
+            <div v-if="promotePrice" class="text-success">
+              Promotion Price:
+            </div>
+          </div>
+          <div class="text-right d-inline-block ml-4">
+            <div :class="{ 'through-line' : promotePrice }">
+              <span class="original-total">{{ final_Total+ShippingFare | currency }}</span>
+            </div>
+            <div class="text-success" v-if="promotePrice">
+              {{ promotePrice | currency }}
+            </div>
+          </div>
+        </div>
       </div>
       <div class="promote-code-section">
         <div class="promote-code-box">
           <input type="text" class="promote-code-input"
-          placeholder="Enter your promo code">
-          <button class="promote-code-btn btn-primary">APPLY</button>
+          placeholder="Enter your promo code" v-model="promoteCode">
+          <button class="promote-code-btn btn-primary" @click="checkPromote()">
+            APPLY
+          </button>
         </div>
       </div>
       <div class="paypal-btn-section">
+        <router-link to="/shop" class="continueShop">Continue Shop</router-link>
         <!-- PayPal 的結帳按鈕 -->
         <input class="paypal_btn" type="button"
         name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
@@ -92,6 +133,9 @@ export default {
       },
       isLoading: false,
       promoteCode: '',
+      promotePrice: '',
+      FinalPromoteCode: '',
+      ShippingFare: 20,
 		};
   },
   methods: {
@@ -141,7 +185,7 @@ export default {
       + 'omicam:' + vm.items.omicam
       + ';waterCase:'+ vm.items.waterCase
       + ';shoulderStrap:' + vm.items.shoulderStrap
-      + '&promoteCode=' + vm.promoteCode,
+      + '&promoteCode=' + vm.FinalPromoteCode,
       true);
       xhr.send(null);
       xhr.onload = () => {
@@ -159,6 +203,24 @@ export default {
       });
       this.listCookies()
     },
+    checkPromote() { // 檢查promote code是否符合
+      let xhr = new XMLHttpRequest();
+      let vm = this;
+      xhr.open('get',
+      'http://www.omicam.com/_privateApi/saleApi.php?fun=cpc&code='+ vm.promoteCode,
+      true);
+      xhr.send(null);
+      xhr.onload = () => {
+        console.log(xhr.response);
+        let PreFinal = vm.final_Total + vm.ShippingFare;
+        vm.promotePrice = PreFinal - xhr.response;
+        if (vm.promotePrice == PreFinal) { // 如果沒有此促銷碼，promotePrice為空字串。
+          vm.promotePrice = '';
+        }
+        vm.FinalPromoteCode = vm.promoteCode; // FinalPromoteCode為要傳出的資料。
+        vm.promoteCode = '';
+      }
+    }
   },
 	created() {
     window.scrollTo(0,0);
@@ -195,9 +257,32 @@ export default {
     margin: 50px 0;
     text-align: center;
   }
+  .order-empty {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(128, 128, 128, 0.488);
+    padding: 50px;
+    .shopping-btn {
+      display: block;
+      width: 200px;
+      height: 50px;
+      text-align: center;
+      margin: 0 auto;
+      outline: 0;
+      text-decoration: none;
+      background-color: #ffcd05;
+      color: black;
+      padding-top: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+      cursor: pointer;
+    }
+  }
   .order-section {
     .promote-code-section {
-      margin: 10px 0;
+      margin: 30px 0;
       .promote-code-box {
         width: 250px;
         margin-left: auto;
@@ -222,6 +307,19 @@ export default {
     }
     .paypal-btn-section {
       text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .continueShop {
+        display: inline-block;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        color: gray;
+        border: 1px solid rgba(128, 128, 128, 0.742);
+        margin-right: 10px;
+        text-decoration: none;
+      }
       .paypal_btn {
         width: 200px;
         padding: 10px;
@@ -264,6 +362,17 @@ export default {
           }
         }
       }
+    }
+    .through-line {
+      text-decoration: line-through;
+      color: red;
+      .original-total {
+        color: black;
+      }
+    }
+    .extra-fare-section {
+      border-top: 1px solid rgba(128, 128, 128, 0.591);
+      padding: 10px 0;
     }
     .input-box {
       position: relative;

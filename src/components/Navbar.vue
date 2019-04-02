@@ -8,7 +8,7 @@
       </div>
       <ul class="list-unstyled mobile-icon ml-auto">
         <li>
-          <router-link class="cart mr-3" to="/cart"
+          <router-link class="cart mr-3" to="/shop"
           :class="{ 'active': $route.name == 'Cart' }">
             <i class="fas fa-shopping-cart"></i>
           </router-link>
@@ -211,6 +211,7 @@ export default {
     overflow:hidden;
     font-size: 0;
     transition: all .6s;
+    padding-right: 20px;
     @media(max-width: 1000px) {
       height: 0;
       width: 100%;
