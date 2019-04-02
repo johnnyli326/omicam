@@ -208,6 +208,9 @@ td {
     background-color: rgb(215, 214, 214);
     color: rgb(23, 22, 22);
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
     .minus {
       left: 0;

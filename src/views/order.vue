@@ -1,6 +1,15 @@
 <template>
 	<div class="container order-container">
     <loading :active.sync="isLoading"></loading>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <router-link to="/shop">Shop</router-link>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Order</li>
+      </ol>
+    </nav>
     <h2 class="order-page-title">ORDER SUMMARY</h2>
     <div class="order-empty" v-if="!final_Total">
       <div class="text-center">
@@ -14,7 +23,7 @@
           <tbody>
             <tr class="bg-secondary text-white">
               <th class="text-center">Product Name</th>
-              <th class="text-center" style="width:30%">Quantity</th>
+              <th class="text-center" style="width:10%">Quantity</th>
               <th class="text-center" style="width:20%">Price</th>
             </tr>
             <tr v-for="item in orders" :key="item.id" style="">
@@ -254,7 +263,7 @@ export default {
   margin-top: 100px !important;
   margin-bottom: 100px !important;
   .order-page-title {
-    margin: 50px 0;
+    margin-bottom: 50px;
     text-align: center;
   }
   .order-empty {
