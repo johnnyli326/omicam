@@ -50,7 +50,7 @@
               </td>            
             </tr>
             <tr>
-              <td colspan="2" class="text-right">合計</td>
+              <td colspan="2" class="text-right">TOTAL</td>
               <td class="text-right">
                 {{ final_Total | currency }}
               </td>
@@ -125,36 +125,12 @@ export default {
           })
         }
       })
-    },
-    GetData() {
       // readyState = 0 , 已經產生一個XMLHttpRequest，但還沒連結。
-      // let xhr = new XMLHttpRequest();
-      // // readyState = 1 ，使用了open()，但還沒把資料傳送過去。
-      // // true ， 非同步
-      // xhr.open('post', 'http://www.omicam.com/_privateApi/OmiSalePrice.php', true);
-      // xhr.send(null);
-      // console.log(xhr);
-      // xhr.onload = () => {
-      //   if (xhr.status == 200) {
-      //     console.log(xhr.responseText);
-      //   } else {
-      //     console.log('錯誤');
-      //   }
-      // }
-      $.ajax({
-          url: 'http://www.omicam.com/_privateApi/OmiSalePrice.php',
-          type: 'POST',
-          data: {class: 'SalePrice',function:'getItems'},
-          success:function(data){
-            console.log(data);
-          }
-      });
     },
 	},
 	created() {
     window.scroll(0,0);
     this.listCookies();
-    this.GetData(); // 取得商品資料
   },
   mounted() {
   },

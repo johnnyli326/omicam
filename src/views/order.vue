@@ -9,7 +9,7 @@
             <tr class="bg-secondary text-white">
               <th class="text-center">Product Name</th>
               <th class="text-center" style="width:20%">Quantity</th>
-              <th class="text-center" style="width:10%">Total</th>
+              <th class="text-center" style="width:10%">PRICE</th>
             </tr>
             <tr v-for="item in carts" :key="item.id">
               <td class="text-left product-box">
@@ -17,7 +17,7 @@
                     <div class="product-img"></div>
                     <div class="product-info-box">
                       <div class="product-info">
-                        <span href="#" class="product-name">
+                        <span class="product-name">
                           {{ item.name }}
                         </span>
                         <span class="product-price">USD $ {{ item.price }}</span>
@@ -28,20 +28,17 @@
                   </div>
                 </div>
               </td>
-              <td class="pt-2 text-center">
+              <td class="pt-2 text-center" style="color:gray;">
                 {{ item.qty }}
               </td>
               <td>
-                <div class="pt-2 text-right text-danger">
+                <div class="pt-2 text-right" style="color:gray;">
                   {{ item.price*item.qty | currency }}
-                </div>
-                <div class="pt-2 text-right text-success" v-if="item.coupon">
-                  {{ item.final_total | currency }}
                 </div>
               </td>            
             </tr>
             <tr>
-              <td colspan="2" class="text-right">合計</td>
+              <td colspan="2" class="text-right" style="color:gray;">TOTAL</td>
               <td class="text-right">
                 {{ final_Total | currency }}
               </td>
@@ -49,7 +46,14 @@
           </tbody>
         </table>
       </div>
-      <div class="paypal_btn_section">
+      <div class="promote-code-section">
+        <div class="promote-code-box">
+          <input type="text" class="promote-code-input"
+          placeholder="Enter your promo code">
+          <button class="promote-code-btn btn-primary">APPLY</button>
+        </div>
+      </div>
+      <div class="paypal-btn-section">
         <!-- PayPal 的結帳按鈕 -->
         <input class="paypal_btn" type="button"
         name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
@@ -87,6 +91,7 @@ export default {
         shoulderStrap: 0,
       },
       isLoading: false,
+      promoteCode: '',
 		};
   },
   methods: {
@@ -135,15 +140,16 @@ export default {
       'http://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items='
       + 'omicam:' + vm.items.omicam
       + ';waterCase:'+ vm.items.waterCase
-      + ';shoulderStrap:' + vm.items.shoulderStrap,
+      + ';shoulderStrap:' + vm.items.shoulderStrap
+      + '&promoteCode=' + vm.promoteCode,
       true);
       xhr.send(null);
       xhr.onload = () => {
         let paypalUrl = xhr.response;
         console.log(paypalUrl);
         window.location.replace(paypalUrl); // 移動至paypal付款頁面
-        vm.isLoading = false;
         this.delete_cookie(); // 刪除cart紀錄
+        // vm.isLoading = false;
       }
     },
     delete_cookie() { // 刪除cart紀錄
@@ -180,8 +186,31 @@ export default {
     text-align: center;
   }
   .order-section {
-    position: relative;
-    .paypal_btn_section {
+    .promote-code-section {
+      margin: 10px 0;
+      .promote-code-box {
+        width: 250px;
+        margin-left: auto;
+        height: 36px;
+        .promote-code-input {
+          width: 70%;
+          vertical-align: top;
+          height: 100%;
+          &:focus {
+            outline: none !important;
+            border:1px solid #ffcd05;
+            box-shadow: 0 0 10px #719ECE;
+          }
+        }
+        .promote-code-btn {
+          width: 30%;
+          vertical-align: top;
+          height: 100%;
+          outline: 0;
+        }
+      }
+    }
+    .paypal-btn-section {
       text-align: right;
       .paypal_btn {
         width: 200px;

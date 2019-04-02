@@ -2,7 +2,7 @@
   <div class="nav-wrap fixed-top">
     <nav class="navbar">
       <div>
-        <router-link class="navbar-brand d-block p-0" to="/">
+        <router-link class="logo-link d-block p-0" to="/">
           <h1 class="logo">OmiCam</h1>
         </router-link>
       </div>
@@ -130,18 +130,21 @@ export default {
   width: 100vw;
   background-color: black;
   z-index: 100;
-  h1.logo {
-    background-image: url('../assets/images/logo.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    text-indent: 101%;
-    overflow:  hidden;
-    width: calc(180px*0.6);
-    height: calc(58px*0.6);
-    margin-left: 10px;
-    height: 60px;
-    margin-bottom: 0;
+  .logo-link {
+    outline: 0;
+    h1.logo {
+      background-image: url('../assets/images/logo.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      text-indent: 101%;
+      overflow:  hidden;
+      width: calc(180px*0.6);
+      height: calc(58px*0.6);
+      margin-left: 10px;
+      height: 60px;
+      margin-bottom: 0;
+    }
   }
   ul.mobile-icon {
     font-size: 0;
@@ -157,6 +160,7 @@ export default {
       font-size: 16px;
       padding: 0 10px;
       line-height: 60px;
+      outline: 0;
       &:hover {
         color: white;
         transition: all .3s ease;
