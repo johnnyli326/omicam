@@ -54,14 +54,6 @@ export default new Router({
       name: 'Order',
       component: () => import('./views/order.vue'),
     }, {
-      path: 'productlist',
-      name: 'ProductList',
-      component: () => import('./views/ProductList.vue'),
-    }, {
-      path: 'product/:productId',
-      name: 'Product',
-      component: () => import('./views/Product.vue'),
-    }, {
       path: '*',
       redirect: '/',
     }],
