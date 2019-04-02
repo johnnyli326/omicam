@@ -1,5 +1,6 @@
 <template>
 	<div class="container order-container">
+    <loading :active.sync="isLoading"></loading>
     <h2 class="order-page-title">ORDER SUMMARY</h2>
     <div class="order-section">
       <div class="table-responsive">
@@ -81,10 +82,11 @@ export default {
 				}
       ],
       items: {
-        omicam: '',
-        waterCase: '',
-        shoulderStrap: '',
+        omicam: 0,
+        waterCase: 0,
+        shoulderStrap: 0,
       },
+      isLoading: false,
 		};
   },
   methods: {
@@ -125,19 +127,23 @@ export default {
     AJAXsubmit() {
       // readyState = 0 , 已經產生一個XMLHttpRequest，但還沒連結。
       let xhr = new XMLHttpRequest();
+      let vm = this;
+      vm.isLoading = true;
       // readyState = 1 ，使用了open()，但還沒把資料傳送過去。
       // true ， 非同步
       xhr.open('get',
-      'http://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items=omicam:'
-      + this.items.omicam+';waterCase:'
-      + this.items.waterCase +';shoulderStrap:'
-      + this.items.shoulderStrap,
+      'http://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items='
+      + 'omicam:' + vm.items.omicam
+      + ';waterCase:'+ vm.items.waterCase
+      + ';shoulderStrap:' + vm.items.shoulderStrap,
       true);
       xhr.send(null);
       xhr.onload = () => {
         let paypalUrl = xhr.response;
-        this.delete_cookie(); // 刪除cart紀錄
+        console.log(paypalUrl);
         window.location.replace(paypalUrl); // 移動至paypal付款頁面
+        vm.isLoading = false;
+        this.delete_cookie(); // 刪除cart紀錄
       }
     },
     delete_cookie() { // 刪除cart紀錄
