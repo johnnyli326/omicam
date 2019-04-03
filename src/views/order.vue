@@ -1,119 +1,122 @@
 <template>
 	<div class="container order-container">
-    <loading :active.sync="isLoading"></loading>
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb bg-white">
-        <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
-        <li class="breadcrumb-item active" aria-current="page">
-          <router-link to="/shop">Shop</router-link>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Order</li>
-      </ol>
-    </nav>
-    <h2 class="order-page-title">ORDER SUMMARY</h2>
-    <div class="order-empty" v-if="!final_Total">
-      <div class="text-center">
-        <h4>YOUR ORDER LIST IS EMPTY</h4>
-        <router-link class="shopping-btn" to="/shop">GO SHOPPING</router-link>
+      <loading :active.sync="isLoading"></loading>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            <router-link to="/shop">Shop</router-link>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Order</li>
+        </ol>
+      </nav>
+      <h2 class="order-page-title">ORDER SUMMARY</h2>
+      <div class="order-empty" v-if="!final_Total">
+        <div class="text-center">
+          <h4>YOUR ORDER LIST IS EMPTY</h4>
+          <router-link class="shopping-btn" to="/shop">GO SHOPPING</router-link>
+        </div>
       </div>
-    </div>
-    <div class="order-section" v-if="final_Total">
-      <div class="table-responsive">
-        <table class="table table-sm">
-          <tbody>
-            <tr class="bg-secondary text-white">
-              <th class="text-center">Product Name</th>
-              <th class="text-center" style="width:10%">Quantity</th>
-              <th class="text-center" style="width:20%">Price</th>
-            </tr>
-            <tr v-for="item in orders" :key="item.id" style="">
-              <td class="text-left product-box">
-                <div class="order-img-box">
-                    <div class="product-img"></div>
-                    <div class="product-info-box">
-                      <div class="product-info">
-                        <span class="product-name">
-                          {{ item.name }}
-                        </span>
-                        <span class="product-price">USD $ {{ item.price }}</span>
+      <div class="order-section" v-if="final_Total">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tbody>
+              <tr class="bg-secondary text-white">
+                <th class="text-center">Product Name</th>
+                <th class="text-center" style="width:10%">Quantity</th>
+                <th class="text-center" style="width:20%">Price</th>
+              </tr>
+              <tr v-for="item in orders" :key="item.id" style="">
+                <td class="text-left product-box">
+                  <div class="order-img-box">
+                      <div class="product-img"></div>
+                      <div class="product-info-box">
+                        <div class="product-info">
+                          <span class="product-name">
+                            {{ item.name }}
+                          </span>
+                          <span class="product-price">USD $ {{ item.price }}</span>
+                        </div>
                       </div>
+                    <div class="text-success" v-if="item.coupon">
+                      已套用優惠卷
                     </div>
-                  <div class="text-success" v-if="item.coupon">
-                    已套用優惠卷
                   </div>
-                </div>
-              </td>
-              <td class="pt-2 text-center" style="color:gray;">
-                {{ item.qty }}
-              </td>
-              <td>
-                <div class="pt-2 text-right" style="color:gray;">
-                  {{ item.price*item.qty | currency }}
-                </div>
-              </td>            
-            </tr>
-          </tbody>
-        </table>
-        <div class="text-right extra-fare-section">
-          <div class="text-right d-inline-block" style="color:gray;">
-            <span>Items Total:</span>
+                </td>
+                <td class="pt-2 text-center" style="color:gray;">
+                  {{ item.qty }}
+                </td>
+                <td>
+                  <div class="pt-2 text-right" style="color:gray;">
+                    {{ item.price*item.qty | currency }}
+                  </div>
+                </td>            
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-right extra-fare-section">
+            <div class="text-right d-inline-block" style="color:gray;">
+              <span>Items Total:</span>
+            </div>
+            <div class="text-right d-inline-block ml-4">
+              <div>
+                <span class="original-total" style="color:gray;">
+                  {{ final_Total | currency }}
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="text-right d-inline-block ml-4">
-            <div>
-              <span class="original-total" style="color:gray;">
-                {{ final_Total | currency }}
+          <div class="text-right  extra-fare-section">
+            <div class="text-right d-inline-block" style="color:gray;">
+              <span>Shipping fare:</span>
+            </div>
+            <div class="text-right d-inline-block ml-4">
+              <span style="color:gray;">
+                {{ ShippingFare | currency }}
               </span>
             </div>
           </div>
-        </div>
-        <div class="text-right  extra-fare-section">
-          <div class="text-right d-inline-block" style="color:gray;">
-            <span>Shipping fare:</span>
-          </div>
-          <div class="text-right d-inline-block ml-4">
-            <span style="color:gray;">
-              {{ ShippingFare | currency }}
-            </span>
-          </div>
-        </div>
-        <div class="text-right extra-fare-section">
-          <div class="text-right d-inline-block" style="color:gray;">
-            <span>Total:</span>
-            <div v-if="promotePrice" class="text-success">
-              Promotion Price:
+          <div class="text-right extra-fare-section">
+            <div class="text-right d-inline-block" style="color:gray;">
+              <span>Total:</span>
+              <div v-if="promotePrice" class="text-success">
+                Promotion Price:
+              </div>
             </div>
-          </div>
-          <div class="text-right d-inline-block ml-4">
-            <div :class="{ 'through-line' : promotePrice }">
-              <span class="original-total">{{ final_Total+ShippingFare | currency }}</span>
-            </div>
-            <div class="text-success" v-if="promotePrice">
-              {{ promotePrice | currency }}
+            <div class="text-right d-inline-block ml-4">
+              <div :class="{ 'through-line' : promotePrice }">
+                <span class="original-total">{{ final_Total+ShippingFare | currency }}</span>
+              </div>
+              <keep-alive> 
+                <div class="text-success" v-if="promotePrice">
+                  {{ promotePrice | currency }}
+                </div>
+              </keep-alive>
             </div>
           </div>
         </div>
-      </div>
-      <div class="promote-code-section">
-        <div class="promote-code-box">
-          <input type="text" class="promote-code-input"
-          placeholder="Enter your promo code" v-model="promoteCode">
-          <button class="promote-code-btn btn-primary" @click="checkPromote()">
-            APPLY
-          </button>
+        <div class="promote-code-section">
+          <div class="promote-code-box">
+            <input type="text" class="promote-code-input"
+            placeholder="Enter your promo code" v-model="promoteCode">
+            <button class="promote-code-btn btn-primary" @click="checkPromote()">
+              APPLY
+            </button>
+          </div>
         </div>
+        <div class="paypal-btn-section">
+          <router-link to="/shop" class="continueShop">Continue Shop</router-link>
+          <!-- PayPal 的結帳按鈕 -->
+          <input class="paypal_btn" type="button"
+          name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
+        </div>
+        <div class="notice mt-4">注意事項</div>
       </div>
-      <div class="paypal-btn-section">
-        <router-link to="/shop" class="continueShop">Continue Shop</router-link>
-        <!-- PayPal 的結帳按鈕 -->
-        <input class="paypal_btn" type="button"
-        name="submit" alt="Please pay by paypal" @click="AJAXsubmit()" />
-      </div>
-      <div class="notice mt-4">注意事項</div>
-    </div>
   </div>
 </template>
 
 <script>
+import { setTimeout } from 'timers';
 export default {
   data() {
     return {
@@ -179,6 +182,9 @@ export default {
             }
           })
           this.items.waterCase = PreNum;
+        } else if(e.includes('promoteCode')) { // 確認是否有套用過promo Code
+          this.promoteCode = e.substr(13);
+          console.log(this.promoteCode);
         }
       })
     },
@@ -208,9 +214,11 @@ export default {
     delete_cookie() { // 刪除cart紀錄
       let Arr = this.carts;
       Arr.forEach(function(e) {
-        document.cookie = e.name + '=' + '; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+        document.cookie = e.name + '=' + ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
       });
+      document.cookie = "promoteCode=;expires=Thu, 01 Jan 1970 00:00:01 GMT"
       this.listCookies()
+      vm.FinalPromoteCode = '';
     },
     checkPromote() { // 檢查promote code是否符合
       let xhr = new XMLHttpRequest();
@@ -226,6 +234,7 @@ export default {
         if (vm.promotePrice == PreFinal) { // 如果沒有此促銷碼，promotePrice為空字串。
           vm.promotePrice = '';
         }
+        document.cookie ="promoteCode=" + vm.promoteCode + ";max-age=1800;"; // 將輸入過的promo Code 寫入cookie，以防客人繼續購物。
         vm.FinalPromoteCode = vm.promoteCode; // FinalPromoteCode為要傳出的資料。
         vm.promoteCode = '';
       }
@@ -234,6 +243,7 @@ export default {
 	created() {
     window.scrollTo(0,0);
     this.listCookies();
+    setTimeout(() => { this.checkPromote() }, 100); // 確認之前在訂購頁面，有套用過promo code?
   },
   computed: {
     final_Total() {
@@ -255,6 +265,9 @@ export default {
       return orderArr;
     },
   },
+  activated() {
+    vm.promoteCode = vm.promoteCode;
+  }
 };
 </script>
 
