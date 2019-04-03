@@ -5,7 +5,7 @@
         <h2>CONTACT</h2>
       </div>
     </div>
-		<div class="container my-5 text-center">
+		<div class="container mb-5 text-center">
 			<nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>

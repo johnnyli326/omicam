@@ -1,7 +1,11 @@
 <template>
 	<div>
-    <div class="container" style="margin: 100px auto;">
-      <h2 class="text-center my-3">SHOP</h2>
+    <nav class="page-title">
+      <div class="container">
+        <h2>OMI SHOP</h2>
+      </div>
+    </nav>
+    <div class="container" style="margin-bottom: 100px;">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
@@ -180,6 +184,12 @@ td {
 .small-img {
   width: 50px;
 	height: auto;
+}
+.page-title {
+  width: 100%;
+  padding: 30px;
+  background-color: #f8f9f9;
+  border: 1px solid #e9e9e9;
 }
 .shop-table {
   box-shadow: 1px 1px 10px gray;

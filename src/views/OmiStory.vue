@@ -5,7 +5,7 @@
         <h2>OMI STORY</h2>
       </div>
     </div>
-    <div class="container my-5">
+    <div class="container mb-5">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
