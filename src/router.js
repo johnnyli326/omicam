@@ -14,7 +14,7 @@ export default new Router({
       name: 'Home',
       component: () => import('./views/Home.vue'),
     }, {
-      path: 'omicam',
+      path: 'product/omicam',
       name: 'Omicam',
       component: () => import('./views/Omicam.vue'),
     }, {

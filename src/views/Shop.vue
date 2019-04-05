@@ -24,7 +24,7 @@
             style="background-color: #f9f9f9;">
               <td class="text-left product-box">
                 <div class="product-img-box">
-                  <router-link :to="'/'+item.link" class="btn btn-link p-0">
+                  <router-link :to="'/product/'+item.link" class="btn btn-link p-0">
                     <img class="small-img" :src="item.imageUrl" :alt="item.name">
                     <div>{{ item.name }}</div>
                   </router-link>

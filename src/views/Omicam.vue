@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container omicam-wrap">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
@@ -318,126 +318,129 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
-@media(max-width: 1000px) {
-  h3 {
-    font-size: 24px !important;
-  }
-  li {
-    font-size: 16px !important;
-  }
-}
-a.btn {
-  text-decoration: none;
-  display: inline-block;
-  padding: 10px 20px;
-  color: black;
-  &:hover {
-    color: black;
-  }
-}
-.link-color {
-  color: #ffcd05;
-  &:hover {
-    color: #777777;
-  }
-}
-p {
-  color: #777777;
-  text-indent: 14px;
-}
-.section1 {
-  padding: 20px;
-  background-image: url('../assets/images/omicam-bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  margin: 50px 0;
-  height: 600px;
-  @include ipad() {
-    background-position: bottom left;
-  }
-  .banner {
-    color: white;
-    width: 55%;
-    margin-left: auto;
-    padding: 20px;
-    background-color: rgba(216,216,216,0.43);
-    text-align: center;
-    height: 100%;
-    @include ipad() {
-      width: 100%;
-      height: auto;
+.omicam-wrap {
+  padding-top: 50px;
+  @media(max-width: 1000px) {
+    h3 {
+      font-size: 24px !important;
     }
-    .banner-title {
-      margin-bottom: 50px;
-      margin-bottom: 0;
-      .underline {
-        border-bottom: 2px solid white;
-        font-size: 60px;
-        font-weight: 500;
-      }
-    }
-    p {
-      padding-top: 10px;
-      color: white;
-      text-align: left;
-      font-size: 20px;
-      text-indent: 17px;
-      text-align:justify;
-      @include ipad() {
-        font-size: 14px;
-      }
+    li {
+      font-size: 16px !important;
     }
   }
-}
-.section2 {
-  .icon-box {
-    display: inline-block;
-    width: 20%;
-    vertical-align: top;
-    .icons {
-      transition: all .5s;
-      vertical-align: top;
-      @media(min-width: 768px){
-        &:hover {
-          transform: scale(1.3);
-        }
-      }
-      .icon-name {
-        color: black;
-        text-decoration: none;
-      }
-    }
-  }
-}
-.btn-img {
-  display: inline-block;
-  width: 33.333%;
-  text-align: center;
-  vertical-align: top;
-}
-.proof-section {
-  padding: 20px;
-  background-color: rgba(122,122,122,0.59);
-  .proof-title {
-    color: #ffcd05;
-    text-shadow: 0px 0px 2px rgba(0,0,0,0.3);
-    font-size: 31px;
-  }
-  .scenery-img {
-    width: 18%;
-    margin: 10px 10px;
-    display: inline-block;
-  }
-}
-.btn {
-  padding: 0;
-  a {
+  a.btn {
     text-decoration: none;
     display: inline-block;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+  .link-color {
+    color: #ffcd05;
+    &:hover {
+      color: #777777;
+    }
+  }
+  p {
+    color: #777777;
+    text-indent: 14px;
+  }
+  .section1 {
+    padding: 20px;
+    background-image: url('../assets/images/omicam-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 50px 0;
+    height: 600px;
+    @include ipad() {
+      background-position: bottom left;
+    }
+    .banner {
+      color: white;
+      width: 55%;
+      margin-left: auto;
+      padding: 20px;
+      background-color: rgba(216,216,216,0.43);
+      text-align: center;
+      height: 100%;
+      @include ipad() {
+        width: 100%;
+        height: auto;
+      }
+      .banner-title {
+        margin-bottom: 50px;
+        margin-bottom: 0;
+        .underline {
+          border-bottom: 2px solid white;
+          font-size: 60px;
+          font-weight: 500;
+        }
+      }
+      p {
+        padding-top: 10px;
+        color: white;
+        text-align: left;
+        font-size: 20px;
+        text-indent: 17px;
+        text-align:justify;
+        @include ipad() {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .section2 {
+    .icon-box {
+      display: inline-block;
+      width: 20%;
+      vertical-align: top;
+      .icons {
+        transition: all .5s;
+        vertical-align: top;
+        @media(min-width: 768px){
+          &:hover {
+            transform: scale(1.3);
+          }
+        }
+        .icon-name {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .btn-img {
+    display: inline-block;
+    width: 33.333%;
+    text-align: center;
+    vertical-align: top;
+  }
+  .proof-section {
+    padding: 20px;
+    background-color: rgba(122,122,122,0.59);
+    .proof-title {
+      color: #ffcd05;
+      text-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+      font-size: 31px;
+    }
+    .scenery-img {
+      width: 18%;
+      margin: 10px 10px;
+      display: inline-block;
+    }
+  }
+  .btn {
+    padding: 0;
+    a {
+      text-decoration: none;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      padding: 10px;
+    }
   }
 }
 </style>

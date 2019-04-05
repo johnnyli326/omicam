@@ -23,7 +23,7 @@
       </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
-          <router-link to="/omicam"
+          <router-link to="/product/omicam"
           :class="{ 'active': $route.name == 'Omicam' }">
           OMICAM
           </router-link>

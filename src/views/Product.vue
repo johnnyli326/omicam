@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container my-5">
+    <div class="container my-5 product-wrap">
       <div class="row">
         <div class="col-md-6 d-flex justify-content-center align-items-center">
           <div>
@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-      <section class="Detail">
+      <!-- <section class="Detail">
         <ul class="Detail-btns">
           <li id="Des-btn" class="btn active">Description</li>
           <li id="Add-btn" class="btn">Additional Information</li>
@@ -60,9 +60,9 @@
           <li id="Acc-btn" class="btn">Accessory</li>
           <li id="Rev-btn" class="btn">Reviews</li>
           <hr>
-        </ul>
+        </ul> -->
         <!-- Description section -->
-        <section id="Description" class="detail-content active">
+        <!-- <section id="Description" class="detail-content active">
           <h2>DESCRIPTION</h2>
           <ul>
             <li>
@@ -129,9 +129,9 @@
               </span>
             </li>
           </ul>
-        </section>
+        </section> -->
         <!-- Additional -->
-        <section id="Additional-Information" class="detail-content">
+        <!-- <section id="Additional-Information" class="detail-content">
           <h2>Additional Information</h2>
           <table class="table">
             <tbody>
@@ -145,9 +145,9 @@
               </tr>
             </tbody>
           </table>
-        </section>
+        </section> -->
         <!-- Spec -->
-        <section id="Specs" class="detail-content">
+        <!-- <section id="Specs" class="detail-content">
           <h2>Specs</h2>
           <p style="text-align: justify">
             Renders VR footage up to 4K 30fps, Field of View 240 Degree
@@ -463,7 +463,7 @@
         <section id="Reviews" class="detail-content">
           <h2>Reviews</h2>
         </section>
-      </section>
+      </section> -->
     </div>
   </div>
 </template>
@@ -475,15 +475,11 @@ export default {
   data() {
     return {
       products: [{
-				name: 'OmiCam',
-        price: '999',
-        imgSrc: require('../assets/images/omicam-1.png'),
-      }, {
 				name: 'Waterproof Case',
         price: '888',
         imgSrc: require('../assets/images/bag.jpg'),
       }, {
-				name: 'Accessory',
+				name: 'Shoulder Strap',
         price: '222',
         imgSrc: require('../assets/images/accessories.jpg'),
       }],
@@ -541,116 +537,119 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/mixin";
-
-h2 {
-  font-size: 40px;
-  @media(max-width: 1000px) {
-    font-size: 32px;
+.product-wrap {
+  padding-top: 50px;
+  h2 {
+    font-size: 40px;
+    @media(max-width: 1000px) {
+      font-size: 32px;
+    }
   }
-}
-.cart-btn {
-  width: 150px;
-  padding: 5px;
-  background-color: #ffcd05;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #dfb60f;
+  .cart-btn {
+    width: 150px;
+    padding: 5px;
+    background-color: #ffcd05;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #dfb60f;
+    }
   }
-}
-table thead{
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-table, th, td {
-  border: 1px solid #e9e9e9 !important;
-}
-.btn {
-  cursor: pointer;
-}
-.page-title {
-  width: 100%;
-  padding: 30px;
-  background-color: #f8f9f9;
-  border: 1px solid #e9e9e9;
-}
-.intro-content {
-  line-height: 2;
-}
-.sub-title {
-  font-size: 24px;
-}
-.cart-btn {
-  background-color: #e59e34;
-  color: white;
-  transition: all .3s;
-  &:hover,
-  &:active {
-    opacity: 0.6;
+  table thead{
+    border-collapse: collapse;
+    border-spacing: 0;
   }
-}
-.original-price {
-  font-size: 20px;
-  color: #77a464;
-}
-.price {
-  font-size: 40px;
-  color: #77a464;
-  font-weight: 500;
-}
-.Detail {
-  margin: 50px 0;
-  ul.Detail-btns {
-    list-style: none;
-    padding: 0;
-    position: relative;
-    .btn {
-      display: inline-block;
-      background: #ebe9eb;
-      border-radius: 5px 5px 0 0;
-      border: 0.5px solid rgba(128, 128, 128, 0.783);
-      border-collapse: collapse;
-      border-spacing: 0;
-      &.active,
-      &:hover {
-        background: white;
+  table, th, td {
+    border: 1px solid #e9e9e9 !important;
+  }
+  .btn {
+    cursor: pointer;
+  }
+  .page-title {
+    width: 100%;
+    padding: 30px;
+    background-color: #f8f9f9;
+    border: 1px solid #e9e9e9;
+  }
+  .intro-content {
+    line-height: 2;
+  }
+  .sub-title {
+    font-size: 24px;
+  }
+  .cart-btn {
+    background-color: #e59e34;
+    color: white;
+    transition: all .3s;
+    &:hover,
+    &:active {
+      opacity: 0.6;
+    }
+  }
+  .original-price {
+    font-size: 20px;
+    color: #77a464;
+  }
+  .price {
+    font-size: 40px;
+    color: #77a464;
+    font-weight: 500;
+  }
+  .Detail {
+    margin: 50px 0;
+    ul.Detail-btns {
+      list-style: none;
+      padding: 0;
+      position: relative;
+      .btn {
+        display: inline-block;
+        background: #ebe9eb;
+        border-radius: 5px 5px 0 0;
+        border: 0.5px solid rgba(128, 128, 128, 0.783);
+        border-collapse: collapse;
+        border-spacing: 0;
+        &.active,
+        &:hover {
+          background: white;
+        }
+        @include ipad() {
+          display: block;
+        }
       }
-      @include ipad() {
+      hr {
+        position: absolute;
+        top: 37px;
+        width: 100%;
+        margin: 0;
+        @include ipad() {
+          display: none;
+        }
+      } 
+    }
+    .detail-content {
+      display: none;
+      font-size: 14px;
+      line-height: 2.5;
+      margin-top: 50px;
+      &.active{
         display: block;
       }
-    }
-    hr {
-      position: absolute;
-      top: 37px;
-      width: 100%;
-      margin: 0;
-      @include ipad() {
-        display: none;
+      .table-title {
+        font-size: 24px;
       }
-    } 
-  }
-  .detail-content {
-    display: none;
-    font-size: 14px;
-    line-height: 2.5;
-    margin-top: 50px;
-    &.active{
-      display: block;
     }
-    .table-title {
-      font-size: 24px;
-    }
-  }
-  #Description {
-    .dec-title {
-      font-size: 16px;
-      font-weight: 800;
-    }
-    .dec-content {
-      display: block;
-      text-indent: 30px;
+    #Description {
+      .dec-title {
+        font-size: 16px;
+        font-weight: 800;
+      }
+      .dec-content {
+        display: block;
+        text-indent: 30px;
+      }
     }
   }
 }
+
 </style>

@@ -273,8 +273,7 @@ export default {
 
 <style lang="scss" scoped>
 .order-container {
-  margin-top: 100px !important;
-  margin-bottom: 100px !important;
+  padding-top: 50px;
   .order-page-title {
     margin-bottom: 50px;
     text-align: center;

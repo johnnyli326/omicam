@@ -1,6 +1,6 @@
 <template>
   <div>
-		<div class="container">
+		<div class="container studio-wrap">
 			<nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.studio-wrap {
+	padding-top: 50px;
 	.link-color {
 		color: #ffcd05;
 		&:hover {
@@ -56,4 +58,5 @@ export default {
 	p {
 		color: #777777;
 	}
+}
 </style>
