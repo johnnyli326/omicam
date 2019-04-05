@@ -9,7 +9,7 @@
       <ul class="list-unstyled mobile-icon ml-auto">
         <li>
           <router-link class="cart mr-3" to="/shop"
-          :class="{ 'active': $route.name == 'Cart' }">
+          :class="{ 'active': $route.name == 'Shop' }">
             <i class="fas fa-shopping-cart"></i>
           </router-link>
         </li>
@@ -22,12 +22,6 @@
         </li>
       </ul>
       <ul class="top-menu list-unstyled">
-        <!-- <li class="menu-item">
-          <router-link to="/productlist"
-          :class="{ 'active': $route.name == 'Product' }">
-          PRODUCT
-          </router-link>
-        </li> -->
         <li class="menu-item">
           <router-link to="/omicam"
           :class="{ 'active': $route.name == 'Omicam' }">

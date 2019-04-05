@@ -213,12 +213,12 @@ export default {
     },
     delete_cookie() { // 刪除cart紀錄
       let Arr = this.carts;
-      Arr.forEach(function(e) {
+      Arr.forEach(function(e) {  // 刪除 carts cookie
         document.cookie = e.name + '=' + ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
       });
-      document.cookie = "promoteCode=;expires=Thu, 01 Jan 1970 00:00:01 GMT"
-      this.listCookies()
-      vm.FinalPromoteCode = '';
+      document.cookie = "promoteCode=;expires=Thu, 01 Jan 1970 00:00:01 GMT"  // 刪除 promoCode cookie
+      this.listCookies() // 刪除訂單資料。
+      vm.FinalPromoteCode = ''; // 清除傳給後端的promoCode
     },
     checkPromote() { // 檢查promote code是否符合
       let xhr = new XMLHttpRequest();
