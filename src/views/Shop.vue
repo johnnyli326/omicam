@@ -84,17 +84,17 @@ export default {
           qty: 0,
           link: 'omicam',
         }, {
-          name: 'shoulderStrap',
+          name: 'Shoulder Strap',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 222,
           qty: 0,
           link: 'shoulderstrap',
         }, {
-          name: 'waterCase',
+          name: 'Waterproof Case',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 111,
           qty: 0,
-          link: 'watercase',
+          link: 'waterproofcase',
 				}
 			],
       coupon_code: '',
@@ -113,19 +113,19 @@ export default {
               e.qty = PreNum;
             }
           })
-        } else if(e.includes('shoulderStrap')) {
+        } else if(e.includes('Shoulder Strap')) {
           // console.log('water：' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'shoulderStrap') {
+            if(e.name === 'Shoulder Strap') {
               e.qty = PreNum;
             }
           })
-        } else if(e.includes('waterCase')) {
+        } else if(e.includes('Waterproof Case')) {
           // console.log('waterCase：' +e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'waterCase') {
+            if(e.name === 'Waterproof Case') {
               e.qty = PreNum;
               // console.log(typeof(e.qty));
             }
@@ -201,7 +201,7 @@ td {
   position: relative;
   width: 150px;
   display: inline-block;
-  border: 1px solid gainsboro;
+  border: 0;
   cursor: pointer;
   .number-input {
     box-sizing: border-box;
@@ -222,12 +222,12 @@ td {
     justify-content: center;
     align-items: center;
     }
-    .minus {
-      left: 0;
-    }
-    .plus {
-      right: 0;
-    }
+  .minus {
+    left: 0;
+  }
+  .plus {
+    right: 0;
+  }
 }
 .table {
   .product-box {

@@ -1,469 +1,50 @@
 <template>
   <div>
     <div class="container my-5 product-wrap">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+          <li class="breadcrumb-item"><router-link to="/shop">Shop</router-link></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+        </ol>
+      </nav>
       <div class="row">
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-          <div>
-            <img :src="product.imgSrc" :alt="product.name" style="width:150px;height:auto;">
+        <div class="col-md-6 product-img-section">
+          <div class="product-img">
+            <img :src="product.imgSrc" :alt="product.name">
           </div>
+          <ul class="thumbnail-section">
+            <li class="thumbnail-box selected">
+              <img class="thumbnail-img" :src="product.imgSrc" :alt="product.name">
+            </li>
+            <li class="thumbnail-box">
+              <img class="thumbnail-img"
+              src="https://s.yimg.com/fy/a56e/item/p0833165003057-item-abe8xf4x0500x0504-m.jpg"
+              :alt="product.name">
+            </li>
+            <li class="thumbnail-box">
+              <img class="thumbnail-img"
+              src="https://img.ltn.com.tw/2018/new/jun/4/images/bigPic/600_12.jpg"
+              :alt="product.name">
+            </li>
+            <li class="nav-line"></li>
+          </ul>
         </div>
         <div class="col-md-6">
-          <h2 class="mb-3">{{ product.name }}
-            <span class="sub-title" v-if="product.name === 'OmiCam'">－Wearable VR Life Camera</span>
-          </h2>
+          <h2 class="mb-3">{{ product.name }}</h2>
           <div class="mb-3">
             <span class="price">{{ product.price }}</span>
           </div>
-          <ul class="list-unstyled mb-3 intro-content mb-4 text-secondary">
-            <li>【4K Video】Renders VR footage up to 4K 30fps</li>
-            <li>【Viewing Angle】Capture 240º wide-angle</li>
-            <li>【Batter Performance】Support 10+ hr Battery Life in Lifelog mode</li>
-            <li>【Unique Design 】Portable, Wearable, mountable and lightweight(3oz)</li>
-            <li>【Shooting Fields】the 1st VR camera with a splash-proof and dust-proof design for use in any wide array of shooting fields</li>
-            <li>【Smart Mode】Looping, Time-lapse & Lifelog recording modes</li>
-            <li>【Video Performance】Patented Horizon Correction & E-Gimbal Stabilization to stabilize shaky video</li>
-            <li>【Omi Studio】Edit smartly for one click away from producing VR highlight videos</li>
-            <li>【Your VR story】Keep the memories and fulfill your life story</li>
+          <ul class="mb-3 intro-content mb-4 text-secondary">
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, sint?</li>
+            <li>Quia laborum cum cumque mollitia quos maxime neque sapiente molestiae!</li>
+            <li>Dolore quae maxime repellat iure, quibusdam illum inventore. Nostrum, quae.</li>
+            <li>Dolorem, consequuntur! Accusamus eum quia veritatis, itaque ipsum laborum excepturi!</li>
+            <li>Accusamus est saepe fugiat, eveniet sapiente ad dolorem aliquid cupiditate.</li>
           </ul>
-          <ul class="text-secondary">
-            <li>4K resolution(VR) at 30 fps filming delivers immersive experiences</li>
-            <li>240deg VR life recorder with OMI stabilizer</li>
-            <li>Up to 15hrs Lifelog working time</li>
-            <li>12 Megapixel Sensor</li>
-            <li>OMI Studio available for download on the app store</li>
-          </ul>
-          <div class="input-group">
-            <select name="num" class="mr-3 text-center" v-model="qty" style="width:100px;text-indent:45%;">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-            <div class="cart-btn" @click="addToCart(qty)">
-              ADD TO CART
-            </div>
-          </div>
+          <router-link class="btn btn-primary" to="/shop">BUY NOW</router-link>
         </div>
       </div>
-      <!-- <section class="Detail">
-        <ul class="Detail-btns">
-          <li id="Des-btn" class="btn active">Description</li>
-          <li id="Add-btn" class="btn">Additional Information</li>
-          <li id="Spe-btn" class="btn">Specs</li>
-          <li id="Pac-btn" class="btn">Packaging</li>
-          <li id="Acc-btn" class="btn">Accessory</li>
-          <li id="Rev-btn" class="btn">Reviews</li>
-          <hr>
-        </ul> -->
-        <!-- Description section -->
-        <!-- <section id="Description" class="detail-content active">
-          <h2>DESCRIPTION</h2>
-          <ul>
-            <li>
-              <span class="dec-title">3 BUTTONS WORKOUTS</span>
-              <br>
-              <span class="dec-content">Easy to use in every moment</span>
-            </li>
-            <li>
-              <span class="dec-title">WIFI</span>
-              <br>
-              <span class="dec-content">Connect OmiCam to Wifi</span>
-            </li>
-            <li>
-              <span class="dec-title">10+ HR BATTER LIFE</span>
-              <br>
-              <span class="dec-content">
-                With a lifelog mode, Omicam support your long hour recording
-              </span>
-            </li>
-            <li>
-              <span class="dec-title">SPLASH-PROOF & DUST-PROOF</span>
-              <br>
-              <span class="dec-content">
-                OmiCam is IP65 so it can resist water splash and dust.
-                If you want to use while diving or underwater, please
-                use with the waterproof case.
-              </span>
-            </li>
-            <li>
-              <span class="dec-title">240 LENS</span>
-              <br>
-              <span class="dec-content">
-                Capture as much than what you’re seeing
-              </span>
-            </li>
-            <li>
-              <span class="dec-title">LIGHTWEIGHT DESIGN</span>
-              <br>
-              <span class="dec-content">
-                Feel free while wear it
-              </span>
-            </li>
-            <li>
-              <span class="dec-title">ACCESSORY BANDS</span>
-              <br>
-              <span class="dec-content">
-                The more entertainment you can take OmiCam with you
-              </span>
-            </li>
-            <li>
-              <span class="dec-title">360 VIDEO EDITOR</span>
-              <br>
-              <span class="dec-content">
-                Omi Studio gives a whole new way to create your 360 life video.
-              </span>
-            </li>
-            <li>
-              <span class="dec-title">IMMERSIVE EXPERIENCE</span>
-              <br>
-              <span class="dec-content">
-                Your recorded files can easily transfer to VR videos and photos so that
-                you can enjoy immersive experience by wearing VR goggle (not included in this
-                package).
-              </span>
-            </li>
-          </ul>
-        </section> -->
-        <!-- Additional -->
-        <!-- <section id="Additional-Information" class="detail-content">
-          <h2>Additional Information</h2>
-          <table class="table">
-            <tbody>
-              <tr>
-                <td width="20%">WEIGHT</td>
-                <td>0.5 kg</td>
-              </tr>
-              <tr>
-                <td>DIMENSIONS</td>
-                <td>18.8 × 14.4 × 6.3 cm</td>
-              </tr>
-            </tbody>
-          </table>
-        </section> -->
-        <!-- Spec -->
-        <!-- <section id="Specs" class="detail-content">
-          <h2>Specs</h2>
-          <p style="text-align: justify">
-            Renders VR footage up to 4K 30fps, Field of View 240 Degree
-            Splash-proof, dust-proof, Wearable, mountable and lightweight(3oz)
-            Extended battery life (Up to 15hrs in Lifelog mode), also supports 
-            power bank Smart Edit APP (One click away from producing VR highlight
-            videos) Patented Horizon Correction, E-Gimbal Stabilization, Looping,
-            Time-lapse & Lifelog recording modes 
-          </p>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-title">Dimensions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" width="20%">Weight</th>
-                <td>Approx. 3.50 oz / 99.2 grams</td>
-              </tr>
-              <tr>
-                <th scope="row">Size</th>
-                <td>
-                  1.81”(W) x 0.8” (D) x 3.68” (H)
-                  45.9mm (W) x 20.3mm (D) x 93.5mm (H)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Battery</th>
-                <td>Rechargeable Lithium Ion (1350mAh)</td>
-              </tr>
-              <tr>
-                <th scope="row">Battery Life</th>
-                <td>
-                  Up to 70 mins (in 4K mode)
-                  Up to 15 hours (in Lifelog™ Video mode)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Capture Modes</th>
-                <td>
-                  Photo / Video / Timelapse Video / Lifelog™ Photo / Lifelog™ Video)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Media Storage</th>
-                <td>
-                  Micro SD (SDXC)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Camera Sensor</th>
-                <td>
-                  Sony 12 Megapixel Sensor (4K @24fps)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Camera Lens</th>
-                <td>
-                  240-degree fisheye / 45 degree forward capture
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Weather Proof</th>
-                <td>
-                  IP65 Rated (Dust Tight / Water Resistant but not Waterproof)
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-title">Video</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" width="20%">Resolution (Panorama Video)</th>
-                <td>
-                  4K / 30fps (3840 x 2160)
-                  2.5K / 30fps (2560 x 1440)
-                  FHD / 30fps (1920 x 1080)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Video Modes</th>
-                <td>Video and Timelapse</td>
-              </tr>
-              <tr>
-                <th scope="row">Spherical Stabilization</th>
-                <td>
-                  Horizontal and Lock Mode (provided in camera “Setting” or “Edit Mode”)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Manual Camera Controls</th>
-                <td>
-                  Exposure / White Balance / ISO / HDR
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Capture Modes</th>
-                <td>
-                  Photo / Video / Timelapse Video / Lifelog™ Photo / Lifelog™ Video)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">VR Compatibility</th>
-                <td>
-                  Yes (Cardboard VR Mode w/ Gyro Controls)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Field of View</th>
-                <td>
-                  240 Degree w/ 54 Degree Forward Angle
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Audio</th>
-                <td>
-                  Mono
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-title">Photo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" width="20%">Resolution (Panorama Photo)</th>
-                <td>Up to 12 Megapixel</td>
-              </tr>
-              <tr>
-                <th scope="row">Photo Modes</th>
-                <td>Photo / Timelapse / Lifelog™ Photo</td>
-              </tr>
-              <tr>
-                <th scope="row">Spherical Stabilization</th>
-                <td>Horizontal and Lock Mode (provided in camera “Setting” or “Edit Mode”)</td>
-              </tr>
-              <tr>
-                <th scope="row">Manual Camera Controls</th>
-                <td>Exposure / White Balance / ISO / HDR</td>
-              </tr>
-              <tr>
-                <th scope="row">VR Compatibility</th>
-                <td>Yes (Cardboard VR Mode w/ Gyro Controls)</td>
-              </tr>
-              <tr>
-                <th scope="row">Field of View</th>
-                <td>240 Degree w/ 45 Degree Forward Angle</td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-title">Connectivity</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" width="20%">Wireless</th>
-                <td>Wifi</td>
-              </tr>
-              <tr>
-                <th scope="row">Smartphone Compatible</th>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <th scope="row">Mobile App</th>
-                <td>
-                  iOS / Android (control, edit, calibrate, stabilize, augment, share)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Livestream (iOS only)</th>
-                <td>
-                  Go Live with Immersive 240 FOV (Youtube / Facebook)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">VR Mode</th>
-                <td>
-                  Playback compatible with “Cardboard” headsets w/ Gyro controls
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Desktop Software</th>
-                <td>
-                  OMI Studio (edit, calibrate, stabilize, augment, share)Playback
-                  compatible with “Cardboard” headsets w/ Gyro controls
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">OS Compatibility</th>
-                <td>
-                  iOS (8.0 or later) / Android (5.0 or later) / Mac OS (10.9 or later)
-                  / Windows (7 or later)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">USB</th>
-                <td>
-                  Mini USB to Mini USB
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <th scope="row">Sensor</th>
-                <td>12M pixel</td>
-              </tr>
-              <tr>
-                <th scope="row" width="20%">Lens</th>
-                <td>240deg fisheye/ 45deg forward capture</td>
-              </tr>
-              <tr>
-                <th scope="row">Watch modes</th>
-                <td>
-                  <ol>
-                    <li>.360deg video</li>
-                    <li>.VR goggle</li>
-                  </ol>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Resolution (Panorama Photo&video)</th>
-                <td>
-                  <ul>
-                    <li>Phote   4320×2160</li>
-                    <li>Video   4K / 30fps (3840 x 2160)</li>
-                    <li>2.5K / 30fps (2560 x 1440)</li>
-                    <li>FHD / 30fps (1920 x 1080)</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Size</th>
-                <td>
-                  <ul>
-                    <li>1.81”(W) x 0.8” (D) x 3.68” (H)</li>
-                    <li>45.9mm (W) x 20.3mm (D) x 93.5mm (H)</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Battery</th>
-                <td>
-                  <ul>
-                    <li>1100mAh</li>
-                    <li>Up to 70 mins (in 4K mode)</li>
-                    <li>Up to 15 hours (in Lifelog™ Video mode)</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Camera stroage</th>
-                <td>
-                  Micro SD (SDXC) Classic 10; Max 128G
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">SW Functions</th>
-                <td>
-                  OMI Studio (edit, calibrate, stabilize, augment, share)
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">OS Compatibility</th>
-                <td>
-                  iOS (8.0 or later) / Android (5.0 or later) / Mac OS (10.9 or later)
-                  / Windows (7 or later)
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section id="Packaging" class="detail-content">
-          <h2>Packaging</h2>
-          <div class="row">
-            <div class="col-md-6">
-              <img src="../assets/images/package.jpg" alt="package">
-            </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center">
-              <ul>
-                <li>OMI Camera*1</li>
-                <li>Carrying Bag*1</li>
-                <li>360° Quick Release*1</li>
-                <li>Lens cap*1</li>
-                <li>Micro USB Charging Cable*1</li>
-                <li>Mounting Kit*1</li>
-                <li>Plug Mount公座*2</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section id="Accessory" class="detail-content">
-          <h2>Accessory</h2>
-          <p>
-            You can also purchase some additional accessories
-            to boost your user experience and capture better photos and videos.
-          </p>
-        </section>
-        <section id="Reviews" class="detail-content">
-          <h2>Reviews</h2>
-        </section>
-      </section> -->
     </div>
   </div>
 </template>
@@ -476,12 +57,14 @@ export default {
     return {
       products: [{
 				name: 'Waterproof Case',
-        price: '888',
+        price: '111',
         imgSrc: require('../assets/images/bag.jpg'),
+        qty: 0,
       }, {
 				name: 'Shoulder Strap',
         price: '222',
         imgSrc: require('../assets/images/accessories.jpg'),
+        qty: 0,
       }],
       product: {},
       qty: 1,
@@ -504,32 +87,25 @@ export default {
         vm.product = e;
       }
     })
+    $(document).ready(function() {
+      let firstImg = $('.thumbnail-box.selected')
+      console.log(firstImg);
+      $('.nav-line').css({'left':firstImg.position().left + 5});
+    })
   },
   mounted() {
     $(document).ready(function() {
-      $('.btn').click(function() {
-        $(this).addClass('active').siblings().removeClass('active');
-        let btnId = $(this).attr('id');
-        if (btnId == 'Des-btn'){
-          $('.detail-content').removeClass('active');
-          $('#Description').addClass('active');
-        } else if (btnId == 'Add-btn'){
-          $('.detail-content').removeClass('active');
-          $('#Additional-Information').addClass('active');
-        } else if (btnId == 'Spe-btn'){
-          $('.detail-content').removeClass('active');
-          $('#Specs').addClass('active');
-        } else if (btnId == 'Pac-btn'){
-          $('.detail-content').removeClass('active');
-          $('#Packaging').addClass('active');
-        } else if (btnId == 'Acc-btn'){
-          $('.detail-content').removeClass('active');
-          $('#Accessory').addClass('active');
-        } else if(btnId == 'Rev-btn'){
-          $('.detail-content').removeClass('active');
-          $('#Reviews').addClass('active');
-        }
-      });
+      $('.thumbnail-box').click(function() {
+        let target = $(this).position().left; // 移動bottom nav-line
+        $('.nav-line').css({
+          'left':target + 5,
+          'transition': 'all .5s'
+        });
+        $(this).addClass('selected').siblings().removeClass('selected');
+        let imgSrc = $(this).find('.thumbnail-img').attr('src');
+        let displayImg = $('.product-img').find('img');
+        displayImg.attr('src', imgSrc);
+      })
     });
   },
 }
@@ -537,12 +113,62 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/mixin";
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
+  
 .product-wrap {
   padding-top: 50px;
   h2 {
     font-size: 40px;
     @media(max-width: 1000px) {
       font-size: 32px;
+    }
+  }
+  .product-img-section {
+    .product-img {
+      position: relative;
+      top: 0;
+      width: 100%;
+      padding: 80px;
+      img {
+        height: 300px;
+      }
+    }
+    .thumbnail-section {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      position: relative;
+      .thumbnail-box {
+        display: inline-block;
+        margin: 0 8px;
+        width: 48px;
+        cursor: pointer;
+        .thumbnail-img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      .nav-line {
+        display: inline-block;
+        width: 54px;
+        height: 54px;
+        border-bottom: 2px solid #d3d3d3;
+        vertical-align: top;
+        box-sizing: content-box;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100px;
+        margin: 0;
+      }
     }
   }
   .cart-btn {
@@ -563,8 +189,40 @@ export default {
   table, th, td {
     border: 1px solid #e9e9e9 !important;
   }
-  .btn {
+  .input-box {
+    position: relative;
+    width: 150px;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    border: 0;
+    margin-right: 10px;
     cursor: pointer;
+    .number-input {
+      box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+      outline: 0;
+    }
+    .count {
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background-color: rgb(215, 214, 214);
+      color: rgb(23, 22, 22);
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+    .minus {
+      left: 0;
+    }
+    .plus {
+      right: 0;
+    }
   }
   .page-title {
     width: 100%;

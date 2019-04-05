@@ -127,12 +127,12 @@ export default {
           price: 999,
           qty: 0,
         },  {
-          name: 'shoulderStrap',
+          name: 'Shoulder Strap',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 222,
           qty: 0,
         }, {
-          name: 'waterCase',
+          name: 'Waterproof Case',
 					imageUrl: require('../assets/images/omicam-1.png'),
           price: 111,
           qty: 0,
@@ -164,20 +164,20 @@ export default {
             }
           })
           this.items.omicam = PreNum;
-        } else if(e.includes('shoulderStrap')) {
+        } else if(e.includes('Shoulder Strap')) {
           console.log('shoulderStrap:' + e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'shoulderStrap') {
+            if(e.name === 'Shoulder Strap') {
               e.qty = PreNum;
             }
           })
           this.items.shoulderStrap = PreNum;
-        } else if(e.includes('waterCase')) {
+        } else if(e.includes('Waterproof Case')) {
           console.log('waterCase：' +e.match(/\d/g).join(""));
           let PreNum = parseInt(e.match(/\d/g).join(""));
           this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'waterCase') {
+            if(e.name === 'Waterproof Case') {
               e.qty = PreNum;
             }
           })
@@ -223,6 +223,7 @@ export default {
     checkPromote() { // 檢查promote code是否符合
       let xhr = new XMLHttpRequest();
       let vm = this;
+      vm.isLoading = true;
       xhr.open('get',
       'http://www.omicam.com/_privateApi/saleApi.php?fun=cpc&code='+ vm.promoteCode,
       true);
@@ -237,13 +238,14 @@ export default {
         document.cookie ="promoteCode=" + vm.promoteCode + ";max-age=1800;"; // 將輸入過的promo Code 寫入cookie，以防客人繼續購物。
         vm.FinalPromoteCode = vm.promoteCode; // FinalPromoteCode為要傳出的資料。
         vm.promoteCode = '';
+        vm.isLoading = false;
       }
     }
   },
 	created() {
     window.scrollTo(0,0);
     this.listCookies();
-    setTimeout(() => { this.checkPromote() }, 100); // 確認之前在訂購頁面，有套用過promo code?
+    setTimeout(() => { this.checkPromote() }, 10); // 確認之前在訂購頁面，有套用過promo code?
   },
   computed: {
     final_Total() {
