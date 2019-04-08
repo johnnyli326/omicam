@@ -7,17 +7,17 @@
         </router-link>
       </div>
       <ul class="list-unstyled mobile-icon ml-auto">
-        <li>
+        <!-- <li>
           <router-link class="cart mr-3" to="/shop"
           :class="{ 'active': $route.name == 'Shop' }">
             <i class="fas fa-shopping-cart"></i>
           </router-link>
-        </li>
+        </li> -->
         <li>
           <button class="hamburger-btn">
-            <span class="icon-bar top-bar bg-primary"></span>
-            <span class="icon-bar middle-bar bg-primary"></span>
-            <span class="icon-bar bottom-bar bg-primary"></span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
           </button>
         </li>
       </ul>
@@ -57,6 +57,9 @@
           :class="{ 'active': $route.name == 'Contact' }">
           CONTACT
           </router-link>
+        </li>
+        <li class="menu-item">
+          <a href="#"><img class="buy-icon" src="../assets/images/Navbar/buy_icon.png" alt="buy"></a>
         </li>
       </ul>
     </nav>
@@ -119,15 +122,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+* {
+  font-size: 24px;
+}
 .navbar {
   padding: 0;
   width: 100vw;
-  background-color: black;
+  background-color: #f6af2d !important;
   z-index: 100;
+  a {
+    color: black;
+  }
   .logo-link {
     outline: 0;
     h1.logo {
-      background-image: url('../assets/images/logo.png');
+      background-image: url('../assets/images/Navbar/logo.png');
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
@@ -178,6 +187,7 @@ export default {
         border-radius: 1px;
         margin-bottom: 2px;
         transition: all .2s ease;
+        background-color: black;
       }
       &.active {
         .top-bar {
@@ -196,7 +206,7 @@ export default {
       @media(max-width: 1000px) {
         display: inline-block;
       }
-    }
+    } 
   }
   .top-menu {
     display: inline-block;
@@ -210,6 +220,7 @@ export default {
       height: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.5);
+      padding-right: 0px;
       &.show {
         height: 100vh;
         overflow-y: scroll;
@@ -230,7 +241,7 @@ export default {
         display: inline-block;
         height: 60px;
         line-height: 60px;
-        padding: 0 20px;
+        padding: 0 10px;
         text-decoration: none;
         width: 100%;
         transition: all .3s ease;
@@ -242,7 +253,7 @@ export default {
         }
         @media(max-width: 1000px) {
           display: block;
-          color: #ffcd05;
+          color: black;
           text-align: center;
           &:hover {
             color: white;
@@ -251,6 +262,11 @@ export default {
         }
       }
     }
+  }
+  .buy-icon {
+    width: 24px;
+    height: auto;
+    padding-bottom: 3px;
   }
 }
 </style>

@@ -366,6 +366,12 @@ export default {
 @import "../assets/mixin";
 @import "~owl.carousel/dist/assets/owl.carousel.css";
 
+// text-decoration
+* {
+  text-shadow:0px 0px 8px #1a1a1a;
+  color:#f2f2f2;
+  font-family:Arial,Helvetica, sans-serif;
+}
 // variable
 $gutter: 6px;
 $section-title: 40px;
