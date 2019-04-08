@@ -8,7 +8,7 @@
         </ol>
       </nav>
 			<div class="w-100 text-center">
-        <img src="../assets/images/img-7.png" alt="supportDevice">
+        <img src="../assets/images/Home/device.png" alt="supportDevice">
 			</div>
 			<div class="text-center">
 				<small>Omi Studio</small>

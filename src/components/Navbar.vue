@@ -123,7 +123,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 * {
-  font-size: 24px;
+  font-size: 16px;
 }
 .navbar {
   padding: 0;

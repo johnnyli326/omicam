@@ -3,151 +3,138 @@
     <section class="header text-center">
       <div class="banner"></div>
       <div class="text-box">
-        <h2 class="header-title">
-          CAPTURE.<br class="small"> SHARE.<br class="small"> THE WORLD YOU SEE.
-          <br>
-          OmiCam | Wearable VR Camera
+        <h2 class="section-title">
+          CAPTURE. SHARE. THE WORLD YOU SEE.
         </h2>
-        <img id="mapbtn" src="../assets/images/btn.png" alt="btn" usemap="#btnmap">
+        <p class="section-subTitle">OmiCam | Wearable VR Camera</p>
+        <img id="mapbtn" src="../assets/images/Home/play.png" alt="btn" usemap="#btnmap">
         <map name="btnmap">
           <area shape="circle" coords="40, 40, 33" alt="" class="map-area"
           data-toggle="modal" data-target="#commercialModal">
         </map>
       </div>
     </section>
-    <section class="section2">
-      <div class="row mr-0 ml-0 h-100">
-        <div class="col-md-6 d-flex justify-content-center align-items-center
-        section2-text">
-          <div class="text-center">
-            <h2 class="section-title-text">
-              OMICAM
-            </h2>
-            <p class="text-center section-content-text">
-              The easiest way to immersively record your life.
-            </p>
-            <router-link class="btn btn-outline-warning" to="/product/omicam">
-              BUY NOW
-            </router-link>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center
-        section2-img">
-          <img src="../assets/images/omicam-1.png" alt="omicam">
-        </div>
+    <!-- section2 -->
+    <section class="section section2">
+      <div class="section-text">
+        <h2 class="section-title">
+          OMICAM
+        </h2>
+        <p class="text-center section-subTitle">
+          The easiest way to immersively record your life.
+        </p>
+        <router-link class="link-btn" to="/product/omicam">
+          <img src="../assets/images/Home/buy.png" class="link-icon-btn"
+          alt="buy_icon" usemap="#btnmap-2">
+        </router-link>
+      </div>
+      <div class="section-img"></div>
+    </section>
+    <!-- section3 -->
+    <section class="section section3">
+      <div class="section-text">
+        <h2 class="section-title">
+          DESIGN TO BE WORN
+        </h2>
+        <p class="text-center section-subTitle">
+          Free your hand to enjoy the life while recording.
+        </p>
+        <router-link class="link-btn" to="/product/omicam">
+          <img src="../assets/images/Home/more.png" class="link-icon-btn"
+          alt="more_icon">
+        </router-link>
       </div>
     </section>
-    <section class="section3">
-      <div class="row h-100 m-0">
-        <div class="col-md-5 mount"></div>
-        <div class="col-md-7 d-flex justify-content-center
-        align-items-center mount-text">
-          <div class="text-center">
-            <h2 class="section-title-text">DESIGN TO BE WORN</h2>
-            <p class="section-content-text">
-            Free your hand to enjoy the life while recording.
-            </p>
-            <a class="btn btn-outline-warning" href="#"
-            @click.prevent="moveTo('wear')">
-              MORE
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section4">
-      <div class="text-center slogan">
-        <h2 class="section-title-text">WIDER VIEW THAN EVER</h2>
-        <p class="section-content-text">
+    <!-- section4 -->
+    <section class="section section4">
+      <div class="section-text">
+        <h2 class="section-title">
+          WIDER VIEW THAN EVER
+        </h2>
+        <p class="text-center section-subTitle">
           Extended your first person point of view by 240 Degree FoV
         </p>
-        <div>
-          <a class="btn btn-outline-warning"
-          href="#" @click.prevent="moveTo('240')">
-            MORE
-          </a>
-        </div>
+        <router-link class="link-btn" to="/product/omicam">
+          <img src="../assets/images/Home/more.png" class="link-icon-btn"
+          alt="more_icon">
+        </router-link>
       </div>
     </section>
-    <section class="section5">
-      <div class="row h-100 m-0">
-        <div class="col-md-5 d-flex justify-content-center
-        align-items-center color-gradient">
-          <div class="text-center">
-            <h2 class="section-title-text">SUPPORT WHOLE DAY</h2>
-            <p class="section-content-text">
-              Up to 15hours operating without worrying about the battery.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-7 d-flex justify-content-center
-        align-items-center video-box">
-          <div class="video-container">
-            <div class="video-banner"></div>
-            <video width="80%" autoplay loop muted>
-              <source src="../assets/images/Allday.mp4"
-              type="video/mp4">
-            </video>
-          </div>
-        </div>
+    <!-- section5 -->
+    <section class="section section5">
+      <div class="video-wrap">
+        <video class="loop-video" autoplay loop muted>
+          <source src="../assets/images/Allday.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="section-text">
+        <h2 class="section-title">
+          SUPPORT WHOLE DAY
+        </h2>
+        <p class="text-center section-subTitle">
+          Up to 15hours operating without worrying about the battery.
+        </p>
       </div>
     </section>
-    <section class="section6">
-      <div class="row h-100 m-0">
-        <div class="col-md-5 shaking"></div>
-        <div class="col-md-7 d-flex justify-content-center
-        align-items-center shaking-text">
-          <div class="text-center">
-            <h2 class="section-title-text">NO SHAKING VIDEO</h2>
-            <p class="section-content-text">
-            Always manitain image steady & stable in any activities.
-            </p>
-          </div>
-        </div>
+    <!-- section6 -->
+    <section class="section section6">
+      <div class="section-text">
+        <h2 class="section-title">
+          NO SHAKING VIDEO
+        </h2>
+        <p class="text-center section-subTitle">
+          Always manitain image steady & stable in any activities.
+        </p>
+        <router-link class="link-btn" to="/product/omicam">
+          <img src="../assets/images/Home/play.png" class="link-icon-btn"
+          alt="play_icon">
+        </router-link>
       </div>
     </section>
-    <section class="section7" style="background:#fafafa;">
-      <div class="row mr-0 ml-0 h-100">
+    <!-- section7 -->
+    <section class="section section7">
+      <div class="row mr-0 ml-0 section-row">
         <div class="col-md-6 d-flex justify-content-center align-items-center
-        section7-text section7-text">
+        h-100">
           <div class="text-center m-3">
-            <h2 class="section-title-text">WATCH & SHARE ANY TIME</h2>
-            <p class="section-content-text">
+            <h2 class="section-title">WATCH & SHARE ANY TIME</h2>
+            <p class="section-subTitle">
             Watch and share your VR experience
             thru OMI Studio on different platforms.
             </p>
-            <router-link class="btn btn-outline-warning" to="/omi-studio">
-            SEE MORE
+            <router-link class="link-btn" to="/product/omicam">
+              <img src="../assets/images/Home/more.png" class="link-icon-btn"
+              alt="more_icon">
             </router-link>
           </div>
         </div>
         <div class="col-md-6 section7-img
         d-flex justify-content-center align-items-center
-        section7-img">
-          <img src="../assets/images/img-7.png" alt="device">
+        h-100">
         </div>
-      </div>
+        <div class="col-md-6 section8-img
+        d-flex justify-content-center align-items-center
+        h-100">
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center
+        h-100">
+          <div class="text-center m-3">
+            <h2 class="section-title">OmiCam</h2>
+            <p class="section-subTitle">
+            Simply Create Your Immersive Life Memory.
+            </p>
+            <router-link class="link-btn" to="/product/omicam">
+              <img src="../assets/images/Home/more.png" class="link-icon-btn"
+              alt="more_icon">
+            </router-link>
+          </div>
+        </div>
+      </div> 
     </section>
-    <section class="section8 d-flex justify-content-center
-    align-items-center">
-      <div class="text-center">
-        <h2 class="section-title-text">OmiCam</h2>
-        <p class="section-content-text">
-          Simply Create Your Immersive Life Moemory.
-        </p>
-        <!-- <router-link class="btn btn-link btn-outline-primary"
-        to="/product/omicam-wearable-vr-camera">
-          BUY NOW
-        </router-link> -->
-        <router-link class="btn btn-link btn-outline-primary"
-        to="product/omicam">
-          BUY NOW
-        </router-link>
-      </div>
-      <div class="side-omicam"></div>
-    </section>
+    <!-- section9 -->
     <section class="section9">
-      <h2 class="section-title-text text-center">OMI STORY</h2>
+      <h2 class="section-title text-center">OMI STORY</h2>
       <!-- <Slide></Slide> -->
       <div id="owl-demo" class="owl-carousel owl-theme">
         <div class="item" v-for="(story, index) in stories" :key="index"
@@ -158,8 +145,8 @@
         </div>
       </div>
       <div class="customNavigation">
-        <a class="btn prev" aria-label="Previous"><i class="fas fa-angle-left fa-2x"></i></a>
-        <a class="btn next" aria-label="Next"><i class="fas fa-angle-right fa-2x"></i></a>
+        <a class="btn prev" aria-label="Previous"></a>
+        <a class="btn next" aria-label="Next"></a>
       </div>
     </section>
     <!-- Modal -->
@@ -181,7 +168,6 @@
         </div>
       </div>
     </div>
-    <img src="/public/images/240icon.png" alt="">
   </div>
 </template>
 
@@ -373,11 +359,20 @@ export default {
   font-family:Arial,Helvetica, sans-serif;
 }
 // variable
+$section-title: 36pt;
+$section-text: 24pt;
+$section-padding-top: 75px;
 $gutter: 6px;
-$section-title: 40px;
-$section-text: 24px;
-$bg-color: #f9f9f9;
 
+// link-icon-btn
+.link-btn {
+  width: 75px;
+  height: 75px;
+  .link-icon-btn {
+    width: 75px;
+    height: 75px;
+  }
+}
 // section font-size
 @media(max-width: 1000px) {
   h2 {
@@ -398,7 +393,7 @@ a.btn {
 .header {
   max-width: 100%;
   height: calc(100vh - 60px);
-  background-image: url('../assets/images/img-1.jpg');
+  background-image: url('../assets/images/Home/sec1.png');
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -414,15 +409,15 @@ a.btn {
     height: 100%;
   }
   .text-box {
+    width: 100%;
+    padding: 75px;
     z-index: 10;
     @media(max-width: 600px) {
       padding-bottom: 150px;
     }
     .header-title {
-      font-weight: 600;
-      color: #f9f9f9;
-      font-size: 48px;
       z-index: 100;
+      font-size: $section-title;
       @media(max-width: 1000px) {
         font-size: 40px;
       }
@@ -432,13 +427,7 @@ a.btn {
       @media(max-width: 520px) {
         font-size: 24px;
       }
-      .small {
-        display: none;
-        @media(max-width:850px) {
-          display: block;
-          }
-        }
-      }
+    }
     #mapbtn {
       width: 80px;
       height: 80px;
@@ -448,63 +437,47 @@ a.btn {
     }
   }
 }
-.section-title-text {
-  font-size: $section-title;
-}
-.section-content-text {
-  font-size: $section-text;
+
+.section {
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding-top: $section-padding-top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .section-text {
+    text-align: center;
+    z-index: 10;
+    .section-title {
+      font-size: $section-title;
+    }
+    .section-subTitle {
+      font-size: $section-text;
+    }
+  }
+  .section-img {
+    background-image: url('../assets/images/Home/sec2.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    height: 100%;
+    width: 70%;
+  }
 }
 .section2 {
-  margin: #{$gutter} 0;
-  background-color: $bg-color;
-  height: calc(100vh - 60px + #{2*$gutter});
-  .section2-text {
-    @include ipad() {
-      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-  }
-  .section2-img {
-    height: calc(( 100vh - 60px + #{2*$gutter}));
-    @include ipad() {
-      height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-    img {
-      height: 50%;
-      width: auto;
-    }
-  }
+  background-color: #1a1a1a;
 }
 .section3 {
-  margin-bottom: #{$gutter};
-  width: 100%;
-  height: calc(100vh - 60px + #{2*$gutter});
-  .mount {
-    background-image: url('../assets/images/DESIGN.png');
-    background-position: center center;
-    background-size: cover;
-    @include ipad() {
-      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-  }
-  .mount-text {
-    background-color: #f9f9f9;
-    @include ipad() {
-      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-  }
+  background-image: url('../assets/images/Home/sec3.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .section4 {
-  height: calc(100vh - 60px + #{2*$gutter});
-  margin-bottom: 10px;
   background-image: url('../assets/images/dynamic_img.jpg');
   background-position: center center;
   background-size: 110% 110%;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  margin-bottom: $gutter;
   -webkit-animation: mover 2s infinite alternate linear;
   animation: mover 2s infinite alternate linear;
   @include BelowImgSize { // when screen size < img-size ( 1600px小於一點點 1550 )
@@ -514,119 +487,69 @@ a.btn {
   @include ipad { // < = ipad size()
     animation-duration: 12s;
   }
-  .slogan {
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 30px;
-  }
 }
 @keyframes mover {
   0% { background-position-x: right }
   100% { background-position-x: left }
 }
 .section5 {
-  height: calc(100vh - 60px + #{2*$gutter});
-  margin-bottom: $gutter;
-  .color-gradient {
-    background: linear-gradient(to right, white , #f9f9f9);
-    @include ipad() {
-      height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-  }
-  .video-box {
-    @include ipad() {
-      height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-    .video-container {
+  position: relative;
+  .video-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    .loop-video {
+      // make video at least 100% wide and tall.
+      min-width: 100%;
+      min-height: 100%;
+      // make width & height to be auto, in order to prevent 
+      // broweser from stretch or squishing the video
+      width: auto;
+      height: auto;
+      // center the video
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      .video-banner {
-        position: absolute;
-        background-image: url('../assets/images/Allday_background.png');
-        background-size: cover;
-        background-position: left bottom;
-        min-height: 100%;
-        min-width: 100%;
-        z-index: 1;
-        @include ipad() {
-          display: none;
-        }
-      }
-      video {
-        min-height: 120%;
-        min-width: 120%;
-        position: absolute;
-        width: auto;
-        height: auto;
-        top: -120px;
-      }
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     }
   }
 }
-.col-md-6 {
-  padding: 0 $gutter;
-}
+
 .section6 {
-  margin-bottom: #{$gutter};
-  height: calc(100vh - 60px + #{2*$gutter});
-  .shaking {
-    background-image: url('../assets/images/NO_SHAKING.png');
-    background-position: center center;
-    background-size: cover;
-    @include ipad() {
-      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-  }
-  .shaking-text {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.98) , rgba(0, 0, 0, 1));
-    color: white;
-    @include ipad() {
-      min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    }
-  }
+  background-image: url('../assets/images/Home/sec6.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .section7 {
-  margin-bottom: $gutter;
-  background-color: $bg-color;
+  background-color: #1a1a1a;
   @include ipad() {
-    min-height: calc(( 100vh - 60px + #{2*$gutter}));
+    min-height: calc(( 100vh - 60px ));
   }
-  .section7-text {
-    min-height: calc(( 100vh - 60px + #{2*$gutter})/2);
-  }
-  .section7-img{
-    height: calc(( 100vh - 60px + #{2*$gutter})/2);
-    img {
-      max-height: 90%;
-      width: auto;
+  .section-row {
+    height: 50%;
+    width: 100%;
+    .section7-img {
+      background-image: url('../assets/images/Home/device.png');
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
-  }
-}
-.section8 {
-  background-color: $bg-color;
-  margin-bottom: $gutter;
-  height: calc(( 100vh - 60px + #{2*$gutter})/2);
-  position: relative;
-  .side-omicam {
-    width: 40px;
-    height: 100px;
-    background-image: url('../assets/images/omicam-1.png');
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    right: 50px;
-    bottom: 10px;
+    .section8-img {
+      background-image: url('../assets/images/Home/sec8.png');
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
   }
 }
 .section9 {
-  padding: 100px 50px;
-  background-image: url('../assets/images/map.png');
+  background-image: url('../assets/images/Home/sec9.png');
   background-attachment: fixed;
+  padding: 100px 50px;
 }
 .simple {
   .row {
@@ -704,11 +627,23 @@ a.btn {
 }
 .customNavigation{
   text-align: center;
+  .prev {
+    background-image: url('../assets/images/Home/prev.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .next {
+    background-image: url('../assets/images/Home/next.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }
 .customNavigation a{
   display: inline-block;
-  width: 20px;
-  height: auto;
+  width: 32px;
+  height: 32px;
   margin-right: 5px;
   -webkit-user-select: none;
   -khtml-user-select: none;
