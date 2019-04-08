@@ -287,6 +287,7 @@ export default {
     align-items: center;
     border: 1px solid rgba(128, 128, 128, 0.488);
     padding: 50px;
+    margin: 76px 0;
     .shopping-btn {
       display: block;
       width: 200px;
@@ -314,6 +315,7 @@ export default {
           width: 70%;
           vertical-align: top;
           height: 100%;
+          border: 1px solid black;
           &:focus {
             outline: none !important;
             border:1px solid #ffcd05;
