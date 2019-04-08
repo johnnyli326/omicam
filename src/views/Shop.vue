@@ -208,6 +208,7 @@ td {
     width: 100%;
     text-align: center;
     outline: 0;
+    height: 30px;
   }
   .count {
     width: 40px;
