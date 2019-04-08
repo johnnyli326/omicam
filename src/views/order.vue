@@ -196,7 +196,7 @@ export default {
       // readyState = 1 ，使用了open()，但還沒把資料傳送過去。
       // true ， 非同步
       xhr.open('get',
-      'http://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items='
+      'https://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items='
       + 'omicam:' + vm.items.omicam
       + ';waterCase:'+ vm.items.waterCase
       + ';shoulderStrap:' + vm.items.shoulderStrap
@@ -225,7 +225,7 @@ export default {
       let vm = this;
       vm.isLoading = true;
       xhr.open('get',
-      'http://www.omicam.com/_privateApi/saleApi.php?fun=cpc&code='+ vm.promoteCode,
+      'https://www.omicam.com/_privateApi/saleApi.php?fun=cpc&code='+ vm.promoteCode,
       true);
       xhr.send(null);
       xhr.onload = () => {
