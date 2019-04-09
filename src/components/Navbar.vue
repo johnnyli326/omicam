@@ -7,12 +7,14 @@
         </router-link>
       </div>
       <ul class="list-unstyled mobile-icon ml-auto">
-        <!-- <li>
+        <li>
           <router-link class="cart mr-3" to="/shop"
           :class="{ 'active': $route.name == 'Shop' }">
-            <i class="fas fa-shopping-cart"></i>
+            <img class="buy-icon"
+            src="../assets/images/Navbar/buy_icon.png"
+            alt="buy">
           </router-link>
-        </li> -->
+        </li>
         <li>
           <button class="hamburger-btn">
             <span class="icon-bar top-bar"></span>
@@ -23,7 +25,7 @@
       </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
-          <router-link to="/product/omicam"
+          <router-link to="/omicam"
           :class="{ 'active': $route.name == 'Omicam' }">
           OMICAM
           </router-link>
@@ -57,9 +59,6 @@
           :class="{ 'active': $route.name == 'Contact' }">
           CONTACT
           </router-link>
-        </li>
-        <li class="menu-item">
-          <a href="#"><img class="buy-icon" src="../assets/images/Navbar/buy_icon.png" alt="buy"></a>
         </li>
       </ul>
     </nav>
@@ -156,6 +155,7 @@ export default {
     li {
       display: inline-block;
       vertical-align: top;
+      text-align: center;
     }
     .cart {
       display: inline-block;
@@ -164,12 +164,16 @@ export default {
       padding: 0 10px;
       line-height: 60px;
       outline: 0;
+      width: 100%;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
       &:hover {
         color: white;
         transition: all .3s ease;
       }
       &.active {
-        color: white;
+        background-color: rgba(0, 0, 0, 0.1);
       }
     }
     .hamburger-btn {
@@ -219,7 +223,7 @@ export default {
     @media(max-width: 1000px) {
       height: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.1);
       padding-right: 0px;
       &.show {
         height: 100vh;
@@ -234,6 +238,10 @@ export default {
       display: inline-block;
       overflow: auto;
       font-size: 16px;
+      transition: all .3s ease;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
         @media(max-width: 1000px) {
           display: block;
         }
@@ -245,11 +253,8 @@ export default {
         text-decoration: none;
         width: 100%;
         transition: all .3s ease;
-        &:hover {
-          color: white;
-        }
         &.active {
-          color: white;
+          background-color: rgba(0, 0, 0, 0.1);
         }
         @media(max-width: 1000px) {
           display: block;
@@ -257,14 +262,14 @@ export default {
           text-align: center;
           &:hover {
             color: white;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.1);
           }
         }
       }
     }
   }
   .buy-icon {
-    width: 24px;
+    width: 16px;
     height: auto;
     padding-bottom: 3px;
   }

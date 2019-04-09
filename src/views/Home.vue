@@ -1,15 +1,16 @@
 <template>
   <div>
-    <section class="header text-center">
+    <section class="section section1">
       <div class="banner"></div>
-      <div class="text-box">
+      <div class="section-text">
         <h2 class="section-title">
           CAPTURE. SHARE. THE WORLD YOU SEE.
         </h2>
         <p class="section-subTitle">OmiCam | Wearable VR Camera</p>
-        <img id="mapbtn" src="../assets/images/Home/play.png" alt="btn" usemap="#btnmap">
-        <map name="btnmap">
-          <area shape="circle" coords="40, 40, 33" alt="" class="map-area"
+        <img class="link-icon-btn" src="../assets/images/Home/play.png"
+        alt="btn" usemap="#btnmap_1">
+        <map name="btnmap_1">
+          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
           data-toggle="modal" data-target="#commercialModal">
         </map>
       </div>
@@ -23,10 +24,12 @@
         <p class="text-center section-subTitle">
           The easiest way to immersively record your life.
         </p>
-        <router-link class="link-btn" to="/product/omicam">
-          <img src="../assets/images/Home/buy.png" class="link-icon-btn"
-          alt="buy_icon" usemap="#btnmap-2">
-        </router-link>
+        <img src="../assets/images/Home/buy.png" class="link-icon-btn"
+        alt="buy_icon" usemap="#btnmap_2">
+        <map name="btnmap_2">
+          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+          @click="$router.push('/shop')">
+        </map>
       </div>
       <div class="section-img"></div>
     </section>
@@ -39,10 +42,12 @@
         <p class="text-center section-subTitle">
           Free your hand to enjoy the life while recording.
         </p>
-        <router-link class="link-btn" to="/product/omicam">
-          <img src="../assets/images/Home/more.png" class="link-icon-btn"
-          alt="more_icon">
-        </router-link>
+        <img src="../assets/images/Home/more.png" class="link-icon-btn"
+        alt="more_icon" usemap="#btnmap_3">
+        <map name="btnmap_3">
+          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+          @click.prevent="moveTo('wear')">
+        </map>
       </div>
     </section>
     <!-- section4 -->
@@ -54,10 +59,12 @@
         <p class="text-center section-subTitle">
           Extended your first person point of view by 240 Degree FoV
         </p>
-        <router-link class="link-btn" to="/product/omicam">
-          <img src="../assets/images/Home/more.png" class="link-icon-btn"
-          alt="more_icon">
-        </router-link>
+        <img src="../assets/images/Home/more.png" class="link-icon-btn"
+        alt="more_icon" usemap="#btnmap_4">
+        <map name="btnmap_4">
+          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+          @click.prevent="moveTo('240')">
+        </map>
       </div>
     </section>
     <!-- section5 -->
@@ -73,7 +80,7 @@
           SUPPORT WHOLE DAY
         </h2>
         <p class="text-center section-subTitle">
-          Up to 15hours operating without worrying about the battery.
+          Up to 15 hours operating without worrying about the battery.
         </p>
       </div>
     </section>
@@ -86,10 +93,12 @@
         <p class="text-center section-subTitle">
           Always manitain image steady & stable in any activities.
         </p>
-        <router-link class="link-btn" to="/product/omicam">
-          <img src="../assets/images/Home/play.png" class="link-icon-btn"
-          alt="play_icon">
-        </router-link>
+        <img class="link-icon-btn" src="../assets/images/Home/play.png"
+        alt="btn" usemap="#btnmap_6">
+        <map name="btnmap_6">
+          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+          data-toggle="modal" data-target="#commercialModal">
+        </map>
       </div>
     </section>
     <!-- section7 -->
@@ -103,31 +112,35 @@
             Watch and share your VR experience
             thru OMI Studio on different platforms.
             </p>
-            <router-link class="link-btn" to="/product/omicam">
-              <img src="../assets/images/Home/more.png" class="link-icon-btn"
-              alt="more_icon">
-            </router-link>
+            <img src="../assets/images/Home/more.png" class="link-icon-btn"
+            alt="more_icon" usemap="#btnmap_7">
+            <map name="btnmap_7">
+              <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+              @click.prevent="$router.push('/omi-studio')">
+            </map>
           </div>
         </div>
         <div class="col-md-6 section7-img
-        d-flex justify-content-center align-items-center
-        h-100">
+          d-flex justify-content-center align-items-center
+          h-100">
         </div>
         <div class="col-md-6 section8-img
-        d-flex justify-content-center align-items-center
-        h-100">
+          d-flex justify-content-center align-items-center
+          h-100">
         </div>
         <div class="col-md-6 d-flex justify-content-center align-items-center
-        h-100">
+          h-100">
           <div class="text-center m-3">
             <h2 class="section-title">OmiCam</h2>
             <p class="section-subTitle">
-            Simply Create Your Immersive Life Memory.
+              Simply Create Your Immersive Life Memory.
             </p>
-            <router-link class="link-btn" to="/product/omicam">
-              <img src="../assets/images/Home/more.png" class="link-icon-btn"
-              alt="more_icon">
-            </router-link>
+            <img src="../assets/images/Home/more.png" class="link-icon-btn"
+            alt="more_icon" usemap="#btnmap_8">
+            <map name="btnmap_8">
+              <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+              @click.prevent="$router.push('/omicam')">
+            </map>
           </div>
         </div>
       </div> 
@@ -193,7 +206,7 @@ export default {
     }; 
   },
   methods: {
-    moveTo(id) {
+    moveTo(id) { // move to feature section in OmiCam page
       console.log(id);
       let vm = this;
       this.$router.push('/omicam');
@@ -201,7 +214,7 @@ export default {
         let target = $("section[id='"+ id +"']");
         $('html, body').stop().animate({scrollTop: target.offset().top - 50}, 1000);
       },300);
-    }
+    },
   },
   created() {
     window.scrollTo(0, 0);
@@ -359,8 +372,8 @@ export default {
   font-family:Arial,Helvetica, sans-serif;
 }
 // variable
-$section-title: 36pt;
-$section-text: 24pt;
+$section-title: 48px;
+$section-text: 32px;
 $section-padding-top: 75px;
 $gutter: 6px;
 
@@ -368,19 +381,10 @@ $gutter: 6px;
 .link-btn {
   width: 75px;
   height: 75px;
-  .link-icon-btn {
-    width: 75px;
-    height: 75px;
-  }
 }
-// section font-size
-@media(max-width: 1000px) {
-  h2 {
-    font-size: 24px !important;
-  }
-  p {
-    font-size: 16px !important;
-  }
+.link-icon-btn {
+  width: 75px;
+  height: 75px;
 }
 a.btn {
   text-decoration: none;
@@ -390,12 +394,12 @@ a.btn {
     color: black;
   }
 }
-.header {
+.section1 {
   max-width: 100%;
   height: calc(100vh - 60px);
   background-image: url('../assets/images/Home/sec1.png');
   background-size: cover;
-  background-position: center center;
+  background-position: bottom center;
   position: relative;
   display: flex;
   justify-content: center;
@@ -407,34 +411,6 @@ a.btn {
     background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
-  }
-  .text-box {
-    width: 100%;
-    padding: 75px;
-    z-index: 10;
-    @media(max-width: 600px) {
-      padding-bottom: 150px;
-    }
-    .header-title {
-      z-index: 100;
-      font-size: $section-title;
-      @media(max-width: 1000px) {
-        font-size: 40px;
-      }
-      @media(max-width: 600px) {
-        font-size: 32px;
-      }
-      @media(max-width: 520px) {
-        font-size: 24px;
-      }
-    }
-    #mapbtn {
-      width: 80px;
-      height: 80px;
-    }
-    .map-area:focus {
-      outline: 0;
-    }
   }
 }
 
@@ -455,17 +431,21 @@ a.btn {
       font-size: $section-text;
     }
   }
-  .section-img {
+  .section-img { // section2 img
+    margin-top: 10px;
     background-image: url('../assets/images/Home/sec2.png');
     background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover;
+    background-position: center center;
+    background-size: 1000px 531.3px;
     height: 100%;
     width: 70%;
+    position: absolute;
+    bottom: -30px;
   }
 }
 .section2 {
   background-color: #1a1a1a;
+  position: relative;
 }
 .section3 {
   background-image: url('../assets/images/Home/sec3.png');
@@ -527,22 +507,31 @@ a.btn {
 .section7 {
   background-color: #1a1a1a;
   @include ipad() {
-    min-height: calc(( 100vh - 60px ));
+    height: auto !important;
   }
   .section-row {
     height: 50%;
     width: 100%;
+    @include ipad() {
+      height: auto !important;
+    }
     .section7-img {
       background-image: url('../assets/images/Home/device.png');
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
+      @include ipad() {
+        height: 300px !important;
+      }
     }
     .section8-img {
       background-image: url('../assets/images/Home/sec8.png');
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
+      @include ipad() {
+        height: 300px !important;
+      }
     }
   }
 }
@@ -551,29 +540,11 @@ a.btn {
   background-attachment: fixed;
   padding: 100px 50px;
 }
-.simple {
-  .row {
-    .col-4 {
-      padding: 0 10px;
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-  }
-}
+
 .btn {
   cursor: pointer;
 }
-// Modal
-.modal-dialog {
-  max-width: 80%;
-  height: 100%;
-  margin: 0 auto;
-  @include ipad() {
-    max-width: 80%;
-  }
-}
+
 .brand-film {
   width: 100%;
   min-height: 450px;
@@ -594,37 +565,51 @@ a.btn {
     outline: 0;
   }
 }
-#owl-demo .item{
-  height: 220px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  padding: 30px 0px;
-  margin: 10px;
-  color: #FFF;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  text-align: center;
-  &:hover {
-    .slide-up {
-      transform: translateY(0);
-    }
-  }
-  .slide-up {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255,148,0,0.37);
-    transform: translateY(120%);
-    transition: ease .3s;
+// Modal
+.modal-dialog {
+  max-width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  @include ipad() {
+    max-width: 80%;
   }
 }
+// owl-swiper
+#owl-demo {
+  margin-bottom: 30px;
+  .item{
+    height: 220px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 30px 0px;
+    margin: 0 20px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    &:hover {
+      .slide-up {
+        transform: translateY(0);
+      }
+    }
+    .slide-up {
+      position: absolute;
+      top: 0;
+      left: 20px;
+      width: calc(100% - 40px);
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255,148,0,0.37);
+      transform: translateY(120%);
+      transition: ease .3s;
+      font-size: $section-text;
+    }
+  }
+} 
 .customNavigation{
   text-align: center;
   .prev {

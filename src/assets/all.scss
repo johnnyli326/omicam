@@ -4,15 +4,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./mixin";
 * {
-  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   img {
     max-width: 100%;
     height: auto;
-  }
-  h2 {
-    font-size: 40px;
-  }
-  h3 {
-    font-size: 32px;
   }
 }

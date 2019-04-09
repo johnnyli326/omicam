@@ -1,17 +1,14 @@
 <template>
   <div class="wrap w-100">
     <div class="row m-0">
-      <div class="col-md-8">
-        <div class="form-group ml-auto subscribe">
-          <div class="text-center">
+      <div class="col-md-8 subscribe-section">
+        <div class="form-group subscribe">
+          <div class="input-group mb-3 subscribe-input-group">
             <label class="text-primary" for="e-mail">SUBSCRIBE NEWSLETTER</label>
-          </div>
-          <div class="input-group mb-3">
             <input type="text"
-            class="form-control"
+            class="form-control subscribe-input mr-3"
             placeholder="Enter your e-mail address"
             aria-label="Enter your e-mail address"
-            name="e-mail"
             id="e-mail">
             <div class="input-group-append">
               <div class="btn btn-outline-primary">SUBSCRIBE</div>
@@ -19,33 +16,27 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4
-      d-flex
-      justify-content-center
-      align-items-center">
+      <div class="col-md-4 social-section">
         <div>
           <a href="https://www.facebook.com/OMICAMGLOBAL"
           class="facebook mr-2" target="_blank">
-            <i class="fab fa-facebook-f fa-3x"></i>
+            <img src="../assets/images/Footer/facebook.png" alt="facebook">
 					</a>
           <a href="https://www.youtube.com/channel/UC_ZWi0Il61IojlC5V1Odojw"
           class="youtube mr-2" target="_blank">
-            <i class="fab fa-youtube fa-3x"></i>
+            <img src="../assets/images/Footer/youtube.png" alt="youtube">
 					</a>
           <a href="https://twitter.com/omicamj"
           class="twitter mr-2" target="_blank">
-            <i class="fab fa-twitter fa-3x"></i>
+            <img src="../assets/images/Footer/twitter.png" alt="twitter">
 					</a>
           <a href="https://line.me/R/ti/p/hUf6J2xDQ9"
           class="line mr-2" target="_blank">
-            <i class="fab fa-line fa-3x"></i>
+            <img src="../assets/images/Footer/line.png" alt="line">
 					</a>
         </div>
       </div>
-      <div class="mt-3 text-center w-100">
-        <div class="copyright">
-          Copyright © 2019 Sightour Inc. All rights reserved
-        </div>
+      <div class="col-md-6 about-section">
         <router-link to="/about" class="mr-2 info-link">
           About
         </router-link>
@@ -55,6 +46,9 @@
         <router-link to="/terms-of-service" class="mr-2 info-link">
           Terms of service
         </router-link>
+      </div>
+      <div class="col-md-6 copyright-section">
+        <span>Copyright © 2019 Sightour Inc. All rights reserved</span>
       </div>
     </div>
   </div>
@@ -70,8 +64,8 @@ export default {
 @import "../assets/mixin";
 
 .wrap {
-  background-color: black;
-  padding: 20px 0;
+  background-color: #0d0d0d;
+  padding: 20px 50px;;
   .facebook {
     color: #3b5998;
   }
@@ -87,24 +81,58 @@ export default {
   .info-link {
     text-decoration: none;
     outline: 0;
-    color: #999;
-    &:hover,
-    &:active{
-      color: white !important;
+    color: white;
+    &:hover {
+      color: #999 !important;
     }
-    &:focus {
-      color: #999;
-    }
-  }
-  .copyright {
-    color: #999;
   }
 }
-.subscribe {
-  width: 60%;
+.subscribe-section {
+  text-align: left;
+  margin-bottom: 10px;
   @include ipad() {
-    margin: 0 auto;
-    width: 95%;
+    text-align: center;
+  }
+  .subscribe {
+    width: 60%;
+    @include ipad() {
+      margin: 0 auto;
+      width: 95%;
+    }
+    .subscribe-input-group {
+      display: flex;
+      align-items: center;
+      width: 600px;
+      .subscribe-input {
+        border: none;
+        border-bottom: 1px solid #767676;
+        background-color: #0d0d0d;
+        &:focus,
+        &:active {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
+.social-section {
+  text-align: right;
+  @include ipad() {
+    text-align: center;
+  }
+}
+.about-section {
+  text-align: left;
+  @include ipad() {
+    text-align: center;
+  }
+}
+.copyright-section {
+  text-align: right;
+  color: white;
+  @include ipad() {
+    text-align: center;
   }
 }
 </style>
