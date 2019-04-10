@@ -107,6 +107,7 @@ export default {
         border: none;
         border-bottom: 1px solid #767676;
         background-color: #0d0d0d;
+        color: white;
         &:focus,
         &:active {
           outline: none;
