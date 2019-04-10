@@ -106,7 +106,7 @@
       <div class="row mr-0 ml-0 section-row">
         <div class="col-md-6 d-flex justify-content-center align-items-center
         h-100">
-          <div class="text-center m-3">
+          <div class="section-text m-3">
             <h2 class="section-title">WATCH & SHARE ANY TIME</h2>
             <p class="section-subTitle">
             Watch and share your VR experience
@@ -124,18 +124,23 @@
           d-flex justify-content-center align-items-center
           h-100">
         </div>
+      </div>
+    </section>
+    <!-- section8 -->
+    <section class="section section8">
+      <div class="row mr-0 ml-0 section-row">
         <div class="col-md-6 section8-img
           d-flex justify-content-center align-items-center
           h-100">
         </div>
         <div class="col-md-6 d-flex justify-content-center align-items-center
           h-100">
-          <div class="text-center m-3">
+          <div class="section-text m-3">
             <h2 class="section-title">OmiCam</h2>
             <p class="section-subTitle">
               Simply Create Your Immersive Life Memory.
             </p>
-            <img src="../assets/images/Home/more.png" class="link-icon-btn"
+            <img src="../assets/images/Home/buy.png" class="link-icon-btn"
             alt="more_icon" usemap="#btnmap_8">
             <map name="btnmap_8">
               <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
@@ -143,7 +148,7 @@
             </map>
           </div>
         </div>
-      </div> 
+      </div>
     </section>
     <!-- section9 -->
     <section class="section9">
@@ -394,30 +399,10 @@ a.btn {
     color: black;
   }
 }
-.section1 {
-  max-width: 100%;
-  height: calc(100vh - 60px);
-  background-image: url('../assets/images/Home/sec1.png');
-  background-size: cover;
-  background-position: bottom center;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .banner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .section {
   width: 100%;
   height: calc(100vh - 60px);
-  padding-top: $section-padding-top;
+  padding: $section-padding-top 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -441,6 +426,25 @@ a.btn {
     width: 70%;
     position: absolute;
     bottom: -30px;
+  }
+}
+.section1 {
+  max-width: 100%;
+  height: calc(100vh - 60px);
+  background-image: url('../assets/images/Home/sec1.png');
+  background-size: cover;
+  background-position: bottom center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
   }
 }
 .section2 {
@@ -505,28 +509,42 @@ a.btn {
   background-repeat: no-repeat;
 }
 .section7 {
-  background-color: #1a1a1a;
+  background-color: black;
   @include ipad() {
     height: auto !important;
   }
   .section-row {
-    height: 50%;
+    height: 100%;
     width: 100%;
     @include ipad() {
       height: auto !important;
     }
     .section7-img {
       background-image: url('../assets/images/Home/device.png');
-      background-size: contain;
+      background-size: 80%;
       background-position: center center;
       background-repeat: no-repeat;
       @include ipad() {
         height: 300px !important;
+        background-size: 60%;
       }
+    }
+  }
+}
+.section8 {
+  background-color: #1a1a1a;
+  @include ipad() {
+    height: auto !important;
+  }
+  .section-row {
+    height: 100%;
+    width: 100%;
+    @include ipad() {
+      height: auto !important;
     }
     .section8-img {
       background-image: url('../assets/images/Home/sec8.png');
-      background-size: contain;
+      background-size: 30%;
       background-position: center center;
       background-repeat: no-repeat;
       @include ipad() {

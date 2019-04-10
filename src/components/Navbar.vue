@@ -6,23 +6,6 @@
           <h1 class="logo">OmiCam</h1>
         </router-link>
       </div>
-      <ul class="list-unstyled mobile-icon ml-auto">
-        <li>
-          <router-link class="cart mr-3" to="/shop"
-          :class="{ 'active': $route.name == 'Shop' }">
-            <img class="buy-icon"
-            src="../assets/images/Navbar/buy_icon.png"
-            alt="buy">
-          </router-link>
-        </li>
-        <li>
-          <button class="hamburger-btn">
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </button>
-        </li>
-      </ul>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
           <router-link to="/omicam"
@@ -61,6 +44,23 @@
           </router-link>
         </li>
       </ul>
+      <ul class="list-unstyled mobile-icon">
+        <li>
+          <button class="hamburger-btn">
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+        </li>
+        <li>
+          <router-link class="cart mr-3" to="/shop"
+          :class="{ 'active': $route.name == 'Shop' }">
+            <img class="buy-icon"
+            src="../assets/images/Navbar/buy_icon.png"
+            alt="buy">
+          </router-link>
+        </li>
+      </ul>
     </nav>
   </div>
 </template>
@@ -73,7 +73,7 @@ export default {
   mounted() {
     $(document).ready(() => {
       // 點擊漢堡
-      $('.hamburger-btn').click(() => {
+      $('.hamburger-btn').click(function() {
         $(this).toggleClass('active'); // 漢堡toggle
         if ($('.top-menu').hasClass('show')) { // top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
@@ -88,32 +88,45 @@ export default {
           $('.nav-wrap').css('height', '420px;');
         }
       });
-      // 點擊li
-      $('.menu-item').click(() => {
-        $('.hamburger-btn').removeClass('active');
-        $('.top-menu').toggleClass('show');
-        $('body').css('overflow', 'auto');
-        $('.navbar').css('background-color', 'rgba(0, 0, 0)');
-        $('.nav-wrap').css('height', 'auto');
-      });
       // 點擊 logo
-      $('.logo').click(() => {
+      $('.logo').click(function() {
         $('.hamburger-btn').removeClass('active');
         $('.top-menu').removeClass('show');
         $('body').css('overflow', 'auto');
         $('.navbar').css('background-color', 'rgba(0, 0, 0)');
         $('.nav-wrap').css('height', 'auto');
       });
-      // resize 收合top-menu
-      $(window).resize(() => {
-        if ($(window).width() >= 1000) {
-          $('.top-menu').removeClass('show').removeClass('hide');
+      $(window).resize(function() {
+        if ($(window).width() >= 1000) { // for stretch device
+          $('.top-menu').removeClass('show').removeClass('hide'); // dropdown menu 
           $('.hamburger-btn').removeClass('active');
           $('body').css('overflow', 'auto');
           $('.navbar').css('background-color', 'rgba(0, 0, 0)');
           $('.nav-wrap').css('height', 'auto');
+          $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
+        } else {
+          $('.top-menu').remove().insertAfter($('.mobile-icon')); // move Topmenu after Icon
+          $('.menu-item').click(function() { // click menu-item, slideUp top-menu etc...
+            $('.hamburger-btn').removeClass('active');
+            $('.top-menu').removeClass('show');
+            $('body').css('overflow', 'auto');
+            $('.navbar').css('background-color', 'rgba(0, 0, 0)');
+            $('.nav-wrap').css('height', 'auto');
+          });
         }
       });
+      if ($(window).width() >= 1000) { // for fixed width device 
+        $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
+      } else {
+        $('.top-menu').remove().insertAfter($('.mobile-icon')); // move Topmenu after Icon
+        $('.menu-item').click(function() { // click menu-item, slideUp top-menu etc...
+          $('.hamburger-btn').removeClass('active');
+          $('.top-menu').removeClass('show');
+          $('body').css('overflow', 'auto');
+          $('.navbar').css('background-color', 'rgba(0, 0, 0)');
+          $('.nav-wrap').css('height', 'auto');
+        });
+      }
     });
   },
 };
@@ -219,7 +232,8 @@ export default {
     overflow:hidden;
     font-size: 0;
     transition: all .6s;
-    padding-right: 20px;
+    // padding-right: 20px;
+    margin-left: auto;
     @media(max-width: 1000px) {
       height: 0;
       width: 100%;

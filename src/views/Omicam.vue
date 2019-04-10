@@ -26,7 +26,7 @@
       <section class="section2 text-center">
         <h3>OmiCam | At a Glance</h3>
         <div class="text-center mb-4 icon-box" v-for="(icon, index) in icons" :key="index">
-          <a :href="icon.section" class="d-inline-block">
+          <a :href="icon.section" class="d-inline-block feature-icons">
             <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
           </a>
           <br>
@@ -122,8 +122,7 @@
           <iframe width="100%" height="500px"
             src="https://www.youtube.com/embed/TCHRYRUXtqk"
             frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media;
-            gyroscope; picture-in-picture"
+            allow="accelerometer;"
             allowfullscreen>
           </iframe>
         </div>
@@ -303,7 +302,7 @@ export default {
     window.scrollTo(0, 0);
   },
   mounted() {
-    $('a[href^="#"]').on('click', function(e) {
+    $('.feature-icons[href^="#"]').on('click', function(e) {
       let target = $(this.getAttribute('href'));
       if (target.length) {
         e.preventDefault();
