@@ -165,6 +165,7 @@ export default {
     font-size: 0;
     display: inline-block;
     margin: 0;
+    margin-right: 15px;
     li {
       display: inline-block;
       vertical-align: top;

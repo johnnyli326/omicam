@@ -4,7 +4,11 @@
       <div class="banner"></div>
       <div class="section-text">
         <h2 class="section-title">
-          CAPTURE. SHARE. THE WORLD YOU SEE.
+          CAPTURE.
+          <br class="rwd">
+          SHARE.
+          <br class="rwd">
+          THE WORLD YOU SEE.
         </h2>
         <p class="section-subTitle">OmiCam | Wearable VR Camera</p>
         <img class="link-icon-btn" src="../assets/images/Home/play.png"
@@ -379,8 +383,14 @@ export default {
 // variable
 $section-title: 48px;
 $section-text: 32px;
-$section-padding-top: 75px;
+$section-padding: 90px;
 $gutter: 6px;
+// 871px ~ 1024px
+$section-title-1024: 42px;
+$section-text-1024: 28px;
+// 768px ~ 870px
+$section-title-870: 36px;
+$section-text-870: 24px;
 
 // link-icon-btn
 .link-btn {
@@ -402,7 +412,7 @@ a.btn {
 .section {
   width: 100%;
   height: calc(100vh - 60px);
-  padding: $section-padding-top 0;
+  padding: $section-padding 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -411,9 +421,27 @@ a.btn {
     z-index: 10;
     .section-title {
       font-size: $section-title;
+      @media(max-width: 1024px) {
+        font-size: $section-title-1024;
+      }
+      @media(max-width: 870px) {
+        font-size: $section-title-870;
+      }
+      .rwd {
+        display: none;
+        @include ipad() {
+          display: block;
+        }
+      }
     }
     .section-subTitle {
       font-size: $section-text;
+      @media(max-width: 1024px) {
+        font-size: $section-text-1024;
+      }
+      @media(max-width: 870px) {
+        font-size: $section-text-870;
+      }
     }
   }
   .section-img { // section2 img
@@ -445,6 +473,9 @@ a.btn {
     background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
+  }
+  .section-text {
+    margin-bottom: 120px;
   }
 }
 .section2 {

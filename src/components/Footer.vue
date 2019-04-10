@@ -149,7 +149,6 @@ $text-color: #ff9933;
     text-align: left;
     display: inline-block;
     width: 50%;
-    margin-bottom: 5px;
     @media (max-width: 1000px) {
       text-align: center;
       width: 100%;
