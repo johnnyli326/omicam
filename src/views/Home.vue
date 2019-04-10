@@ -156,7 +156,7 @@
     </section>
     <!-- section9 -->
     <section class="section9">
-      <h2 class="section-title text-center">OMI STORY</h2>
+      <h2 class="section-title text-center mb-4">OMI STORY</h2>
       <!-- <Slide></Slide> -->
       <div id="owl-demo" class="owl-carousel owl-theme">
         <div class="item" v-for="(story, index) in stories" :key="index"
@@ -385,12 +385,14 @@ $section-title: 48px;
 $section-text: 32px;
 $section-padding: 90px;
 $gutter: 6px;
-// 871px ~ 1024px
-$section-title-1024: 42px;
-$section-text-1024: 28px;
+// 871px ~ 1023px
+$section-title-1023: 42px;
+$section-text-1023: 28px;
 // 768px ~ 870px
 $section-title-870: 36px;
-$section-text-870: 24px;
+$section-text-870: 20px;
+// 767px
+$section-title-767: 32px;
 
 // link-icon-btn
 .link-btn {
@@ -416,16 +418,22 @@ a.btn {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include iphoneX_Height { // 橫式 iphone8+ 以下
+    padding: 20px 0;
+  }
   .section-text {
     text-align: center;
     z-index: 10;
     .section-title {
       font-size: $section-title;
-      @media(max-width: 1024px) {
-        font-size: $section-title-1024;
+      @media(max-width: 1023px) {
+        font-size: $section-title-1023;
       }
       @media(max-width: 870px) {
         font-size: $section-title-870;
+      }
+      @media(max-width: 767px) {
+        font-size: $section-title-767;
       }
       .rwd {
         display: none;
@@ -436,24 +444,13 @@ a.btn {
     }
     .section-subTitle {
       font-size: $section-text;
-      @media(max-width: 1024px) {
-        font-size: $section-text-1024;
+      @media(max-width: 1023px) {
+        font-size: $section-text-1023;
       }
       @media(max-width: 870px) {
         font-size: $section-text-870;
       }
     }
-  }
-  .section-img { // section2 img
-    margin-top: 10px;
-    background-image: url('../assets/images/Home/sec2.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 1000px 531.3px;
-    height: 100%;
-    width: 70%;
-    position: absolute;
-    bottom: -30px;
   }
 }
 .section1 {
@@ -476,30 +473,62 @@ a.btn {
   }
   .section-text {
     margin-bottom: 120px;
+    @include iphone8plus_Height() {
+      margin-bottom: 0;
+    }
   }
 }
 .section2 {
   background-color: #1a1a1a;
   position: relative;
+  @include iphone8plus_Height() {
+    height: calc(2 * ( 100vh - 60px ));
+  }
+  .section-img { // section2 img
+    margin-top: 10px;
+    background-image: url('../assets/images/Home/sec2.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 1000px 531.3px;
+    height: 100%;
+    width: 70%;
+    position: absolute;
+    bottom: -30px;
+    @media(max-width: 500px) {
+      background-size: 200%;
+    }
+    @include iphone5() {
+      background-size: 500px 265px;
+      background-position-y: 70%;
+    }
+    @include iphone5_Height() {
+      background-size: 700px 371px;
+      background-position-y: 70%;
+    }
+  }
 }
 .section3 {
   background-image: url('../assets/images/Home/sec3.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  @include ipad() {
+    background-position-y: center;
+    background-position-x: 25%;
+  }
 }
 .section4 {
   background-image: url('../assets/images/dynamic_img.jpg');
   background-position: center center;
-  background-size: 110% 110%;
+  background-size: 130% 100%;
   background-repeat: no-repeat;
   -webkit-animation: mover 2s infinite alternate linear;
   animation: mover 2s infinite alternate linear;
   @include BelowImgSize { // when screen size < img-size ( 1600px小於一點點 1550 )
-    background-size: auto;
     animation-duration: 8s;
   }
   @include ipad { // < = ipad size()
+    background-size: 150% 100%;
     animation-duration: 12s;
   }
 }
@@ -544,6 +573,9 @@ a.btn {
   @include ipad() {
     height: auto !important;
   }
+  @include iphoneX_Height { // 橫式 iphone8+ 以下
+    padding: 20px 0;
+  }
   .section-row {
     height: 100%;
     width: 100%;
@@ -557,7 +589,6 @@ a.btn {
       background-repeat: no-repeat;
       @include ipad() {
         height: 300px !important;
-        background-size: 60%;
       }
     }
   }
@@ -580,6 +611,10 @@ a.btn {
       background-repeat: no-repeat;
       @include ipad() {
         height: 300px !important;
+        background-size: 30%;
+      }
+      @include iphone8plus_Height { // 橫式 iphone8+ 以下
+        background-size: 20%;
       }
     }
   }

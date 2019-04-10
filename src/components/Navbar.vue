@@ -134,6 +134,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import "../assets/mixin";
+
 * {
   font-size: 16px;
 }
@@ -166,6 +168,9 @@ export default {
     display: inline-block;
     margin: 0;
     margin-right: 15px;
+    @include ipad() {
+      margin-right: 0;
+    }
     li {
       display: inline-block;
       vertical-align: top;

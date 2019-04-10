@@ -71,106 +71,132 @@ $text-color: #ff9933;
 
 .wrap {
   background-color: #0d0d0d;
-  padding: 20px 50px;
-  .subscribe-section {
-    text-align: left;
-    margin-bottom: $section-mb;
-    display: inline-block;
-    width: 70%;
+  padding: 20px;
+  font-size: 16px;
+  .section-row {
     @media (max-width: 1000px) {
-      width: 100%;
-      text-align: center;
-    }
-    .subscribe {
-      width: 100%;
-      .rwd-label {
-        display: none;
-        color: $text-color;
-        @media (max-width: 1000px) {
-          display: inline-block;
-          width: 100%;
-          text-align: center;
-          color: $text-color;
-        }
+        text-align: center;
       }
-      .subscribe-input-group {
-        display: flex;
-        align-items: center;
-        .pc-label {
+    .subscribe-section {
+      text-align: left;
+      margin-bottom: $section-mb;
+      display: inline-block;
+      width: 60%;
+      @media (max-width: 1000px) {
+        // width: 100%;
+        text-align: center;
+        width: 60%;
+      }
+      @include ipad() {
+        width: 80%;
+      }
+      @include iphone8plus() {
+        width: 100%;
+      }
+      .subscribe {
+        width: 100%;
+        text-align: center;
+        .rwd-label {
+          display: none;
           color: $text-color;
           @media (max-width: 1000px) {
-            display: none;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            color: $text-color;
           }
         }
-        .subscribe-input {
-          border: none;
-          border-bottom: 1px solid #767676;
-          background-color: #0d0d0d;
-          color: white;
-          &:focus,
-          &:active {
-            outline: none;
-            box-shadow: none;
+        .subscribe-input-group {
+          display: flex;
+          align-items: center;
+          .pc-label {
+            color: $text-color;
+            @media (max-width: 1000px) {
+              display: none;
+            }
           }
-        }
-        .subscribe-btn {
-          border: 1px solid $text-color;
-          padding: 8px;
-          border-radius: 5px;
-          color: $text-color;
-          cursor: pointer;
+          .subscribe-input {
+            border: none;
+            border-bottom: 1px solid #767676;
+            background-color: #0d0d0d;
+            color: white;
+            &:focus,
+            &:active {
+              outline: none;
+              box-shadow: none;
+            }
+          }
+          .subscribe-btn {
+            border: 1px solid $text-color;
+            padding: 8px;
+            border-radius: 5px;
+            color: $text-color;
+            cursor: pointer;
+            @include iphone8plus() {
+              font-size: 14px !important;
+              padding: 8px;
+            }
+          }
         }
       }
     }
-  }
-  .social-section {
-    display: inline-block;
-    text-align: right;
-    width: 30%;
-    margin-bottom: $section-mb;
-    @media (max-width: 1000px) {
-      width: 100%;
-      text-align: center;
+    .social-section {
+      display: inline-block;
+      text-align: right;
+      width: 40%;
+      margin-bottom: $section-mb;
+      @media (max-width: 1000px) {
+        width: 100%;
+        text-align: center;
+      }
+      .facebook {
+        color: #3b5998;
+      }
+      .youtube {
+        color: #cd201f;
+      }
+      .twitter {
+        color: #1da1f2;
+      }
+      .line {
+        color: #00C300;
+      }
     }
-    .facebook {
-      color: #3b5998;
+    .about-section {
+      text-align: left;
+      display: inline-block;
+      width: 50%;
+      @media (max-width: 1000px) {
+        text-align: center;
+        width: 100%;
+      }
+      .info-link {
+        text-decoration: none;
+        outline: 0;
+        color: white;
+        font-size: 16px;
+        &:hover {
+          color: #999 !important;
+        }
+        @include iphone8plus() {
+          font-size: 14px !important;
+        }
+      }
     }
-    .youtube {
-      color: #cd201f;
-    }
-    .twitter {
-      color: #1da1f2;
-    }
-    .line {
-      color: #00C300;
-    }
-  }
-  .about-section {
-    text-align: left;
-    display: inline-block;
-    width: 50%;
-    @media (max-width: 1000px) {
-      text-align: center;
-      width: 100%;
-    }
-    .info-link {
-      text-decoration: none;
-      outline: 0;
+    .copyright-section {
+      text-align: right;
       color: white;
-      &:hover {
-        color: #999 !important;
+      display: inline-block;
+      width: 50%;
+      margin-bottom: 5px;
+      font-size: 16px;
+      @media (max-width: 1000px) {
+        text-align: center;
+        width: 100%;
       }
-    }
-  }
-  .copyright-section {
-    text-align: right;
-    color: white;
-    display: inline-block;
-    width: 50%;
-    margin-bottom: 5px;
-    @media (max-width: 1000px) {
-      text-align: center;
-      width: 100%;
+      @include iphone8plus() {
+        font-size: 14px !important;
+      }
     }
   }
 }

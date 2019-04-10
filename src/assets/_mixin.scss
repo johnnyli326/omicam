@@ -27,3 +27,21 @@
     @content
   }
 }
+
+@mixin iphone8plus_Height {
+  @media(max-height: 414px) {
+    @content
+  }
+}
+
+@mixin iphoneX_Height {
+  @media(max-height: 375px) {
+    @content
+  }
+}
+
+@mixin iphone5_Height {
+  @media(max-height: 320px) {
+    @content
+  }
+}
