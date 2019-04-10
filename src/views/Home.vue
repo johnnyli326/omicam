@@ -528,7 +528,7 @@ a.btn {
     animation-duration: 8s;
   }
   @include ipad { // < = ipad size()
-    background-size: 150% 100%;
+    background-size: 180% 100%;
     animation-duration: 12s;
   }
 }
@@ -588,7 +588,16 @@ a.btn {
       background-position: center center;
       background-repeat: no-repeat;
       @include ipad() {
-        height: 300px !important;
+        height: 270px !important;
+        background-size: 60%;
+      }
+      @include iphone8plus_Height() {
+        background-size: 60%;
+      }
+    }
+    .section-text {
+      @include ipad() {
+        height: 270px !important;
       }
     }
   }
@@ -610,11 +619,20 @@ a.btn {
       background-position: center center;
       background-repeat: no-repeat;
       @include ipad() {
-        height: 300px !important;
+        height: 400px !important;
         background-size: 30%;
       }
       @include iphone8plus_Height { // 橫式 iphone8+ 以下
         background-size: 20%;
+      }
+    }
+    .section-text {
+      @include ipad() {
+        height: 330px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
       }
     }
   }
