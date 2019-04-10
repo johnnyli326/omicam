@@ -11,12 +11,9 @@
           THE WORLD YOU SEE.
         </h2>
         <p class="section-subTitle">OmiCam | Wearable VR Camera</p>
-        <img class="link-icon-btn" src="../assets/images/Home/play.png"
-        alt="btn" usemap="#btnmap_1">
-        <map name="btnmap_1">
-          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-          data-toggle="modal" data-target="#commercialModal">
-        </map>
+        <button class="link-icon-btn clickable play-btn"
+        data-toggle="modal" data-target="#commercialModal">
+        </button>
       </div>
     </section>
     <!-- section2 -->
@@ -74,7 +71,8 @@
     <!-- section5 -->
     <section class="section section5">
       <div class="video-wrap">
-        <video class="loop-video" autoplay loop muted>
+        <video class="loop-video" autoplay loop muted
+        playsinline>
           <source src="../assets/images/Allday.mp4"
           type="video/mp4">
         </video>
@@ -97,12 +95,9 @@
         <p class="text-center section-subTitle">
           Always manitain image steady & stable in any activities.
         </p>
-        <img class="link-icon-btn" src="../assets/images/Home/play.png"
-        alt="btn" usemap="#btnmap_6">
-        <map name="btnmap_6">
-          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-          data-toggle="modal" data-target="#commercialModal">
-        </map>
+        <button class="link-icon-btn clickable play-btn"
+        data-toggle="modal" data-target="#commercialModal">
+        </button>
       </div>
     </section>
     <!-- section7 -->
@@ -395,10 +390,6 @@ $section-text-870: 20px;
 $section-title-767: 32px;
 
 // link-icon-btn
-.link-btn {
-  width: 75px;
-  height: 75px;
-}
 .link-icon-btn {
   width: 75px;
   height: 75px;
@@ -413,7 +404,8 @@ a.btn {
 }
 .section {
   width: 100%;
-  height: calc(100vh - 60px);
+  // height: calc(100vh - 60px);
+  height: 680px;
   padding: $section-padding 0;
   display: flex;
   flex-direction: column;
@@ -451,12 +443,20 @@ a.btn {
         font-size: $section-text-870;
       }
     }
+    .play-btn {
+      cursor: pointer;
+      background-image: url('../assets/images/Home/play.png');
+      background-position: center center;
+      background-size: cover;
+      background-color: transparent;
+      border: 0;
+      outline: none;
+    }
   }
 }
 .section1 {
   max-width: 100%;
-  height: calc(100vh - 60px);
-  background-image: url('../assets/images/Home/sec1.png');
+  background-image: url('../assets/images/Home/sec1.jpg');
   background-size: cover;
   background-position: bottom center;
   position: relative;
@@ -508,7 +508,7 @@ a.btn {
   }
 }
 .section3 {
-  background-image: url('../assets/images/Home/sec3.png');
+  background-image: url('../assets/images/Home/sec3.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -563,7 +563,7 @@ a.btn {
 }
 
 .section6 {
-  background-image: url('../assets/images/Home/sec6.png');
+  background-image: url('../assets/images/Home/sec6.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

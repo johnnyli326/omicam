@@ -5,7 +5,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  // publicPath: '/test/',
+  publicPath: '/',
   configureWebpack: {
     plugins: [
       new webpack.ProvidePlugin({

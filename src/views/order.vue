@@ -197,10 +197,10 @@ export default {
       // true ， 非同步
       xhr.open('get',
       'https://www.omicam.com/_privateApi/saleApi.php?fun=cpl&shipping=us&items='
-      + 'omicam:' + vm.items.omicam
-      + ';waterCase:'+ vm.items.waterCase
-      + ';shoulderStrap:' + vm.items.shoulderStrap
-      + '&promoteCode=' + vm.FinalPromoteCode,
+      + 'omicam:' + this.items.omicam
+      + ';waterCase:'+ this.items.waterCase
+      + ';shoulderStrap:' + this.items.shoulderStrap
+      + '&promoteCode=' + this.FinalPromoteCode,
       true);
       xhr.send(null);
       xhr.onload = () => {
@@ -213,6 +213,7 @@ export default {
     },
     delete_cookie() { // 刪除cart紀錄
       let Arr = this.carts;
+      let vm = this;
       Arr.forEach(function(e) {  // 刪除 carts cookie
         document.cookie = e.name + '=' + ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
       });
