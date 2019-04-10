@@ -1,22 +1,23 @@
 <template>
   <div class="wrap w-100">
-    <div class="row m-0">
-      <div class="col-md-8 subscribe-section">
+    <div class="section-row">
+      <div class="subscribe-section">
         <div class="form-group subscribe">
+          <label class="rwd-label" for="e-mail">SUBSCRIBE NEWSLETTER</label>
           <div class="input-group mb-3 subscribe-input-group">
-            <label class="text-primary" for="e-mail">SUBSCRIBE NEWSLETTER</label>
+            <label class="pc-label" for="e-mail">SUBSCRIBE NEWSLETTER</label>
             <input type="text"
             class="form-control subscribe-input mr-3"
             placeholder="Enter your e-mail address"
             aria-label="Enter your e-mail address"
             id="e-mail">
             <div class="input-group-append">
-              <div class="btn btn-outline-primary">SUBSCRIBE</div>
+              <div class="subscribe-btn">SUBSCRIBE</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4 social-section">
+      <div class="social-section">
         <div>
           <a href="https://www.facebook.com/OMICAMGLOBAL"
           class="facebook mr-2" target="_blank">
@@ -36,7 +37,9 @@
 					</a>
         </div>
       </div>
-      <div class="col-md-6 about-section">
+    </div>
+    <div class="section-row">
+      <div class="about-section">
         <router-link to="/about" class="mr-2 info-link">
           About
         </router-link>
@@ -47,7 +50,7 @@
           Terms of service
         </router-link>
       </div>
-      <div class="col-md-6 copyright-section">
+      <div class="copyright-section">
         <span>Copyright © 2019 Sightour Inc. All rights reserved</span>
       </div>
     </div>
@@ -63,77 +66,113 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
+$section-mb: 10px;
+$text-color: #ff9933;
+
 .wrap {
   background-color: #0d0d0d;
-  padding: 20px 50px;;
-  .facebook {
-    color: #3b5998;
-  }
-  .youtube {
-    color: #cd201f;
-  }
-  .twitter {
-    color: #1da1f2;
-  }
-  .line {
-    color: #00C300;
-  }
-  .info-link {
-    text-decoration: none;
-    outline: 0;
-    color: white;
-    &:hover {
-      color: #999 !important;
+  padding: 20px 50px;
+  .subscribe-section {
+    text-align: left;
+    margin-bottom: $section-mb;
+    display: inline-block;
+    width: 70%;
+    @media (max-width: 1000px) {
+      width: 100%;
+      text-align: center;
     }
-  }
-}
-.subscribe-section {
-  text-align: left;
-  margin-bottom: 10px;
-  @include ipad() {
-    text-align: center;
-  }
-  .subscribe {
-    width: 60%;
-    @include ipad() {
-      margin: 0 auto;
-      width: 95%;
-    }
-    .subscribe-input-group {
-      display: flex;
-      align-items: center;
-      width: 600px;
-      .subscribe-input {
-        border: none;
-        border-bottom: 1px solid #767676;
-        background-color: #0d0d0d;
-        color: white;
-        &:focus,
-        &:active {
-          outline: none;
-          box-shadow: none;
+    .subscribe {
+      width: 100%;
+      .rwd-label {
+        display: none;
+        color: $text-color;
+        @media (max-width: 1000px) {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          color: $text-color;
+        }
+      }
+      .subscribe-input-group {
+        display: flex;
+        align-items: center;
+        .pc-label {
+          color: $text-color;
+          @media (max-width: 1000px) {
+            display: none;
+          }
+        }
+        .subscribe-input {
+          border: none;
+          border-bottom: 1px solid #767676;
+          background-color: #0d0d0d;
+          color: white;
+          &:focus,
+          &:active {
+            outline: none;
+            box-shadow: none;
+          }
+        }
+        .subscribe-btn {
+          border: 1px solid $text-color;
+          padding: 8px;
+          border-radius: 5px;
+          color: $text-color;
+          cursor: pointer;
         }
       }
     }
   }
-}
-.social-section {
-  text-align: right;
-  @include ipad() {
-    text-align: center;
+  .social-section {
+    display: inline-block;
+    text-align: right;
+    width: 30%;
+    margin-bottom: $section-mb;
+    @media (max-width: 1000px) {
+      width: 100%;
+      text-align: center;
+    }
+    .facebook {
+      color: #3b5998;
+    }
+    .youtube {
+      color: #cd201f;
+    }
+    .twitter {
+      color: #1da1f2;
+    }
+    .line {
+      color: #00C300;
+    }
   }
-}
-.about-section {
-  text-align: left;
-  @include ipad() {
-    text-align: center;
+  .about-section {
+    text-align: left;
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 5px;
+    @media (max-width: 1000px) {
+      text-align: center;
+      width: 100%;
+    }
+    .info-link {
+      text-decoration: none;
+      outline: 0;
+      color: white;
+      &:hover {
+        color: #999 !important;
+      }
+    }
   }
-}
-.copyright-section {
-  text-align: right;
-  color: white;
-  @include ipad() {
-    text-align: center;
+  .copyright-section {
+    text-align: right;
+    color: white;
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 5px;
+    @media (max-width: 1000px) {
+      text-align: center;
+      width: 100%;
+    }
   }
 }
 </style>
