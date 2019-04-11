@@ -192,6 +192,7 @@
 import $ from 'jquery';
 import 'owl.carousel';
 import 'is-in-viewport';
+import { setTimeout } from 'timers';
 
 export default {
   name: 'Home',
@@ -218,6 +219,9 @@ export default {
         let target = $("section[id='"+ id +"']");
         $('html, body').stop().animate({scrollTop: target.offset().top - 50}, 1000);
       },300);
+    },
+    GoTop() {
+      $('html, body').animate({ scrollTop: 0 }, '1000');
     },
   },
   created() {
@@ -256,26 +260,6 @@ export default {
       $(".prev").click(function(){
         owl.trigger('prev.owl.carousel');
       });
-      // change div order at section2
-      
-      function checkWidth() {
-        if($(window).width() <= 768) { // below ipad width
-          $('.section8-text').remove().insertAfter($('.section8-img'));
-        } else {
-          $('.section8-text').remove().insertBefore($('.section8-img'));
-        }
-        if($(window).width() <= 768) { // below ipad width
-          $('.section7-text').remove().insertAfter($('.section7-img'));
-        } else {
-          $('.section7-text').remove().insertBefore($('.section7-img'));
-        }
-        if($(window).width() <= 768) { // below ipad width
-          $('.shaking').remove().insertAfter($('.shaking-text'));
-        } else {
-          $('.shaking').remove().insertBefore($('.shaking-text'));
-        }
-      }
-      checkWidth();
     });
     //////// end jquery  ////////
     
