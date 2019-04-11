@@ -2,34 +2,34 @@
   <div class="nav-wrap fixed-top">
     <nav class="navbar">
       <div>
-        <router-link class="logo-link d-block p-0" to="/">
-          <h1 class="logo">OmiCam</h1>
-        </router-link>
+        <a class="logo-link d-block p-0" href="/">
+          <h1 class="logo" @click.prevent="refresh()">OmiCam</h1>
+        </a>
       </div>
       <ul class="top-menu list-unstyled">
         <li class="menu-item">
-          <router-link to="/omicam"
+          <a href="/omicam" @click.prevent="refresh('omicam')"
           :class="{ 'active': $route.name == 'Omicam' }">
           OMICAM
-          </router-link>
+          </a>
         </li>
         <li class="menu-item">
-          <router-link to="/omi-studio"
+          <a href="/omi-studio" @click.prevent="refresh('omi-studio')"
           :class="{ 'active': $route.name == 'OmiStudio' }">
           OMI STUDIO
-          </router-link>
+          </a>
         </li>
         <li class="menu-item">
-          <router-link to="/news"
+          <a href="/news" @click.prevent="refresh('news')"
           :class="{ 'active': $route.name == 'News' }">
           NEWS
-          </router-link>
+          </a>
         </li>
         <li class="menu-item">
-          <router-link to="/omistory"
+          <a href="/omistory" @click.prevent="refresh('omistory')"
           :class="{ 'active': $route.name == 'OmiStory' }">
           OMI STORY
-          </router-link>
+          </a>
         </li>
         <li class="menu-item">
           <a href="https://support.omicam.com/portal/home"
@@ -38,10 +38,10 @@
           </a>
         </li>
         <li class="menu-item">
-          <router-link to="/contact"
+          <a href="/contact" @click.prevent="refresh('contact')"
           :class="{ 'active': $route.name == 'Contact' }">
           CONTACT
-          </router-link>
+          </a>
         </li>
       </ul>
       <ul class="list-unstyled mobile-icon">
@@ -53,12 +53,13 @@
           </button>
         </li>
         <li>
-          <router-link class="cart mr-3" to="/shop"
+          <a class="cart mr-3" href="/shop"
+          @click.prevent="refresh('shop')"
           :class="{ 'active': $route.name == 'Shop' }">
             <img class="buy-icon"
             src="../assets/images/Navbar/buy_icon.png"
             alt="buy">
-          </router-link>
+          </a>
         </li>
       </ul>
     </nav>
@@ -67,9 +68,19 @@
 
 <script>
 import $ from 'jquery';
+import { setTimeout } from 'timers';
 
 export default {
   name: 'Navbar',
+  data() {
+    return {}
+  },
+  methods: {
+    refresh(path) {
+      this.$router.push('/' + path);
+      window.scrollTo(0, 0);
+    }
+  },
   mounted() {
     $(document).ready(() => {
       // 點擊漢堡

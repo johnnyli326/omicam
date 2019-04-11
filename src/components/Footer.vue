@@ -6,7 +6,7 @@
           <label class="rwd-label" for="e-mail">SUBSCRIBE NEWSLETTER</label>
           <div class="input-group mb-3 subscribe-input-group">
             <label class="pc-label" for="e-mail">SUBSCRIBE NEWSLETTER</label>
-            <input type="text"
+            <input type="e-mail"
             class="form-control subscribe-input mr-3"
             placeholder="Enter your e-mail address"
             aria-label="Enter your e-mail address"

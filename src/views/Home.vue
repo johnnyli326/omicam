@@ -32,7 +32,6 @@
           @click="$router.push('/shop')">
         </map>
       </div>
-      <div class="section-img"></div>
     </section>
     <!-- section3 -->
     <section class="section section3">
@@ -155,9 +154,11 @@
       <div id="owl-demo" class="owl-carousel owl-theme">
         <div class="item" v-for="(story, index) in stories" :key="index"
         :style="{ backgroundImage: 'url(' + story.imgSrc + ')' }">
-          <div class="slide-up">
-            <span>{{ story.name }}</span>
-          </div>
+          <router-link to="/omistory" class="d-inline-block">
+            <div class="slide-up">
+              <span>{{ story.name }}</span>
+            </div>
+          </router-link>
         </div>
       </div>
       <div class="customNavigation">
@@ -258,11 +259,6 @@ export default {
       // change div order at section2
       
       function checkWidth() {
-        if($(window).width() <= 768) { // below ipad width
-          $('.section2-text').remove().insertAfter($('.section2-img'));
-        } else {
-          $('.section2-text').remove().insertBefore($('.section2-img'));
-        }
         if($(window).width() <= 768) { // below ipad width
           $('.section8-text').remove().insertAfter($('.section8-img'));
         } else {
@@ -409,14 +405,16 @@ a.btn {
 }
 .section {
   width: 100%;
-  // height: calc(100vh - 60px);
-  height: 680px;
+  height: 980px;
   padding: $section-padding 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include iphoneX_Height { // 橫式 iphone8+ 以下
+  @include ipad {
     padding: 20px 0;
+  }
+  @include ipad_pro() { // for 1024 below 
+    height: 680px;
   }
   .section-text {
     text-align: center;
@@ -484,32 +482,12 @@ a.btn {
   }
 }
 .section2 {
-  background-color: #1a1a1a;
-  position: relative;
-  @include iphone8plus_Height() {
-    height: calc(2 * ( 100vh - 60px ));
-  }
-  .section-img { // section2 img
-    margin-top: 10px;
-    background-image: url('../assets/images/Home/sec2.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 1000px 531.3px;
-    height: 100%;
-    width: 70%;
-    position: absolute;
-    bottom: -30px;
-    @media(max-width: 500px) {
-      background-size: 200%;
-    }
-    @include iphone5() {
-      background-size: 500px 265px;
-      background-position-y: 70%;
-    }
-    @include iphone5_Height() {
-      background-size: 700px 371px;
-      background-position-y: 70%;
-    }
+  background-image: url('../assets/images/Home/sec2.jpg');
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include iphone678() {
+    background-size: 300% 100%;
   }
 }
 .section3 {
@@ -529,6 +507,9 @@ a.btn {
   background-repeat: no-repeat;
   -webkit-animation: mover 2s infinite alternate linear;
   animation: mover 2s infinite alternate linear;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   @include BelowImgSize { // when screen size < img-size ( 1600px小於一點點 1550 )
     animation-duration: 8s;
   }
@@ -543,6 +524,9 @@ a.btn {
 }
 .section5 {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .video-wrap {
     position: absolute;
     top: 0;
@@ -572,6 +556,9 @@ a.btn {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .section7 {
   background-color: black;
@@ -645,7 +632,7 @@ a.btn {
 .section9 {
   background-image: url('../assets/images/Home/sec9.png');
   background-attachment: fixed;
-  padding: 100px 50px;
+  padding: 100px 10px;
 }
 
 .btn {
