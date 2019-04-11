@@ -29,23 +29,23 @@ export default {
     },
   },
   mounted() {
-    $(document).ready(function() {
-      $(window).scroll(function() { // Go Top show
-        let pos = $(window).scrollTop();
-        if (pos > 680) { 
-          $('.goTop').css('display','block');
-          setTimeout(function(){
-            $('.goTop').css('opacity','1');
-          }, 10)
+    $(document).ready(() => {
+      $(window).scroll(() => { // Go Top show
+        const pos = $(window).scrollTop();
+        if (pos > 680) {
+          $('.goTop').css('display', 'block');
+          setTimeout(() => {
+            $('.goTop').css('opacity', '1');
+          }, 10);
         } else {
-          $('.goTop').css('opacity','0');
-          setTimeout(function(){
-            $('.goTop').css('display','none');
-          }, 10)
+          $('.goTop').css('opacity', '0');
+          setTimeout(() => {
+            $('.goTop').css('display', 'none');
+          }, 10);
         }
-      })
-    })
-  }
+      });
+    });
+  },
 };
 </script>
 

@@ -12,26 +12,28 @@
           <li class="breadcrumb-item active" aria-current="page">OMI Story</li>
         </ol>
       </nav>
-			<div v-for="(story, index) in stories" :key="index">
+      <!-- single list start -->
+			<div v-for="(story, index) in storyList" :key="index">
         <div class="row mb-5">
           <div class="col-md-3 news-img text-center"
-					:style="{ backgroundImage: 'url(' + story.imgSrc + ')' }">
-            <router-link to="/"></router-link>
+					:style="{ backgroundImage: 'url(' + 'https://www.omicam.com/' + story.listImg + ')' }">
+            <router-link :to="'/omistory/' + story.title"></router-link>
           </div>
           <div class="col-md-9">
             <small class="text-primary">OMI STORY</small>
 						<main class="ml-4 mt-3">
-              <h3>Omi Story {{ index+1 }}</h3>
+              <h3>{{ story.title }}</h3>
               <p style="text-align:justify">
-								{{ story.content }}
+								{{ story.description }}
 								<br>
-								<span class="d-block" style="text-align: right">--{{ story.name }}</span>
+								<span class="d-block" style="text-align: right">--{{ story.author }}</span>
               </p>
 						</main>
           </div>
         </div>
 				<hr>
 			</div>
+      <!-- single list end  -->
     </div>
   </div>
 </template>
@@ -40,30 +42,29 @@
 export default {
   data() {
     return {
-      stories: [{
-        name: 'Teacher Vane, Travelholic',
-				imgSrc: require('../assets/images/teacher.png'),
-				content: `"When I thought back my travel experience,
-				OmiCam always surprised me again and again. He captured
-				all wonderful time in my travels."`,
-      }, {
-        name: 'MoLong, Wargamer',
-				imgSrc: require('../assets/images/MoLong.jpg'),
-				content: `“At first, when playing wargame, I wear
-				OmiCam to make my appearance unique like a unicorn
-				beetle. Then I fell in love with 240° VR video.”`
-      }, {
-        name: 'Eva, Divingholic',
-				imgSrc: require('../assets/images/eva.png'),
-				content: `"While using OmiCam, no need to find the
-				best angle so I could enjoy the present. Getting home
-				and played the videos, the screen recalled best diving
-				memory."`
-      }],
+      storyList: [],
     };
+  },
+  methods: {
+    getStories() { // get omi-stories from database
+      const xhr = new XMLHttpRequest; // state = 0
+      xhr.open('get',
+        'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=list&from=0&count=2',
+        true);
+      xhr.send(null);
+      xhr.onload = () => {
+        console.log(xhr.response);
+        this.storyList = JSON.parse(xhr.response);
+        Array.prototype.forEach.call(this.storyList, element => {
+          console.log(element.description);
+          
+        });
+      };
+    },
   },
   created() {
     window.scrollTo(0, 0);
+    this.getStories();
   },
 };
 </script>
@@ -76,13 +77,13 @@ export default {
   border: 1px solid #e9e9e9;
 }
 .news-img {
-	box-shadow: 1px 1px 1px 2px gray;
+  box-shadow: 1px 1px 1px 2px gray;
   height: 300px;
   background-position: center center;
-	background-size: cover;
-	a {
+  background-size: cover;
+  a {
     display: block;
     height: 100%;
-	}
+  }
 }
 </style>
