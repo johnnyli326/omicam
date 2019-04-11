@@ -71,8 +71,7 @@
     <!-- section5 -->
     <section class="section section5">
       <div class="video-wrap">
-        <video class="loop-video" autoplay loop muted
-        playsinline>
+        <video class="loop-video" loop muted playsinline>
           <source src="../assets/images/Allday.mp4"
           type="video/mp4">
         </video>
@@ -282,7 +281,9 @@ export default {
       }
       checkWidth();
     });
-    // youtube API
+    //////// end jquery  ////////
+    
+    // youtube API start
     function callPlayer(frame_id, func, args) {
       if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
       let iframe = document.getElementById(frame_id);
@@ -361,8 +362,12 @@ export default {
               (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
       }
     }
+    // video autoplay;
+    const loopVideo = document.querySelector('.loop-video');
+    loopVideo.autoplay = true;
+    loopVideo.load();
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
