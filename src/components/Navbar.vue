@@ -86,17 +86,17 @@ export default {
       // 點擊漢堡
       $('.hamburger-btn').click(function() {
         $(this).toggleClass('active'); // 漢堡toggle
-        if ($('.top-menu').hasClass('show')) { // top-menu 收合
+        if ($('.top-menu').hasClass('show')) { // Mobile version top-menu 收合
           $('.top-menu').removeClass('show').addClass('hide');
           $('body').css('overflow', 'auto');
           $('.navbar').css('background-color', 'rgba(0, 0, 0)');
-          $('.nav-wrap').css('height', 'auto');
-        } else {
+          // $('.nav-wrap').css('height', 'auto');
+        } else { // Mobile version top-menu 展開
           $('body').css('overflow', 'hidden'); // body不會scroll
           $('.top-menu').removeClass('hide').addClass('show');
           $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.9)');
           $('.navbar').css('position', 'absolute');
-          $('.nav-wrap').css('height', '420px;');
+          // $('.nav-wrap').css('height', '420px;');
         }
       });
       // 點擊 logo
@@ -109,12 +109,12 @@ export default {
       });
       $(window).resize(function() {
         if ($(window).width() >= 1000) { // for stretch device
+          $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
           $('.top-menu').removeClass('show').removeClass('hide'); // dropdown menu 
           $('.hamburger-btn').removeClass('active');
           $('body').css('overflow', 'auto');
           $('.navbar').css('background-color', 'rgba(0, 0, 0)');
-          $('.nav-wrap').css('height', 'auto');
-          $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
+          // $('.nav-wrap').css('height', 'auto');
         } else {
           $('.top-menu').remove().insertAfter($('.mobile-icon')); // move Topmenu after Icon
           $('.menu-item').click(function() { // click menu-item, slideUp top-menu etc...
@@ -122,7 +122,7 @@ export default {
             $('.top-menu').removeClass('show');
             $('body').css('overflow', 'auto');
             $('.navbar').css('background-color', 'rgba(0, 0, 0)');
-            $('.nav-wrap').css('height', 'auto');
+            // $('.nav-wrap').css('height', 'auto');
           });
         }
       });
@@ -257,7 +257,7 @@ export default {
       background: rgba(0, 0, 0, 0.1);
       padding-right: 0px;
       &.show {
-        height: 100vh;
+        height: 360px;
         overflow-y: scroll;
       }
       &.hide {
