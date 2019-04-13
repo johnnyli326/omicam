@@ -14,7 +14,7 @@
     <ul>
       <li v-for="(item, index) in ExtraStories" :key="index">
         {{ item.title }} {{ item.author }}
-        <a href="#" @click.prevent="$router.push('/omistory/' + item.id)">
+        <a href="#" @click.prevent="PushTo(item.id)">
           <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
         </a>
       </li>
@@ -49,11 +49,21 @@ export default {
     getStoryId() { // define database id
       let vm = this;
       vm.databaseId = vm.$route.params.storyId
+    },
+    PushTo(id) {
+      let vm = this;
+      vm.$router.push('/omistory/' + id);
     }
   },
   created() {
     window.scrollTo(0, 0);
     this.getStory();
+  },
+  beforeRouteUpdate(to, from, next) {
+    next(); // move to specific story
+    window.scroll(0, 0); 
+    this.databaseId = this.$route.params.storyId; // get params.storyId
+    this.getStory(); // get story data
   },
 };
 </script>
