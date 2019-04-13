@@ -71,8 +71,9 @@
     <section class="section section5">
       <div class="video-wrap">
         <video class="loop-video" loop muted playsinline>
-          <source src="../assets/images/Allday.mp4"
-          type="video/mp4">
+          <source
+          type="video/mp4"
+          src="../assets/images/Allday.mp4">
         </video>
       </div>
       <div class="section-text">
@@ -260,6 +261,9 @@ export default {
       $(".prev").click(function(){
         owl.trigger('prev.owl.carousel');
       });
+      // $(window).bind("load", function() {  
+      //   $('.loop-video source').attr('src', '../assets/images/Allday.mp4');
+      // })
     });
     //////// end jquery  ////////
     

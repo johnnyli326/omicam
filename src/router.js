@@ -30,7 +30,7 @@ export default new Router({
       name: 'OmiStory',
       component: () => import('./views/OmiStory.vue'),
     }, {
-      path: 'omistory/:storyTitle',
+      path: 'omistory/:storyId',
       name: 'story',
       component: () => import('./views/OmiStoryContent.vue'),
     }, {
