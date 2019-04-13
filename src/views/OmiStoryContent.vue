@@ -56,7 +56,7 @@ export default {
     }
   },
   created() {
-    window.scrollTo(0, 0);
+    window.scroll(0, 0); // new params page scrollTo
     this.getStory();
   },
   beforeRouteUpdate(to, from, next) {
