@@ -96,7 +96,7 @@ export default {
           $('.top-menu').removeClass('hide').addClass('show');
           $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.9)');
           $('.navbar').css('position', 'absolute');
-          // $('.nav-wrap').css('height', '420px;');
+          // $('.nav-wrap').css('height', '360px;');
         }
       });
       // 點擊 logo
