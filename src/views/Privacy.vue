@@ -1,10 +1,5 @@
 <template>
   <div>
-		<nav class="page-title">
-      <div class="container">
-        <h2>PRIVACY POLICY</h2>
-      </div>
-    </nav>
     <article class="container mt-4">
       <small>
 				Effective date: Dec 5th, 2016

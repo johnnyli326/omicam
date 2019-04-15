@@ -55,6 +55,8 @@ export default {
 .content {
   margin-top: 60px;
   min-height: calc(100vh - ( 60px ));
+  background-color: #1a1a1a;
+  height: 100%;
 }
 // Go Top
 .goTop {
@@ -82,6 +84,7 @@ export default {
     -moz-user-select: none; /* Firefox 2+ */
     -ms-user-select: none; /* IE 10+ */
     user-select: none;
+    color: rgb(193, 192, 192);
   }
 }
 </style>

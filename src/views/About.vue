@@ -1,10 +1,5 @@
 <template>
   <div>
-		<nav class="page-title">
-      <div class="container">
-        <h2>ABOUT</h2>
-      </div>
-    </nav>
     <article class="container mt-4">
       <main>
 				<p>

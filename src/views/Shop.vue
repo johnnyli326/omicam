@@ -1,13 +1,8 @@
 <template>
 	<div>
-    <nav class="page-title">
-      <div class="container">
-        <h2>OMI SHOP</h2>
-      </div>
-    </nav>
     <div class="container" style="margin-bottom: 100px;">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-white">
+        <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
           <li class="breadcrumb-item active" aria-current="page">Shop</li>
         </ol>

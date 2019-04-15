@@ -2,7 +2,7 @@
 	<div class="container order-container">
       <loading :active.sync="isLoading"></loading>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-white">
+        <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
           <li class="breadcrumb-item active" aria-current="page">
             <router-link to="/shop">Shop</router-link>

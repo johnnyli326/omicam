@@ -1,10 +1,5 @@
 <template>
   <div>
-    <div class="page-title">
-      <div class="container">
-        <h2>CONTACT</h2>
-      </div>
-    </div>
 		<div class="container mb-5 text-center">
 			<nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">

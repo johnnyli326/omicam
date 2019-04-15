@@ -25,7 +25,7 @@
         <p class="text-center section-subTitle">
           The easiest way to immersively record your life.
         </p>
-        <img src="../assets/images/Home/buy.png" class="link-icon-btn"
+        <img src="../assets/images/icons/buy.png" class="link-icon-btn"
         alt="buy_icon" usemap="#btnmap_2">
         <map name="btnmap_2">
           <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
@@ -42,7 +42,7 @@
         <p class="text-center section-subTitle">
           Free your hand to enjoy the life while recording.
         </p>
-        <img src="../assets/images/Home/more.png" class="link-icon-btn"
+        <img src="../assets/images/icons/more.png" class="link-icon-btn"
         alt="more_icon" usemap="#btnmap_3">
         <map name="btnmap_3">
           <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
@@ -59,7 +59,7 @@
         <p class="text-center section-subTitle">
           Extended your first person point of view by 240 Degree FoV
         </p>
-        <img src="../assets/images/Home/more.png" class="link-icon-btn"
+        <img src="../assets/images/icons/more.png" class="link-icon-btn"
         alt="more_icon" usemap="#btnmap_4">
         <map name="btnmap_4">
           <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
@@ -110,7 +110,7 @@
             Watch and share your VR experience
             thru OMI Studio on different platforms.
             </p>
-            <img src="../assets/images/Home/more.png" class="link-icon-btn"
+            <img src="../assets/images/icons/more.png" class="link-icon-btn"
             alt="more_icon" usemap="#btnmap_7">
             <map name="btnmap_7">
               <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
@@ -138,7 +138,7 @@
             <p class="section-subTitle">
               Simply Create Your Immersive Life Memory.
             </p>
-            <img src="../assets/images/Home/buy.png" class="link-icon-btn"
+            <img src="../assets/images/icons/buy.png" class="link-icon-btn"
             alt="more_icon" usemap="#btnmap_8">
             <map name="btnmap_8">
               <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
@@ -436,7 +436,7 @@ a.btn {
     }
     .play-btn {
       cursor: pointer;
-      background-image: url('../assets/images/Home/play.png');
+      background-image: url('../assets/images/icons/play.png');
       background-position: center center;
       background-size: cover;
       background-color: transparent;
@@ -695,13 +695,13 @@ a.btn {
 .customNavigation{
   text-align: center;
   .prev {
-    background-image: url('../assets/images/Home/prev.png');
+    background-image: url('../assets/images/icons/prev.png');
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
   }
   .next {
-    background-image: url('../assets/images/Home/next.png');
+    background-image: url('../assets/images/icons/next.png');
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;

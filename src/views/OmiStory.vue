@@ -1,13 +1,8 @@
 <template>
   <div>
-    <div class="page-title">
-      <div class="container">
-        <h2>OMI STORY</h2>
-      </div>
-    </div>
     <div class="container mb-5">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-white">
+        <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
           <li class="breadcrumb-item active" aria-current="page">OMI Story</li>
         </ol>
@@ -73,12 +68,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-title {
-  width: 100%;
-  padding: 30px;
-  background-color: #f8f9f9;
-  border: 1px solid #e9e9e9;
-}
 .news-img {
   box-shadow: 1px 1px 1px 2px gray;
   height: 300px;
