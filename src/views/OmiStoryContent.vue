@@ -1,24 +1,44 @@
 <template>
   <div>
-    <h2>{{ story.title }}</h2>
-    <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author">
-		<h2>{{  story.author }}</h2>
-		<p>{{ story.description }}</p>
-		<iframe width="560" height="315"
-		:src="'https://www.youtube.com/embed/' + 'OSULHl0e0F0'"
-		frameborder="0"
-		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen>
-		</iframe>
-    <h2>More Stories</h2>
-    <ul>
-      <li v-for="(item, index) in ExtraStories" :key="index">
-        {{ item.title }} {{ item.author }}
-        <a href="#" @click.prevent="PushTo(item.id)">
-          <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
-        </a>
-      </li>
-    </ul>
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent">
+          <li class="breadcrumb-item">
+            <router-link to="/">
+              <img src="../assets/images/icons/omicam_icon.png" alt="omicam">
+              Home
+            </router-link>
+          </li>
+          <li class="breadcrumb-item before" aria-current="page">
+            <router-link to="/omistory">
+              OMI STORY
+            </router-link>
+          </li>
+          <li class="breadcrumb-item before active" aria-current="page">
+            {{ story.title }}
+          </li>
+        </ol>
+      </nav>
+      <main class="row" style="color:white;">
+        <div class="col-8">
+          <h2>{{ story.title }}</h2>
+          <h2 class="text-right">--{{  story.author }}</h2>
+          <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author">
+          <p>{{ story.description }}</p>
+        </div>
+        <div class="col-4">
+          <h2>More Stories</h2>
+          <ul>
+            <li v-for="(item, index) in ExtraStories" :key="index">
+              {{ item.title }} {{ item.author }}
+              <a href="#" @click.prevent="PushTo(item.id)">
+                <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -69,11 +89,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-title {
-  width: 100%;
-  padding: 30px;
-  background-color: #f8f9f9;
-  border: 1px solid #e9e9e9;
+.breadcrumb {
+  border-bottom: 1px solid gray;
+  font-size: 28px;
+  .breadcrumb-item {
+    &.before::before {
+      content: '|';
+      color: gray;
+    }
+  }
 }
 .news-img {
 	box-shadow: 1px 1px 1px 2px gray;

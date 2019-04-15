@@ -354,7 +354,7 @@ export default {
   .breadcrumb-item {
     &.before::before {
       content: '|';
-      color: white;
+      color: gray;
     }
   }
 }
@@ -477,6 +477,9 @@ li {
   padding: 30px;
   margin: 50px auto;
   height: 350px;
+  @include ipad() {
+    height: auto;
+  }
   .section7-content {
     width: 70%;
     margin-left: auto;

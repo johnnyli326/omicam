@@ -3,8 +3,15 @@
     <div class="container mb-5">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
-          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">OMI Story</li>
+          <li class="breadcrumb-item">
+            <router-link to="/">
+              <img src="../assets/images/icons/omicam_icon.png" alt="omicam">
+              Home
+            </router-link>
+          </li>
+          <li class="breadcrumb-item before active" aria-current="page">
+            OMI STORY
+          </li>
         </ol>
       </nav>
       <!-- single list start -->
@@ -14,11 +21,10 @@
 					:style="{ backgroundImage: 'url(' + 'https://www.omicam.com/' + story.listImg + ')' }">
             <router-link :to="'/omistory/' + routerId[index]"></router-link>
           </div>
-          <div class="col-md-9">
-            <small class="text-primary">OMI STORY</small>
+          <div class="col-md-9 mt-4">
+            <h3 class="text-primary">{{ story.title }}</h3>
 						<main class="ml-4 mt-3">
-              <h3>{{ story.title }}</h3>
-              <p style="text-align:justify">
+              <p style="text-align:justify;color:white">
 								{{ story.description }}
 								<br>
 								<span class="d-block" style="text-align: right">--{{ story.author }}</span>
@@ -68,6 +74,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.breadcrumb {
+  border-bottom: 1px solid gray;
+  font-size: 28px;
+  .breadcrumb-item {
+    &.before::before {
+      content: '|';
+      color: gray;
+    }
+  }
+}
 .news-img {
   box-shadow: 1px 1px 1px 2px gray;
   height: 300px;
