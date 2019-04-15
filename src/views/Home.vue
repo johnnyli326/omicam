@@ -699,12 +699,16 @@ a.btn {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
   }
   .next {
     background-image: url('../assets/images/icons/next.png');
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
   }
 }
 .customNavigation a{
