@@ -74,9 +74,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/mixin";
+
 .breadcrumb {
   border-bottom: 1px solid gray;
   font-size: 28px;
+  @include ipad() {
+    font-size: 18px;
+  }
   .breadcrumb-item {
     &.before::before {
       content: '|';

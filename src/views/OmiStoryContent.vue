@@ -19,15 +19,14 @@
           </li>
         </ol>
       </nav>
-      <main class="row" style="color:white;">
-        <div class="col-8">
+      <main class="main" style="color:white;">
+        <article class="content">
           <h2>{{ story.title }}</h2>
-          <h2 class="text-right">--{{  story.author }}</h2>
+          <h6 class="text-right">--{{  story.author }}</h6>
           <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author">
           <p>{{ story.description }}</p>
-        </div>
-        <div class="col-4">
-          <h2>More Stories</h2>
+        </article>
+        <div class="extra-story">
           <ul>
             <li v-for="(item, index) in ExtraStories" :key="index">
               {{ item.title }} {{ item.author }}
@@ -89,9 +88,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/mixin";
+
 .breadcrumb {
   border-bottom: 1px solid gray;
   font-size: 28px;
+  @include ipad() {
+    font-size: 18px;
+  }
   .breadcrumb-item {
     &.before::before {
       content: '|';
@@ -108,5 +112,44 @@ export default {
     display: block;
     height: 100%;
 	}
+}
+.main {
+  width: 100%;
+  margin-top: 50px;
+  .content {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    @include ipad() {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .extra-story {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    ul {
+      list-style: none;
+      li {
+        margin-bottom: 20px;
+      }
+    }
+    @include ipad() {
+      width: 100%;
+      ul {
+        width: 100%;
+        li {
+          display: inline-block;
+          width: 31.33333%;
+          margin-right: 1%;
+        }
+      }
+    }
+  }
 }
 </style>
