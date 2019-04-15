@@ -83,6 +83,12 @@
         <p class="text-center section-subTitle">
           Up to 15 hours operating without worrying about the battery.
         </p>
+        <img src="../assets/images/icons/more.png" class="link-icon-btn"
+        alt="more_icon" usemap="#btnmap_7">
+        <map name="btnmap_7">
+          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+          @click.prevent="moveTo('Lifelog')">
+        </map>
       </div>
     </section>
     <!-- section6 -->
@@ -175,12 +181,15 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="modal-body text-center p-0" id="yt-player">
+          <div class="modal-body text-center
+          scale-video" id="yt-player">
             <iframe class="brand-film"
             src="https://www.youtube.com/embed/ETda2w2_81o?enablejsapi=1"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
+            allowfullscreen
+            width="500"
+            height="281.25">
             </iframe>
           </div>
         </div>
@@ -627,10 +636,6 @@ a.btn {
   cursor: pointer;
 }
 
-.brand-film {
-  width: 100%;
-  min-height: 450px;
-}
 .close {
   width: 20px;
   height: 20px;
@@ -649,13 +654,28 @@ a.btn {
 }
 // Modal
 .modal-dialog {
-  max-width: 80%;
-  height: 100%;
-  margin: 0 auto;
+  min-width: 60vw;
   @include ipad() {
-    max-width: 80%;
+      width: 90vw;
+    }
+  .modal-body {
+    position: relative;
+    padding: 0;
+    padding-top: 56.25% !important;
+    width: 60vw;
+    @include ipad() {
+      width: 90vw;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
+
 // owl-swiper
 #owl-demo {
   margin-bottom: 30px;
