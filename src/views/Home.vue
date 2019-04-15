@@ -393,7 +393,7 @@ a.btn {
 }
 .section {
   width: 100%;
-  height: 980px;
+  height: 680px;
   padding: $section-padding 0;
   display: flex;
   flex-direction: column;
