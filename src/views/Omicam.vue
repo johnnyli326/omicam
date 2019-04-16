@@ -129,16 +129,34 @@
           </ul>
         </div>
       </section>
-      <!-- <section class="text-center my-3" id="ease">
-        <h3 class="mb-4">Ease of Use. Create. and Share </h3>
-        <p>3 Buttons workouts</p>
-        <div class="btn-img" v-for="( btn, index) in btns" :key="index">
-          <img :src="btn.imgSrc" :alt="btn.name">
-          <small>{{ index+1 }}. {{ btn.name }}</small>
+      <section class="row align-items-center section7 mb-5" id="Horizontal" style="color:white;height:500px">
+        <div class="col-md-6" style="background:green; height:100%">
+          waterproof video
+          <!-- <iframe width="100%" height="250px"
+            src="https://www.youtube.com/embed/TCHRYRUXtqk"
+            frameborder="0"
+            allow="accelerometer;"
+            allowfullscreen>
+          </iframe> -->
         </div>
-      </section> -->
+        <div class="col-md-6">
+          <span class="section-title">Splash- Proof & Dust- Proof&nbsp;&nbsp;</span>
+          <span>Get outside. Enjoy nature</span>
+          <ul>
+            <li>
+              The proprietary OMI (Optical Motion Intelligence)
+              algorithm keeps OmiCam stablized when recording under
+              any conditions.
+            </li>
+            <li>
+              The proprietary OMI (Optical Motion Intelligence) algorithm
+              keeps OmiCam stablized when recording under any conditions.
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
-    <section class="section7" id="splash">
+    <!-- <section class="section7" id="splash">
       <div class="section7-content">
         <span class="section-title">Splash- Proof & Dust- Proof&nbsp;&nbsp;</span>
         <span>Get outside. Enjoy nature</span>
@@ -161,7 +179,7 @@
           </map>
         </div>
       </div>
-    </section>
+    </section> -->
     <section class="container section8">
       <div class="row">
         <div class="col-md-6">
@@ -466,32 +484,32 @@ li {
     }
   }
 }
-.section7 {
-  width: 100%;
-  background-image: url('../assets/images/OmiCam/sec7.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 30px;
-  margin: 50px auto;
-  height: 350px;
-  @include ipad() {
-    height: auto;
-  }
-  .section7-content {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    color: white;
-    .section-title {
-      color: #ff9933;
-    } 
-    ul {
-      padding: 10px;
-    }
-  }
-}
+// .section7 {
+//   width: 100%;
+//   background-image: url('../assets/images/OmiCam/sec7.jpg');
+//   background-position: center center;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   padding: 30px;
+//   margin: 50px auto;
+//   height: 350px;
+//   @include ipad() {
+//     height: auto;
+//   }
+//   .section7-content {
+//     width: 70%;
+//     margin-left: auto;
+//     margin-right: auto;
+//     text-align: left;
+//     color: white;
+//     .section-title {
+//       color: #ff9933;
+//     } 
+//     ul {
+//       padding: 10px;
+//     }
+//   }
+// }
 .section8 {
   color: white;
   .detail {

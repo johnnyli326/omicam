@@ -183,7 +183,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           <div class="modal-body text-center scale-video">
-<iframe src="https://player.vimeo.com/video/330454191" width="640" height="360" frameborder="0" allowfullscreen></iframe> 
+            <iframe src="" width="640" height="360" frameborder="0" allowfullscreen></iframe> 
           </div>
           <!-- <div class="modal-body text-center
           scale-video" id="yt-player">
@@ -208,7 +208,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           <div class="modal-body text-center scale-video">
-            <iframe src="https://player.vimeo.com/video/330688976"
+            <iframe src=""
             width="640"
             height="360"
             frameborder="0"
@@ -270,15 +270,24 @@ export default {
   },
   mounted() {
     $(document).ready(function() {
-      // // 開啟Modal，youtube開始播放
-      // $('#commercialModal').on('show.bs.modal', function () {
-      //   let videoSrc = $("#commercialModal iframe").attr("src");
-      //   $("#commercialModal iframe").attr("src", videoSrc+"&amp;autoplay=1");
-      // });
-      // // 關閉Modal，youtube停止播放
-      // $('#commercialModal').on('hidden.bs.modal', function () {
-      //   callPlayer('yt-player', 'stopVideo');
-      // });
+      // 開啟Modal，vimeo autoplay
+      $('#commercialModal').on('show.bs.modal', function () {
+        $("#commercialModal iframe").attr("src", // autoplay
+        "https://player.vimeo.com/video/330454191?autoplay=1");
+      });
+      // 關閉Modal，viemo stop playing
+      $('#commercialModal').on('hidden.bs.modal', function () {
+        $("#commercialModal iframe").attr("src", '');
+      });
+      // 開啟Modal，vimeo autoplay
+      $('#NoShakingModal').on('show.bs.modal', function () {
+        $("#NoShakingModal iframe").attr("src", // autoplay
+        "https://player.vimeo.com/video/330688976?autoplay=1");
+      });
+      // 關閉Modal，viemo stop playing
+      $('#NoShakingModal').on('hidden.bs.modal', function () {
+        $("#NoShakingModal iframe").attr("src", '');
+      });
       let owl = $("#owl-demo");
       owl.owlCarousel({
           responsive:{
@@ -430,7 +439,7 @@ a.btn {
 }
 .section {
   width: 100%;
-  height: 800px;
+  height: 680px;
   padding: $section-padding 0;
   display: flex;
   flex-direction: column;
