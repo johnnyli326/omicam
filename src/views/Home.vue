@@ -182,7 +182,10 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div class="modal-body text-center
+          <div class="modal-body text-center scale-video">
+<iframe src="https://player.vimeo.com/video/330454191" width="640" height="360" frameborder="0" allowfullscreen></iframe> 
+          </div>
+          <!-- <div class="modal-body text-center
           scale-video" id="yt-player">
             <iframe class="brand-film"
             src="https://www.youtube.com/embed/ETda2w2_81o?enablejsapi=1"
@@ -192,7 +195,7 @@
             width="500"
             height="281.25">
             </iframe>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -285,85 +288,85 @@ export default {
     });
     //////// end jquery  ////////
     
-    // youtube API start
-    function callPlayer(frame_id, func, args) {
-      if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
-      let iframe = document.getElementById(frame_id);
-      if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
-          iframe = iframe.getElementsByTagName('iframe')[0];
-      }
+    // // youtube API start
+    // function callPlayer(frame_id, func, args) {
+    //   if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
+    //   let iframe = document.getElementById(frame_id);
+    //   if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
+    //       iframe = iframe.getElementsByTagName('iframe')[0];
+    //   }
   
-      // When the player is not ready yet, add the event to a queue
-      // Each frame_id is associated with an own queue.
-      // Each queue has three possible states:
-      //  undefined = uninitialised / array = queue / 0 = ready
-      if (!callPlayer.queue) callPlayer.queue = {};
-      let queue = callPlayer.queue[frame_id],
-          domReady = document.readyState == 'complete';
+    //   // When the player is not ready yet, add the event to a queue
+    //   // Each frame_id is associated with an own queue.
+    //   // Each queue has three possible states:
+    //   //  undefined = uninitialised / array = queue / 0 = ready
+    //   if (!callPlayer.queue) callPlayer.queue = {};
+    //   let queue = callPlayer.queue[frame_id],
+    //       domReady = document.readyState == 'complete';
   
-      if (domReady && !iframe) {
-          // DOM is ready and iframe does not exist. Log a message
-          window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
-          if (queue) clearInterval(queue.poller);
-      } else if (func === 'listening') {
-          // Sending the "listener" message to the frame, to request status updates
-          if (iframe && iframe.contentWindow) {
-              func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
-              iframe.contentWindow.postMessage(func, '*');
-          }
-      } else if (!domReady ||
-            iframe && (!iframe.contentWindow || queue && !queue.ready) ||
-            (!queue || !queue.ready) && typeof func === 'function') {
-          if (!queue) queue = callPlayer.queue[frame_id] = [];
-          queue.push([func, args]);
-          if (!('poller' in queue)) {
-              // keep polling until the document and frame is ready
-              queue.poller = setInterval(function() {
-                  callPlayer(frame_id, 'listening');
-              }, 250);
-              // Add a global "message" event listener, to catch status updates:
-              messageEvent(1, function runOnceReady(e) {
-                  if (!iframe) {
-                      iframe = document.getElementById(frame_id);
-                      if (!iframe) return;
-                      if (iframe.tagName.toUpperCase() != 'IFRAME') {
-                          iframe = iframe.getElementsByTagName('iframe')[0];
-                          if (!iframe) return;
-                      }
-                  }
-                  if (e.source === iframe.contentWindow) {
-                      // Assume that the player is ready if we receive a
-                      // message from the iframe
-                      clearInterval(queue.poller);
-                      queue.ready = true;
-                      messageEvent(0, runOnceReady);
-                      // .. and release the queue:
-                      while (tmp = queue.shift()) {
-                          callPlayer(frame_id, tmp[0], tmp[1]);
-                      }
-                  }
-              }, false);
-          }
-      } else if (iframe && iframe.contentWindow) {
-          // When a function is supplied, just call it (like "onYouTubePlayerReady")
-          if (func.call) return func();
-          // Frame exists, send message
-          iframe.contentWindow.postMessage(JSON.stringify({
-              "event": "command",
-              "func": func,
-              "args": args || [],
-              "id": frame_id
-          }), "*");
-      }
-    /* IE8 does not support addEventListener... */
-      function messageEvent(add, listener) {
-          let w3 = add ? window.addEventListener : window.removeEventListener;
-          w3 ?
-              w3('message', listener, !1)
-          :
-              (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
-      }
-    }
+    //   if (domReady && !iframe) {
+    //       // DOM is ready and iframe does not exist. Log a message
+    //       window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
+    //       if (queue) clearInterval(queue.poller);
+    //   } else if (func === 'listening') {
+    //       // Sending the "listener" message to the frame, to request status updates
+    //       if (iframe && iframe.contentWindow) {
+    //           func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
+    //           iframe.contentWindow.postMessage(func, '*');
+    //       }
+    //   } else if (!domReady ||
+    //         iframe && (!iframe.contentWindow || queue && !queue.ready) ||
+    //         (!queue || !queue.ready) && typeof func === 'function') {
+    //       if (!queue) queue = callPlayer.queue[frame_id] = [];
+    //       queue.push([func, args]);
+    //       if (!('poller' in queue)) {
+    //           // keep polling until the document and frame is ready
+    //           queue.poller = setInterval(function() {
+    //               callPlayer(frame_id, 'listening');
+    //           }, 250);
+    //           // Add a global "message" event listener, to catch status updates:
+    //           messageEvent(1, function runOnceReady(e) {
+    //               if (!iframe) {
+    //                   iframe = document.getElementById(frame_id);
+    //                   if (!iframe) return;
+    //                   if (iframe.tagName.toUpperCase() != 'IFRAME') {
+    //                       iframe = iframe.getElementsByTagName('iframe')[0];
+    //                       if (!iframe) return;
+    //                   }
+    //               }
+    //               if (e.source === iframe.contentWindow) {
+    //                   // Assume that the player is ready if we receive a
+    //                   // message from the iframe
+    //                   clearInterval(queue.poller);
+    //                   queue.ready = true;
+    //                   messageEvent(0, runOnceReady);
+    //                   // .. and release the queue:
+    //                   while (tmp = queue.shift()) {
+    //                       callPlayer(frame_id, tmp[0], tmp[1]);
+    //                   }
+    //               }
+    //           }, false);
+    //       }
+    //   } else if (iframe && iframe.contentWindow) {
+    //       // When a function is supplied, just call it (like "onYouTubePlayerReady")
+    //       if (func.call) return func();
+    //       // Frame exists, send message
+    //       iframe.contentWindow.postMessage(JSON.stringify({
+    //           "event": "command",
+    //           "func": func,
+    //           "args": args || [],
+    //           "id": frame_id
+    //       }), "*");
+    //   }
+    // /* IE8 does not support addEventListener... */
+    //   function messageEvent(add, listener) {
+    //       let w3 = add ? window.addEventListener : window.removeEventListener;
+    //       w3 ?
+    //           w3('message', listener, !1)
+    //       :
+    //           (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
+    //   }
+    // }
     // video autoplay;
     const loopVideo = document.querySelector('.loop-video');
     loopVideo.autoplay = true;
@@ -411,7 +414,7 @@ a.btn {
 }
 .section {
   width: 100%;
-  height: 680px;
+  height: 800px;
   padding: $section-padding 0;
   display: flex;
   flex-direction: column;
@@ -492,8 +495,14 @@ a.btn {
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
   @include iphone678() {
     background-size: 300% 100%;
+  }
+  .link-icon-btn {
+    position: absolute;
+    bottom: 100px;
+    right: 250px;
   }
 }
 .section3 {
