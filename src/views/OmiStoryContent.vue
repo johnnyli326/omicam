@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container story-content-wrap">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item">
@@ -90,66 +90,70 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
-.breadcrumb {
-  border-bottom: 1px solid gray;
-  font-size: 28px;
-  @include ipad() {
-    font-size: 18px;
-  }
-  .breadcrumb-item {
-    &.before::before {
-      content: '|';
-      color: gray;
-    }
-  }
-}
-.news-img {
-	box-shadow: 1px 1px 1px 2px gray;
-  height: 300px;
-  background-position: center center;
-	background-size: cover;
-	a {
-    display: block;
-    height: 100%;
-	}
-}
-.main {
-  width: 100%;
-  margin-top: 50px;
-  .content {
-    width: 70%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 10px;
+.story-content-wrap {
+  padding-top: 50px;
+  .breadcrumb {
+    border-bottom: 1px solid gray;
+    font-size: 28px;
     @include ipad() {
-      width: 100%;
+      font-size: 18px;
     }
-    img {
-      width: 100%;
-    }
-  }
-  .extra-story {
-    width: 30%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 10px;
-    ul {
-      list-style: none;
-      li {
-        margin-bottom: 20px;
+    .breadcrumb-item {
+      &.before::before {
+        content: '|';
+        color: gray;
       }
     }
-    @include ipad() {
-      width: 100%;
-      ul {
+  }
+  .news-img {
+  	box-shadow: 1px 1px 1px 2px gray;
+    height: 300px;
+    background-position: center center;
+  	background-size: cover;
+  	a {
+      display: block;
+      height: 100%;
+  	}
+  }
+  .main {
+    width: 100%;
+    margin-top: 50px;
+    .content {
+      width: 70%;
+      display: inline-block;
+      vertical-align: top;
+      padding: 10px;
+      @include ipad() {
         width: 100%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .extra-story {
+      width: 30%;
+      display: inline-block;
+      vertical-align: top;
+      padding: 10px;
+      ul {
+        list-style: none;
         li {
-          display: inline-block;
-          width: 31.33333%;
-          margin-right: 1%;
+          margin-bottom: 20px;
+        }
+      }
+      @include ipad() {
+        width: 100%;
+        ul {
+          width: 100%;
+          li {
+            display: inline-block;
+            width: 31.33333%;
+            margin-right: 1%;
+          }
         }
       }
     }
   }
 }
+
 </style>

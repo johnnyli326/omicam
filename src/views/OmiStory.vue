@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mb-5">
+    <div class="container mb-5 story-wrap">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item">
@@ -76,29 +76,32 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
-.breadcrumb {
-  border-bottom: 1px solid gray;
-  font-size: 28px;
-  @include ipad() {
-    font-size: 18px;
-  }
-  .breadcrumb-item {
-    &.before::before {
-      content: '|';
-      color: gray;
+.story-wrap {
+  padding-top: 50px;
+  .breadcrumb {
+    border-bottom: 1px solid gray;
+    font-size: 28px;
+    @include ipad() {
+      font-size: 18px;
+    }
+    .breadcrumb-item {
+      &.before::before {
+        content: '|';
+        color: gray;
+      }
     }
   }
-}
-.news-img {
-  box-shadow: 1px 1px 1px 2px gray;
-  height: 300px;
-  background-position: center center;
-  background-size: cover;
-  padding: 0;
-  a {
-    display: block;
-    height: 100%;
-    width: 100%;
+  .news-img {
+    box-shadow: 1px 1px 1px 2px gray;
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    padding: 0;
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 </style>

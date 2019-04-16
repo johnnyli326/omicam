@@ -12,7 +12,8 @@
         </h2>
         <p class="section-subTitle">OmiCam | Wearable VR Camera</p>
         <button class="link-icon-btn clickable play-btn"
-        data-toggle="modal" data-target="#commercialModal">
+        data-toggle="modal" data-target="#commercialModal"
+        @click="PlayGA()">
         </button>
       </div>
     </section>
@@ -233,6 +234,14 @@ export default {
     GoTop() {
       $('html, body').animate({ scrollTop: 0 }, '1000');
     },
+    PlayGA() { // GA event tracking
+      this.$ga.event({
+        eventCategory: 'video',
+        eventAction: 'play',
+        eventLabel: 'brand film',
+      })
+      console.log(this.$ga.event);
+    }
   },
   created() {
     window.scrollTo(0, 0);

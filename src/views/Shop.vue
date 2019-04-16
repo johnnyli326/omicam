@@ -10,13 +10,12 @@
       <div class="table-responsive">
         <table class="table shop-table">
           <tbody>
-            <tr class="bg-secondary text-white">
+            <tr class="text-white">
               <th class="text-center">Product Name</th>
               <th class="text-center" style="width:20%">Quantity</th>
               <th class="text-center" style="width:10%">Price</th>
             </tr>
-            <tr v-for="item in carts" :key="item.id"
-            style="background-color: #f9f9f9;">
+            <tr v-for="item in carts" :key="item.id">
               <td class="text-left product-box">
                 <div class="product-img-box">
                   <router-link :to="'/product/'+item.link" class="btn btn-link p-0">
@@ -48,7 +47,7 @@
                 </div>
               </td>            
             </tr>
-            <tr style="background-color: #f9f9f9;">
+            <tr>
               <td colspan="2" class="text-right">TOTAL</td>
               <td class="text-right" width="20%">
                 {{ final_Total | currency }}
@@ -175,6 +174,7 @@ export default {
 td {
   text-align: center;
   vertical-align: middle;
+  color: white;
 }
 .small-img {
   width: 50px;
@@ -187,7 +187,6 @@ td {
   border: 1px solid #e9e9e9;
 }
 .shop-table {
-  box-shadow: 1px 1px 10px gray;
   @include ipad() {
     width:700px;
   }

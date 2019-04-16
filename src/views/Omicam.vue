@@ -173,14 +173,14 @@
           <h3 class="section-title">What is in our package?</h3>
           <ol>
             <li>OmiCam Wearable VR Camera</li>
-            <li>360° Quick Release Clip</li>
-            <li>Micro USB Charging Cable</li>
-            <li>Quick Release</li>
-            <li>Lens Cap</li>
-            <li>Quick Guide</li>
             <li>Sporty Carrying Bag</li>
-            <li>SD card(Inserted)</li>
+            <li>Micro USB Charging Cable</li>
+            <li>SD card</li>
             <li>Screw Mount Adapter</li>
+            <li>Quick Release</li>
+            <li>360° Quick Release Clip</li>
+            <!-- <li>Lens Cap</li>
+            <li>Quick Guide</li> -->
           </ol>
         </div>
       </div>
