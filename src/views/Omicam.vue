@@ -454,7 +454,7 @@ li {
   .section6 {
     border-bottom: 1px solid gray;
     color: white;
-    height: 350px;
+    height: 500px;
     padding: 20px 0;
     img {
       height: 250px;

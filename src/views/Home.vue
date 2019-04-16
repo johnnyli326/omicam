@@ -102,7 +102,7 @@
           Always manitain image steady & stable in any activities.
         </p>
         <button class="link-icon-btn clickable play-btn"
-        data-toggle="modal" data-target="#commercialModal">
+        data-toggle="modal" data-target="#NoShakingModal">
         </button>
       </div>
     </section>
@@ -199,6 +199,25 @@
         </div>
       </div>
     </div>
+    <!-- MODAL - No shaking video -->
+    <div class="modal fade" id="NoShakingModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-transparent border-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-body text-center scale-video">
+            <iframe src="https://player.vimeo.com/video/330688976"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen>
+            </iframe> 
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -251,15 +270,15 @@ export default {
   },
   mounted() {
     $(document).ready(function() {
-      // 開啟Modal，youtube開始播放
-      $('#commercialModal').on('show.bs.modal', function () {
-        let videoSrc = $("#commercialModal iframe").attr("src");
-        $("#commercialModal iframe").attr("src", videoSrc+"&amp;autoplay=1");
-      });
-      // 關閉Modal，youtube停止播放
-      $('#commercialModal').on('hidden.bs.modal', function () {
-        callPlayer('yt-player', 'stopVideo');
-      });
+      // // 開啟Modal，youtube開始播放
+      // $('#commercialModal').on('show.bs.modal', function () {
+      //   let videoSrc = $("#commercialModal iframe").attr("src");
+      //   $("#commercialModal iframe").attr("src", videoSrc+"&amp;autoplay=1");
+      // });
+      // // 關閉Modal，youtube停止播放
+      // $('#commercialModal').on('hidden.bs.modal', function () {
+      //   callPlayer('yt-player', 'stopVideo');
+      // });
       let owl = $("#owl-demo");
       owl.owlCarousel({
           responsive:{
@@ -282,9 +301,6 @@ export default {
       $(".prev").click(function(){
         owl.trigger('prev.owl.carousel');
       });
-      // $(window).bind("load", function() {  
-      //   $('.loop-video source').attr('src', '../assets/images/Allday.mp4');
-      // })
     });
     //////// end jquery  ////////
     
