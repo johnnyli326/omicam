@@ -33,8 +33,6 @@
           <a :href="icon.section" class="d-inline-block feature-icons">
             <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
           </a>
-          <br>
-          <small class="icon-name">{{ icon.name }}</small>
         </div>
         <!-- 構造圖 -->
         <div class="d-flex justify-content-center align-items-center my-5">
