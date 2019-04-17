@@ -1,10 +1,16 @@
 <template>
   <div>
-		<div class="container mb-5 text-center">
+		<div class="container mb-5 text-center contact-wrap">
 			<nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-white">
-          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        <ol class="breadcrumb bg-transparent">
+          <li class="breadcrumb-item">
+            <router-link to="/">
+              HOME
+            </router-link>
+          </li>
+          <li class="breadcrumb-item before active" aria-current="page">
+            CONTACT
+          </li>
         </ol>
       </nav>
       <section class="mt-4">
@@ -100,20 +106,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-title {
-  width: 100%;
-  padding: 30px;
-  background-color: #f8f9f9;
-  border: 1px solid #e9e9e9;
-}
-.news-img {
-	box-shadow: 1px 1px 1px 2px gray
-}
-.channel-img {
-	width: 250px;
-	height: 50px;
-}
-.channel-link {
-  word-wrap: break-word;
+@import "../assets/mixin";
+
+.contact-wrap {
+  padding-top: 50px;
+  .breadcrumb {
+    border-bottom: 1px solid gray;
+    font-size: 28px;
+    @include ipad() {
+      font-size: 18px;
+    }
+    .breadcrumb-item {
+      &.before::before {
+        content: '|';
+        color: gray;
+      }
+    }
+  }
+  .page-title {
+    width: 100%;
+    padding: 30px;
+    background-color: #f8f9f9;
+    border: 1px solid #e9e9e9;
+  }
+  .news-img {
+    box-shadow: 1px 1px 1px 2px gray
+  }
+  .channel-img {
+    width: 250px;
+    height: 50px;
+  }
+  .channel-link {
+    word-wrap: break-word;
+  }
 }
 </style>

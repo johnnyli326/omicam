@@ -9,21 +9,21 @@
             </router-link>
           </li>
           <li class="breadcrumb-item before" aria-current="page">
-            <router-link to="/story">
-              OMI STORY
+            <router-link to="/news">
+              OMI NEWS
             </router-link>
           </li>
           <li class="breadcrumb-item before active" aria-current="page">
-            {{ story.title }}
+            {{ news.title }}
           </li>
         </ol>
       </nav>
       <main class="main" style="color:white;">
         <article class="content">
-          <h2>{{ story.title }}</h2>
-          <h6 class="text-right">--{{  story.author }}</h6>
-          <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author">
-          <p>{{ story.content }}</p>
+          <h2>{{ news.title }}</h2>
+          <h6 class="text-right">--{{  news.author }}</h6>
+          <img :src="'https://www.omicam.com/' + news.listImg" :alt="news.author">
+          <p>{{ news.content }}</p>
           <!-- user assets -->
           <div v-for="asset in assets" :key="asset.id" class="asset-box">
             <!-- out video -->
@@ -57,7 +57,7 @@
 export default {
   data() {
     return {
-      story: [],
+      news: [],
       databaseUrl: '',
       databaseId: '',
       ExtraStories: [],
@@ -65,7 +65,7 @@ export default {
     };
   },
   methods: {
-    getStory() { // get story content
+    getNews() { // get story content
       let vm = this;
       vm.getStoryId();
       vm.databaseUrl = 'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=detail&id=' + vm.databaseId;
@@ -73,8 +73,8 @@ export default {
       xhr.open('get', vm.databaseUrl, true);
       xhr.send(null);
       xhr.onload = () => {
-        vm.story = JSON.parse(xhr.response); // fetch JSON data, have to JSON.parse
-        vm.assets = this.story.linkInfos;
+        vm.news = JSON.parse(xhr.response); // fetch JSON data, have to JSON.parse
+        vm.assets = this.news.linkInfos;
         console.log(vm.assets[0].type);
         vm.ExtraStories = vm.story.nextStorys;
       };
@@ -86,7 +86,7 @@ export default {
     },
     PushTo(id) {
       let vm = this;
-      vm.$router.push('/story/' + id);
+      vm.$router.push('/news/' + id);
     }
   },
   created() {
@@ -96,8 +96,8 @@ export default {
   beforeRouteUpdate(to, from, next) {
     next(); // move to specific story
     window.scroll(0, 0); 
-    this.databaseId = this.$route.params.storyId; // get params.storyId
-    this.getStory(); // get story data
+    this.databaseId = this.$route.params.newsId; // get params.storyId
+    this.getNews(); // get story data
   },
 };
 </script>
@@ -154,8 +154,8 @@ export default {
           width: 90%;
           padding-top: 56.25%;
           margin-bottom: 20px;
-          margin-top: 20px;
-          margin-left: auto;
+					margin-top: 20px;
+					margin-left: auto;
           margin-right: auto;
           iframe {
             position: absolute;

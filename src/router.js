@@ -23,14 +23,18 @@ export default new Router({
       component: () => import('./views/OmiStudio.vue'),
     }, {
       path: 'news',
-      name: 'News',
+      name: 'NewsList',
       component: () => import('./views/News.vue'),
     }, {
-      path: 'omistory',
+      path: 'news/:newsId',
+      name: 'news',
+      component: () => import('./views/NewsContent.vue'),
+    }, {
+      path: 'story',
       name: 'OmiStory',
       component: () => import('./views/OmiStory.vue'),
     }, {
-      path: 'omistory/:storyId',
+      path: 'story/:storyId',
       name: 'story',
       component: () => import('./views/OmiStoryContent.vue'),
     }, {
@@ -58,7 +62,7 @@ export default new Router({
       name: 'Order',
       component: () => import('./views/order.vue'),
     }, {
-      path: 'product/:productId',
+      path: 'shop/:productId',
       name: 'Product',
       component: () => import('./views/Product.vue'),
     }, {

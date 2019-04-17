@@ -3,9 +3,17 @@
     <div class="container my-5 product-wrap">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
-          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
-          <li class="breadcrumb-item"><router-link to="/shop">Shop</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+          <li class="breadcrumb-item">
+            <router-link to="/">
+              HOME
+            </router-link>
+          </li>
+          <li class="breadcrumb-item before active" aria-current="page">
+            SHOP
+          </li>
+          <li class="breadcrumb-item before active" aria-current="page">
+            {{ product.name }}
+          </li>
         </ol>
       </nav>
       <div class="row">
@@ -42,7 +50,15 @@
             <li>Dolorem, consequuntur! Accusamus eum quia veritatis, itaque ipsum laborum excepturi!</li>
             <li>Accusamus est saepe fugiat, eveniet sapiente ad dolorem aliquid cupiditate.</li>
           </ul>
-          <router-link class="btn btn-primary" to="/shop">BUY NOW</router-link>
+          <div class="input-box">
+            <div class="count minus" @click="product.qty > 0 ? product.qty-=1 : false">-</div>
+            <input class="number-input"
+            type="number" autocomplete="off" min="0" step="1" max="100"
+            v-model="product.qty"
+            onkeyup="value=value.replace(/[^\d]/g,'')" >
+            <div class="count plus"  @click="product.qty < 100 ? product.qty+=1 : false">+</div>
+          </div>
+          <router-link class="btn btn-primary" to="/shop">BACK SHOP</router-link>
         </div>
       </div>
     </div>
@@ -71,12 +87,38 @@ export default {
     }
   },
   methods: {
-    addToCart(qty) {
-      console.log('加入購物車');
-      let vm = this;
-      document.cookie =  vm.product.name + "=" + qty + ";max-age=3600;"; // 一小時後刪除紀錄
-      console.log(document.cookie);
-    }
+    listCookies() {  // get select history
+      let Arr = document.cookie.split(';');
+      // console.log(Arr);
+      Arr.forEach((e) => { // 查詢先前購物車資料
+        if(e.includes('OmiCam')) {
+          // console.log('Omicam：' + e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.products.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'OmiCam') {
+              e.qty = PreNum;
+            }
+          })
+        } else if(e.includes('Shoulder Strap')) {
+          // console.log('water：' + e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.products.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'Shoulder Strap') {
+              e.qty = PreNum;
+            }
+          })
+        } else if(e.includes('Waterproof Case')) {
+          // console.log('waterCase：' +e.match(/\d/g).join(""));
+          let PreNum = parseInt(e.match(/\d/g).join(""));
+          this.products.forEach(function(e) { // 查詢carts資料
+            if(e.name === 'Waterproof Case') {
+              e.qty = PreNum;
+              // console.log(typeof(e.qty));
+            }
+          })
+        }
+      })
+    },
   },
   created() {
     window.scrollTo(0, 0);
@@ -91,7 +133,8 @@ export default {
       let firstImg = $('.thumbnail-box.selected')
       console.log(firstImg);
       $('.nav-line').css({'left':firstImg.position().left + 5});
-    })
+    });
+    vm.listCookies();
   },
   mounted() {
     $(document).ready(function() {
@@ -107,6 +150,28 @@ export default {
         displayImg.attr('src', imgSrc);
       })
     });
+  },
+  watch: {
+    products: [ // 防止input輸入數量不合格
+      function handle2(val, oldVal) {},
+      {
+        handler: function(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
+          val.forEach(function(e){
+            if(e.qty > 100) {
+              e.qty = 100;
+            } else if (e.qty >= 0 && e.qty <=100){ // 如果數量介於 0 ~ 100的話，寫入cookie
+              e.qty = parseInt(e.qty); // input輸入均為”字串“，改變成"number"
+              document.cookie = e.name + "=" + e.qty + ";max-age=3600;path=/"; // 一小時後刪除紀錄
+              console.log('++');
+            } else { // 負數或是string
+              console.log('不是正整數');
+              e.qty = 0;
+            }
+          })
+        },
+        deep: true,
+      },
+    ],
   },
 }
 </script>
@@ -125,6 +190,16 @@ a.btn {
   
 .product-wrap {
   padding-top: 50px;
+  .breadcrumb {
+    border-bottom: 1px solid gray;
+    font-size: 28px;
+    .breadcrumb-item {
+      &.before::before {
+        content: '|';
+        color: gray;
+      }
+    }
+  }
   h2 {
     font-size: 40px;
     @media(max-width: 1000px) {
@@ -309,5 +384,37 @@ a.btn {
     }
   }
 }
-
+.input-box {
+  position: relative;
+  width: 150px;
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  .number-input {
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    outline: 0;
+    height: 30px;
+  }
+  .count {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(215, 214, 214);
+    color: rgb(23, 22, 22);
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+  .minus {
+    left: 0;
+  }
+  .plus {
+    right: 0;
+  }
+}
 </style>

@@ -26,7 +26,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="/omistory" @click.prevent="refresh('omistory')"
+          <a href="/story" @click.prevent="refresh('story')"
           :class="{ 'active': $route.name == 'OmiStory' }">
           OMI STORY
           </a>

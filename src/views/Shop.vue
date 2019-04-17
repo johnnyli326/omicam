@@ -1,10 +1,16 @@
 <template>
 	<div>
-    <div class="container" style="margin-bottom: 100px;">
+    <div class="container shop-wrap" style="margin-bottom: 100px;">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
-          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">Shop</li>
+          <li class="breadcrumb-item">
+            <router-link to="/">
+              HOME
+            </router-link>
+          </li>
+          <li class="breadcrumb-item before active" aria-current="page">
+            SHOP
+          </li>
         </ol>
       </nav>
       <div class="table-responsive">
@@ -12,13 +18,14 @@
           <tbody>
             <tr class="text-white">
               <th class="text-center">Product Name</th>
-              <th class="text-center" style="width:20%">Quantity</th>
               <th class="text-center" style="width:10%">Price</th>
+              <th class="text-center" style="width:20%">Quantity</th>
+              <th class="text-center" style="width:10%">Total</th>
             </tr>
             <tr v-for="item in carts" :key="item.id">
               <td class="text-left product-box">
                 <div class="product-img-box">
-                  <router-link :to="'/product/'+item.link" class="btn btn-link p-0">
+                  <router-link :to="'/shop/'+item.link" class="btn btn-link p-0">
                     <img class="small-img" :src="item.imageUrl" :alt="item.name">
                     <div>{{ item.name }}</div>
                   </router-link>
@@ -27,6 +34,9 @@
                   <h2 class="text-left">{{ item.name }}</h2>
                   <span>{{ item.price | currency }}</span>
                 </div>
+              </td>
+              <td>
+                {{ item.price | currency }}
               </td>
               <td class="pt-2">
                 <div class="input-box">
@@ -39,18 +49,28 @@
                 </div>
               </td>
               <td>
-                <div class="pt-2 text-right text-danger">
+                <div class="pt-2 text-right" style="color:#ff9933">
                   {{ item.price*item.qty | currency }}
-                </div>
-                <div class="pt-2 text-right text-success" v-if="item.coupon">
-                  {{ item.final_total | currency }}
                 </div>
               </td>            
             </tr>
             <tr>
-              <td colspan="2" class="text-right">TOTAL</td>
+              <td colspan="3" class="text-right">
+                <small class="mr-2">Shipping fare</small>
+                <select v-model="fare">
+                  <option value="50" selected>United State</option>
+                  <option value="60">Iseral</option>
+                  <option value="70">Canada</option>
+                </select>
+              </td>
+              <td class="text-right">
+                {{ fare | currency}}
+              </td>
+            </tr>
+            <tr>
+              <td class="text-right" colspan="3">TOTAL</td>
               <td class="text-right" width="20%">
-                {{ final_Total | currency }}
+                {{ final_Total + +fare | currency }}
               </td>
             </tr>
           </tbody>
@@ -60,6 +80,7 @@
         text-center">
         CHECKOUT
       </router-link>
+        {{fare}}
     </div>
 	</div>
 </template>
@@ -92,6 +113,7 @@ export default {
 				}
 			],
       coupon_code: '',
+      fare: 50,
     };
 	},
   methods: {
@@ -154,7 +176,7 @@ export default {
               e.qty = 100;
             } else if (e.qty >= 0 && e.qty <=100){ // 如果數量介於 0 ~ 100的話，寫入cookie
               e.qty = parseInt(e.qty); // input輸入均為”字串“，改變成"number"
-              document.cookie = e.name + "=" + e.qty + ";max-age=3600;"; // 一小時後刪除紀錄
+              document.cookie = e.name + "=" + e.qty + ";max-age=3600;path=/"; // 一小時後刪除紀錄
             } else { // 負數或是string
               console.log('不是正整數');
               e.qty = 0;
@@ -163,95 +185,111 @@ export default {
         },
         deep: true,
       },
-    ]
-  }
+    ],
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
-td {
-  text-align: center;
-  vertical-align: middle;
-  color: white;
-}
-.small-img {
-  width: 50px;
-	height: auto;
-}
-.page-title {
-  width: 100%;
-  padding: 30px;
-  background-color: #f8f9f9;
-  border: 1px solid #e9e9e9;
-}
-.shop-table {
-  @include ipad() {
-    width:700px;
+.shop-wrap {
+  padding-top: 50px;
+  .breadcrumb {
+    border-bottom: 1px solid gray;
+    font-size: 28px;
+    .breadcrumb-item {
+      &.before::before {
+        content: '|';
+        color: gray;
+      }
+    }
   }
-}
-.input-box {
-  position: relative;
-  width: 150px;
-  display: inline-block;
-  border: 0;
-  cursor: pointer;
-  .number-input {
-    box-sizing: border-box;
-    width: 100%;
+  th {
+    border-top: 0;
+  }
+  td {
     text-align: center;
-    outline: 0;
-    height: 30px;
+    vertical-align: middle;
+    color: white;
   }
-  .count {
-    width: 40px;
-    height: 30px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background-color: rgb(215, 214, 214);
-    color: rgb(23, 22, 22);
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .small-img {
+    width: 50px;
+    height: auto;
+  }
+  .page-title {
+    width: 100%;
+    padding: 30px;
+    background-color: #f8f9f9;
+    border: 1px solid #e9e9e9;
+  }
+  .shop-table {
+    @include ipad() {
+      width:700px;
     }
-  .minus {
-    left: 0;
   }
-  .plus {
-    right: 0;
-  }
-}
-.table {
-  .product-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .product-img-box {
-      display: inline-block;
-      width: 30%;
-      height: 100%;
+  .input-box {
+    position: relative;
+    width: 150px;
+    display: inline-block;
+    border: 0;
+    cursor: pointer;
+    .number-input {
+      box-sizing: border-box;
+      width: 100%;
       text-align: center;
-      padding-top: 10px;
-      a {
-        text-decoration: none;
-      }
+      outline: 0;
+      height: 30px;
     }
-    .product-describe-box {
-      display: inline-block;
-      width: 70%;
-      height: 100%;
-      h2 {
+    .count {
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background-color: rgb(215, 214, 214);
+      color: rgb(23, 22, 22);
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+    .minus {
+      left: 0;
+    }
+    .plus {
+      right: 0;
+    }
+  }
+  .table {
+    .product-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .product-img-box {
+        display: inline-block;
+        width: 30%;
+        height: 100%;
         text-align: center;
+        padding-top: 10px;
+        a {
+          text-decoration: none;
+        }
+      }
+      .product-describe-box {
+        display: inline-block;
+        width: 70%;
+        height: 100%;
+        h2 {
+          text-align: center;
+        }
       }
     }
   }
-}
-.btn-checkout {
-  width: 250px;
-  margin-left: auto;
-  margin-right: auto;
+  .btn-checkout {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 </style>

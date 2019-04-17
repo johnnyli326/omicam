@@ -5,8 +5,7 @@
         <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item">
             <router-link to="/">
-              <img src="../assets/images/icons/omicam_icon.png" alt="omicam">
-              Home
+              HOME
             </router-link>
           </li>
           <li class="breadcrumb-item before active" aria-current="page">
@@ -19,7 +18,7 @@
         <div class="row mb-5">
           <div class="col-md-3 news-img text-center"
 					:style="{ backgroundImage: 'url(' + 'https://www.omicam.com/' + story.listImg + ')' }">
-            <router-link :to="'/omistory/' + routerId[index]"></router-link>
+            <router-link :to="'/story/' + routerId[index]"></router-link>
           </div>
           <div class="col-md-9 mt-4">
             <h3 class="text-primary">{{ story.title }}</h3>
@@ -52,17 +51,15 @@ export default {
       let vm = this;
       const xhr = new XMLHttpRequest; // state = 0
       xhr.open('get',
-        'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=list&from=0&count=2',
+        'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=list&from=0&count=4',
         true);
       xhr.send(null);
       xhr.onload = () => {
-        console.log(xhr.response);
-        vm.storyList = JSON.parse(xhr.response);
+        vm.storyList = JSON.parse(xhr.response).reverse(); // get stories from new to old.
         Array.prototype.forEach.call(vm.storyList, element => {
-          console.log(element.description);
+          // console.log(element.description);
           vm.routerId.push(element.id.replace(/\s/g, '')); // get routerId which has been removed space.
         });
-        console.log(vm.routerId);
       };
     },
   },

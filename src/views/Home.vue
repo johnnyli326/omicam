@@ -85,8 +85,8 @@
           Up to 15 hours operating without worrying about the battery.
         </p>
         <img src="../assets/images/icons/more.png" class="link-icon-btn"
-        alt="more_icon" usemap="#btnmap_7">
-        <map name="btnmap_7">
+        alt="more_icon" usemap="#btnmap_5">
+        <map name="btnmap_5">
           <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
           @click.prevent="moveTo('Lifelog')">
         </map>
@@ -99,7 +99,7 @@
           NO SHAKING VIDEO
         </h2>
         <p class="text-center section-subTitle">
-          Always manitain image steady & stable in any activities.
+          Always maintain image steady & stable in any activities.
         </p>
         <button class="link-icon-btn clickable play-btn"
         data-toggle="modal" data-target="#NoShakingModal">
@@ -119,9 +119,8 @@
             </p>
             <img src="../assets/images/icons/more.png" class="link-icon-btn"
             alt="more_icon" usemap="#btnmap_7">
-            <map name="btnmap_7">
-              <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-              @click.prevent="$router.push('/omi-studio')">
+            <map name="btnmap_7"  @click.prevent="$router.push('/omi-studio')">
+              <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area">
             </map>
           </div>
         </div>
@@ -149,7 +148,7 @@
             alt="more_icon" usemap="#btnmap_8">
             <map name="btnmap_8">
               <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-              @click.prevent="$router.push('/omicam')">
+              @click.prevent="$router.push('/shop')">
             </map>
           </div>
         </div>
@@ -253,7 +252,7 @@ export default {
         $('html, body').stop().animate({scrollTop: target.offset().top - 50}, 1000);
       },300);
     },
-    GoTop() {
+    GoTop() { // go top
       $('html, body').animate({ scrollTop: 0 }, '1000');
     },
     PlayGA() { // GA event tracking
@@ -544,7 +543,7 @@ a.btn {
   }
 }
 .section4 {
-  background-image: url('../assets/images/dynamic_img.jpg');
+  background-image: url('../assets/images/Home/sec4.jpg');
   background-position: center center;
   background-size: 130% 100%;
   background-repeat: no-repeat;
@@ -624,7 +623,6 @@ a.btn {
       background-repeat: no-repeat;
       @include ipad() {
         height: 270px !important;
-        background-size: 60%;
       }
       @include iphone8plus_Height() {
         background-size: 60%;
@@ -655,7 +653,7 @@ a.btn {
       background-repeat: no-repeat;
       @include ipad() {
         height: 400px !important;
-        background-size: 30%;
+        background-size: 50%;
       }
       @include iphone8plus_Height { // 橫式 iphone8+ 以下
         background-size: 20%;

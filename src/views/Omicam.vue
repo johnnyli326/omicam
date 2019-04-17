@@ -5,12 +5,11 @@
         <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item">
             <router-link to="/">
-              <img src="../assets/images/icons/omicam_icon.png" alt="omicam">
-              Home
+              HOME
             </router-link>
           </li>
           <li class="breadcrumb-item before active" aria-current="page">
-            OmiCam
+            OMICAM
           </li>
         </ol>
       </nav>
@@ -36,18 +35,22 @@
             style="width:80%;height:auto;">
           </a>
         </div>
-        <!-- 構造圖 -->
-        <div class="d-flex justify-content-center align-items-center my-5">
-          <img src="../assets/images/OmiCam/sec2.jpg" alt="instruction"
-          style="width:90%">
-        </div>
-        <img src="../assets/images/icons/buy.png" class="link-icon-btn"
-        alt="more_icon" usemap="#btnmap_8">
-        <map name="btnmap_8">
-          <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-          @click.prevent="$router.push('/shop')">
-        </map>
       </section>
+    </div>
+    <section class="w-100 text-center">
+      <!-- 構造圖 -->
+      <div class="d-flex justify-content-center align-items-center my-5">
+        <img src="../assets/images/OmiCam/sec2.jpg" alt="instruction"
+        style="width:90%">
+      </div>
+      <img src="../assets/images/icons/buy.png" class="link-icon-btn"
+      alt="more_icon" usemap="#btnmap_8">
+      <map name="btnmap_8">
+        <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+        @click.prevent="$router.push('/shop')">
+      </map>
+    </section>
+    <div class="container omicam-wrap">
       <section class="row align-items-center section3 mt-5" id="240">
         <div class="col-lg-6 justify-content-center d-flex">
           <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
@@ -354,7 +357,6 @@ export default {
     });
     $(window).scroll(function() {
       let scrollPos = $(window).scrollTop();
-      console.log(scrollPos);
       let windowHeight = $(window).height();
       $('.animated').each(function() {
         let thisPos = $(this).offset().top;
