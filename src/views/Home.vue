@@ -528,6 +528,9 @@ a.btn {
     position: absolute;
     bottom: 100px;
     right: 250px;
+    @media(max-width: 1000px) {
+      position: static;
+    }
   }
 }
 .section3 {

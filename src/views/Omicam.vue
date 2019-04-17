@@ -17,8 +17,9 @@
       <section class="section1">
         <div class="banner">
           <div class="banner-title">
-            <span class="title">OmiCam&nbsp;&nbsp;</span>
-            <span>Wearable VR Camera</span>
+            <span class="title">OmiCam</span>
+            <br class="next-line">
+            <small>&nbsp;&nbsp;Wearable VR Camera</small>
           </div>
           <p>
             Experience the new way to capture 4K Virtual Reality Content by using OmiCam,
@@ -28,10 +29,11 @@
         </div>
       </section>
       <section class="section2 text-center">
-        <div class="text-center mb-4 icon-box" v-for="(icon, index) in icons" :key="index"
-        :style="[index === icons.length - 1 ? { 'border-right': '1px solid gray' } :  { 'border-right': '0px' }]">
+        <div class="text-center mb-4 icon-box" v-for="(icon, index) in icons" :key="index">
+          <!-- :style="[index === icons.length - 1 ? { 'border-right': '1px solid gray' } :  { 'border-right': '0px' }]" -->
           <a :href="icon.section" class="d-inline-block feature-icons">
-            <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons">
+            <img :src="icon.imgSrc" :alt="icon.name" v-if="icon" class="icons"
+            style="width:80%;height:auto;">
           </a>
         </div>
         <!-- 構造圖 -->
@@ -47,10 +49,11 @@
         </map>
       </section>
       <section class="row align-items-center section3 mt-5" id="240">
-        <div class="col-md-6 justify-content-center d-flex">
-          <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle">
+        <div class="col-lg-6 justify-content-center d-flex">
+          <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
+          class="section3-img">
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
           <h3 class="section-title">Extremely Wide View</h3>
           <p>
             <ul>
@@ -67,11 +70,12 @@
         </div>
       </section>
       <section class="row align-items-center p-4 section4" id="wear">
-        <div class="col-md-6 py-3 justify-content-center d-flex"
-        style="border:1px solid #ff9933;height:100%;">
-          <div>GIF</div>
+        <div class="col-lg-6 py-3
+        d-flex justify-content-center align-items-center">
+          <img src="../assets/images/OmiCam/sec4.gif" alt="clipboard"
+          class="section4-img">
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6 text-">
           <h3 class="my-3 section-title">Just Clip and Capture</h3>
           <ul>
             <li>
@@ -85,10 +89,11 @@
         </div>
       </section>
       <section class="row align-items-center section5" id="Lifelog">
-        <div class="col-md-6 justify-content-center d-flex">
-          <img src="../assets/images/OmiCam/sec5.png" alt="Lifelog">
+        <div class="col-lg-6 justify-content-center d-flex">
+          <img src="../assets/images/OmiCam/sec5.png" alt="Lifelog"
+          class="section5-img">
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
           <h3 class="my-3 section-title">
             Operating Whole Day
           </h3>
@@ -106,15 +111,15 @@
         </div>
       </section>
       <section class="row align-items-center section6" id="Horizontal">
-        <div class="col-md-6">
-          <iframe width="100%" height="250px"
-            src="https://www.youtube.com/embed/TCHRYRUXtqk"
-            frameborder="0"
-            allow="accelerometer;"
-            allowfullscreen>
+        <div class="col-lg-6 text-center">
+          <iframe src="https://player.vimeo.com/video/330702337"
+          width="90%"
+          height="300"
+          frameborder="0"
+          allowfullscreen>
           </iframe>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
           <h3 class="my-3 section-title">Always Keep Horizontal & Stable</h3>
           <ul>
             <li>
@@ -123,160 +128,159 @@
               any conditions.
             </li>
             <li>
-              The proprietary OMI (Optical Motion Intelligence) algorithm
-              keeps OmiCam stablized when recording under any conditions.
+              Even OmiCam is in a skewed status, the OMI algorithm will
+              find the horizon to keep the picture level.
             </li>
           </ul>
         </div>
       </section>
-      <section class="row align-items-center section7 mb-5" id="Horizontal" style="color:white;height:500px">
-        <div class="col-md-6" style="background:green; height:100%">
-          waterproof video
-          <!-- <iframe width="100%" height="250px"
-            src="https://www.youtube.com/embed/TCHRYRUXtqk"
-            frameborder="0"
-            allow="accelerometer;"
-            allowfullscreen>
-          </iframe> -->
+      <section class="row align-items-center section7" id="splash"
+      style="color:white;">
+        <div class="col-lg-6 text-center">
+          <iframe src="https://player.vimeo.com/video/330710556"
+          width="90%"
+          height="300"
+          frameborder="0"
+          allowfullscreen>
+          </iframe>
         </div>
-        <div class="col-md-6">
-          <span class="section-title">Splash- Proof & Dust- Proof&nbsp;&nbsp;</span>
-          <span>Get outside. Enjoy nature</span>
+        <div class="col-lg-6 section-text">
+          <h3 class="section-title">Splash- Proof & Dust- Proof</h3>
           <ul>
             <li>
-              The proprietary OMI (Optical Motion Intelligence)
-              algorithm keeps OmiCam stablized when recording under
-              any conditions.
+              OmiCamis is splash&dust proof with IP65 rated which endure most outdoor environment
+              without any other case or accessories. 
             </li>
             <li>
-              The proprietary OMI (Optical Motion Intelligence) algorithm
-              keeps OmiCam stablized when recording under any conditions.
+              The optional accessory of waterproof case help OmiCam to operate underwater
+              and capture the stunning images.
             </li>
           </ul>
+        </div>
+      </section>
+      <section class="section9">
+        <div class="row align-items-center h-100">
+          <div class="col-lg-6
+          d-flex justify-content-center align-items-center">
+            <img src="../assets/images/OmiCam/sec8.jpg" alt="accessories"
+            class="section9-img">
+          </div>
+          <div class="col-lg-6 detail mt-4">
+            <h3 class="section-title">What is in our package?</h3>
+            <ol>
+              <li>OmiCam Wearable VR Camera</li>
+              <li>Sporty Carrying Bag</li>
+              <li>Micro USB Charging Cable</li>
+              <li>SD card</li>
+              <li>Screw Mount Adapter</li>
+              <li>Quick Release</li>
+              <li>360° Quick Release Clip</li>
+              <!-- <li>Lens Cap</li>
+              <li>Quick Guide</li> -->
+            </ol>
+          </div>
+        </div>
+      </section>
+      <section class="section8 animated">
+          <div class="row mr-0 ml-0 section-row">
+            <div class="col-lg-6 section8-img
+              d-flex justify-content-center align-items-center
+              h-100">
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center align-items-center
+              h-100">
+              <div class="section-text m-3">
+                <h2 class="section-title">OmiCam</h2>
+                <p class="section-subTitle">
+                  Get Outside. Enjoy nature. (Buy Now)
+                </p>
+                <img src="../assets/images/icons/buy.png" class="link-icon-btn"
+                alt="more_icon" usemap="#btnmap_8">
+                <map name="btnmap_8">
+                  <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+                  @click.prevent="$router.push('/omicam')">
+                </map>
+              </div>
+            </div>
+          </div>
+        </section>
+      <section class="my-5 section10">
+        <h3 class="section-title">Specs</h3>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ITEM</th>
+                <th scope="col">CONTENT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sensor</td>
+                <td>12M pixel</td>
+              </tr>
+              <tr>
+                <td>Lens</td>
+                <td>
+                  240deg fisheye/ 45deg forward capture
+                </td>
+              </tr>
+              <tr>
+                <td>Watch modes</td>
+                <td>
+                  1. 360deg video<br>
+                  2. VR goggle
+                </td>
+              </tr>
+              <tr>
+                <td>Resolution<br>(Panorama Photo&video)</td>
+                <td>
+                  Phote 4320x2160 
+                  Video 4K / 30fps (3840 x 2160) 
+                  2.5K / 30fps (2560 x 1440) 
+                  FHD / 30fps (1920 x 1080)
+                </td>
+              </tr>
+              <tr>
+                <td>Size</td>
+                <td>
+                  1.81”(W) x 0.8” (D) x 3.68” (H) 
+                  45.9mm (W) x 20.3mm (D) x 93.5mm (H)
+                </td>
+              </tr>
+              <tr>
+                <td>Battery</td>
+                <td>
+                  1100mAh 
+                  Up to 70 mins (in 4K mode) 
+                  Up to 15 hours (in Lifelog™ Video mode)
+                </td>
+              </tr>
+              <tr>
+                <td>Camera storage</td>
+                <td>
+                  Micro SD (SDXC) Classic 10 or above; Max 128G. 
+                  (some cards of 256G are workable)
+                </td>
+              </tr>
+              <tr>
+                <td>SW Functions</td>
+                <td>OMI Studio (edit, calibrate, stabilize, augment, share)</td>
+              </tr>
+              <tr>
+                <td>OS Compatibility</td>
+                <td>
+                  iOS (8.0 or later) /
+                  Android (5.0 or later) /
+                  Mac OS (11 or later) /
+                  Windows (7 or later)
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </div>
-    <!-- <section class="section7" id="splash">
-      <div class="section7-content">
-        <span class="section-title">Splash- Proof & Dust- Proof&nbsp;&nbsp;</span>
-        <span>Get outside. Enjoy nature</span>
-        <ul class="text-left">
-          <li>
-            OmiCamis is splash&dust proof with IP65 rated which endure most
-            outdoor environment without any other case or accessories. 
-          </li>
-          <li>
-            The optional accessory of waterproof case help OmiCam to operate
-            underwater and capture the stunning images.
-          </li>
-        </ul>
-        <div class="text-center">
-          <img src="../assets/images/icons/buy.png" class="link-icon-btn"
-          alt="more_icon" usemap="#btnmap_8">
-          <map name="btnmap_8">
-            <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-            @click.prevent="$router.push('/shop')">
-          </map>
-        </div>
-      </div>
-    </section> -->
-    <section class="container section8">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="../assets/images/OmiCam/sec8.jpg" alt="accessories">
-        </div>
-        <div class="col-md-6 detail mt-4">
-          <h3 class="section-title">What is in our package?</h3>
-          <ol>
-            <li>OmiCam Wearable VR Camera</li>
-            <li>Sporty Carrying Bag</li>
-            <li>Micro USB Charging Cable</li>
-            <li>SD card</li>
-            <li>Screw Mount Adapter</li>
-            <li>Quick Release</li>
-            <li>360° Quick Release Clip</li>
-            <!-- <li>Lens Cap</li>
-            <li>Quick Guide</li> -->
-          </ol>
-        </div>
-      </div>
-    </section>
-    <section class="my-5 container section9">
-      <h3 class="section-title">Specs</h3>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">ITEM</th>
-              <th scope="col">CONTENT</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sensor</td>
-              <td>12M pixel</td>
-            </tr>
-            <tr>
-              <td>Lens</td>
-              <td>
-                240deg fisheye/ 45deg forward capture
-              </td>
-            </tr>
-            <tr>
-              <td>Watch modes</td>
-              <td>
-                1. 360deg video<br>
-                2. VR goggle
-              </td>
-            </tr>
-            <tr>
-              <td>Resolution<br>(Panorama Photo&video)</td>
-              <td>
-                Phote 4320x2160 
-                Video 4K / 30fps (3840 x 2160) 
-                2.5K / 30fps (2560 x 1440) 
-                FHD / 30fps (1920 x 1080)
-              </td>
-            </tr>
-            <tr>
-              <td>Size</td>
-              <td>
-                1.81”(W) x 0.8” (D) x 3.68” (H) 
-                45.9mm (W) x 20.3mm (D) x 93.5mm (H)
-              </td>
-            </tr>
-            <tr>
-              <td>Battery</td>
-              <td>
-                1100mAh 
-                Up to 70 mins (in 4K mode) 
-                Up to 15 hours (in Lifelog™ Video mode)
-              </td>
-            </tr>
-            <tr>
-              <td>Camera storage</td>
-              <td>
-                Micro SD (SDXC) Classic 10 or above; Max 128G. 
-                (some cards of 256G are workable)
-              </td>
-            </tr>
-            <tr>
-              <td>SW Functions</td>
-              <td>OMI Studio (edit, calibrate, stabilize, augment, share)</td>
-            </tr>
-            <tr>
-              <td>OS Compatibility</td>
-              <td>
-                iOS (8.0 or later) /
-                Android (5.0 or later) /
-                Mac OS (11 or later) /
-                Windows (7 or later)
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -347,6 +351,17 @@ export default {
           scrollTop: target.offset().top - 60
         }, 1000);
       }
+    });
+    $(window).scroll(function() {
+      let scrollPos = $(window).scrollTop();
+      console.log(scrollPos);
+      let windowHeight = $(window).height();
+      $('.animated').each(function() {
+        let thisPos = $(this).offset().top;
+        if ((scrollPos + windowHeight) >= thisPos) {
+          $(this).css('opacity', '1');
+        };
+      })
     })
   }
 };
@@ -381,7 +396,7 @@ li {
   padding-top: 50px;
   @media(max-width: 1000px) {
     h3 {
-      font-size: 24px !important;
+      font-size: 36px !important;
     }
     li {
       font-size: 16px !important;
@@ -400,7 +415,8 @@ li {
     margin: 50px 0;
     height: 600px;
     @include ipad() {
-      background-position: bottom left;
+      background-position-y: bottom;
+      background-position-x: 20%;
     }
     .banner {
       color: white;
@@ -426,6 +442,12 @@ li {
           text-shadow:0px 0px 8px #1a1a1a;
           font-family:Arial,Helvetica, sans-serif;
         }
+        .next-line {
+          display: none;
+          @include ipad_pro() {
+            display: block;
+          }
+        }
       }
       p {
         padding-top: 10px;
@@ -445,7 +467,7 @@ li {
       display: inline-block;
       width: 20%;
       vertical-align: top;
-      border-left: 1px solid gray;
+      // border-left: 1px solid gray;
       @include ipad() {
         border: none !important;
       }
@@ -467,16 +489,36 @@ li {
   .section3,
   .section4,
   .section5,
-  .section6 {
+  .section6,
+  .section7,
+  .section8,
+  .section9 {
     border-bottom: 1px solid gray;
     color: white;
     height: 500px;
     padding: 20px 0;
-    img {
-      height: 250px;
-      width: auto;
+    @include ipad_pro() {
+      height: auto;
     }
-    @include ipad() {
+    .section3-img,
+    .section4-img,
+    .section5-img,
+    .section8-img,
+    .section9-img {
+      height: 350%;
+      width: calc(350px*16/9);
+      @include ipad_pro() {
+        width: 80%;
+        max-height: 350px;
+      }
+    }
+    ul {
+      margin-top: 10px;
+      li {
+        margin-bottom: 5px;
+      }
+    }
+    @include ipad_pro() {
       height: auto;
       .section-title {
         text-align: center;
@@ -511,20 +553,41 @@ li {
 //   }
 // }
 .section8 {
-  color: white;
-  .detail {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .section-title {
-      color: #ff9933;
-      @include ipad() {
-        text-align: center;
+  background-color: #1a1a1a;
+  opacity: 0;
+  transition: all 1s;
+  @include ipad() {
+    height: auto !important;
+  }
+  .section-row {
+    height: 100%;
+    width: 100%;
+    @include ipad() {
+      height: auto !important;
+    }
+    .section8-img {
+      background-image: url('../assets/images/Home/sec8.png');
+      background-size: 30%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      @include ipad_pro() {
+        height: 400px !important;
+        background-size: 30%;
+        margin: auto;
+      }
+      @include iphone8plus_Height { // 橫式 iphone8+ 以下
+        background-size: 20%;
+      }
+    }
+    .section-text {
+      text-align: center;
+      .section-title {
+        font-size: 60px;
       }
     }
   }
 }
-.section9 {
+.section10 {
   color: white !important;
   text-align: left;
   .section-title {
