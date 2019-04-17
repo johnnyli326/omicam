@@ -19,7 +19,7 @@
       </div>
       <div class="social-section">
         <div>
-          <a href="https://www.facebook.com/OMICAMGLOBAL"
+          <a href="https://www.facebook.com/OmiCamUS/"
           class="facebook mr-2" target="_blank">
             <img src="../assets/images/Footer/facebook.png" alt="facebook">
 					</a>
@@ -27,7 +27,7 @@
           class="youtube mr-2" target="_blank">
             <img src="../assets/images/Footer/youtube.png" alt="youtube">
 					</a>
-          <a href="https://twitter.com/omicamj"
+          <a href="https://twitter.com/MySight360"
           class="twitter mr-2" target="_blank">
             <img src="../assets/images/Footer/twitter.png" alt="twitter">
 					</a>
