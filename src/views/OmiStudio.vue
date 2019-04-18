@@ -95,7 +95,7 @@
 					</div>
         </section>
         <!-- <pre>icon-section</pre> -->
-        <section class="row align-items-center section5 mt-5" id="240">
+        <section class="row align-items-center section5 mt-5" id="Control">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -116,7 +116,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section6 mt-5" id="240">
+        <section class="row align-items-center section6 mt-5" id="Integrate">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -137,7 +137,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section7 mt-5" id="240">
+        <section class="row align-items-center section7 mt-5" id="Vivid">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -156,7 +156,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section8 mt-5" id="240">
+        <section class="row align-items-center section8 mt-5" id="Song">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -175,7 +175,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section9 mt-5" id="240">
+        <section class="row align-items-center section9 mt-5" id="Text">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -194,7 +194,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section10 mt-5" id="240">
+        <section class="row align-items-center section10 mt-5" id="Live">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -213,7 +213,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section11 mt-5" id="240">
+        <section class="row align-items-center section11 mt-5" id="Player">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -232,7 +232,7 @@
             </p>
           </div>
         </section>
-        <section class="row align-items-center section12 mt-5" id="240">
+        <section class="row align-items-center section12 mt-5" id="Cloud">
           <div class="col-lg-6 justify-content-center d-flex">
             <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
             class="section-img">
@@ -288,37 +288,37 @@ export default {
 	data() { 
 		return {
       icons: [{
-        name: '240Deg View',
+        name: 'Control',
         imgSrc: require('../assets/images/OmiCam/240icon.png'),
-        section: '#240',
+        section: '#Control',
       }, {
-        name: 'Easy to Use',
+        name: 'Integrate',
         imgSrc: require('../assets/images/OmiCam/easy-to-use.png'),
-        section: '#wear',
+        section: '#Integrate',
       }, {
-        name: 'Long Hour Operation',
+        name: 'Vivid',
         imgSrc: require('../assets/images/OmiCam/battery-icon.png'),
-        section: '#Lifelog'
+        section: '#Vivid'
       }, {
-        name: 'Horizontal & Stable',
+        name: 'Song',
         imgSrc: require('../assets/images/OmiCam/camera-icon.png'),
-        section: '#Horizontal',
+        section: '#Song',
       }, {
-        name: 'Splash & Dust Proof',
+        name: 'Text',
         imgSrc: require('../assets/images/OmiCam/icon-waterproof.png'),
-        section: '#splash',
+        section: '#Text',
       }, {
-        name: 'Long Hour Operation',
+        name: 'Live',
         imgSrc: require('../assets/images/OmiCam/battery-icon.png'),
-        section: '#Lifelog'
+        section: '#Live'
       }, {
-        name: 'Horizontal & Stable',
+        name: 'Player',
         imgSrc: require('../assets/images/OmiCam/camera-icon.png'),
-        section: '#Horizontal',
+        section: '#Player',
       }, {
-        name: 'Splash & Dust Proof',
+        name: 'Cloud',
         imgSrc: require('../assets/images/OmiCam/icon-waterproof.png'),
-        section: '#splash',
+        section: '#Cloud',
       }],
     }; 
 	},
@@ -326,6 +326,15 @@ export default {
 		window.scrollTo(0, 0);
   },
   mounted() {
+    $('.feature-icons[href^="#"]').on('click', function(e) {
+      let target = $(this.getAttribute('href'));
+      if (target.length) {
+        e.preventDefault();
+        $('html, body').stop().animate({
+          scrollTop: target.offset().top - 60
+        }, 1000);
+      }
+    });
     $(window).scroll(function() {
       let scrollPos = $(window).scrollTop();
       let windowHeight = $(window).height();
@@ -333,7 +342,9 @@ export default {
         let thisPos = $(this).offset().top;
         if ((scrollPos + windowHeight) >= thisPos) {
           $(this).css('opacity', '1');
-        };
+        } else {
+          $(this).css('opacity', '0');
+        }
       })
     })
   }
@@ -484,7 +495,7 @@ export default {
     .section13 {
       background-color: #1a1a1a;
       opacity: 0;
-      transition: all 1s;
+      transition: all 2.5s;
       height: 500px;
       @include ipad() {
         height: auto !important;
@@ -514,6 +525,10 @@ export default {
           .section-title {
             font-size: 60px;
           }
+        }
+        .link-icon-btn {
+          width: 75px;
+          height: 75px;
         }
       }
     }

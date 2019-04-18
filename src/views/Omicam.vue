@@ -498,36 +498,10 @@ li {
     }
   }
 }
-// .section7 {
-//   width: 100%;
-//   background-image: url('../assets/images/OmiCam/sec7.jpg');
-//   background-position: center center;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   padding: 30px;
-//   margin: 50px auto;
-//   height: 350px;
-//   @include ipad() {
-//     height: auto;
-//   }
-//   .section7-content {
-//     width: 70%;
-//     margin-left: auto;
-//     margin-right: auto;
-//     text-align: left;
-//     color: white;
-//     .section-title {
-//       color: #ff9933;
-//     } 
-//     ul {
-//       padding: 10px;
-//     }
-//   }
-// }
 .section8 {
   background-color: #1a1a1a;
   opacity: 0;
-  transition: all 1s;
+  transition: all 2.5s;
   @include ipad() {
     height: auto !important;
   }
