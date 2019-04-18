@@ -314,32 +314,6 @@ export default {
         imgSrc: require('../assets/images/OmiCam/icon-waterproof.png'),
         section: '#splash',
       }],
-      btns: [{
-        name: 'Power On-Off',
-        imgSrc: require('../assets/images/power-btn.png'),
-      }, {
-        name: 'LifeLog Mode Record/Stop',
-        imgSrc: require('../assets/images/lifelog-btn.png'),
-      }, {
-        name: 'Standard Mode Record/Stop',
-        imgSrc: require('../assets/images/shutter-btn.png'),
-      }],
-      scenery: [{
-        name: 'ski',
-        imgSrc: require('../assets/images/ski.jpg'),
-      }, {
-        name: 'bike',
-        imgSrc: require('../assets/images/bike.jpg'),
-      }, {
-        name: 'bg-sky',
-        imgSrc: require('../assets/images/bg-sky.jpg'),
-      }, {
-        name: 'boat',
-        imgSrc: require('../assets/images/boat.jpg'),
-      }, {
-        name: 'boat-2',
-        imgSrc: require('../assets/images/boat-2.jpg'),
-      }],
     };
   },
   created() {
@@ -469,10 +443,6 @@ li {
       display: inline-block;
       width: 20%;
       vertical-align: top;
-      // border-left: 1px solid gray;
-      @include ipad() {
-        border: none !important;
-      }
       .icons {
         transition: all .5s;
         vertical-align: top;
