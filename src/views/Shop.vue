@@ -56,31 +56,31 @@
             </tr>
             <tr>
               <td colspan="3" class="text-right">
-                <small class="mr-2">Shipping fare</small>
-                <select v-model="fare">
-                  <option value="50" selected>United State</option>
-                  <option value="60">Iseral</option>
-                  <option value="70">Canada</option>
+                <small class="mr-2">Shipping fee</small>
+                <select v-model="fee" required>
+                  <option value="0" select disabled>Select Region</option>
+                  <option :value="cty.price" v-for="cty in shipping" :key="cty.id">
+                    {{ cty.name }}
+                  </option>
                 </select>
               </td>
               <td class="text-right">
-                {{ fare | currency}}
+                {{ fee | currency}}
               </td>
             </tr>
             <tr>
               <td class="text-right" colspan="3">TOTAL</td>
               <td class="text-right" width="20%">
-                {{ final_Total + +fare | currency }}
+                {{ final_Total + +fee | currency }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <router-link to="/order" class="btn btn-block btn-primary my-4 btn-checkout
-        text-center">
+      <a href="order" class="btn btn-block btn-primary my-4 btn-checkout
+        text-center" @click.prevent="goCheckOut()">
         CHECKOUT
-      </router-link>
-        {{fare}}
+      </a>
     </div>
 	</div>
 </template>
@@ -113,7 +113,8 @@ export default {
 				}
 			],
       coupon_code: '',
-      fare: 50,
+      shipping: [],
+      fee: 0,
     };
 	},
   methods: {
@@ -149,10 +150,31 @@ export default {
         }
       })
     },
+    getShipping() {
+      let xhr = new XMLHttpRequest();
+      let vm = this;
+      xhr.open('get',
+      'https://www.omicam.com/_privateApi/omiShippingApi.php?fun=all',
+      true);
+      xhr.send(null);
+      xhr.onload = () => {
+        console.log(JSON.parse(xhr.response));
+        vm.shipping = JSON.parse(xhr.response); // JSON.parse : string to Array
+      }
+    },
+    goCheckOut() {
+      let vm  = this;
+      if (vm.fee > 0) {
+        vm.$router.push('/order');
+      } else {
+        alert('please select your region')
+      }
+    }
 	},
 	created() {
     window.scroll(0,0);
     this.listCookies();
+    this.getShipping();
   },
   mounted() {
   },
