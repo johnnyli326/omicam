@@ -185,28 +185,28 @@
         </div>
       </section>
       <section class="section8 animated">
-          <div class="row mr-0 ml-0 section-row">
-            <div class="col-lg-6 section8-img
-              d-flex justify-content-center align-items-center
-              h-100">
-            </div>
-            <div class="col-lg-6 d-flex justify-content-center align-items-center
-              h-100">
-              <div class="section-text m-3">
-                <h2 class="section-title">OmiCam</h2>
-                <p class="section-subTitle">
-                  Get Outside. Enjoy nature. (Buy Now)
-                </p>
-                <img src="../assets/images/icons/buy.png" class="link-icon-btn"
-                alt="more_icon" usemap="#btnmap_8">
-                <map name="btnmap_8">
-                  <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
-                  @click.prevent="$router.push('/omicam')">
-                </map>
-              </div>
+        <div class="row mr-0 ml-0 section-row">
+          <div class="col-lg-6 section8-img
+            d-flex justify-content-center align-items-center
+            h-100">
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center align-items-center
+            h-100">
+            <div class="section-text m-3">
+              <h2 class="section-title">OmiCam</h2>
+              <p class="section-subTitle">
+                Get Outside. Enjoy nature. (Buy Now)
+              </p>
+              <img src="../assets/images/icons/buy.png" class="link-icon-btn"
+              alt="more_icon" usemap="#btnmap_8">
+              <map name="btnmap_8">
+                <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+                @click.prevent="$router.push('/omicam')">
+              </map>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
       <section class="my-5 section10">
         <h3 class="section-title">Specs</h3>
         <div class="table-responsive">

@@ -101,16 +101,16 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">
+              Control Your OmiCam
+            </h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Preview your OmiCam image in real time.
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Enjoy the timelapse, photo timer, lifelog function and more.
                 </li>
               </ul>
             </p>
@@ -122,16 +122,16 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">
+              Integrate Your Moments into One Story
+            </h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Integrate multiple video clips into one VR story
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Trim and Edit each clip to ensure all the important moments.
                 </li>
               </ul>
             </p>
@@ -143,16 +143,14 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">Vivid Your Clips</h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Apply the color filter to keep the perfect image.
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Find the best tone to meet with your feeling at that time.
                 </li>
               </ul>
             </p>
@@ -164,16 +162,14 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">Mix with Your Favorite Song</h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Pick your favorite tune and mix into your story.
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Adjust your video clip to meet with beats and loop the melody.
                 </li>
               </ul>
             </p>
@@ -185,16 +181,14 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">Make Not for your Story</h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Have a story name for your memory
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Leave your thought for every moment you experienced.
                 </li>
               </ul>
             </p>
@@ -206,16 +200,14 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">Share with Others in Live</h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Share the 360 live streaming to your friends.
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Support the Facebook, Youtube 360 Live features. (for iPhone only)
                 </li>
               </ul>
             </p>
@@ -227,16 +219,14 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">Enjoy Your Immersive Story</h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  Watch your Story in panorama or experience it with VR goggle.
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                Control the viewing orientation with touch screen or just move your mobile device.
                 </li>
               </ul>
             </p>
@@ -248,19 +238,42 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Extremely Wide View</h3>
+            <h3 class="section-title">Make Your Story on Cloud</h3>
             <p>
               <ul>
                 <li>
-                  240° Fisheye Lens with 4K VR resolution output captures more
-                  than what you see.
+                  The proprietary OMI Cloud help you to process and generate your
+                  VR story on cloud.
                 </li>
                 <li>
-                  The unique 45 degree forward design prefectly simulated human
-                  eyes and captured the most immersive experience.
+                  Don't need to worry the process time occupied your smartphone or PC,
+                  Let OMI Cloud work for you.
                 </li>
               </ul>
             </p>
+          </div>
+        </section>
+        <section class="section13 animated">
+          <div class="row mr-0 ml-0 section-row">
+            <div class="col-lg-6 section13-img
+              d-flex justify-content-center align-items-center
+              h-100">
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center align-items-center
+              h-100">
+              <div class="section-text m-3">
+                <h2 class="section-title">OmiCam</h2>
+                <p class="section-subTitle">
+                  Get Outside. Enjoy nature. (Buy Now)
+                </p>
+                <img src="../assets/images/icons/buy.png" class="link-icon-btn"
+                alt="more_icon" usemap="#btnmap_8">
+                <map name="btnmap_8">
+                  <area shape="circle" coords="37.5, 37.5, 37.5" alt="" class="map-area"
+                  @click.prevent="$router.push('/shop')">
+                </map>
+              </div>
+            </div>
           </div>
         </section>
 			</div>
@@ -269,6 +282,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
 	data() { 
 		return {
@@ -309,7 +324,19 @@ export default {
 	},
 	created() {
 		window.scrollTo(0, 0);
-	},
+  },
+  mounted() {
+    $(window).scroll(function() {
+      let scrollPos = $(window).scrollTop();
+      let windowHeight = $(window).height();
+      $('.animated').each(function() {
+        let thisPos = $(this).offset().top;
+        if ((scrollPos + windowHeight) >= thisPos) {
+          $(this).css('opacity', '1');
+        };
+      })
+    })
+  }
 };
 </script>
 
@@ -387,12 +414,18 @@ export default {
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
+        @include ipad_pro() {
+          height: 300px;
+        }
       }
       .section4-img {
         background-image: url('../assets/images/Home/device.png');
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
+        @include ipad_pro() {
+          height: 300px;
+        }
       }
       .section3-content,
       .section4-content {
@@ -448,9 +481,42 @@ export default {
         }
       }
     }
-		.section12 {
-			border-bottom: 0;
-		}
+    .section13 {
+      background-color: #1a1a1a;
+      opacity: 0;
+      transition: all 1s;
+      height: 500px;
+      @include ipad() {
+        height: auto !important;
+      }
+      .section-row {
+        height: 100%;
+        width: 100%;
+        @include ipad() {
+          height: auto !important;
+        }
+        .section13-img {
+          background-image: url('../assets/images/Home/sec8.png');
+          background-size: 30%;
+          background-position: center center;
+          background-repeat: no-repeat;
+          @include ipad_pro() {
+            height: 400px !important;
+            background-size: 30%;
+            margin: auto;
+          }
+          @include iphone8plus_Height { // 橫式 iphone8+ 以下
+            background-size: 20%;
+          }
+        }
+        .section-text {
+          text-align: center;
+          .section-title {
+            font-size: 60px;
+          }
+        }
+      }
+    }
 	}
 }
 </style>
