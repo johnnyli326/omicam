@@ -23,11 +23,11 @@
           <div class="col-md-9 mt-4">
             <h3 class="text-primary">{{ story.title }}</h3>
 						<main class="ml-4 mt-3">
-              <p style="text-align:justify;color:white">
+              <div style="text-align:justify;color:white">
+                <div class="get-html"></div>
 								{{ story.description }}
-								<br>
 								<span class="d-block" style="text-align: right">--{{ story.author }}</span>
-              </p>
+              </div>
 						</main>
           </div>
         </div>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
     return {
@@ -49,7 +51,7 @@ export default {
   methods: {
     getStories() { // get omi-stories from database
       let vm = this;
-      const xhr = new XMLHttpRequest; // state = 0
+      const xhr = new XMLHttpRequest(); // state = 0
       xhr.open('get',
         'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=list&from=0&count=4',
         true);

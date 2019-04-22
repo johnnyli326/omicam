@@ -195,7 +195,7 @@
             <div class="section-text m-3">
               <h2 class="section-title">OmiCam</h2>
               <p class="section-subTitle">
-                Get Outside. Enjoy nature. (Buy Now)
+                Get Outside. Enjoy Nature.
               </p>
               <img src="../assets/images/icons/buy.png" class="link-icon-btn"
               alt="more_icon" usemap="#btnmap_8">

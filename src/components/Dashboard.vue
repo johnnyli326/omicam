@@ -68,7 +68,7 @@ export default {
   bottom: 180px;
   right: 50px;
   z-index: 100;
-  background-image: url('../assets/images/gotop.png');
+  background-image: url('../assets/images/icons/gotop.png');
   background-repeat: no-repeat;
   background-size: cover;
   text-decoration: none !important;

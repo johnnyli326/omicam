@@ -1,6 +1,7 @@
 <template>
 	<div>
     <div class="container shop-wrap" style="margin-bottom: 100px;">
+      <loading :active.sync="isLoading"></loading>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item">
@@ -10,6 +11,13 @@
           </li>
           <li class="breadcrumb-item before active" aria-current="page">
             SHOP
+          </li>
+          <li class="breadcrumb-item before ml-auto">
+            <router-link to="/ordertracking">
+              <img src="../assets/images/Shop/check_order.png" class="tracking-icon"
+              alt="check_order">
+              CHECK MY ORDER
+            </router-link>
           </li>
         </ol>
       </nav>
@@ -22,17 +30,19 @@
               <th class="text-center" style="width:20%">Quantity</th>
               <th class="text-center" style="width:10%">Total</th>
             </tr>
-            <tr v-for="item in carts" :key="item.id">
-              <td class="text-left product-box">
+            <tr v-for="item in products" :key="item.id">
+              <td class="text-left product-box" style="height:250px;">
                 <div class="product-img-box">
-                  <router-link :to="'/shop/'+item.link" class="btn btn-link p-0">
-                    <img class="small-img" :src="item.imageUrl" :alt="item.name">
-                    <div>{{ item.name }}</div>
+                  <router-link :to="'/shop/'+item.id" class="btn btn-link p-0">
+                    <img class="small-img" :src="'https://www.omicam.com/' + item.listImg"
+                    :alt="item.name">
                   </router-link>
                 </div>
-                <div class="product-describe-box">
-                  <h2 class="text-left">{{ item.name }}</h2>
-                  <span>{{ item.price | currency }}</span>
+                <div class="product-describe-box" style="height:250px;">
+                  <router-link :to="'/shop/'+item.id" class="btn btn-link p-0 d-block">
+                    <h2 class="text-left">{{ item.name }}</h2>
+                  </router-link>
+                  <span>{{ item.description }}</span>
                 </div>
               </td>
               <td>
@@ -40,12 +50,17 @@
               </td>
               <td class="pt-2">
                 <div class="input-box">
-                  <div class="count minus" @click="item.qty > 0 ? item.qty-=1 : false">-</div>
+                  <div class="count minus" @click="item.qty > 0 ? item.qty-=1 : false"></div>
                   <input class="number-input"
-                  type="number" autocomplete="off" min="0" step="1" max="100"
+                  type="text" autocomplete="off" min="0" step="1" :max="item.maxQuantity"
                   v-model="item.qty"
-                  onkeyup="value=value.replace(/[^\d]/g,'')" >
-                  <div class="count plus"  @click="item.qty < 100 ? item.qty+=1 : false">+</div>
+                  onkeyup="value=value.replace(/[^\d]/g,'')">
+                  <div class="bottom-line"></div>
+                  <div class="count plus"  @click="item.qty += 1"></div>
+                </div>
+                <div v-if="item.qty == item.maxQuantity"
+                class="message">
+                  Max Quantity: {{ item.maxQuantity }}
                 </div>
               </td>
               <td>
@@ -55,100 +70,102 @@
               </td>            
             </tr>
             <tr>
-              <td colspan="3" class="text-right">
-                <small class="mr-2">Shipping fee</small>
-                <select v-model="fee" required>
-                  <option value="0" select disabled>Select Region</option>
-                  <option :value="cty.price" v-for="cty in shipping" :key="cty.id">
-                    {{ cty.name }}
-                  </option>
-                </select>
-              </td>
-              <td class="text-right">
-                {{ fee | currency}}
+              <td class="text-right" colspan="3">SHIPPING FEE：</td>
+              <td class="text-right" width="20%">
+                {{ +selectCty.price | currency }}
               </td>
             </tr>
             <tr>
-              <td class="text-right" colspan="3">TOTAL</td>
+              <td class="text-right" colspan="3">SUBTOTAL：</td>
               <td class="text-right" width="20%">
-                {{ final_Total + +fee | currency }}
+                {{ final_Total + +selectCty.price | currency }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <a href="order" class="btn btn-block btn-primary my-4 btn-checkout
-        text-center" @click.prevent="goCheckOut()">
-        CHECKOUT
-      </a>
+      <div class="input-group">
+        <span>SHIP TO：</span>
+        <div class="dropdown-wrap">
+          {{ selectCty.region }}
+          <div class="dropdown-menu">
+            <div class="dropdown-item"
+            v-for="cty in shipping"
+            :key="cty.name" @click="getDivData(cty.name, cty.price, cty.id)">
+            {{ cty.name }}
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-btn"></div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <div class="checkout-box" v-on:click="goCheckOut()">
+          <img src="../assets/images/Shop/checkout.png" alt="checkout">
+          CHECKOUT
+        </div>
+      </div>
     </div>
 	</div>
 </template>
 
 <script>
 import $ from 'jquery';
+import { setTimeout } from 'timers';
 
 export default {
   data() {
 		return {
-			carts: [
-				{
-          name: 'OmiCam',
-          imageUrl: require('../assets/images/omicam-1.png'),
-          price: 999,
-          qty: 0,
-          link: 'omicam',
-        }, {
-          name: 'Shoulder Strap',
-					imageUrl: require('../assets/images/omicam-1.png'),
-          price: 222,
-          qty: 0,
-          link: 'shoulderstrap',
-        }, {
-          name: 'Waterproof Case',
-					imageUrl: require('../assets/images/omicam-1.png'),
-          price: 111,
-          qty: 0,
-          link: 'waterproofcase',
-				}
-			],
+      products: [],
       coupon_code: '',
       shipping: [],
-      fee: 0,
+      isLoading: false,
+      selectCty: {
+        region: 'Please Select Your Region',
+        price: 0,
+        id: '',
+      },
     };
 	},
   methods: {
     listCookies() {
-      let Arr = document.cookie.split(';');
-      // console.log(Arr);
-      Arr.forEach((e) => { // 查詢先前購物車資料
-        if(e.includes('OmiCam')) {
-          // console.log('Omicam：' + e.match(/\d/g).join(""));
-          let PreNum = parseInt(e.match(/\d/g).join(""));
-          this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'OmiCam') {
-              e.qty = PreNum;
-            }
-          })
-        } else if(e.includes('Shoulder Strap')) {
-          // console.log('water：' + e.match(/\d/g).join(""));
-          let PreNum = parseInt(e.match(/\d/g).join(""));
-          this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'Shoulder Strap') {
-              e.qty = PreNum;
-            }
-          })
-        } else if(e.includes('Waterproof Case')) {
-          // console.log('waterCase：' +e.match(/\d/g).join(""));
-          let PreNum = parseInt(e.match(/\d/g).join(""));
-          this.carts.forEach(function(e) { // 查詢carts資料
-            if(e.name === 'Waterproof Case') {
-              e.qty = PreNum;
-              // console.log(typeof(e.qty));
-            }
-          })
-        }
+      let Arr = document.cookie.split(';'); // cookie to Array
+      let vm = this;
+      Arr.forEach((e) => { // Cookie matrix
+        let cartItem = e.split('=');
+        console.log(cartItem);
+        let shippingCookie = cartItem[1].split('&'); // get shipping Cookie => ['region','price']
+        this.products.forEach(function(item) { // Search Product Cookie 
+          if(item.name.replace(/\s/g, '') == cartItem[0].replace(/\s/g, '')) { // remove blank space
+            vm.$set(item, 'qty', +cartItem[1]);
+          }
+        });
+        this.shipping.forEach(function(item) { // Search Shipping Cookie
+          if(item.name.replace(/\s/g, '') == shippingCookie[0].replace(/\s/g, '')) { // judge if Region is coincident.
+            vm.selectCty.region = item.name;
+            vm.selectCty.price = item.price;
+            vm.selectCty.id = item.id;
+          }
+        })
       })
+    },
+    getProductList() {
+      let vm = this;
+      vm.isLoading = true;
+      let xhr = new XMLHttpRequest();
+      xhr.open('get',
+      'https://www.omicam.com/_privateApi/omiSaleItemApi.php?fun=list'
+      , true);
+      xhr.send(null);
+      xhr.onload = () => {
+        vm.products = JSON.parse(xhr.responseText);
+        vm.products.forEach(function(e) { // add quantity property.
+          vm.$set(e, 'qty', 0);
+        })
+        setTimeout(function() {
+          vm.listCookies()
+          vm.isLoading = false;
+        },100);
+      };
     },
     getShipping() {
       let xhr = new XMLHttpRequest();
@@ -158,44 +175,62 @@ export default {
       true);
       xhr.send(null);
       xhr.onload = () => {
-        console.log(JSON.parse(xhr.response));
         vm.shipping = JSON.parse(xhr.response); // JSON.parse : string to Array
       }
     },
     goCheckOut() {
       let vm  = this;
-      if (vm.fee > 0) {
-        vm.$router.push('/order');
+      if (vm.selectCty.price > 0) {
+        vm.$router.push('/checkout');
       } else {
         alert('please select your region')
       }
-    }
+    },
+    getDivData(cty, price, id) {
+      let vm = this;
+      vm.selectCty.region = cty;
+      vm.selectCty.price = price;
+      vm.selectCty.id = id;
+    },
 	},
 	created() {
     window.scroll(0,0);
-    this.listCookies();
     this.getShipping();
+    this.getProductList();
   },
   mounted() {
+    $(document).ready(function(){
+      $('.dropdown-btn').click(function() {
+        $('.dropdown-menu').toggleClass('show');
+      })
+      $('.dropdown-wrap').click(function(e) {
+        e.stopPropagation();
+        $('.dropdown-menu').toggleClass('show');
+      })
+      $('.dropdown-menu').click(function(e) {
+        e.stopPropagation()
+        $('.dropdown-menu').removeClass('show');
+      })
+    }) 
   },
   computed: {
     final_Total() {
       let vm = this;
       let final_total = 0;
-      vm.carts.forEach(function(e) {
+      vm.products.forEach(function(e) {
         final_total += e.price * e.qty;
       })
       return final_total
     }
   },
   watch: {
-    carts: [ // 防止input輸入數量不合格
+    products: [ // 防止input輸入數量不合格
       function handle2(val, oldVal) {},
       {
         handler: function(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
-          val.forEach(function(e){
-            if(e.qty > 100) {
-              e.qty = 100;
+          oldVal.forEach(function(e){
+            if(e.qty > e.maxQuantity) {
+              e.qty = e.maxQuantity;
             } else if (e.qty >= 0 && e.qty <=100){ // 如果數量介於 0 ~ 100的話，寫入cookie
               e.qty = parseInt(e.qty); // input輸入均為”字串“，改變成"number"
               document.cookie = e.name + "=" + e.qty + ";max-age=3600;path=/"; // 一小時後刪除紀錄
@@ -208,6 +243,12 @@ export default {
         deep: true,
       },
     ],
+    selectCty: {
+      handler: function(newVal, oldVal) {
+        document.cookie = "ShippingFee=" + newVal.region + '&' + newVal.price + '&' + newVal.id  + ";max-age=3600;path=/";
+      },
+      deep: true
+    }
   },
 }
 </script>
@@ -220,10 +261,21 @@ export default {
   .breadcrumb {
     border-bottom: 1px solid gray;
     font-size: 28px;
+    @include ipad() {
+      font-size: 18px;
+    }
+    @include iphone678() {
+      font-size: 14px;
+    }
     .breadcrumb-item {
       &.before::before {
         content: '|';
         color: gray;
+      }
+      .tracking-icon {
+        @include iphone8plus() {
+          width: 14px;
+        }
       }
     }
   }
@@ -234,6 +286,7 @@ export default {
     text-align: center;
     vertical-align: middle;
     color: white;
+    position: relative;
   }
   .small-img {
     width: 50px;
@@ -246,8 +299,9 @@ export default {
     border: 1px solid #e9e9e9;
   }
   .shop-table {
+    width: 100%;
     @include ipad() {
-      width:700px;
+      // width: 1100px;
     }
   }
   .input-box {
@@ -262,6 +316,17 @@ export default {
       text-align: center;
       outline: 0;
       height: 30px;
+      background-color: transparent;
+      border: 0;
+      color: white;
+    }
+    .bottom-line {
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 75px;
+      height: 1px;
+      background-color: white;
     }
     .count {
       width: 40px;
@@ -269,8 +334,6 @@ export default {
       position: absolute;
       top: 0;
       bottom: 0;
-      background-color: rgb(215, 214, 214);
-      color: rgb(23, 22, 22);
       padding: 5px;
       display: flex;
       justify-content: center;
@@ -278,18 +341,31 @@ export default {
       }
     .minus {
       left: 0;
+      background-image: url('../assets/images/Shop/-.png');
+      background-position: center center;
+      background-size: contain;
+      background-color: transparent;
+      background-repeat: no-repeat;
     }
     .plus {
       right: 0;
+      background-image: url('../assets/images/Shop/+.png');
+      background-position: center center;
+      background-size: contain;
+      background-color: transparent;
+      background-repeat: no-repeat;
     }
   }
   .table {
+    border-bottom: 1px solid #dee2e6;
     .product-box {
       display: flex;
       justify-content: center;
       align-items: center;
       .product-img-box {
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 30%;
         height: 100%;
         text-align: center;
@@ -299,7 +375,10 @@ export default {
         }
       }
       .product-describe-box {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;;
         width: 70%;
         height: 100%;
         h2 {
@@ -308,10 +387,86 @@ export default {
       }
     }
   }
-  .btn-checkout {
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
+  .input-group {
+    color: white;
+    margin-top: 30px;
+    span {
+      color: #ff9933;
+    }
   }
+  .dropdown-wrap {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    padding: 0 10px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    user-select: none;
+    cursor: pointer;
+    .dropdown-menu {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      overflow-y: scroll;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      transition: all .5s;
+      cursor: pointer;
+      &.show {
+        height: 150px;
+      }
+      .dropdown-item {
+        height: 50px;
+        font-size: 16px;
+        color: white;
+        border-bottom: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.3);
+        text-align: center;
+        line-height: 50px;
+      }
+    }
+  }
+  .dropdown-btn {
+    background-image: url('../assets/images/icons/gotop.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 20px;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transform: rotateZ(180deg);
+  }
+  .checkout-box {
+    display: inline-block;
+    margin-left: auto;
+    margin-top: 30px;
+    border-right: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    padding: 0 10px;
+    color: #ff9933;
+    margin-left: auto;
+    cursor: pointer;
+    user-select: none;
+    @include ipad() {
+      // margin-left: 0;
+      // margin-right: auto;
+      margin-top: 150px;
+    }
+  }
+}
+.message {
+  color: rgba(255, 46, 46, 0.742);
+  text-align: center;
+  position: absolute;
+  bottom: 80px;
+  left: 60px;
+  user-select: none;
+  font-size: 12px;
 }
 </style>
