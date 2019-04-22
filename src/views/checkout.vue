@@ -97,11 +97,9 @@
                       </div>
                     </div>
                   </td>
-                  <td class="text-right" style="border-bottom:1px solid gray;">
-                    <div class="minus-icon"></div>
-                  </td>
-                  <td class="text-right" style="border-bottom:1px solid gray;">
+                  <td colspan="2" class="text-right" style="border-bottom:1px solid gray;">
                     <div class="coupon-price-box">
+                      <div class="minus-icon"></div>
                       <span class="original-total" style="color:rgb(103, 238, 76);">
                         {{ FinalCoupon.price | currency }}
                       </span>
@@ -374,7 +372,7 @@ export default {
         align-items: center;
         .order-img-box-img {
           display: inline-block;
-          width: 50px;
+          width: 75px;
           height: 75px;
           background-position: center center;
           background-size: contain;

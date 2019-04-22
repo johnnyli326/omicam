@@ -26,7 +26,7 @@
           <tbody>
             <tr class="text-white">
               <th class="text-center">Product Name</th>
-              <th class="text-center" style="width:10%">Price</th>
+              <th class="text-center" style="width:15%">Price</th>
               <th class="text-center" style="width:20%">Quantity</th>
               <th class="text-center" style="width:10%">Total</th>
             </tr>
@@ -289,8 +289,8 @@ export default {
     position: relative;
   }
   .small-img {
-    width: 50px;
-    height: auto;
+    width: 100%;
+    height: 100%;
   }
   .page-title {
     width: 100%;
@@ -381,6 +381,7 @@ export default {
         align-items: flex-start;;
         width: 70%;
         height: 100%;
+        margin-left: 10px;
         h2 {
           text-align: center;
         }
@@ -410,23 +411,24 @@ export default {
       left: 0;
       width: 100%;
       height: 0;
-      overflow-y: scroll;
+      overflow: hidden;
       background-color: transparent;
       margin: 0;
       padding: 0;
       transition: all .5s;
       cursor: pointer;
       &.show {
-        height: 150px;
+        height: 90px;
       }
       .dropdown-item {
-        height: 50px;
+        height: 30px;
         font-size: 16px;
         color: white;
         border-bottom: 1px solid white;
-        background-color: rgba(255, 255, 255, 0.3);
         text-align: center;
-        line-height: 50px;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
       }
     }
   }
@@ -453,11 +455,6 @@ export default {
     margin-left: auto;
     cursor: pointer;
     user-select: none;
-    @include ipad() {
-      // margin-left: 0;
-      // margin-right: auto;
-      margin-top: 150px;
-    }
   }
 }
 .message {

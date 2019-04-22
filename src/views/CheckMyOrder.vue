@@ -41,7 +41,7 @@ export default {
 		track() {
 			let vm = this;
 			let xhr = new XMLHttpRequest();
-			xhr.open('get', 'https://www.omicam.com/_privateApi/omiOrderApi.php?id='+orderId, true);
+			xhr.open('get', 'https://www.omicam.com/_privateApi/omiOrderApi.php?id=' + orderId, true);
 			xhr.send(null);
 			xhr.onload = () => {
 				console.log(xhr.response);

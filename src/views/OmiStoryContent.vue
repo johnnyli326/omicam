@@ -22,8 +22,9 @@
         <article class="content">
           <h2>{{ story.title }}</h2>
           <h6 class="text-right">--{{  story.author }}</h6>
-          <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author">
-          <p>{{ story.content }}</p>
+          <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author"
+          style="width:100%;">
+          <p v-html="story.content"></p>
           <!-- user assets -->
           <div v-for="asset in assets" :key="asset.id" class="asset-box">
             <!-- out video -->
@@ -70,7 +71,7 @@ export default {
       vm.getStoryId();
       vm.databaseUrl = 'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=detail&id=' + vm.databaseId;
       const xhr = new XMLHttpRequest; // state = 0
-      xhr.open('get', vm.databaseUrl, true);
+      xhr.open('get', vm.databaseUrl, false);
       xhr.send(null);
       xhr.onload = () => {
         vm.story = JSON.parse(xhr.response); // fetch JSON data, have to JSON.parse
@@ -78,7 +79,6 @@ export default {
         console.log(vm.assets[0].type);
         vm.ExtraStories = vm.story.nextStorys;
       };
-      
     },
     getStoryId() { // define database id
       let vm = this;
@@ -87,7 +87,7 @@ export default {
     PushTo(id) {
       let vm = this;
       vm.$router.push('/story/' + id);
-    }
+    },
   },
   created() {
     window.scroll(0, 0); // new params page scrollTo

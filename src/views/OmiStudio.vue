@@ -249,7 +249,7 @@
               <div class="section-text m-3">
                 <h2 class="section-title">OmiCam</h2>
                 <p class="section-subTitle">
-                  Get Outside. Enjoy nature. (Buy Now)
+                  Record, Share, and Enjoy your Immersive Adventure!
                 </p>
                 <img src="../assets/images/icons/buy.png" class="link-icon-btn"
                 alt="more_icon" usemap="#btnmap_8">
@@ -466,7 +466,8 @@ export default {
 		.section9,
 		.section10,
 		.section11,
-		.section12 {
+    .section12,
+    .section13 {
 			height: 500px;
 			border-bottom: 1px solid gray;
       color: white;

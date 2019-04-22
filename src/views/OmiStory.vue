@@ -23,9 +23,7 @@
           <div class="col-md-9 mt-4">
             <h3 class="text-primary">{{ story.title }}</h3>
 						<main class="ml-4 mt-3">
-              <div style="text-align:justify;color:white">
-                <div class="get-html"></div>
-								{{ story.description }}
+              <div style="text-align:justify;color:white" v-html="story.description">
 								<span class="d-block" style="text-align: right">--{{ story.author }}</span>
               </div>
 						</main>

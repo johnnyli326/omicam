@@ -60,7 +60,7 @@ export default new Router({
     }, {
       path: 'checkout',
       name: 'Checkout',
-      component: () => import('./views/checkout.vue'),
+      component: () => import('./views/Checkout.vue'),
     }, {
       path: 'shop/:productId',
       name: 'Product',
@@ -73,6 +73,10 @@ export default new Router({
       path: 'ordertracking',
       name: 'CheckMyOrder',
       component: () => import('./views/CheckMyOrder.vue'),
+    }, {
+      path: 'thankyou/:paymentId',
+      name: 'Thankyou',
+      component: () => import('./views/ThankYou.vue'),
     }, {
       path: '*',
       redirect: '/',

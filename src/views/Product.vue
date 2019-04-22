@@ -205,6 +205,11 @@ a.btn {
       padding: 80px;
       img {
         height: 300px;
+        width: 300px;
+        @include iphone8plus() {
+          width: 100%;
+          height: auto;
+        }
       }
     }
     .thumbnail-section {
