@@ -21,9 +21,9 @@
       <main class="main" style="color:white;">
         <article class="content">
           <h2>{{ news.title }}</h2>
-          <h6 class="text-right">--{{  news.author }}</h6>
-          <img :src="'https://www.omicam.com/' + news.listImg" :alt="news.author">
-          <p>{{ news.content }}</p>
+          <p>{{ news.description }}</p>
+          <img :src="'https://www.omicam.com/' + news.contentImg" :alt="news.contentImg">
+          <p v-html="news.content"></p>
           <!-- user assets -->
           <div v-for="asset in assets" :key="asset.id" class="asset-box">
             <!-- out video -->
@@ -38,16 +38,15 @@
             <img :src="'https://www.omicam.com/' + asset.url" :alt=" + asset.url" v-if="asset.type == 0 || asset.type == 2">
           </div>
         </article>
-        <div class="extra-story">
-          <ul>
-            <li v-for="item in ExtraStories" :key="item.id">
-              {{ item.title }} {{ item.author }}
-              <a href="#" @click.prevent="PushTo(item.id)">
-                <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul class="extra-story">
+          <li v-for="item in ExtraNews" :key="item.id"
+          class="extra-story-item">
+            <a href="#" @click.prevent="PushTo(item.id)">
+              <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
+            </a>
+            <span>{{ item.title }} {{ item.author }}</span>
+          </li>
+        </ul>
       </main>
     </div>
   </div>
@@ -60,7 +59,7 @@ export default {
       news: [],
       databaseUrl: '',
       databaseId: '',
-      ExtraStories: [],
+      ExtraNews: [],
       assets: [], 
     };
   },
@@ -68,21 +67,23 @@ export default {
     getNews() { // get story content
       let vm = this;
       vm.getStoryId();
-      vm.databaseUrl = 'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=detail&id=' + vm.databaseId;
-      const xhr = new XMLHttpRequest; // state = 0
+      vm.databaseUrl = ' https://www.omicam.com/_privateApi/omiNewsApi.php?fun=detail&id=' + vm.databaseId;
+      const xhr = new XMLHttpRequest(); // state = 0
       xhr.open('get', vm.databaseUrl, true);
       xhr.send(null);
       xhr.onload = () => {
+        console.log(xhr.response);
         vm.news = JSON.parse(xhr.response); // fetch JSON data, have to JSON.parse
-        vm.assets = this.news.linkInfos;
+        console.log(vm.news);
+        vm.assets = vm.news.linkInfos;
         console.log(vm.assets[0].type);
-        vm.ExtraStories = vm.story.nextStorys;
+        vm.ExtraNews = vm.news.nextNews;
       };
       
     },
     getStoryId() { // define database id
       let vm = this;
-      vm.databaseId = vm.$route.params.storyId
+      vm.databaseId = vm.$route.params.newsId
     },
     PushTo(id) {
       let vm = this;
@@ -91,7 +92,7 @@ export default {
   },
   created() {
     window.scroll(0, 0); // new params page scrollTo
-    this.getStory();
+    this.getNews();
   },
   beforeRouteUpdate(to, from, next) {
     next(); // move to specific story
@@ -180,25 +181,23 @@ export default {
       }
     }
     .extra-story {
-      width: 30%;
+      width: 25%;
+      margin-left: 5%;
       display: inline-block;
       vertical-align: top;
       padding: 10px;
-      ul {
-        list-style: none;
-        li {
-          margin-bottom: 20px;
-        }
+      list-style: none;
+      .extra-story-item {
+        display: block;
+        margin-bottom: 50px;
       }
       @include ipad() {
         width: 100%;
-        ul {
-          width: 100%;
-          li {
-            display: inline-block;
-            width: 31.33333%;
-            margin-right: 1%;
-          }
+        .extra-story-item {
+          display: inline-block;
+          width: 29.33333%;
+          margin-right: 4%;
+          vertical-align: top;
         }
       }
     }

@@ -20,9 +20,10 @@
       </nav>
       <main class="main" style="color:white;">
         <article class="content">
-          <h2>{{ story.title }}</h2>
+          <h2 style="color:#ff9933">{{ story.title }}</h2>
+          <p>{{ story.description }}</p>
           <h6 class="text-right">--{{  story.author }}</h6>
-          <img :src="'https://www.omicam.com/' + story.listImg" :alt="story.author"
+          <img :src="'https://www.omicam.com/' + story.contentImg" :alt="story.author"
           style="width:100%;">
           <p v-html="story.content"></p>
           <!-- user assets -->
@@ -39,16 +40,15 @@
             <img :src="'https://www.omicam.com/' + asset.url" :alt=" + asset.url" v-if="asset.type == 0 || asset.type == 2">
           </div>
         </article>
-        <div class="extra-story">
-          <ul>
-            <li v-for="item in ExtraStories" :key="item.id">
-              {{ item.title }} {{ item.author }}
-              <a href="#" @click.prevent="PushTo(item.id)">
-                <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul class="extra-story">
+          <li v-for="item in ExtraStories" :key="item.id"
+          class="extra-story-item">
+            <a href="#" @click.prevent="PushTo(item.id)">
+              <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
+              <span class="extra-story-item-author">{{ item.title }}</span>
+            </a>
+          </li>
+        </ul>
       </main>
     </div>
   </div>
@@ -70,13 +70,12 @@ export default {
       let vm = this;
       vm.getStoryId();
       vm.databaseUrl = 'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=detail&id=' + vm.databaseId;
-      const xhr = new XMLHttpRequest; // state = 0
-      xhr.open('get', vm.databaseUrl, false);
+      const xhr = new XMLHttpRequest(); // state = 0
+      xhr.open('get', vm.databaseUrl, true);
       xhr.send(null);
       xhr.onload = () => {
         vm.story = JSON.parse(xhr.response); // fetch JSON data, have to JSON.parse
         vm.assets = this.story.linkInfos;
-        console.log(vm.assets[0].type);
         vm.ExtraStories = vm.story.nextStorys;
       };
     },
@@ -151,7 +150,7 @@ export default {
         margin-top: 20px;
         .video-wrap {
           position: relative;
-          width: 90%;
+          width: 100%;
           padding-top: 56.25%;
           margin-bottom: 20px;
           margin-top: 20px;
@@ -180,24 +179,26 @@ export default {
       }
     }
     .extra-story {
-      width: 30%;
+      width: 25%;
+      margin-left: 5%;
       display: inline-block;
       vertical-align: top;
       padding: 10px;
-      ul {
-        list-style: none;
-        li {
-          margin-bottom: 20px;
-        }
+      list-style: none;
+      .extra-story-item {
+        display: block;
+        margin-bottom: 50px;
       }
       @include ipad() {
         width: 100%;
-        ul {
-          width: 100%;
-          li {
-            display: inline-block;
-            width: 31.33333%;
-            margin-right: 1%;
+        .extra-story-item {
+          display: inline-block;
+          width: 29.33333%;
+          margin-right: 4%;
+          vertical-align: top;
+          .extra-story-item-author {
+            display: block;
+            text-align: center;
           }
         }
       }

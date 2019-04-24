@@ -55,7 +55,7 @@
                 Max Quantity：{{ product.maxQuantity }}
               </div>
             </div>
-            <router-link class="btn btn-primary" to="/shop">BACK SHOP</router-link>
+            <router-link class="btn btn-outline-primary back-btn" to="/shop">BACK</router-link>
           </div>
         </div>
       </div>
@@ -323,6 +323,10 @@ a.btn {
       cursor: default;
     }
   }
+  .back-btn {
+    font-size: 16px;
+    color: #ff9933;
+  }
   .page-title {
     width: 100%;
     padding: 30px;
@@ -344,13 +348,9 @@ a.btn {
       opacity: 0.6;
     }
   }
-  .original-price {
-    font-size: 20px;
-    color: #77a464;
-  }
   .price {
     font-size: 40px;
-    color: #77a464;
+    color: white;
     font-weight: 500;
   }
 }

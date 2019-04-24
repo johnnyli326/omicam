@@ -14,7 +14,7 @@
         </ol>
       </nav>
 			<div class="section-wrap">
-				<h3 class="title">Omi Studio</h3>
+				<h3 class="title">OMI Studio</h3>
 				<small class="sub-title">Most Powerful VR Editing Tool for OmiCam</small>
 				<p class="description">
 					In OMI Studio, you can do much more than OmiCam controlling.
@@ -25,7 +25,7 @@
 					experience. 
 				</p>
 				<section class="section1 text-center">
-          <img src="../assets/images/Home/device.png" alt="supportDevice">
+          <img src="../assets/images/OmiStudio/device.jpg" alt="supportDevice">
         </section>
         <section class="section2 text-center">
           <div class="text-center mb-4 icon-box" v-for="(icon, index) in icons" :key="index">
@@ -364,10 +364,12 @@ export default {
 		color: white;
 		margin: 50px 0;
 		.title {
-      font-size: 48px;
-			display: inline;
-			margin-right: 10px;
       color: #ff9933;
+      display: inline;
+      font-size: 48px;
+      text-shadow: 0px 0px 8px #1a1a1a;
+      font-family: Arial,Helvetica, sans-serif;
+      margin-right: 5px;
 		}
 		.sub-title {
 			font-size: 16px;

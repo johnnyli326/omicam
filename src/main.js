@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Loading from 'vue-loading-overlay';
 import VueAnalytics from 'vue-analytics';
+import Paginate from 'vuejs-paginate';
 import router from './router';
 import App from './App.vue';
 import store from './store';
@@ -23,15 +24,10 @@ Vue.use(VueAnalytics, {
         time: new Date(),
       };
     },
-    // shouldRouterUpdate(to, from) {
-    //   // Here I'm allowing tracking only when
-    //   // next route path is not the same as the previous
-    //   console.log(to);
-    //   return to.path !== from.path;
-    // },
   },
 });
 Vue.component('Loading', Loading);
+Vue.component('paginate', Paginate);
 Vue.filter('currency', currencyFilter);
 Vue.config.productionTip = false;
 new Vue({

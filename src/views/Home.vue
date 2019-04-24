@@ -33,6 +33,7 @@
           @click="$router.push('/shop')">
         </map>
       </div>
+      <img class="section2-img" src="../assets/images/Home/sec2_mobile.jpg" alt="omicam">
     </section>
     <!-- section3 -->
     <section class="section section3">
@@ -74,7 +75,7 @@
         <video class="loop-video" loop muted playsinline>
           <source
           type="video/mp4"
-          src="../assets/images/Allday.mp4">
+          src="../assets/images/Home/Allday.mp4">
         </video>
       </div>
       <div class="section-text">
@@ -157,13 +158,13 @@
     <!-- section9 -->
     <section class="section9">
       <h2 class="section-title text-center mb-4">OMI STORY</h2>
-      <!-- <Slide></Slide> -->
       <div id="owl-demo" class="owl-carousel owl-theme">
-        <div class="item" v-for="(story, index) in stories" :key="index"
-        :style="{ backgroundImage: 'url(' + story.imgSrc + ')' }">
-          <router-link to="/omistory" class="d-inline-block">
+        <div class="item" v-for="story in storyList" :key="story.id"
+        :style="{ 'backgroundImage': 'url(' + 'https://www.omicam.com/' + story.listImg + ')' }">
+          <router-link :to="'/story/' + story.id" class="d-inline-block">
             <div class="slide-up">
-              <span>{{ story.name }}</span>
+              <p class="slide-up-title">{{ story.title }}</p>
+              <span class="slide-up-author">-- {{ story.author }}</span>
             </div>
           </router-link>
         </div>
@@ -184,17 +185,6 @@
           <div class="modal-body text-center scale-video">
             <iframe src="" width="640" height="360" frameborder="0" allowfullscreen></iframe> 
           </div>
-          <!-- <div class="modal-body text-center
-          scale-video" id="yt-player">
-            <iframe class="brand-film"
-            src="https://www.youtube.com/embed/ETda2w2_81o?enablejsapi=1"
-            frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            width="500"
-            height="281.25">
-            </iframe>
-          </div> -->
         </div>
       </div>
     </div>
@@ -240,6 +230,7 @@ export default {
         name: 'Eva — Divingholic',
         imgSrc: require('../assets/images/eva.png'),
       }],
+      storyList: [],
     }; 
   },
   methods: {
@@ -262,10 +253,23 @@ export default {
         eventLabel: 'brand film',
       })
       console.log(this.$ga.event);
-    }
+    },
+    getStories() { // get omi-stories from database
+      let vm = this;
+      const xhr = new XMLHttpRequest(); // state = 0
+      xhr.open('get',
+      'https://www.omicam.com/_privateApi/omiStoryApi.php?fun=list&from=0&count=6',
+      true);
+      xhr.send(null);
+      xhr.onload = () => {
+        let data = JSON.parse(xhr.response); // get stories from new to old.
+        vm.storyList = data.list;
+      };
+    },
   },
   created() {
     window.scrollTo(0, 0);
+    this.getStories();
   },
   mounted() {
     $(document).ready(function() {
@@ -287,110 +291,32 @@ export default {
       $('#NoShakingModal').on('hidden.bs.modal', function () {
         $("#NoShakingModal iframe").attr("src", '');
       });
-      let owl = $("#owl-demo");
-      owl.owlCarousel({
-          responsive:{
-            0:{ // 螢幕寬度0px以上
-              items:1,
+      setTimeout(function() {
+        let owl = $("#owl-demo");
+        owl.owlCarousel({
+            responsive:{
+              0:{ // 螢幕寬度0px以上
+                items:1,
+              },
+              600:{ // 螢幕寬度600px以上
+                items:2,
+              },
+              1000:{ // 螢幕寬度1000px以上
+                items:3,
+              }
             },
-            600:{ // 螢幕寬度600px以上
-              items:2,
-            },
-            1000:{ // 螢幕寬度1000px以上
-              items:3,
-            }
-          },
-          loop: true,
-      });
-      // Custom Navigation Events
-      $(".next").click(function(){
-        owl.trigger('next.owl.carousel');
-      });
-      $(".prev").click(function(){
-        owl.trigger('prev.owl.carousel');
-      });
+            loop: true,
+        });
+        // Custom Navigation Events
+        $(".next").click(function(){
+          owl.trigger('next.owl.carousel');
+        });
+        $(".prev").click(function(){
+          owl.trigger('prev.owl.carousel');
+        });
+      },1000);
     });
     //////// end jquery  ////////
-    
-    // // youtube API start
-    // function callPlayer(frame_id, func, args) {
-    //   if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
-    //   let iframe = document.getElementById(frame_id);
-    //   if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
-    //       iframe = iframe.getElementsByTagName('iframe')[0];
-    //   }
-  
-    //   // When the player is not ready yet, add the event to a queue
-    //   // Each frame_id is associated with an own queue.
-    //   // Each queue has three possible states:
-    //   //  undefined = uninitialised / array = queue / 0 = ready
-    //   if (!callPlayer.queue) callPlayer.queue = {};
-    //   let queue = callPlayer.queue[frame_id],
-    //       domReady = document.readyState == 'complete';
-  
-    //   if (domReady && !iframe) {
-    //       // DOM is ready and iframe does not exist. Log a message
-    //       window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
-    //       if (queue) clearInterval(queue.poller);
-    //   } else if (func === 'listening') {
-    //       // Sending the "listener" message to the frame, to request status updates
-    //       if (iframe && iframe.contentWindow) {
-    //           func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
-    //           iframe.contentWindow.postMessage(func, '*');
-    //       }
-    //   } else if (!domReady ||
-    //         iframe && (!iframe.contentWindow || queue && !queue.ready) ||
-    //         (!queue || !queue.ready) && typeof func === 'function') {
-    //       if (!queue) queue = callPlayer.queue[frame_id] = [];
-    //       queue.push([func, args]);
-    //       if (!('poller' in queue)) {
-    //           // keep polling until the document and frame is ready
-    //           queue.poller = setInterval(function() {
-    //               callPlayer(frame_id, 'listening');
-    //           }, 250);
-    //           // Add a global "message" event listener, to catch status updates:
-    //           messageEvent(1, function runOnceReady(e) {
-    //               if (!iframe) {
-    //                   iframe = document.getElementById(frame_id);
-    //                   if (!iframe) return;
-    //                   if (iframe.tagName.toUpperCase() != 'IFRAME') {
-    //                       iframe = iframe.getElementsByTagName('iframe')[0];
-    //                       if (!iframe) return;
-    //                   }
-    //               }
-    //               if (e.source === iframe.contentWindow) {
-    //                   // Assume that the player is ready if we receive a
-    //                   // message from the iframe
-    //                   clearInterval(queue.poller);
-    //                   queue.ready = true;
-    //                   messageEvent(0, runOnceReady);
-    //                   // .. and release the queue:
-    //                   while (tmp = queue.shift()) {
-    //                       callPlayer(frame_id, tmp[0], tmp[1]);
-    //                   }
-    //               }
-    //           }, false);
-    //       }
-    //   } else if (iframe && iframe.contentWindow) {
-    //       // When a function is supplied, just call it (like "onYouTubePlayerReady")
-    //       if (func.call) return func();
-    //       // Frame exists, send message
-    //       iframe.contentWindow.postMessage(JSON.stringify({
-    //           "event": "command",
-    //           "func": func,
-    //           "args": args || [],
-    //           "id": frame_id
-    //       }), "*");
-    //   }
-    // /* IE8 does not support addEventListener... */
-    //   function messageEvent(add, listener) {
-    //       let w3 = add ? window.addEventListener : window.removeEventListener;
-    //       w3 ?
-    //           w3('message', listener, !1)
-    //       :
-    //           (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
-    //   }
-    // }
     // video autoplay;
     const loopVideo = document.querySelector('.loop-video');
     loopVideo.autoplay = true;
@@ -515,13 +441,15 @@ a.btn {
   }
 }
 .section2 {
-  background-image: url('../assets/images/Home/sec2.jpg');
-  background-position: center bottom;
-  background-size: cover;
+  background-image: url('../assets/images/Home/sec2_desktop.jpg');
+  background-position: center center;
+  background-size: contain;
   background-repeat: no-repeat;
   position: relative;
-  @include iphone678() {
-    background-size: 300% 100%;
+  text-align: center;
+  @include ipad() {
+    background-color: #1a1a1a;
+    background-image: none;
   }
   .link-icon-btn {
     position: absolute;
@@ -529,6 +457,15 @@ a.btn {
     right: 250px;
     @media(max-width: 1000px) {
       position: static;
+    }
+  }
+  .section2-img {
+    display: none;
+    @include ipad() {
+      display: block;
+      width: 70%;
+      height: auto;
+      margin-top: 50px;
     }
   }
 }
@@ -617,7 +554,7 @@ a.btn {
       height: auto !important;
     }
     .section7-img {
-      background-image: url('../assets/images/Home/device.png');
+      background-image: url('../assets/images/Home/device.jpg');
       background-size: 80%;
       background-position: center center;
       background-repeat: no-repeat;
@@ -671,7 +608,7 @@ a.btn {
   }
 }
 .section9 {
-  background-image: url('../assets/images/Home/sec9.png');
+  background-image: url('../assets/images/Home/sec9.jpg');
   background-attachment: fixed;
   padding: 100px 10px;
 }
@@ -735,6 +672,7 @@ a.btn {
     -moz-border-radius: 3px;
     border-radius: 3px;
     text-align: center;
+    display: block;
     &:hover {
       .slide-up {
         transform: translateY(0);
@@ -753,6 +691,15 @@ a.btn {
       transform: translateY(120%);
       transition: ease .3s;
       font-size: $section-text;
+      .slide-up-title {
+        font-size: 22px;
+      }
+      .slide-up-author {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 14px;
+      }
     }
   }
 } 

@@ -69,11 +69,11 @@
               </tbody>
               <tfoot>
                 <tr class="shipping-row">
-                  <td colspan="2">
+                  <td colspan="1">
                     <span style="color:#ff9933">SHIP TO：</span><span>{{ selectCty.region }}</span>
                   </td>
-                  <td class="text-right">
-                    <span style="color:#ff9933;">Shipping Fee：</span>
+                  <td colspan="2" class="text-right">
+                    <span style="color:#ff9933;">SHIPPING FEE：<br>( 3~5 days delivery)</span>
                   </td>
                   <td class="text-right">
                     <span>{{ selectCty.price | currency }}</span>
@@ -92,16 +92,21 @@
                     <div class="coupon-section">
                       <div class="coupon-box">
                         <label for="coupon" class="coupon-box-title">COUPON：</label>
-                        <input type="text" id="coupon" class="coupon-box-input" v-model="coupon.code">
-                        <input type="submit" value="SUBMIT" class="coupon-box-btn" @click.prevent="checkPromote()">
+                        <div class="coupon-box-input-group">
+                          <input type="text" id="coupon" class="coupon-box-input" v-model="coupon.code">
+                          <div class="coupon-box-input-message">{{ FinalCoupon.message }}</div>
+                          <input type="submit" value="SUBMIT" class="coupon-box-btn" @click.prevent="checkPromote()">
+                        </div>
                       </div>
                     </div>
                   </td>
-                  <td colspan="2" class="text-right" style="border-bottom:1px solid gray;">
-                    <div class="coupon-price-box">
-                      <div class="minus-icon"></div>
-                      <span class="original-total" style="color:rgb(103, 238, 76);">
-                        {{ FinalCoupon.price | currency }}
+                  <td class="text-right" style="color:#ff9933;">
+                    <span v-if="FinalCoupon.price != 0">Discount：</span>
+                  </td>
+                  <td colspan="1" class="text-right" style="border-bottom:1px solid gray;">
+                    <div class="coupon-price-box" v-if="FinalCoupon.price != 0">
+                      <span class="coupon-price-text">
+                        - {{ FinalCoupon.price | currency }}
                       </span>
                     </div>
                   </td>
@@ -142,6 +147,7 @@ export default {
       FinalCoupon: { // Coupon for sending
         code: '',
         price: '',
+        message: '',
       },
       selectCty: { // Shipping Fee
         region: '',
@@ -205,13 +211,23 @@ export default {
       xhr.send(null);
       xhr.onload = () => {
         let CouponObj = JSON.parse(xhr.response);
-        if (CouponObj.discount != 0) {
+        if(CouponObj.discount > 0) {
           vm.FinalCoupon.code = vm.coupon.code; // FinalCoupon為要傳出的資料。
           vm.FinalCoupon.price = CouponObj.discount;
+          $('.coupon-box-input-message').css('color','green');
+          vm.FinalCoupon.message = CouponObj.info;
+        } else {
+          vm.FinalCoupon.code = vm.coupon.code; // FinalCoupon為要傳出的資料。
+          vm.FinalCoupon.price = CouponObj.discount;
+          $('.coupon-box-input-message').css('color','red');
+          vm.FinalCoupon.message = CouponObj.info;
         }
-        vm.coupon.code = '';
-        vm.coupon.price = '';
         vm.isLoading = false;
+        // setTimeout(function() {
+        //   vm.FinalCoupon.message = '';
+        //   vm.coupon.code = '';
+        //   vm.coupon.price = '';
+        // }, 5000);
       }
     },
     delete_cookie() { // delete Cookie
@@ -411,33 +427,47 @@ export default {
         .coupon-box-title {
           color: #ff9933;
         }
-        .coupon-box-input {
-          border: 0;
-          border-bottom: 1px solid gray;
-          width: 150px;
-          background-color: transparent;
-          outline: 0;
-          color: white;
-          padding: 1px;
-        }
-        .coupon-box-btn {
-          padding: 3px 5px;
-          background-color: transparent;
-          color:#ff9933;
-          border: 1px solid #ff9933;
-          margin-left: 5px;
-          outline: 0;
+        .coupon-box-input-group {
+          position: relative;
+          display: inline-block;
+          .coupon-box-input {
+            border: 0;
+            border-bottom: 1px solid gray;
+            width: 200px;
+            background-color: transparent;
+            outline: 0;
+            color: white;
+            padding: 1px;
+          }
+          .coupon-box-input-message {
+            position: absolute;
+            bottom: -25px;
+            left: 0px;
+          }
+          .coupon-box-btn {
+            padding: 3px 5px;
+            background-color: transparent;
+            color:#ff9933;
+            border: 1px solid #ff9933;
+            margin-left: 5px;
+            outline: 0;
+          }
         }
       }
-      .coupon-price-box {
-        width: 30%;
+    }
+    .coupon-price-box {
+        width: 100%;
         margin: right;
         display: inline-block;
         margin-left: auto;
         color: white;
         text-align: right;
+        .coupon-price-text {
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+        }
       }
-    }
     .minus-icon {
         display: inline-block;
         width: 20px;
@@ -498,7 +528,7 @@ export default {
       width: 200px;
       padding: 10px;
       border-radius: 5px;
-      background-image:  url('../assets/images/paypal.png');
+      background-image:  url('../assets/images/Checkout/paypal.png');
       background-position: left center;
       background-size: cover;
       background-position-x: -40px;

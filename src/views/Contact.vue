@@ -87,10 +87,18 @@
       <section class="section1">
         <h2 class="section-title">CONTACT</h2>
         <div class="sc-box pl-4 mb-0">
-          <h4>Customer Service ：service@sightour.com</h4>
+          <h4>
+            <a href="mailto:service@sightour.com" class="mail-link">
+              Customer Service ：service@sightour.com
+            </a>
+          </h4>
         </div>
         <div class="sc-box pl-4">
-          <h4>Business Related：sales@sightour.com</h4>
+          <h4>
+            <a href="mailto:sales@sightour.com" class="mail-link">
+              Business Related：sales@sightour.com
+            </a>
+          </h4>
         </div>
         <h2 class="section-title">SOCIAL NETWORK</h2>
         <div class="sc-box end-box">
@@ -199,38 +207,7 @@
 <script>
 export default {
   data() {
-    return {
-      channels: [{
-				name: '硬式要學',
-				URL: 'https://buy3c.in/shop/omicam-vr-camera/',
-				imgSrc: require('../assets/images/硬式要學.png'),
-			}, {
-				name: 'PCHome24h購物',
-				URL: 'https://24h.pchome.com.tw/prod/DGCI2O-A9008XKSQ',
-				imgSrc: require('../assets/images/PCHOME.png'),
-			}, {
-				name: 'Kickstarter',
-				URL: `https://www.kickstarter.com/projects/660471689/
-				mysight360-worlds-first-wearable-vr-camera-for-hik/`,
-				imgSrc: require('../assets/images/KICKSTARTER.png'),
-			}, {
-				name: 'Indiegogo',
-				URL: `https://www.indiegogo.com/projects/mysight360-wearable-vr-camera-for-videos#/`,
-				imgSrc: require('../assets/images/indiegogo.png'),
-			}, {
-				name: 'Makuake',
-				URL: `https://www.makuake.com/project/omicam/`,
-				imgSrc: require('../assets/images/Makuake.png'),
-			}, {
-				name: 'Machi-ya',
-				URL: `https://cf.machi-ya.jp/project/20181221/04`,
-				imgSrc: require('../assets/images/machiya.png'),
-			}, {
-				name: 'Campfire',
-				URL: `https://camp-fire.jp/projects/view/110442`,
-				imgSrc: require('../assets/images/campfire.png'),
-			}]
-    };
+    return {};
   },
   created() {
     window.scrollTo(0, 0);
@@ -241,10 +218,6 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/mixin";
 
-* {
-  text-shadow:0px 0px 8px #1a1a1a;
-  font-family:Arial,Helvetica, sans-serif;
-}
 .contact-wrap {
   padding-top: 50px;
   .breadcrumb {
@@ -291,12 +264,16 @@ export default {
       @include iphone8plus() {
         margin-bottom: 0;
       }
-      h4 {
+      .mail-link {
         font-size: 32px;
+        color: white;
+        &:hover {
+          color: rgba(255, 255, 255, 0.7);
+        }
         @include ipad() {
           width: 100%;
           text-align: left;
-          font-size: 24px;
+          font-size: 20px;
         }
         @include iphone8plus() {
           font-size: 16px;

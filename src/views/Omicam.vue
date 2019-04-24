@@ -53,7 +53,7 @@
     <div class="container omicam-wrap">
       <section class="row align-items-center section3 mt-5" id="240">
         <div class="col-lg-6 justify-content-center d-flex">
-          <img src="../assets/images/OmiCam/sec3.png" alt="viewAngle"
+          <img src="../assets/images/OmiCam/sec3.jpg" alt="viewAngle"
           class="section3-img">
         </div>
         <div class="col-lg-6">
@@ -93,7 +93,7 @@
       </section>
       <section class="row align-items-center section5" id="Lifelog">
         <div class="col-lg-6 justify-content-center d-flex">
-          <img src="../assets/images/OmiCam/sec5.png" alt="Lifelog"
+          <img src="../assets/images/OmiCam/sec5.jpg" alt="Lifelog"
           class="section5-img">
         </div>
         <div class="col-lg-6">

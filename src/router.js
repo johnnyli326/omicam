@@ -66,10 +66,6 @@ export default new Router({
       name: 'Product',
       component: () => import('./views/Product.vue'),
     }, {
-      path: 'productlist',
-      name: 'productlist',
-      component: () => import('./views/ProductList.vue'),
-    }, {
       path: 'ordertracking',
       name: 'CheckMyOrder',
       component: () => import('./views/CheckMyOrder.vue'),

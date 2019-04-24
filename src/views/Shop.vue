@@ -16,7 +16,7 @@
             <router-link to="/ordertracking">
               <img src="../assets/images/Shop/check_order.png" class="tracking-icon"
               alt="check_order">
-              CHECK MY ORDER
+              <span class="tracking-text">CHECK MY ORDER</span>
             </router-link>
           </li>
         </ol>
@@ -70,7 +70,7 @@
               </td>            
             </tr>
             <tr>
-              <td class="text-right" colspan="3">SHIPPING FEE：</td>
+              <td class="text-right" colspan="3">SHIPPING FEE：<br>( 3~5 days delivery)</td>
               <td class="text-right" width="20%">
                 {{ +selectCty.price | currency }}
               </td>
@@ -99,9 +99,9 @@
         <div class="dropdown-btn"></div>
       </div>
       <div class="d-flex justify-content-end">
-        <div class="checkout-box" v-on:click="goCheckOut()">
+        <div class="checkout-btn" v-on:click="goCheckOut()">
           <img src="../assets/images/Shop/checkout.png" alt="checkout">
-          CHECKOUT
+          <span class="checkout-btn-text">CHECKOUT</span>
         </div>
       </div>
     </div>
@@ -273,9 +273,8 @@ export default {
         color: gray;
       }
       .tracking-icon {
-        @include iphone8plus() {
-          width: 14px;
-        }
+        width: 24px;
+        margin-right: 5px;
       }
     }
   }
@@ -291,6 +290,9 @@ export default {
   .small-img {
     width: 100%;
     height: 100%;
+    @include ipad() {
+      display: none;
+    }
   }
   .page-title {
     width: 100%;
@@ -301,7 +303,7 @@ export default {
   .shop-table {
     width: 100%;
     @include ipad() {
-      // width: 1100px;
+      width: 700px;
     }
   }
   .input-box {
@@ -370,6 +372,9 @@ export default {
         height: 100%;
         text-align: center;
         padding-top: 10px;
+        @include ipad() {
+          display: none;
+        }
         a {
           text-decoration: none;
         }
@@ -444,7 +449,7 @@ export default {
     cursor: pointer;
     transform: rotateZ(180deg);
   }
-  .checkout-box {
+  .checkout-btn {
     display: inline-block;
     margin-left: auto;
     margin-top: 30px;
@@ -455,6 +460,20 @@ export default {
     margin-left: auto;
     cursor: pointer;
     user-select: none;
+    .checkout-btn-text {
+      font-size: 28px;
+      margin-left: 5px;
+      @include ipad() {
+        font-size: 18px;
+      }
+      @include iphone678() {
+        font-size: 14px;
+      }
+      &:hover {
+        color:#f78008;
+        border-bottom: 1px solid #f78008;
+      }
+    }
   }
 }
 .message {

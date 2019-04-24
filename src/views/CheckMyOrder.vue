@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<loading :active.sync="isLoading"></loading>
 		<div class="container tracking-wrap">
 			<nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
@@ -19,11 +20,58 @@
         </ol>
       </nav>
 			<section class="tracking-box">
-				<h5 class="tracking-title">Track my order</h5>
-				<label for="orderId" class="tracking-subtitle">ORDER ID：</label>
+				<h5 class="tracking-title"> Input Transaction ID from order receipt mail</h5>
 				<input type="text" id="orderId" v-model="orderId">
-				<a href="#" class="track-btn" @click.prevent="track(orderId)"></a>
-				<p style="color:gray">{{ message }}</p>
+				<a href="#" class="track-btn" @click.prevent="track()"></a>
+				<p v-if="ErrorMessage" class="text-danger">{{ ErrorMessage }}</p>
+        <!-- <pre>tracking table</pre> -->
+				<div class="table-responsive mt-4" v-if="orderItems.length >0">
+          <table class="tracking-table">
+            <thead class="table-head">
+              <tr>
+                <th>E-mail</th>
+                <th>Order Date</th>
+                <th style="min-width:200px">Product Name</th>
+                <th style="width:100px">Quantity</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr>
+                <td>{{ Email }}</td>
+                <td>{{ orderDate  }}</td>
+                <td> 
+                  <ul class="list-unstyled">
+                    <li v-for="item in orderItems" :key="item.id">
+                      {{ item.name }}
+                    </li>
+                    <li class="text-success">{{ promoteCode }}</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list-unstyled">
+                    <li v-for="item in orderItems" :key="item.id">
+                      {{ item.quantity }}
+                    </li>
+                    <br v-if="promoteCode">
+                  </ul>
+                </td>
+                <td>{{ amount.currency }}$ {{ amount.total }}</td>
+                <td>
+                  <ul class="list-unstyled">
+                    <li>{{ statusObj.status }}</li>
+                    <li>
+                      <a :href="statusObj.otherInfoLink" target="_blank">
+                        {{ statusObj.otherInfo }}
+                      </a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 			</section>
 		</div>
 	</div>
@@ -33,19 +81,44 @@
 export default {
 	data() {
 		return {
+			isLoading: false,
+			Email: '',
+			orderDate: '',
 			orderId: '',
-			message: '',
+			ErrorMessage: '',
+			amount: {},
+			orderItems: {},
+			promoteCode: '',
+			statusObj: {
+				status: '',
+				otherInfo: '',
+				otherInfoLink: '',
+			}
 		}
 	},
 	methods: {
 		track() {
 			let vm = this;
+			vm.isLoading = true;
 			let xhr = new XMLHttpRequest();
-			xhr.open('get', 'https://www.omicam.com/_privateApi/omiOrderApi.php?id=' + orderId, true);
+			xhr.open('get', 'https://www.omicam.com/_privateApi/omiOrderApi.php?id='+ vm.orderId, true);
 			xhr.send(null);
 			xhr.onload = () => {
-				console.log(xhr.response);
-				vm.message = xhr.response;
+				let order = JSON.parse(xhr.response).info;
+				if (order == null) {
+					vm.ErrorMessage = "This order ID doesn't exist."
+				} else {
+					vm.ErrorMessage = '';
+					vm.Email = order.email;
+					vm.orderDate = order.orderDate;
+					vm.amount = order.amount;
+          vm.orderItems = order.itemList;
+          vm.promoteCode = order.promoteCode;
+          vm.statusObj.status = order.status;
+          vm.statusObj.otherInfo = order.otherInfo;
+          vm.statusObj.otherInfoLink = order.otherInfoLink;
+				}
+				vm.isLoading = false;
 			}
 		}
 	}
@@ -72,7 +145,7 @@ export default {
         color: gray;
       }
     }
-  }
+	}
 	.tracking-box {
 		width: 100%;
 		padding: 20px 20px 100px 20px;
@@ -84,17 +157,17 @@ export default {
 			font-weight: normal;
 			margin-bottom: 20px;
 		}
-		.tracking-subtitle {
-			color: #ff9933;
-		}
 		#orderId {
 			background-color: transparent;
 			border: 0;
 			border-bottom: 1px solid #9d9c9c;
 			margin: 0 10px;
-			width: 200px;
+			width: 400px;
 			color: white;
 			outline: 0;
+			@include ipad() {
+				width: 80%;
+			}
 		}
 		.track-btn {
 			display: inline-block;
@@ -106,6 +179,23 @@ export default {
 			background-size: cover;
 			background-position: center center;
 		}
+		.tracking-table {
+      min-width: 1024px;
+      width: 100%;
+      color: white !important;
+      @include ipad() {
+        width: 1024px;
+      }
+      .table-head,
+      .table-body {
+        border-bottom:1px solid gray;
+        color: white;
+        th,td {
+          padding: 20px;
+          text-align: center;
+        }
+      }
+    }
 	}
 }
 </style>
