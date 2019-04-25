@@ -93,10 +93,14 @@
                       <div class="coupon-box">
                         <label for="coupon" class="coupon-box-title">COUPON：</label>
                         <div class="coupon-box-input-group">
-                          <input type="text" id="coupon" class="coupon-box-input" v-model="coupon.code">
-                          <input type="submit" value="SUBMIT" class="coupon-box-btn" @click.prevent="checkPromote()">
+                          <input type="text" id="coupon" class="coupon-box-input" v-model="coupon.code"
+                          @keyup.13="checkPromote()">
+                          <input type="submit" value="SUBMIT" class="coupon-box-btn btn-outline-primary"
+                          @click.prevent="checkPromote()">
                         </div>
-                        <div class="coupon-box-input-message">{{ FinalCoupon.message }}</div>
+                        <div class="coupon-box-input-message">
+                          {{ FinalCoupon.message }}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -135,6 +139,8 @@
 
 <script>
 import { setTimeout } from 'timers';
+import $ from 'jquery';
+
 export default {
   data() {
     return {
@@ -158,7 +164,7 @@ export default {
 		};
   },
   methods: {
-    listCookies() {
+    listCookies() { // get cookie data
       let vm = this;
       let CookieArr = document.cookie.split(';'); // Transfer cookie data to Array
       CookieArr.forEach((e) => {
@@ -176,7 +182,7 @@ export default {
         }
       })
     },
-    getProductList() {
+    getProductList() { // get products
       let vm = this;
       vm.isLoading = true;
       let xhr = new XMLHttpRequest();
@@ -186,7 +192,7 @@ export default {
       xhr.send(null);
       xhr.onload = () => {
         vm.products = JSON.parse(xhr.responseText);
-        vm.products.forEach(function(e) { // add quantity property.
+        vm.products.forEach(function(e) { // set quantity property.
           vm.$set(e, 'qty', 0);
         })
         setTimeout(function() {
@@ -213,20 +219,13 @@ export default {
         if(CouponObj.discount > 0) {
           vm.FinalCoupon.code = vm.coupon.code; // FinalCoupon為要傳出的資料。
           vm.FinalCoupon.price = CouponObj.discount;
-          $('.coupon-box-input-message').css('color','green');
           vm.FinalCoupon.message = CouponObj.info;
         } else {
           vm.FinalCoupon.code = vm.coupon.code; // FinalCoupon為要傳出的資料。
           vm.FinalCoupon.price = CouponObj.discount;
-          $('.coupon-box-input-message').css('color','red');
           vm.FinalCoupon.message = CouponObj.info;
         }
         vm.isLoading = false;
-        // setTimeout(function() {
-        //   vm.FinalCoupon.message = '';
-        //   vm.coupon.code = '';
-        //   vm.coupon.price = '';
-        // }, 5000);
       }
     },
     delete_cookie() { // delete Cookie
@@ -237,7 +236,7 @@ export default {
         document.cookie = cookieItem[0] + '=' + ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
       });
     },
-    Paypal() {
+    Paypal() { // move to paypal page
       // readyState = 0 , 已經產生一個XMLHttpRequest，但還沒連結。
       let xhr = new XMLHttpRequest();
       let vm = this;
@@ -263,7 +262,7 @@ export default {
     this.getProductList();
   },
   computed: {
-    final_Total() {
+    final_Total() { // calculate total amount
       let vm = this;
       let final_total = 0;
       vm.products.forEach(function(e) {
@@ -271,7 +270,7 @@ export default {
       })
       return final_total
     },
-    orders() {
+    orders() { // judge if user ordered any product.
       let vm = this;
       let orderArr = []
       vm.products.forEach(function(e) {
@@ -444,10 +443,13 @@ export default {
           .coupon-box-btn {
             padding: 3px 5px;
             background-color: transparent;
-            color:#ff9933;
-            border: 1px solid #ff9933;
             margin-left: 5px;
             outline: 0;
+            border-radius: 5px;
+            &:hover {
+              color: black;
+              background-color: #ff9933;
+            }
           }
         }
       }

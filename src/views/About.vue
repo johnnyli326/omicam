@@ -15,7 +15,7 @@
       </nav>
       <article class="container mt-4">
         <main>
-  				<p>
+          <p>
           At Sightour, we believe in building a new way that inspires
           you to recall the past by your own way. It will be more vivid
           to turn your memory into visualization rather than declarative
@@ -27,8 +27,8 @@
             Remember it. Record it. Recall it. And Share it.
             </strong>
           </p>
-  			</main>
-  		</article>
+        </main>
+      </article>
     </div>
   </div>
 </template>

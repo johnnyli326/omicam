@@ -11,13 +11,14 @@
               class="form-control subscribe-input"
               placeholder="Enter your e-mail address"
               aria-label="Enter your e-mail address"
-              id="e-mail" v-model="email">
+              id="e-mail" v-model="email"
+              @keyup.13="Subscribe()">
               <div class="subscribe-message">
                 {{ message }}
               </div>
             </div>
             <div class="input-group-append">
-              <div class="subscribe-btn btn-outline-primary" @click="Subscribe()">SUBSCRIBE</div>
+              <div class="btn subscribe-btn" @click="Subscribe()">SUBSCRIBE</div>
             </div>
           </div>
         </div>
@@ -64,6 +65,7 @@
 
 <script>
 import { setTimeout } from 'timers';
+
 export default {
   name: 'footerSection',
   data() {
@@ -114,6 +116,7 @@ $text-color: #ff9933;
   background-color: #0d0d0d;
   padding: 20px;
   font-size: 16px;
+  user-select: none;
   .section-row {
     @media (max-width: 1000px) {
         text-align: center;
@@ -184,11 +187,12 @@ $text-color: #ff9933;
               white-space: nowrap;
             }
           }
-          .subscribe-btn{
-            border: 1px solid $text-color;
+          .subscribe-btn {
+            background-color: transparent;
             padding: 8px;
             border-radius: 5px;
-            color: $text-color;
+            color: #ff9933;
+            border: 1px #ff9933 solid;
             cursor: pointer;
             @include ipad() {
               font-size: 14px !important;
@@ -196,6 +200,7 @@ $text-color: #ff9933;
             }
             &:hover {
               color: black;
+              background-color: #ff9933;
             }
           }
         }

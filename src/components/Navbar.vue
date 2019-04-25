@@ -108,7 +108,7 @@ export default {
         $('.nav-wrap').css('height', 'auto');
       });
       $(window).resize(function() {
-        if ($(window).width() >= 1000) { // for stretch device
+        if ($(window).width() > 1000) { // for stretch device
           $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
           $('.top-menu').removeClass('show').removeClass('hide'); // dropdown menu 
           $('.hamburger-btn').removeClass('active');
@@ -126,7 +126,7 @@ export default {
           });
         }
       });
-      if ($(window).width() >= 1000) { // for fixed width device 
+      if ($(window).width() > 1000) { // for fixed width device 
         $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
       } else {
         $('.top-menu').remove().insertAfter($('.mobile-icon')); // move Topmenu after Icon
@@ -259,6 +259,12 @@ export default {
       &.show {
         height: 360px;
         overflow-y: scroll;
+        @include iphoneX_Height() {
+          height: 300px;
+        }
+        @include iphone5_Height() {
+          height: 270px;
+        }
       }
       &.hide {
         height: 0;

@@ -95,8 +95,9 @@
             {{ cty.name }}
             </div>
           </div>
+          <div class="dropdown-btn"></div>
         </div>
-        <div class="dropdown-btn"></div>
+        <!-- <div class="dropdown-btn"></div> -->
       </div>
       <div class="d-flex justify-content-end">
         <div class="checkout-btn" v-on:click="goCheckOut()">
@@ -199,9 +200,9 @@ export default {
   },
   mounted() {
     $(document).ready(function(){
-      $('.dropdown-btn').click(function() {
-        $('.dropdown-menu').toggleClass('show');
-      })
+      // $('.dropdown-btn').click(function() {
+      //   $('.dropdown-menu').toggleClass('show');
+      // })
       $('.dropdown-wrap').click(function(e) {
         e.stopPropagation();
         $('.dropdown-menu').toggleClass('show');
@@ -301,7 +302,7 @@ export default {
   .shop-table {
     width: 100%;
     @include ipad() {
-      width: 700px;
+      width: 800px;
     }
   }
   .input-box {
@@ -407,6 +408,10 @@ export default {
     border-bottom: 1px solid #dee2e6;
     user-select: none;
     cursor: pointer;
+    @include iphone8plus {
+      width: 70%;
+      font-size: 14px;
+    }
     .dropdown-menu {
       position: absolute;
       display: block;
@@ -434,18 +439,24 @@ export default {
         }
       }
     }
-  }
-  .dropdown-btn {
-    background-image: url('../assets/images/icons/gotop.png');
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: 20px;
-    padding: 10px;
-    margin-left: 10px;
-    cursor: pointer;
-    transform: rotateZ(180deg);
+    .dropdown-btn {
+      background-image: url('../assets/images/icons/gotop.png');
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 20px;
+      padding: 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      transform: rotateZ(180deg);
+      position: absolute;
+      right: 0;
+      @include iphone8plus() {
+        width: 12px;
+        padding: 8px;
+      }
+    }
   }
   .checkout-btn {
     display: inline-block;

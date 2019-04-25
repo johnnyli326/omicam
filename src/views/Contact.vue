@@ -15,7 +15,7 @@
       </nav>
       <section class="section1">
         <h2 class="section-title">SALES CHANNEL</h2>
-        <div class="sc-box">
+        <div class="sc-box world-box">
           <div class="cty-box">
             <div class="us"></div>
             <div>US</div>
@@ -33,8 +33,8 @@
             </a>
           </div>
         </div>
-        <div class="sc-box">
-          <div class="cty-box">
+        <div class="sc-box world-box">
+          <div class="cty-box box_2">
             <div class="jp"></div>
             <div>JAPAN</div>
           </div>
@@ -56,7 +56,7 @@
             </a>
           </div>
         </div>
-        <div class="sc-box">
+        <div class="sc-box world-box">
           <div class="cty-box">
             <div class="tw"></div>
             <div>TAIWAN</div>
@@ -266,6 +266,9 @@ export default {
       @include iphone8plus() {
         margin-bottom: 0;
       }
+      &.world-box {
+        margin-bottom: 50px !important;
+      }
       .mail-link {
         font-size: 32px;
         color: white;
@@ -329,6 +332,9 @@ export default {
           display: inline-block;
           margin: 20px;
           color: white;
+          @include iphone678() {
+            width: 150px;
+          }
           .link-img {
             width: 100%;
             border-radius: 15px;

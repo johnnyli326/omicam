@@ -84,7 +84,6 @@ export default {
 			email: '',
 			date: '',
 			order: {},
-			OrderDate: '',
       orderItems: [],
 			amount: {},
 			promoteCode: '',
@@ -97,7 +96,7 @@ export default {
 		}
 	},
 	methods: {
-		Finish() {
+		Finish() { // get order
 			let vm = this;
 			vm.isLoading = true;
 			let xhr = new XMLHttpRequest();
@@ -122,17 +121,6 @@ export default {
 		let date = new Date();
 		let vm = this;
 		vm.Finish();
-		// get Order Date
-		let currentYear = date.getFullYear();
-		let currentMonth = () => {
-			if (+date.getMonth()+1 < 10) {
-				return '0' + (+date.getMonth()+1).toString();
-			} else {
-				(+date.getMonth()+1).toString();
-			}
-		};
-		let currentDate = date.getDate();
-		vm.OrderDate = currentYear + '/' + currentMonth() + '/' + currentDate;
 	}
 }
 </script>

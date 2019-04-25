@@ -156,8 +156,12 @@ export default {
     .story-intro-author {
       position: absolute;
       right: 10px;
+      bottom: 0;
       color: white;
       font-size: 16px;
+      @include ipad_pro() {
+        bottom: auto;
+      }
     }
   }
   .pagination {

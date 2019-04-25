@@ -220,21 +220,11 @@ export default {
   name: 'Home',
   data() { 
     return {
-      stories: [{
-        name: 'Teacher Vane – Travelholic',
-        imgSrc: require('../assets/images/teacher.png'),
-      }, {
-        name: 'MoLong – Wargamer',
-        imgSrc: require('../assets/images/MoLong.jpg'),
-      }, {
-        name: 'Eva — Divingholic',
-        imgSrc: require('../assets/images/eva.png'),
-      }],
       storyList: [],
     }; 
   },
   methods: {
-    moveTo(id) { // move to feature section in OmiCam page
+    moveTo(id) { // move to feature section in 'OmiCam' page
       let vm = this;
       this.$router.push('/omicam');
       setTimeout(function(){
@@ -289,6 +279,7 @@ export default {
       $('#NoShakingModal').on('hidden.bs.modal', function () {
         $("#NoShakingModal iframe").attr("src", '');
       });
+      // after get stories data, initialize owl.carousel 
       setTimeout(function() {
         let owl = $("#owl-demo");
         owl.owlCarousel({
@@ -314,8 +305,7 @@ export default {
         });
       },1000);
     });
-    //////// end jquery  ////////
-    // video autoplay;
+    // loop video
     const loopVideo = document.querySelector('.loop-video');
     loopVideo.autoplay = true;
     loopVideo.load();
@@ -329,8 +319,8 @@ export default {
 
 // text-decoration
 * {
-  text-shadow:0px 0px 8px #1a1a1a;
-  color:#f2f2f2;
+  text-shadow:0px 0px 10px #000;
+  color: white;
   font-family:Arial,Helvetica, sans-serif;
 }
 // variable
@@ -427,7 +417,7 @@ a.btn {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
   }
@@ -464,6 +454,12 @@ a.btn {
       width: 50%;
       height: auto;
       margin-top: 40px;
+    }
+    @include iphone8plus() {
+      width: 80%;
+    }
+    @include iphone8plus_Height(){
+      width: 50%;
     }
   }
 }
@@ -553,7 +549,7 @@ a.btn {
     }
     .section7-img {
       background-image: url('../assets/images/Home/device.jpg');
-      background-size: 80%;
+      background-size: 90%;
       background-position: center center;
       background-repeat: no-repeat;
       @include ipad() {

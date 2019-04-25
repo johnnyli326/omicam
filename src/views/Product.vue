@@ -55,7 +55,7 @@
                 Max Quantity：{{ product.maxQuantity }}
               </div>
             </div>
-            <router-link class="btn btn-outline-primary back-btn" to="/shop">BACK</router-link>
+            <router-link class="btn back-btn" to="/shop">BACK</router-link>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ export default {
       })
       return record;
     },
-    getProduct() {
+    getProduct() { // get product
       let vm = this;
       vm.isLoading = true;
       let xhr = new XMLHttpRequest();
@@ -324,6 +324,13 @@ a.btn {
   .back-btn {
     font-size: 16px;
     color: #ff9933;
+    background-color: transparent;
+    border: 1px solid #ff9933;
+    outline: 0;
+    &:hover {
+      color: black;
+      background-color: #ff9933;
+    }
   }
   .page-title {
     width: 100%;

@@ -21,7 +21,8 @@
       <main class="main" style="color:white;">
         <article class="content">
           <h2  style="color:#ff9933">{{ news.title }}</h2>
-          <p>{{ news.description }}</p>
+          <p v-html="news.description"></p>
+          <h6 class="text-right">--{{  news.otherInfo }}</h6>
           <img :src="'https://www.omicam.com/' + news.contentImg" :alt="news.contentImg">
           <p v-html="news.content"></p>
           <!-- user assets -->
@@ -68,7 +69,7 @@ export default {
     getNews() { // get story content
       let vm = this;
       vm.getStoryId();
-      vm.databaseUrl = ' https://www.omicam.com/_privateApi/omiNewsApi.php?fun=detail&id=' + vm.databaseId;
+      vm.databaseUrl = 'https://www.omicam.com/_privateApi/omiNewsApi.php?fun=detail&id=' + vm.databaseId;
       const xhr = new XMLHttpRequest(); // state = 0
       xhr.open('get', vm.databaseUrl, true);
       xhr.send(null);

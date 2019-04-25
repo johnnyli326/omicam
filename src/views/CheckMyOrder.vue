@@ -21,7 +21,8 @@
       </nav>
 			<section class="tracking-box">
 				<h5 class="tracking-title"> Input Transaction ID from order receipt mail</h5>
-				<input type="text" id="orderId" v-model="orderId">
+				<input type="text" id="orderId" v-model="orderId"
+        @keyup.13="track()">
 				<a href="#" class="track-btn" @click.prevent="track()"></a>
 				<p v-if="ErrorMessage" class="text-danger">{{ ErrorMessage }}</p>
         <!-- <pre>tracking table</pre> -->
