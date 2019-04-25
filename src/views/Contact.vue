@@ -88,15 +88,17 @@
         <h2 class="section-title">CONTACT</h2>
         <div class="sc-box pl-4 mb-0">
           <h4>
+            <span>Customer Service ：</span>
             <a href="mailto:service@sightour.com" class="mail-link">
-              Customer Service ：service@sightour.com
+              service@sightour.com
             </a>
           </h4>
         </div>
         <div class="sc-box pl-4">
           <h4>
+            <span>Business Related：</span>
             <a href="mailto:sales@sightour.com" class="mail-link">
-              Business Related：sales@sightour.com
+              sales@sightour.com
             </a>
           </h4>
         </div>

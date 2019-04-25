@@ -18,7 +18,7 @@
           <div class="banner-title">
             <span class="title">OmiCam</span>
             <br class="next-line">
-            <small>&nbsp;&nbsp;Wearable VR Camera</small>
+            <small style="font-size:20px">&nbsp;&nbsp;Wearable VR Camera</small>
           </div>
           <p>
             Experience the new way to capture 4K Virtual Reality Content by using OmiCam,
@@ -116,7 +116,7 @@
       <section class="row align-items-center section6" id="Horizontal">
         <div class="col-lg-6 text-center">
           <iframe src="https://player.vimeo.com/video/330702337"
-          width="90%"
+          width="100%"
           height="300"
           frameborder="0"
           allowfullscreen>
@@ -141,7 +141,7 @@
       style="color:white;">
         <div class="col-lg-6 text-center">
           <iframe src="https://player.vimeo.com/video/330710556"
-          width="90%"
+          width="100%"
           height="300"
           frameborder="0"
           allowfullscreen>

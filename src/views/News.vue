@@ -16,12 +16,13 @@
       <!-- single list start -->
 			<div v-for="(news, index) in newsList" :key="index">
         <div class="row mb-5">
-          <div class="col-md-3 news-img text-center"
-					:style="{ backgroundImage: 'url(' + 'https://www.omicam.com/' + news.listImg + ')' }">
-            <router-link :to="'/news/' + news.id"></router-link>
-          </div>
-          <div class="col-md-9 mt-4">
-            <h3 class="text-primary">{{ news.title }}</h3>
+          <router-link :to="'/news/' + news.id" class="col-md-5 news-img text-center"
+          :style="{ backgroundImage: 'url(' + 'https://www.omicam.com/' + news.listImg + ')' }">
+          </router-link>
+          <div class="col-md-7 mt-4">
+            <router-link :to="'/news/' + news.id">
+              <h3 class="text-primary">{{ news.title }}</h3>
+            </router-link>
 						<main class="ml-4 mt-3">
               <p style="text-align:justify;color:white" v-html="news.description">
 								<br>
@@ -33,11 +34,12 @@
 				<hr>
 			</div>
       <!-- single list end  -->
+      <!-- pagination -->
       <div class="text-center"  v-if="totalNews">
         <ul class="pagination">
           <li @click.prevent="ChangePage('last')"
           class="pagination-item" aria-label="Previous"
-          v-if="totalPage>1">
+          v-if="totalPage>1 && startItem !=0">
             &laquo;
           </li>
           <li v-for="page in totalPage" :key="page.id" class="pagination-item"
@@ -46,7 +48,7 @@
           </li>
           <li @click.prevent="ChangePage('next')"
           class="pagination-item" aria-label="Next"
-          v-if="totalPage>1">
+          v-if="totalPage>1 && startItem != (totalPage-1)*PAGE_SIZE">
             &raquo;
           </li>
         </ul>
@@ -56,15 +58,13 @@
 </template>
 
 <script>
-const PAGE_SIZE = 2;
-
 export default {
   data() {
     return {
       newsList: [],
       totalNews: '',
       startItem: 0,
-      PAGE_SIZE: 3,
+      PAGE_SIZE: 5,
     };
   },
   methods: {
@@ -143,34 +143,33 @@ export default {
     }
   }
   .news-img {
-    box-shadow: 1px 1px 1px 2px gray;
-    height: 300px;
+    display: inline-block;
     background-position: center center;
     background-size: cover;
-    padding: 0;
-    a {
-      display: block;
-      height: 100%;
-      width: 100%;
+    padding-top: 23.43%;
+    @include ipad() {
+      padding-top: 56.25%;
     }
   }
   .pagination {
     list-style: none;
     display: inline-block;
     user-select: none;
+    height: 50px;
     .pagination-item {
       display: inline-block;
-      color: #ff9933;
+      color: white;
+      font-size: 32px;
       cursor: pointer;
       margin-right: 10px;
-      border: 1px solid #ff9933;
-      padding: 5px;
-      border-radius: 3px;
+      padding: 2px;
       &.active {
-        background-color: #fa7d00cb;
+        color: #ff9933;
+        font-weight: bolder;
       }
       &:hover {
-        background-color: #fa7d00cb;
+        color: #ff9933;
+        border-bottom: 1px solid #ff9933;
       }
     }
   }

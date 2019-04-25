@@ -132,7 +132,6 @@ export default {
       let vm = this;
       Arr.forEach((e) => { // Cookie matrix
         let cartItem = e.split('=');
-        console.log(cartItem);
         let shippingCookie = cartItem[1].split('&'); // get shipping Cookie => ['region','price']
         this.products.forEach(function(item) { // Search Product Cookie 
           if(item.name.replace(/\s/g, '') == cartItem[0].replace(/\s/g, '')) { // remove blank space
@@ -235,7 +234,6 @@ export default {
               e.qty = parseInt(e.qty); // input輸入均為”字串“，改變成"number"
               document.cookie = e.name + "=" + e.qty + ";max-age=3600;path=/"; // 一小時後刪除紀錄
             } else { // 負數或是string
-              console.log('不是正整數');
               e.qty = 0;
             }
           })

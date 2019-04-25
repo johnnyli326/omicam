@@ -75,7 +75,6 @@ export default {
   methods: {
     Subscribe() {
       let vm = this;
-      console.log(vm.validateEmail(vm.email));
       if (vm.validateEmail(vm.email)) {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', 'https://www.omicam.com/_privateApi/omiSubscribeApi.php', true);
@@ -83,9 +82,6 @@ export default {
         xhr.send('fun=add&email=' + vm.email);
         $('.subscribe-message').css({'color': 'green'});
         vm.message = "You're in !";
-        xhr.onload = function() {
-          console.log(xhr.response);
-        }
         setTimeout(function() {
           vm.email = '';
         }, 100);

@@ -94,9 +94,9 @@
                         <label for="coupon" class="coupon-box-title">COUPON：</label>
                         <div class="coupon-box-input-group">
                           <input type="text" id="coupon" class="coupon-box-input" v-model="coupon.code">
-                          <div class="coupon-box-input-message">{{ FinalCoupon.message }}</div>
                           <input type="submit" value="SUBMIT" class="coupon-box-btn" @click.prevent="checkPromote()">
                         </div>
+                        <div class="coupon-box-input-message">{{ FinalCoupon.message }}</div>
                       </div>
                     </div>
                   </td>
@@ -161,7 +161,6 @@ export default {
     listCookies() {
       let vm = this;
       let CookieArr = document.cookie.split(';'); // Transfer cookie data to Array
-      console.log(CookieArr);
       CookieArr.forEach((e) => {
         let cookieItem = e.split('=');
         this.products.forEach(function(item) { // Search Product Cookie 
@@ -424,6 +423,9 @@ export default {
         text-align: left;
         display: inline-block;
         margin-right: auto;
+        .coupon-box-input-message {
+          display: block;
+        }
         .coupon-box-title {
           color: #ff9933;
         }
@@ -438,11 +440,6 @@ export default {
             outline: 0;
             color: white;
             padding: 1px;
-          }
-          .coupon-box-input-message {
-            position: absolute;
-            bottom: -25px;
-            left: 0px;
           }
           .coupon-box-btn {
             padding: 3px 5px;

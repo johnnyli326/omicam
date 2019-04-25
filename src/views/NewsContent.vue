@@ -20,7 +20,7 @@
       </nav>
       <main class="main" style="color:white;">
         <article class="content">
-          <h2>{{ news.title }}</h2>
+          <h2  style="color:#ff9933">{{ news.title }}</h2>
           <p>{{ news.description }}</p>
           <img :src="'https://www.omicam.com/' + news.contentImg" :alt="news.contentImg">
           <p v-html="news.content"></p>
@@ -38,13 +38,14 @@
             <img :src="'https://www.omicam.com/' + asset.url" :alt=" + asset.url" v-if="asset.type == 0 || asset.type == 2">
           </div>
         </article>
-        <ul class="extra-story">
+        <ul class="extra-story" v-if="ExtraNews.length>0">
+          <h3 class="section-title">READ MORE</h3>
           <li v-for="item in ExtraNews" :key="item.id"
           class="extra-story-item">
             <a href="#" @click.prevent="PushTo(item.id)">
               <img :src="'https://www.omicam.com/' + item.listImg" :alt="item.author">
+              <span class="extra-story-item-title">{{ item.title }}</span>
             </a>
-            <span>{{ item.title }} {{ item.author }}</span>
           </li>
         </ul>
       </main>
@@ -72,11 +73,8 @@ export default {
       xhr.open('get', vm.databaseUrl, true);
       xhr.send(null);
       xhr.onload = () => {
-        console.log(xhr.response);
         vm.news = JSON.parse(xhr.response); // fetch JSON data, have to JSON.parse
-        console.log(vm.news);
         vm.assets = vm.news.linkInfos;
-        console.log(vm.assets[0].type);
         vm.ExtraNews = vm.news.nextNews;
       };
       
@@ -152,7 +150,7 @@ export default {
         margin-top: 20px;
         .video-wrap {
           position: relative;
-          width: 90%;
+          width: 100%;
           padding-top: 56.25%;
           margin-bottom: 20px;
 					margin-top: 20px;
@@ -187,9 +185,27 @@ export default {
       vertical-align: top;
       padding: 10px;
       list-style: none;
+      .section-title {
+        text-align: center;
+        color: #ff9933;
+        font-weight: bold;
+        margin-bottom: 50px;
+        @include ipad_pro() {
+          font-size: 20px;
+          margin-bottom: 30px;
+        }
+        @include ipad() {
+          font-size: 32px;
+        }
+      }
       .extra-story-item {
         display: block;
         margin-bottom: 50px;
+        .extra-story-item-title {
+          display: block;
+          overflow: auto;
+          text-align: center;
+        }
       }
       @include ipad() {
         width: 100%;

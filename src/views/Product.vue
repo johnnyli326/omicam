@@ -136,14 +136,12 @@ export default {
       function handle2(val, oldVal) {},
       {
         handler: function(val, oldVal) { // 數量大於100，調整為100；數量小於1，調整為1。
-          console.log('vale' + val.qty);
           if(val.qty > val.maxQuantity) {
             val.qty = val.maxQuantity;
           } else if (val.qty >= 0 && val.qty <=val.maxQuantity){ // 如果數量介於 0 ~ 100的話，寫入cookie
             val.qty = parseInt(val.qty); // input輸入均為”字串“，改變成"number"
             document.cookie = val.name + "=" + val.qty + ";max-age=3600;path=/"; // 一小時後刪除紀錄
           } else { // 負數或是string
-            console.log('不是正整數');
             val.qty = 0;
           }
         },

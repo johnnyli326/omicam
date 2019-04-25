@@ -40,7 +40,8 @@
             <img :src="'https://www.omicam.com/' + asset.url" :alt=" + asset.url" v-if="asset.type == 0 || asset.type == 2">
           </div>
         </article>
-        <ul class="extra-story">
+        <ul class="extra-story" v-if="ExtraStories.length>0">
+          <h3 class="section-title">READ MORE</h3>
           <li v-for="item in ExtraStories" :key="item.id"
           class="extra-story-item">
             <a href="#" @click.prevent="PushTo(item.id)">
@@ -163,6 +164,7 @@ export default {
             width: 100%;
             height: 100%;
             outline: none;
+            border: 0;
           }
           video {
             position: absolute;
@@ -185,12 +187,26 @@ export default {
       vertical-align: top;
       padding: 10px;
       list-style: none;
+      .section-title {
+        text-align: center;
+        color: #ff9933;
+        font-weight: bold;
+        margin-bottom: 50px;
+        @include ipad_pro() {
+          font-size: 20px;
+          margin-bottom: 30px;
+        }
+        @include ipad() {
+          font-size: 32px;
+        }
+      }
       .extra-story-item {
         display: block;
         margin-bottom: 50px;
       }
       @include ipad() {
         width: 100%;
+        margin-left: 0;
         .extra-story-item {
           display: inline-block;
           width: 29.33333%;
@@ -199,6 +215,7 @@ export default {
           .extra-story-item-author {
             display: block;
             text-align: center;
+            overflow: auto;
           }
         }
       }

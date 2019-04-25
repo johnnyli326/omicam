@@ -26,15 +26,15 @@
 				</p>
 			</section>
 			<div class="table-responsive">
-				<table style="tracking-table">
+				<table class="tracking-table table">
           <thead class="table-head">
             <tr>
-              <th>E-mail</th>
+              <th width="30%">E-mail</th>
               <th>Order Date</th>
-              <th>Product Name</th>
+              <th width="25%">Product Name</th>
               <th>Quantity</th>
-              <th>Total</th>
-              <th>Status</th>
+              <th width="15%">Total</th>
+              <th width="20%">Status</th>
             </tr>
           </thead>
           <tbody class="table-body">
@@ -90,7 +90,7 @@ export default {
 			promoteCode: '',
 			statusObj: {
 				status: '',
-				otherInfo: 'Carrier',
+				otherInfo: '',
 				otherInfoLink: '',
 			},
 			isLoading: false,
@@ -106,18 +106,13 @@ export default {
 			xhr.send(null);
 			xhr.onload = () => {
 				let order = JSON.parse(xhr.response).info;
-				console.log(order);
 				vm.amount = order.amount;
 				vm.email = order.email;
 				vm.date = order.orderDate;
 				vm.orderItems = order.itemList;
 				vm.promoteCode = order.promoteCode;
 				vm.statusObj.status = order.status;
-				if (order.otherInfo == '') {
-					return false
-				} else {
-					vm.statusObj.otherInfo = order.otherInfo
-				}
+				vm.statusObj.otherInfo = order.otherInfo
 				vm.statusObj.otherInfoLink = order.otherInfoLink;
 			}
 			vm.isLoading = false;
@@ -185,6 +180,7 @@ export default {
       th,td {
         padding: 20px;
         text-align: center;
+        vertical-align: middle;
       }
     }
   }

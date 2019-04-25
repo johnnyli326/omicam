@@ -235,7 +235,6 @@ export default {
   },
   methods: {
     moveTo(id) { // move to feature section in OmiCam page
-      console.log(id);
       let vm = this;
       this.$router.push('/omicam');
       setTimeout(function(){
@@ -252,7 +251,6 @@ export default {
         eventAction: 'play',
         eventLabel: 'brand film',
       })
-      console.log(this.$ga.event);
     },
     getStories() { // get omi-stories from database
       let vm = this;
@@ -373,7 +371,7 @@ a.btn {
     padding: 20px 0;
   }
   @include ipad_pro() { // for 1024 below 
-    height: 680px;
+    min-height: 680px;
   }
   .section-text {
     text-align: center;
@@ -463,9 +461,9 @@ a.btn {
     display: none;
     @include ipad() {
       display: block;
-      width: 70%;
+      width: 50%;
       height: auto;
-      margin-top: 50px;
+      margin-top: 40px;
     }
   }
 }
@@ -590,6 +588,8 @@ a.btn {
       background-repeat: no-repeat;
       @include ipad() {
         height: 400px !important;
+      }
+      @include iphone8plus() {
         background-size: 50%;
       }
       @include iphone8plus_Height { // 橫式 iphone8+ 以下

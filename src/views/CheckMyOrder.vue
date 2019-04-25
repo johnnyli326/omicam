@@ -25,16 +25,16 @@
 				<a href="#" class="track-btn" @click.prevent="track()"></a>
 				<p v-if="ErrorMessage" class="text-danger">{{ ErrorMessage }}</p>
         <!-- <pre>tracking table</pre> -->
-				<div class="table-responsive mt-4" v-if="orderItems.length >0">
-          <table class="tracking-table">
+				<div class="table-responsive mt-4" v-if="orderItems.length >0 && !ErrorMessage">
+          <table class="tracking-table table">
             <thead class="table-head">
               <tr>
-                <th>E-mail</th>
+                <th width="30%">E-mail</th>
                 <th>Order Date</th>
-                <th style="min-width:200px">Product Name</th>
-                <th style="width:100px">Quantity</th>
-                <th>Total</th>
-                <th>Status</th>
+                <th width="25%">Product Name</th>
+                <th>Quantity</th>
+                <th width="15%">Total</th>
+                <th width="20%">Status</th>
               </tr>
             </thead>
             <tbody class="table-body">
@@ -106,7 +106,7 @@ export default {
 			xhr.onload = () => {
 				let order = JSON.parse(xhr.response).info;
 				if (order == null) {
-					vm.ErrorMessage = "This order ID doesn't exist."
+					vm.ErrorMessage = "This Transaction ID doesn't exist."
 				} else {
 					vm.ErrorMessage = '';
 					vm.Email = order.email;
@@ -193,6 +193,7 @@ export default {
         th,td {
           padding: 20px;
           text-align: center;
+          vertical-align: middle;
         }
       }
     }

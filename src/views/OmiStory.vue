@@ -20,7 +20,9 @@
           :style="{ backgroundImage: 'url(' + 'https://www.omicam.com/' + story.listImg + ')' }">
           </router-link>
           <div class="col-md-7 mt-4 story-intro-box">
-            <h3 class="text-primary">{{ story.title }}</h3>
+            <router-link :to="'/story/' + story.id">
+              <h3 class="text-primary">{{ story.title }}</h3>
+            </router-link>
 						<main class="ml-4 mt-3">
               <p style="text-align:justify;color:white" v-html="story.description"></p>
 						</main>
@@ -35,7 +37,7 @@
         <ul class="pagination">
           <li @click.prevent="ChangePage('last')"
           class="pagination-item" aria-label="Previous"
-          v-if="totalPage>1">
+          v-if="startItem != 0 && totalPage>1">
             &laquo;
           </li>
           <li v-for="page in totalPage" :key="page.id" class="pagination-item"
@@ -44,7 +46,7 @@
           </li>
           <li @click.prevent="ChangePage('next')"
           class="pagination-item" aria-label="Next"
-          v-if="totalPage>1">
+          v-if="totalPage>1 && startItem != (totalPage-1)*PAGE_SIZE">
             &raquo;
           </li>
         </ul>
@@ -62,7 +64,7 @@ export default {
       storyList: [],
       startItem: 0,
       totalStories: '',
-      PAGE_SIZE: 3,
+      PAGE_SIZE: 5,
     };
   },
   methods: {
@@ -77,7 +79,6 @@ export default {
         let data = JSON.parse(xhr.response); // get stories from new to old.
         vm.storyList = data.list;
         vm.totalStories = data.total;
-        console.log(vm.totalStories);
       };
     },
     ChangePage(page) {
@@ -154,7 +155,6 @@ export default {
     position: relative;
     .story-intro-author {
       position: absolute;
-      bottom: 10px;
       right: 10px;
       color: white;
       font-size: 16px;
@@ -164,19 +164,21 @@ export default {
     list-style: none;
     display: inline-block;
     user-select: none;
+    height: 50px;
     .pagination-item {
       display: inline-block;
-      color: #ff9933;
+      color: white;
+      font-size: 32px;
       cursor: pointer;
       margin-right: 10px;
-      border: 1px solid #ff9933;
-      padding: 5px;
-      border-radius: 3px;
+      padding: 2px;
       &.active {
-        background-color: #fa7d00cb;
+        color: #ff9933;
+        font-weight: bolder;
       }
       &:hover {
-        background-color: #fa7d00cb;
+        color: #ff9933;
+        border-bottom: 1px solid #ff9933;
       }
     }
   }

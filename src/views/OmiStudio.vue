@@ -372,7 +372,7 @@ export default {
       margin-right: 5px;
 		}
 		.sub-title {
-			font-size: 16px;
+      font-size: 20px;
       @include ipad_pro() {
         display: block;
         text-align: left;
@@ -380,7 +380,7 @@ export default {
       }
 		}
 		.description {
-			font-size: 16px;
+			font-size: 20px;
 			text-align: justify;
 			text-indent: 16px;
       padding: 10px;
