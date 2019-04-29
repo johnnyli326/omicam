@@ -99,8 +99,8 @@ export default {
       true);
       xhr.send(null);
       xhr.onload = () => {
-        let data = JSON.parse(xhr.response); // get stories from new to old.
-        vm.storyList = data.list;
+        let data = JSON.parse(xhr.response);
+        vm.newsList = data.list;
       };
     },
   },
@@ -108,10 +108,10 @@ export default {
     totalPage() { // compute total pages
       let vm = this;
       let pageCount = parseInt(vm.totalNews/vm.PAGE_SIZE) + (vm.totalNews%vm.PAGE_SIZE>0 ? 1 : 0);
-      if(!vm.storyList || vm.totalNews <= 0) {
+      if(!vm.newsList || vm.totalNews <= 0) {
         return 1
       } else {
-        return parseInt(vm.totalNews/vm.PAGE_SIZE) + (vm.totalNews%vm.PAGE_SIZE>0 ? 1 : 0);
+        return pageCount;
       }
     }
   },

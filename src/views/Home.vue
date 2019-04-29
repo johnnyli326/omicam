@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- section1 -->
     <section class="section section1">
       <div class="banner"></div>
       <div class="section-text">
@@ -42,7 +43,7 @@
           DESIGN TO BE WORN
         </h2>
         <p class="text-center section-subTitle">
-          Free your hand to enjoy the life while recording.
+          Free your hands to enjoy the life while recording.
         </p>
         <img src="../assets/images/icons/more.png" class="link-icon-btn"
         alt="more_icon" usemap="#btnmap_3">
@@ -59,7 +60,7 @@
           WIDER VIEW THAN EVER
         </h2>
         <p class="text-center section-subTitle">
-          Extended your first person point of view by 240 Degree FoV
+          Extended your first person point of view by 240 Degree FoV.
         </p>
         <img src="../assets/images/icons/more.png" class="link-icon-btn"
         alt="more_icon" usemap="#btnmap_4">
@@ -174,7 +175,7 @@
         <a class="btn next" aria-label="Next"></a>
       </div>
     </section>
-    <!-- Modal -->
+    <!-- Modal sec1-->
     <div class="modal fade" id="commercialModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -207,6 +208,10 @@
         </div>
       </div>
     </div>
+    <!-- AD -->
+    <router-link class="ad" to="/shop">
+      <div class="close-ad">&times;</div>
+    </router-link>
   </div>
 </template>
 
@@ -261,6 +266,7 @@ export default {
   },
   mounted() {
     $(document).ready(function() {
+      ///////// vimeo video  ////////
       // 開啟Modal，vimeo autoplay
       $('#commercialModal').on('show.bs.modal', function () {
         $("#commercialModal iframe").attr("src", // autoplay
@@ -279,6 +285,8 @@ export default {
       $('#NoShakingModal').on('hidden.bs.modal', function () {
         $("#NoShakingModal iframe").attr("src", '');
       });
+      
+      /////// omi-story carousel  /////////
       // after get stories data, initialize owl.carousel 
       setTimeout(function() {
         let owl = $("#owl-demo");
@@ -303,14 +311,24 @@ export default {
         $(".prev").click(function(){
           owl.trigger('prev.owl.carousel');
         });
-      },1000);
+      },2000);
     });
-    // loop video
+    
+    //////// loop video ( support whole day ) ////////
     const loopVideo = document.querySelector('.loop-video');
     loopVideo.autoplay = true;
     loopVideo.load();
+    
+    // ///// AD //////// //
+    setTimeout( function () {
+      $('.ad').fadeIn();
+    }, 2000);
+    $('.close-ad').click( function (e) {
+      e.preventDefault();
+      $('.ad').fadeOut();
+    });
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -360,7 +378,7 @@ a.btn {
   @include ipad {
     padding: 20px 0;
   }
-  @include ipad_pro() { // for 1024 below 
+  @include ipad_pro() { // for 1024 below
     min-height: 680px;
   }
   .section-text {
@@ -511,7 +529,7 @@ a.btn {
       // make video at least 100% wide and tall.
       min-width: 100%;
       min-height: 100%;
-      // make width & height to be auto, in order to prevent 
+      // make width & height to be auto, in order to prevent
       // broweser from stretch or squishing the video
       width: auto;
       height: auto;
@@ -698,7 +716,7 @@ a.btn {
       }
     }
   }
-} 
+}
 .customNavigation{
   text-align: center;
   .prev {
@@ -732,6 +750,30 @@ a.btn {
   color: gray !important;
   &:hover {
     color: #ffcd05 !important;
+  }
+}
+// AD
+.ad {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 200px;
+  height: 200px;
+  background-image: url('../assets/images/Home/commercial.png');
+  background-position: center center;
+  background-size: cover;
+  z-index: 500;
+  display: none;
+  @include ipad() {
+    display: none !important;
+  }
+  .close-ad {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    text-shadow: none;
+    cursor: pointer;
   }
 }
 </style>

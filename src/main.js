@@ -3,7 +3,6 @@ import Loading from 'vue-loading-overlay';
 import VueAnalytics from 'vue-analytics';
 import router from './router';
 import App from './App.vue';
-import store from './store';
 import 'bootstrap';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
@@ -30,6 +29,5 @@ Vue.filter('currency', currencyFilter); // Currency Filter
 Vue.config.productionTip = false;
 new Vue({
   router,
-  store,
   render: h => h(App),
 }).$mount('#app');

@@ -9,7 +9,7 @@
               HOME
             </router-link>
           </li>
-          <li class="breadcrumb-item before active">
+          <li class="breadcrumb-item before">
             <router-link to="/shop">
               SHOP
             </router-link>
@@ -265,7 +265,7 @@ export default {
     final_Total() { // calculate total amount
       let vm = this;
       let final_total = 0;
-      vm.products.forEach(function(e) {
+      vm.products.forEach(function (e) {
         final_total += e.price * e.qty;
       })
       return final_total
@@ -273,11 +273,11 @@ export default {
     orders() { // judge if user ordered any product.
       let vm = this;
       let orderArr = []
-      vm.products.forEach(function(e) {
+      vm.products.forEach(function (e) {
         if (e.qty > 0) {
           orderArr.push(e);
         }
-      })
+      });
       return orderArr;
     },
   },

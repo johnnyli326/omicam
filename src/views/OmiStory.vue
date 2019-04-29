@@ -113,7 +113,7 @@ export default {
       if(!vm.storyList || vm.totalStories <= 0) {
         return 1
       } else {
-        return parseInt(vm.totalStories/vm.PAGE_SIZE) + (vm.totalStories%vm.PAGE_SIZE>0 ? 1 : 0);
+        return pageCount;
       }
     }
   },

@@ -70,7 +70,7 @@
               </td>            
             </tr>
             <tr>
-              <td class="text-right" colspan="3">SHIPPING FEE：<br>( 3~5 days delivery)</td>
+              <td class="text-right" colspan="3">SHIPPING FEE：<br>( 3~5 days delivery )</td>
               <td class="text-right" width="20%">
                 {{ +selectCty.price | currency }}
               </td>

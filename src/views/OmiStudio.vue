@@ -20,7 +20,7 @@
 					In OMI Studio, you can do much more than OmiCam controlling.
           Editing your VR video, Fine-tune your image, Mix with your favorite
 					music, or even Live Streaming your VR Image on Facebook/Youtube, all
-					functions can be done on OMI Studio.OMI Studio supported on different
+					functions can be done on OMI Studio. OMI Studio supported on different
 					OS, Apple Store, Google Play, Mac and Windows. Download it for the best
 					experience. 
 				</p>
@@ -113,7 +113,7 @@
             <p>
               <ul>
                 <li>
-                  Integrate multiple video clips into one VR story
+                  Integrate multiple video clips into one VR story.
                 </li>
                 <li>
                   Trim and Edit each clip to ensure all the important moments.
@@ -166,11 +166,11 @@
             class="section-img">
           </div>
           <div class="col-lg-6">
-            <h3 class="section-title">Make Not for your Story</h3>
+            <h3 class="section-title">Make Not for Your Story</h3>
             <p>
               <ul>
                 <li>
-                  Have a story name for your memory
+                  Have a story name for your memory.
                 </li>
                 <li>
                   Leave your thought for every moment you experienced.
@@ -508,13 +508,13 @@ export default {
       opacity: 0;
       transition: all 2.5s;
       height: 500px;
-      @include ipad() {
+      @media(max-width: 991px) {
         height: auto !important;
       }
       .section-row {
         height: 100%;
         width: 100%;
-        @include ipad() {
+        @media(max-width: 991px) {
           height: auto !important;
         }
         .section13-img {

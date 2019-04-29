@@ -65,7 +65,7 @@
                 than what you see.
               </li>
               <li>
-                The unique 45 degree forward design prefectly simulated human
+                The unique 45 degree forward design perfectly simulated human
                 eyes and captured the most immersive experience.
               </li>
             </ul>
@@ -86,7 +86,7 @@
               free your hands and focus on your adventure.
             </li>
             <li>
-              Power-On, Record, Lifelog, just 3 buttons works out.
+              Power-On, Record, Lifelog, just 3 buttons work out.
             </li>
           </ul>
         </div>
@@ -127,7 +127,7 @@
           <ul>
             <li>
               The proprietary OMI (Optical Motion Intelligence)
-              algorithm keeps OmiCam stablized when recording under
+              algorithm keeps OmiCam stabilized when recording under
               any conditions.
             </li>
             <li>
@@ -169,7 +169,7 @@
             class="section9-img">
           </div>
           <div class="col-lg-6 detail mt-4">
-            <h3 class="section-title">What is in our package?</h3>
+            <h3 class="section-title">What Is In Our Package?</h3>
             <ol>
               <li>OmiCam Wearable VR Camera</li>
               <li>Sporty Carrying Bag</li>

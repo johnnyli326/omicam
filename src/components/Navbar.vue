@@ -107,26 +107,26 @@ export default {
         $('.navbar').css('background-color', 'rgba(0, 0, 0)');
         $('.nav-wrap').css('height', 'auto');
       });
+      // for stretch device
       $(window).resize(function() {
-        if ($(window).width() > 1000) { // for stretch device
+        if ($(window).width() > 1000 ) {
           $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
           $('.top-menu').removeClass('show').removeClass('hide'); // dropdown menu 
           $('.hamburger-btn').removeClass('active');
           $('body').css('overflow', 'auto');
           $('.navbar').css('background-color', 'rgba(0, 0, 0)');
-          // $('.nav-wrap').css('height', 'auto');
         } else {
           $('.top-menu').remove().insertAfter($('.mobile-icon')); // move Topmenu after Icon
           $('.menu-item').click(function() { // click menu-item, slideUp top-menu etc...
-            $('.hamburger-btn').removeClass('active');
-            $('.top-menu').removeClass('show');
-            $('body').css('overflow', 'auto');
-            $('.navbar').css('background-color', 'rgba(0, 0, 0)');
-            // $('.nav-wrap').css('height', 'auto');
+          $('.hamburger-btn').removeClass('active');
+          $('.top-menu').removeClass('show');
+          $('body').css('overflow', 'auto');
+          $('.navbar').css('background-color', 'rgba(0, 0, 0)');
           });
         }
       });
-      if ($(window).width() > 1000) { // for fixed width device 
+      // for fixed width device
+      if ($(window).width() > 1000) {
         $('.top-menu').remove().insertBefore($('.mobile-icon')); // move Topmenu before Icon
       } else {
         $('.top-menu').remove().insertAfter($('.mobile-icon')); // move Topmenu after Icon
@@ -246,30 +246,29 @@ export default {
     display: inline-block;
     margin: 0;
     z-index: 100;
-    overflow:hidden;
+    overflow: hidden;
     font-size: 0;
     transition: all .6s;
-    // padding-right: 20px;
     margin-left: auto;
+    &.show {
+      height: 360px;
+      overflow-y: scroll;
+      @include iphoneX_Height() {
+        height: 300px;
+      }
+      @include iphone5_Height() {
+        height: 270px;
+      }
+    }
+    &.hide {
+      height: 0;
+      overflow-y: hidden;
+    }
     @media(max-width: 1000px) {
       height: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.1);
       padding-right: 0px;
-      &.show {
-        height: 360px;
-        overflow-y: scroll;
-        @include iphoneX_Height() {
-          height: 300px;
-        }
-        @include iphone5_Height() {
-          height: 270px;
-        }
-      }
-      &.hide {
-        height: 0;
-        overflow-y: hidden;
-      }
     }
     .menu-item {
       display: inline-block;
@@ -279,9 +278,9 @@ export default {
       &:hover {
         background-color: rgba(0, 0, 0, 0.1);
       }
-        @media(max-width: 1000px) {
-          display: block;
-        }
+      @media(max-width: 1000px) {
+        display: block;
+      }
       a {
         display: inline-block;
         height: 60px;
@@ -309,6 +308,12 @@ export default {
     width: 16px;
     height: auto;
     padding-bottom: 3px;
+  }
+}
+#currentMedia {
+  display: none;
+  @media(max-width: 1000px){
+    max-width: 1000px;
   }
 }
 </style>
